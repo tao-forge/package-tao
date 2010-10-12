@@ -24,6 +24,8 @@ function qti_init_interaction(initObj){
 	var correctsSerialized = "[{identifier:'RESPONSE', type:'identifier', cardinality:'single', values:['ChoiceA']}]";
 	var correctsVar = unserializedQTIVariables (correctsSerialized);
 	qtiMatching.setCorrects (correctsVar);
+	
+	
 	// Set "Temporary Variables Variables" 
 //	var variablesSerialized = "[{identifier:'RESPONSE', type:'identifier', cardinality:'single', values:['ChoiceA']}]";
 //	var variablesVar = unserializedQTIVariables (variablesSerialized);
@@ -106,7 +108,7 @@ function QTIWidget(options){
 			$(qti_item_id+" ul li").removeClass("tabActive");		
 			$(this).addClass("tabActive");					
 		});
-	}
+	};
 
 	/**
 	 * Creates a multiple choice list widget
@@ -215,6 +217,10 @@ function QTIWidget(options){
 				
 				$(qti_item_id+" .qti_link_associate:last").css("top",$(this).offset().top+23);
 				$(qti_item_id+" .qti_link_associate:last").css("left",parseFloat($(this).find("li:first").offset().left)+parseFloat($(this).find("li:first").width())+14);
+			});
+			
+			//
+			$(qti_item_id).height( ($(qti_item_id+" .qti_link_associate:last").offset().top) - $(qti_item_id).offset().top); 
 			
 			
 			//drag element from words cloud
@@ -297,8 +303,6 @@ function QTIWidget(options){
 				},
 				hoverClass: 'active'
 			});
-			}
-		);	
 	};
 
 	/**
@@ -332,7 +336,7 @@ function QTIWidget(options){
 				
 				baseWidth 	= parseInt($(qti_item_id).css('width')) | 400;
 				baseHeight 	= parseInt($(qti_item_id).css('height')) | 100;
-				if(currentObj['expectedLength']){
+				if(_this.opts['expectedLength']){
 					length 		= parseInt(_this.opts['expectedLength']);
 					width = length * 10;
 					if( width > baseWidth){
@@ -437,8 +441,7 @@ function QTIWidget(options){
 	};
 	
 	/**
-	 * Creates a  gap match widget			dirname(__FILE__).'/samples/associate.xml',
-			dirname(__FILE__).'/samples/choice_multiple.xml',
+	 * Creates a  gap match widget			
 	 */
 	this.gap_match = function(){
 		
@@ -548,6 +551,9 @@ function QTIWidget(options){
 		});	
 	};
 	
+	/**
+	 * Create a match widget 
+	 */
 	this.match = function(){
 		
 		$(qti_item_id + " .choice_list:last").addClass('choice_list_cols');
@@ -575,49 +581,121 @@ function QTIWidget(options){
 				var ynode = 'ynode_' + cols[j];
 				var node_id = 'match_node_'+i+'_'+j;
 				
-				$(qti_item_id + " .match_node_container").append("<div id='"+node_id+"' class='match_node "+xnode+" "+ynode+"'></div>");
+				$(qti_item_id + " .match_node_container").append("<div id='"+node_id+"' class='match_node "+xnode+" "+ynode+"'>&nbsp;</div>");
 				
 				left = 0;
 				if(j > 0){
 					p = $("#"+ 'match_node_'+i+'_'+(j-1)).position();
-					left = parseInt(p.left)  + parseInt($("#"+ 'match_node_'+i+'_'+(j-1)).width()) + (10);
+					left = parseInt(p.left)  + parseInt($("#"+ 'match_node_'+i+'_'+(j-1)).width()) + (12);
 				}
+				width =  parseFloat($("#"+ cols[j]).width());
 				$(qti_item_id + " #"+node_id).css({
-					'top' 	: (i * 25) + 'px',
+					'top' 	: ((i * 25) + i * 2 ) + 'px',
 					'left'	: left + 'px',
-					'width'	: $("#"+ cols[j]).width()
+					'width'	: width + 'px'
 				});
 				j++;
 			}
 			i++;
 		}
-		$(qti_item_id + " .match_node").click(function(){
-			$(this).toggleClass('tabActive');
-		});
 		
+		/**
+		 * Exract the id of the rows and cols from the classes of a node
+		 * @param {jQuery} jElement
+		 * @return {Object} with xnode an ynode id 
+		 */
+		function getNodeXY(jElement){
+			
+			var x = null;
+			var y = null;
+			
+			var classes = jElement.attr('class').split(' ');
+			for(i in classes){
+				if(/^xnode_/.test(classes[i])){
+					x = {
+						'id' 	: classes[i].replace('xnode_', ''),
+						'class'	: classes[i]
+					};
+				}
+				else if(/^ynode_/.test(classes[i])){
+					y = {
+							'id' 	: classes[i].replace('ynode_', ''),
+							'class'	: classes[i]
+						};
+				}
+				if(x != null && y != null){
+					break;
+				}
+			}
+			return {xnode: x, ynode: y};
+		}
+		
+		function deactivateNode(jElement){
+			jElement.removeClass('tabActive');
+			associations.splice(associations.indexOf(jElement.attr('id')), 1);
+		}
+		
+		var maxAssociations = _this.opts['maxAssociations'];
+		
+		// activate / deactivate node regarding the maxAssociations and the matchMax parameters
+		var associations = new Array();
+		
+		$(qti_item_id + " .match_node").click(function(){
+			
+			var elt =  $(this);	//prevent to many parsing
+			
+			if(elt.hasClass('tabActive')){
+				deactivateNode(elt);
+			}
+			else{
+				if(associations.length < maxAssociations || maxAssociations == 0){
+					
+					var nodeXY = getNodeXY(elt);
+					
+					rowMatch = _this.opts["matchMaxes"][nodeXY.xnode.id]['matchMax'];
+					colMatch = _this.opts["matchMaxes"][nodeXY.ynode.id]['matchMax'];
+					
+					if(rowMatch == 1) {
+						$("." + nodeXY.xnode['class']).each(function(){
+							deactivateNode($(this));
+						});
+					}
+					if(colMatch == 1) {
+						$("." + nodeXY.ynode['class']).each(function(){
+							deactivateNode($(this));
+						});
+					}
+					
+					elt.addClass('tabActive');
+					associations.push(elt.attr('id'));
+				}
+			}
+		});
 	};
 }
 
 
 /** 
- * @param {QTIWidget} qtiWidget
+ * @param {Object} options
  */
-function QTIResultCollector(myQTIWidget){
+function QTIResultCollector(options){
 
-	var myQTIWidget = myQTIWidget;
-	var id = myQTIWidget.opts['id'];
+	this.opts = options;
+	this.id = options['id'];
+	
+	var _this = this;
 	
 	// result process
 	this.choice = function(){
 		var result = {
-			"identifier"	: "RESPONSE" // Identifier of the response
-			, "cardinality" : myQTIWidget.opts["maxChoices"] << 1 != 2 ? 'multiple' : 'single'
-			, "type"		: "identifier"
+			"identifier"	: _this.opts['responseIdentifier'] // Identifier of the response
+			, "cardinality" : _this.opts["maxChoices"] << 1 != 2 ? 'multiple' : 'single'
+			, "type"		: _this.id
 			, "values"		: []
 		};
 		
 		var userData = new Array();
-		$("#" + id + " .tabActive").each(function(){
+		$("#" + _this.id + " .tabActive").each(function(){
 			userData.push(this.id);
 		});
 		result.values = userData;
@@ -627,7 +705,7 @@ function QTIResultCollector(myQTIWidget){
 	
 	this.order = function (){
 		var result = new Array();
-		$("#" + id + " ul.qti_choice_list li").each(function(){
+		$("#" + _this.id + " ul.qti_choice_list li").each(function(){
 			result.push(this.id);
 		});
 		return result;
@@ -635,7 +713,7 @@ function QTIResultCollector(myQTIWidget){
 
 	this.associate = function(){
 		var result = new Array();
-		$("#" + id + " .qti_association_pair").each(function(){
+		$("#" + _this.id + " .qti_association_pair").each(function(){
 			result.push([$(this).find('li:first').attr('id'), $(this).find('li:last').attr('id')]);
 		});
 		return result;
@@ -644,13 +722,13 @@ function QTIResultCollector(myQTIWidget){
 	this.text = function(){
 		
 		//single mode
-		if($("#" + id ).get(0).nodeName.toLowerCase() != 'div'){
+		if($("#" + _this.id ).get(0).nodeName.toLowerCase() != 'div'){
 			return new Array($("#" + id).val());
 		}
 		
 		//multiple mode
 		var result = new Array();
-		$("#" + id + " :text").each(function(){
+		$("#" + _this.id + " :text").each(function(){
 			result.push($(this).val());
 		});
 		return result;
@@ -659,12 +737,12 @@ function QTIResultCollector(myQTIWidget){
 	this.extended_text = this.text;
 
 	this.inline_choice = function(){
-		return [$("#" + id).val()];
+		return [$("#" + _this.id).val()];
 	};
 
 	this.hottext = function(){
 		var result = new Array();
-		$("#" + id + " .hottext_choice_on").each(function(){
+		$("#" + _this.id + " .hottext_choice_on").each(function(){
 			result.push(this.id.replace("/^hottext_choice_/", ''));
 		});
 		return result;
@@ -672,7 +750,7 @@ function QTIResultCollector(myQTIWidget){
 
 	this.gap_match = function(){
 		var result = new Array();
-		$("#" + id + " .filled_gap").each(function(){
+		$("#" + _this.id + " .filled_gap").each(function(){
 			result.push([$(this).attr('id').replace('gap_', ''), $(this).parent().attr('id')]);
 		});
 		return result;
@@ -680,7 +758,7 @@ function QTIResultCollector(myQTIWidget){
 	
 	this.match = function(){
 		var result = new Array();
-		$("#" + id + " .tabActive").each(function(){
+		$("#" + _this.id + " .tabActive").each(function(){
 			var subset = new Array();
 			var classes = $(this).attr('class').split(' ');
 			if(classes.length > 0){
