@@ -8,7 +8,7 @@
 	<p><?php echo isset($message)?$message:"Page not found"; ?></p>
 	<?php if(isset($trace)):?> 
 		<pre>
-			<?php echo $tace;?>
+			<?php echo $trace;?>
 		</pre>
 	<?php endif?>
 </body>
