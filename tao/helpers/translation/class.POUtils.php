@@ -3,18 +3,18 @@
 error_reporting(E_ALL);
 
 /**
- * TAO - tao\models\classes\class.POUtils.php
+ * TAO - tao\helpers\translation\class.POUtils.php
  *
  * $Id$
  *
  * This file is part of TAO.
  *
- * Automatically generated on 20.10.2011, 12:05:47 with ArgoUML PHP module 
+ * Automatically generated on 20.10.2011, 15:33:02 with ArgoUML PHP module 
  * (last revised $Date: 2008-04-19 08:22:08 +0200 (Sat, 19 Apr 2008) $)
  *
  * @author firstname and lastname of author, <author@example.org>
  * @package tao
- * @subpackage models_classes
+ * @subpackage helpers_translation
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -30,14 +30,14 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 // section 10-13-1-85--20e08ece:13320c7798f:-8000:0000000000003545-constants end
 
 /**
- * Short description of class tao_models_classes_POUtils
+ * Short description of class tao_helpers_translation_POUtils
  *
  * @access public
  * @author firstname and lastname of author, <author@example.org>
  * @package tao
- * @subpackage models_classes
+ * @subpackage helpers_translation
  */
-class tao_models_classes_POUtils
+class tao_helpers_translation_POUtils
 {
     // --- ASSOCIATIONS ---
 
@@ -60,7 +60,7 @@ class tao_models_classes_POUtils
         $returnValue = (string) '';
 
         // section 10-13-1-85--20e08ece:13320c7798f:-8000:0000000000003546 begin
-    	if ($reverse) {
+		if ($reverse) {
 			$smap = array('"', "\n", "\t", "\r");
 			$rmap = array('\\"', '\\n"' . "\n" . '"', '\\t', '\\r');
 			$returnValue = trim((string) str_replace($smap, $rmap, $string));
@@ -74,6 +74,6 @@ class tao_models_classes_POUtils
         return (string) $returnValue;
     }
 
-} /* end of class tao_models_classes_POUtils */
+} /* end of class tao_helpers_translation_POUtils */
 
 ?>
