@@ -3,18 +3,18 @@
 error_reporting(E_ALL);
 
 /**
- * TAO - tao/models/classes/interface.Cache.php
+ * TAO - tao/models/classes/cache/interface.Cache.php
  *
  * $Id$
  *
  * This file is part of TAO.
  *
- * Automatically generated on 15.03.2012, 16:28:23 with ArgoUML PHP module 
+ * Automatically generated on 26.03.2012, 17:31:32 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -30,14 +30,14 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 // section 127-0-1-1-425ea117:1353e0d3541:-8000:00000000000036F2-constants end
 
 /**
- * Short description of class tao_models_classes_Cache
+ * Short description of class tao_models_classes_cache_Cache
  *
  * @access public
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
-interface tao_models_classes_Cache
+interface tao_models_classes_cache_Cache
 {
 
 
@@ -46,7 +46,7 @@ interface tao_models_classes_Cache
     /**
      * puts "something" into the cache,
      * If this is an object and implements Serializable,
-     * we use the serial provided bu the object
+     * we use the serial provided by the object
      * else a serial must be provided
      *
      * @access public
@@ -58,7 +58,7 @@ interface tao_models_classes_Cache
     public function put($mixed, $serial = null);
 
     /**
-     * Short description of method get
+     * gets the entry associted to the serial
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -68,7 +68,8 @@ interface tao_models_classes_Cache
     public function get($serial);
 
     /**
-     * Short description of method remove
+     * removes an entry from the cache
+     * throws an exception iif not found
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -78,7 +79,7 @@ interface tao_models_classes_Cache
     public function remove($serial);
 
     /**
-     * Short description of method purge
+     * empties the cache
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -86,6 +87,6 @@ interface tao_models_classes_Cache
      */
     public function purge();
 
-} /* end of interface tao_models_classes_Cache */
+} /* end of interface tao_models_classes_cache_Cache */
 
 ?>

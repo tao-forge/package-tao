@@ -3,18 +3,18 @@
 error_reporting(E_ALL);
 
 /**
- * TAO - tao/models/classes/class.SessionCache.php
+ * TAO - tao/models/classes/cache/class.SessionCache.php
  *
  * $Id$
  *
  * This file is part of TAO.
  *
- * Automatically generated on 15.03.2012, 16:47:09 with ArgoUML PHP module 
+ * Automatically generated on 26.03.2012, 17:31:32 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -22,11 +22,19 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 }
 
 /**
- * include tao_models_classes_Cache
+ * include tao_models_classes_cache_Cache
  *
  * @author Joel Bout, <joel.bout@tudor.lu>
  */
-require_once('tao/models/classes/interface.Cache.php');
+require_once('tao/models/classes/cache/interface.Cache.php');
+
+/**
+ * Service is the base class of all services, and implements the singleton
+ * for derived services
+ *
+ * @author Joel Bout, <joel.bout@tudor.lu>
+ */
+require_once('tao/models/classes/class.Service.php');
 
 /* user defined includes */
 // section 127-0-1-1-425ea117:1353e0d3541:-8000:00000000000036DE-includes begin
@@ -37,15 +45,16 @@ require_once('tao/models/classes/interface.Cache.php');
 // section 127-0-1-1-425ea117:1353e0d3541:-8000:00000000000036DE-constants end
 
 /**
- * Short description of class tao_models_classes_SessionCache
+ * Short description of class tao_models_classes_cache_SessionCache
  *
  * @access public
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
-class tao_models_classes_SessionCache
-        implements tao_models_classes_Cache
+class tao_models_classes_cache_SessionCache
+    extends tao_models_classes_Service
+        implements tao_models_classes_cache_Cache
 {
     // --- ASSOCIATIONS ---
 
@@ -61,14 +70,6 @@ class tao_models_classes_SessionCache
     public $items = array();
 
     /**
-     * Short description of attribute instances
-     *
-     * @access private
-     * @var array
-     */
-    private static $instances = array();
-
-    /**
      * Short description of attribute SESSION_KEY
      *
      * @access public
@@ -81,7 +82,7 @@ class tao_models_classes_SessionCache
     /**
      * puts "something" into the cache,
      * If this is an object and implements Serializable,
-     * we use the serial provided bu the object
+     * we use the serial provided by the object
      * else a serial must be provided
      *
      * @access public
@@ -104,7 +105,7 @@ class tao_models_classes_SessionCache
     }
 
     /**
-     * Short description of method get
+     * gets the entry associted to the serial
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -116,31 +117,34 @@ class tao_models_classes_SessionCache
         $returnValue = null;
 
         // section 127-0-1-1--66865e2:1353e542706:-8000:0000000000003706 begin
-        if (isset($this->items[$serial])) {
-        	$returnValue = $this->items[$serial];
-        } elseif (!empty($serial) && Session::hasAttribute(static::SESSION_KEY)){
-        	$storage = Session::getAttribute(static::SESSION_KEY);
-	        if(isset($storage[$serial])){
-
-	        	$data = @unserialize($storage[$serial]);
-	        
-	        	if($data === false || !$data instanceof tao_models_classes_Serializable){
-	        		throw new common_exception_Error("Unable to unserialize session entry identified by \"".$serial.'"');
-	        	}
-	        	$this->items[$serial] = $data;
-	        	$returnValue = $data;
-	        }
+        if (!isset($this->items[$serial])) {
+        	if (Session::hasAttribute(static::SESSION_KEY)) {
+	        	$storage = Session::getAttribute(static::SESSION_KEY);
+		        if(isset($storage[$serial])){
+	
+		        	$data = @unserialize($storage[$serial]);
+		        
+		        	if($data === false || !$data instanceof tao_models_classes_Serializable){
+		        		throw new common_exception_Error("Unable to unserialize session entry identified by \"".$serial.'"');
+		        	}
+		        	$this->items[$serial] = $data;
+		        	$returnValue = $data;
+		        } else {
+		        	throw new tao_models_classes_cache_NotFoundException('Failed to get ('.$serial.')');
+		        }
+        	} else {
+        		throw new tao_models_classes_cache_NotFoundException('Failed to get ('.$serial.')');
+        	}
         }
-        if (is_null($returnValue)) {
-        	common_Logger::w('Failed to get ('.$serial.')', array('TAOITEMS', 'QTI'));
-        }
+        $returnValue = $this->items[$serial];
         // section 127-0-1-1--66865e2:1353e542706:-8000:0000000000003706 end
 
         return $returnValue;
     }
 
     /**
-     * Short description of method remove
+     * removes an entry from the cache
+     * throws an exception iif not found
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -150,13 +154,16 @@ class tao_models_classes_SessionCache
     public function remove($serial)
     {
         // section 127-0-1-1--66865e2:1353e542706:-8000:0000000000003700 begin
+        if (!isset($this->items[$serial])) {
+        	throw new tao_models_classes_cache_NotFoundException('Failed to get ('.$serial.')');
+        }
         unset($this->items[$serial]);
         unset($_SESSION[SESSION_NAMESPACE][static::SESSION_KEY][$serial]);
         // section 127-0-1-1--66865e2:1353e542706:-8000:0000000000003700 end
     }
 
     /**
-     * Short description of method purge
+     * empties the cache
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -171,43 +178,8 @@ class tao_models_classes_SessionCache
     }
 
     /**
-     * Short description of method singleton
-     *
-     * @access public
-     * @author Joel Bout, <joel.bout@tudor.lu>
-     * @return tao_models_classes_SessionCache
-     */
-    public static function singleton()
-    {
-        $returnValue = null;
-
-        // section 127-0-1-1-425ea117:1353e0d3541:-8000:00000000000036E2 begin
-        $cacheName = get_called_class();
-        if (!isset(self::$instances[$cacheName])) {
-        	self::$instances[$cacheName] = new $cacheName();
-        }
-        
-        $returnValue = self::$instances[$cacheName];
-        // section 127-0-1-1-425ea117:1353e0d3541:-8000:00000000000036E2 end
-
-        return $returnValue;
-    }
-
-    /**
-     * private to prevent direct instanciation
-     *
-     * @access private
-     * @author Joel Bout, <joel.bout@tudor.lu>
-     * @return mixed
-     */
-    private function __construct()
-    {
-        // section 127-0-1-1-425ea117:1353e0d3541:-8000:00000000000036EC begin
-        // section 127-0-1-1-425ea117:1353e0d3541:-8000:00000000000036EC end
-    }
-
-    /**
-     * Short description of method __destruct
+     * During the destruct the variables
+     * are written to the session
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -254,6 +226,30 @@ class tao_models_classes_SessionCache
         return (array) $returnValue;
     }
 
-} /* end of class tao_models_classes_SessionCache */
+    /**
+     * Short description of method contains
+     *
+     * @access public
+     * @author Joel Bout, <joel.bout@tudor.lu>
+     * @param  string serial
+     * @return boolean
+     */
+    public function contains($serial)
+    {
+        $returnValue = (bool) false;
+
+        // section 127-0-1-1-5c662a7:1364f362602:-8000:00000000000038CB begin
+        if (isset($this->items[$serial])) {
+        	$returnValue = true;
+        } elseif (!empty($serial) && Session::hasAttribute(static::SESSION_KEY)){
+        	$storage = Session::getAttribute(static::SESSION_KEY);
+	        $returnValue = isset($storage[$serial]);
+        }
+        // section 127-0-1-1-5c662a7:1364f362602:-8000:00000000000038CB end
+
+        return (bool) $returnValue;
+    }
+
+} /* end of class tao_models_classes_cache_SessionCache */
 
 ?>

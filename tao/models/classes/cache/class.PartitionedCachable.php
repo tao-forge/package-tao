@@ -3,18 +3,18 @@
 error_reporting(E_ALL);
 
 /**
- * TAO - tao/models/classes/class.SessionSerializable.php
+ * TAO - tao/models/classes/cache/class.PartitionedCachable.php
  *
  * $Id$
  *
  * This file is part of TAO.
  *
- * Automatically generated on 09.02.2012, 11:27:25 with ArgoUML PHP module 
+ * Automatically generated on 26.03.2012, 17:31:32 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -37,15 +37,15 @@ require_once('tao/models/classes/interface.Serializable.php');
 // section 127-0-1-1-17e76cf9:1353916dbea:-8000:00000000000036B1-constants end
 
 /**
- * Short description of class tao_models_classes_SessionSerializable
+ * Short description of class tao_models_classes_cache_PartitionedCachable
  *
  * @abstract
  * @access public
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
-abstract class tao_models_classes_SessionSerializable
+abstract class tao_models_classes_cache_PartitionedCachable
         implements tao_models_classes_Serializable
 {
     // --- ASSOCIATIONS ---
@@ -278,10 +278,10 @@ abstract class tao_models_classes_SessionSerializable
      * @abstract
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
-     * @return tao_models_classes_Cache
+     * @return tao_models_classes_cache_Cache
      */
     public abstract function getCache();
 
-} /* end of abstract class tao_models_classes_SessionSerializable */
+} /* end of abstract class tao_models_classes_cache_PartitionedCachable */
 
 ?>

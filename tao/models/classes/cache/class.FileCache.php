@@ -3,23 +3,30 @@
 error_reporting(E_ALL);
 
 /**
- * TAO - tao/models/classes/class.FileCache.php
+ * TAO - tao/models/classes/cache/class.FileCache.php
  *
  * $Id$
  *
  * This file is part of TAO.
  *
- * Automatically generated on 15.03.2012, 17:57:40 with ArgoUML PHP module 
+ * Automatically generated on 26.03.2012, 17:31:32 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
     die('This file was generated for PHP 5');
 }
+
+/**
+ * include tao_models_classes_cache_Cache
+ *
+ * @author Joel Bout, <joel.bout@tudor.lu>
+ */
+require_once('tao/models/classes/cache/interface.Cache.php');
 
 /**
  * Service is the base class of all services, and implements the singleton
@@ -28,13 +35,6 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  * @author Joel Bout, <joel.bout@tudor.lu>
  */
 require_once('tao/models/classes/class.Service.php');
-
-/**
- * include tao_models_classes_Cache
- *
- * @author Joel Bout, <joel.bout@tudor.lu>
- */
-require_once('tao/models/classes/interface.Cache.php');
 
 /* user defined includes */
 // section 127-0-1-1-98ccd32:136108f4ede:-8000:000000000000388A-includes begin
@@ -45,16 +45,16 @@ require_once('tao/models/classes/interface.Cache.php');
 // section 127-0-1-1-98ccd32:136108f4ede:-8000:000000000000388A-constants end
 
 /**
- * Short description of class tao_models_classes_FileCache
+ * Short description of class tao_models_classes_cache_FileCache
  *
  * @access public
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
- * @subpackage models_classes
+ * @subpackage models_classes_cache
  */
-class tao_models_classes_FileCache
+class tao_models_classes_cache_FileCache
     extends tao_models_classes_Service
-        implements tao_models_classes_Cache
+        implements tao_models_classes_cache_Cache
 {
     // --- ASSOCIATIONS ---
 
@@ -66,7 +66,7 @@ class tao_models_classes_FileCache
     /**
      * puts "something" into the cache,
      * If this is an object and implements Serializable,
-     * we use the serial provided bu the object
+     * we use the serial provided by the object
      * else a serial must be provided
      *
      * @access public
@@ -91,7 +91,7 @@ class tao_models_classes_FileCache
     }
 
     /**
-     * Short description of method get
+     * gets the entry associted to the serial
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -106,9 +106,12 @@ class tao_models_classes_FileCache
         try {
         	if (file_exists($this->getFilePath($serial))) {
 	        	$returnValue = include $this->getFilePath($serial);
+        	} else {
+        		throw new tao_models_classes_cache_NotFoundException('Failed to get ('.$serial.') from filecache');
         	}
         } catch (Exception $e) {
         	common_Logger::d('Exception while reading cache entry for '.$serial);
+        	
         }
         // section 127-0-1-1--66865e2:1353e542706:-8000:0000000000003706 end
 
@@ -116,7 +119,8 @@ class tao_models_classes_FileCache
     }
 
     /**
-     * Short description of method remove
+     * removes an entry from the cache
+     * throws an exception iif not found
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
@@ -131,13 +135,13 @@ class tao_models_classes_FileCache
     }
 
     /**
-     * Short description of method purge
+     * empties the cache
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
      * @return mixed
      */
-    public function purge() 
+    public function purge()
     {
         // section 127-0-1-1--18485ef3:13542665222:-8000:00000000000065B1 begin
 	    if ($handle = opendir('/path/to/files')) {
@@ -214,6 +218,6 @@ class tao_models_classes_FileCache
         return (string) $returnValue;
     }
 
-} /* end of class tao_models_classes_FileCache */
+} /* end of class tao_models_classes_cache_FileCache */
 
 ?>
