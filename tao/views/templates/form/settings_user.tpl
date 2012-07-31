@@ -3,13 +3,10 @@
 	<?=get_data('message')?>
 </div>
 <?endif?>
-<div class="main-container">
-	<div id="form-title" class="ui-widget-header ui-corner-top ui-state-default">
-		<?=__("My settings")?>
-	</div>
-	<div id="form-container" class="ui-widget-content ui-corner-bottom">
-		<?=get_data('myForm')?>
-	</div>
+
+<div class="containerDisplay main-container" id="settingsUserProperties">
+	<span class="title"><?=__("My settings")?></span>
+<?=get_data('myForm')?>
 </div>
 
 <script type="text/javascript">
