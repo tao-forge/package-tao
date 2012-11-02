@@ -3,13 +3,13 @@
 error_reporting(E_ALL);
 
 /**
- * TAO - tao/helpers/class.Versionning.php
+ * TAO - tao/helpers/class.Versioning.php
  *
  * $Id$
  *
  * This file is part of TAO.
  *
- * Automatically generated on 28.06.2012, 15:14:47 with ArgoUML PHP module
+ * Automatically generated on 02.11.2012, 09:45:51 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author Jehan Bihin
@@ -31,7 +31,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 // section 127-0-1-1-6b9a2186:1383319f00e:-8000:0000000000003B40-constants end
 
 /**
- * Short description of class tao_helpers_Versionning
+ * Short description of class tao_helpers_Versioning
  *
  * @access public
  * @author Jehan Bihin
@@ -39,7 +39,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  * @since 2.3
  * @subpackage helpers
  */
-class tao_helpers_Versionning
+class tao_helpers_Versioning
 {
     // --- ASSOCIATIONS ---
 
@@ -136,12 +136,29 @@ class tao_helpers_Versionning
         $returnValue = (bool) false;
 
         // section 127-0-1-1-6b9a2186:1383319f00e:-8000:0000000000003B49 begin
-				$returnValue = core_kernel_versioning_RepositoryProxy::singleton()->authenticate($repository, $login, $password);
+		$returnValue = core_kernel_versioning_RepositoryProxy::singleton()->authenticate($repository, $login, $password);
         // section 127-0-1-1-6b9a2186:1383319f00e:-8000:0000000000003B49 end
 
         return (bool) $returnValue;
     }
 
-} /* end of class tao_helpers_Versionning */
+    /**
+     * Short description of method isVersioningEnabled
+     *
+     * @access public
+     * @author Joel Bout, <joel.bout@tudor.lu>
+     * @return boolean
+     */
+    public function isVersioningEnabled()
+    {
+        $returnValue = (bool) false;
+
+        // section 10-30-1--78-1b01f2ef:13ac03fd34f:-8000:0000000000003BFF begin
+        // section 10-30-1--78-1b01f2ef:13ac03fd34f:-8000:0000000000003BFF end
+
+        return (bool) $returnValue;
+    }
+
+} /* end of class tao_helpers_Versioning */
 
 ?>
