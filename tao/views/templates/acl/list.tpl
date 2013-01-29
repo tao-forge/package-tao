@@ -1,5 +1,5 @@
-<script type="text/javascript" src="<?=BASE_WWW?>js/roles.js"></script>
-<link rel="stylesheet" type="text/css" href="<?=BASE_WWW?>css/roles.css" />
+<script type="text/javascript" src="<?=BASE_WWW?>js/acl.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=BASE_WWW?>css/acl.css" />
 
 <div class="main-container">
 	<div class="aclContainer">
@@ -17,10 +17,6 @@
 					</select>
 				</div>
 			</form>
-			<div class="actions" id="roleactions">
-				<span class="ui-state-default ui-corner-all" id="editrole"><a href="#"><img src="<?=BASE_WWW?>img/edit.png" alt="edit" /> <?=__('Edit role')?></a></span>
-				<span class="ui-state-default ui-corner-all" id="deleterole"><a href="#"><img src="<?=BASE_WWW?>img/delete.png" alt="delete" /> <?=__('Delete role')?></a></span>
-			</div>
 		</div>
 	</div>
 
@@ -50,16 +46,4 @@
 			<ul class="group-list"></ul>
 		</div>
 	</div>
-</div>
-
-<div id="addroleform" title="<?=__('Add a role')?>">
-	<form method="post" action="<?=_url('addRole', 'Roles', 'tao')?>">
-		<div><label for="addrole_name"><?= __('Name') ?></label> <input type="text" name="name" id="addrole_name" /></div>
-	</form>
-</div>
-
-<div id="editroleform" title="<?=__('Edit a role')?>">
-	<form method="post" action="<?=_url('editRole', 'Roles', 'tao')?>">
-		<div><label for="editrole_name"><?= __('Name') ?></label> <input type="text" name="name" id="editrole_name" /></div>
-	</form>
 </div>
