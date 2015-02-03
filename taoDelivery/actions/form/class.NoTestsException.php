@@ -1,5 +1,5 @@
 <?php
-/*  
+/**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
@@ -14,15 +14,21 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * 
- * Copyright (c) 2008-2010 (original work) Deutsche Institut für Internationale Pädagogische Forschung (under the project TAO-TRANSFER);
- *               2009-2012 (update and modification) Public Research Centre Henri Tudor (under the project TAO-SUSTAIN & TAO-DEV);
+ * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ *               
  * 
  */
-?>
-<?php
-require_once(dirname(__FILE__) . '/ItemBehaviour.class.php');
-require_once(dirname(__FILE__) . '/QTIBehaviour.class.php');
-require_once(dirname(__FILE__) . '/QTIInteractionBehaviour.class.php');
-require_once(dirname(__FILE__) . '/QTIChoiceBehaviour.class.php');
-require_once(dirname(__FILE__) . '/QTIMatchBehaviour.class.php');
-?>
+
+/**
+ * Create a form from a  resource of your ontology. 
+ * Each property will be a field, regarding it's widget.
+ *
+ * @access public
+ * @author Bertrand Chevrier, <bertrand.chevrier@tudor.lu>
+ * @package tao
+ 
+ */
+class taoDelivery_actions_form_NoTestsException
+    extends common_Exception
+{
+}
