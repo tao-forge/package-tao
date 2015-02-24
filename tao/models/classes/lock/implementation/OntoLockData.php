@@ -14,20 +14,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * 
-  * Copyright (c) 2013 Open Assessment Technologies S.A. *
+ * Copyright (c) 2013 Open Assessment Technologies S.A.
+ * 
  */
 
+namespace oat\tao\model\lock\implementation;
+
+use oat\tao\model\lock\Lock;
+use core_kernel_classes_Resource;
+use common_exception_InconsistentData;
 
 /**
  * Implements Lock using a simple property in the ontology for the lock storage
  *
  **/
-
-class tao_models_classes_lock_LockData{
-    private $resource; //the resource being locked core_kernel_classe_Resource
-    private $owner; //the owner of the lock core_kernel_classe_Resource
-    private $epoch; //the epoch when the lock was set up
-
+class OntoLockData extends SimpleLock {
+    
     /**
      * 
      * @param string $json
@@ -38,64 +40,34 @@ class tao_models_classes_lock_LockData{
     	$array = json_decode($json, true);
     	if(isset($array['resource']) && isset($array['owner']) && isset($array['epoch'])){
     		$resource = new core_kernel_classes_Resource($array['resource']);
-    		$owner = new core_kernel_classes_Resource($array['owner']);
+    		$ownerId = $array['owner'];
     		$epoch = $array['epoch'];
-    		return new tao_models_classes_lock_LockData($resource,$owner,$epoch);
+    		return new self($resource,$ownerId,$epoch);
     	}
     	else {
     		throw new common_exception_InconsistentData('LockData should contain a resource, owner and epoch, one data is missing');
     	}
     }
+
     /**
-     * 
-     * @author "Patrick Plichart, <patrick@taotesting.com>"
-     * @param core_kernel_classes_Resource $resource
-     * @param core_kernel_classes_Resource $owner
-     * @param float $epoch
-     */
-    public function __construct(core_kernel_classes_Resource $resource, core_kernel_classes_Resource $owner, $epoch) {
-        $this->resource = $resource;
-        $this->owner = $owner;
-        $this->epoch = $epoch;
-    }
-    /**
-     * 
-     * @author "Patrick Plichart, <patrick@taotesting.com>"
-     * @return core_kernel_classes_Resource
-     */
-    public function getResource() {
-        return $this->resource;
-    }
-    /**
-     * 
-     * @author "Patrick Plichart, <patrick@taotesting.com>"
-     */
-    public function getEpoch(){
-        return $this->epoch;
-    }
-    /**
-     * 
      * @author "Patrick Plichart, <patrick@taotesting.com>"
      * @return core_kernel_classes_Resource
      */
     public function getOwner(){
-        return $this->owner;
+        return new core_kernel_classes_Resource($this->getOwnerId());
     }
+    
     /**
-     * 
      * @author "Patrick Plichart, <patrick@taotesting.com>"
      * @return string
      */
     public function toJson(){  	
     	return json_encode( 
     		array(
-    			'resource' => $this->resource->getUri(), 
-    			'owner' => $this->owner->getUri(),
-    			'epoch' => $this->epoch	
+    			'resource' => $this->getResource()->getUri(), 
+    			'owner' => $this->getOwnerId(),
+    			'epoch' => $this->getCreationTime()	
     		)
     	);
     }
-
- 
 }
-?>
