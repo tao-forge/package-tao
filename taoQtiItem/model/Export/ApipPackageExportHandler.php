@@ -14,7 +14,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * 
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2014-2015 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *               
  * 
  */
@@ -32,14 +32,12 @@ use \common_Logger;
 use oat\taoQtiItem\model\ItemModel;
 
 /**
- * Short description of class oat\taoQtiItem\model\ItemModel
+ * Apip Package Export Handler.
+ * 
+ * @author Jérôme Bogaerts <jerome@taotesting.com>
  *
- * @access public
- * @author Joel Bout, <joel@taotesting.com>
- * @package taoQTI
- 
  */
-class QtiPackageExportHandler implements tao_models_classes_export_ExportHandler
+class ApipPackageExportHandler implements tao_models_classes_export_ExportHandler
 {
 
     /**
@@ -47,7 +45,7 @@ class QtiPackageExportHandler implements tao_models_classes_export_ExportHandler
      * @see tao_models_classes_export_ExportHandler::getLabel()
      */
     public function getLabel() {
-    	return __('QTI Package 2.1');
+    	return __('APIP Package 1.0');
     }
     
     /**
@@ -60,7 +58,7 @@ class QtiPackageExportHandler implements tao_models_classes_export_ExportHandler
         } else {
             $formData= array('instance' => $resource);
         }
-    	$form = new ExportForm($formData);
+    	$form = new ApipExportForm($formData);
     	return $form->getForm();
     }
     
@@ -93,7 +91,7 @@ class QtiPackageExportHandler implements tao_models_classes_export_ExportHandler
 					if($itemService->hasItemModel($item, array(ItemModel::MODEL_URI))){
 						$exporter = new QTIPackedItemExporter($item, $zipArchive, $manifest);
 						
-						$exporter->export();
+						$exporter->export(array('apip' => true));
 						$manifest = $exporter->getManifest();
 					}
 				}
