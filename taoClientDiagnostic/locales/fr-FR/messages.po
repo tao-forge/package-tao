@@ -4,9 +4,9 @@ msgstr ""
 "PO-Revision-Date: 2015-07-30T15:24:49\n"
 "Last-Translator: TAO Translation Team <translation@tao.lu>\n"
 "MIME-Version: 1.0\n"
-"Language: en-US\n"
+"Language: fr-FR\n"
 "sourceLanguage: en-US\n"
-"targetLanguage: en-US\n"
+"targetLanguage: fr-FR\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ../../\n"
@@ -17,40 +17,40 @@ msgid "All rights reserved."
 msgstr ""
 
 msgid "Average bandwidth"
-msgstr ""
+msgstr "Bande passante moyenne"
 
 msgid "Average performance"
-msgstr ""
+msgstr "Performance moyenne (risque de lenteurs)"
 
 msgid "Average rendering time"
-msgstr ""
+msgstr "Temps de rendu moyen"
 
 msgid "Bandwidth"
-msgstr ""
+msgstr "Bande passante"
 
 msgid "Be aware that these tests will take up to several minutes."
-msgstr ""
+msgstr "Ces tests peuvent prendre plusieurs minutes."
 
 msgid "Begin diagnostics"
-msgstr ""
+msgstr "Démarrer le diagnostic"
 
 msgid "Compatible"
-msgstr ""
+msgstr "Conforme"
 
 msgid "Connect to the diagnostic tool"
-msgstr ""
+msgstr "Accéder à l'outil de diagnostic"
 
 msgid "Details"
-msgstr ""
+msgstr "Détails"
 
 msgid "Diagnostic tool"
-msgstr ""
+msgstr "Outil de diagnostic"
 
 msgid "Good bandwidth"
-msgstr ""
+msgstr "Bande passante correcte"
 
 msgid "Good performance"
-msgstr ""
+msgstr "Performance correcte"
 
 msgid "Log in"
 msgstr ""
@@ -59,71 +59,71 @@ msgid "Login"
 msgstr ""
 
 msgid "Low bandwidth"
-msgstr ""
+msgstr "Bande passante faible"
 
 msgid "Maximum bandwidth"
-msgstr ""
+msgstr "Bande passante maximum"
 
 msgid "Maximum rendering time"
-msgstr ""
+msgstr "Temps de rendu maximum"
 
 msgid "Minimum bandwidth"
-msgstr ""
+msgstr "Bande passante minimum"
 
 msgid "Minimum rendering time"
-msgstr ""
+msgstr "Temps de rendu minimum"
 
 msgid "No login found"
-msgstr ""
+msgstr "Aucun identifiant trouvé"
 
 msgid "Number of simultaneous test takers the connection can handle"
-msgstr ""
+msgstr "Nombre d’élèves pouvant passer l’évaluation en simultané"
 
 msgid "Operating system"
-msgstr ""
+msgstr "Système d'exploitation"
 
 msgid "Operating system and web browser"
-msgstr ""
+msgstr "Navigateur et système d’exploitation"
 
 msgid "Show Details"
-msgstr ""
+msgstr "Afficher les détails"
 
 msgid "This login does not exist"
-msgstr ""
+msgstr "Cet identifiant n'existe pas"
 
 msgid "This tool will run a number of tests in order to establish how well your current environment is suitable to run the TAO platform."
-msgstr ""
+msgstr "Cet outil va effectuer plusieurs tests pour vérifier la configuration de vos ordinateurs utilisés pour la passation des évaluations numériques."
 
 msgid "Total"
-msgstr ""
+msgstr "Synthèse"
 
 msgid "Unknown browser"
-msgstr ""
+msgstr "Navigateur non supporté"
 
 msgid "Unknown OS"
-msgstr ""
+msgstr "Système d'exploitation non supporté"
 
 msgid "Unknown version"
-msgstr ""
+msgstr "Version non supportée"
 
 msgid "Very slow performance"
-msgstr ""
+msgstr "Performance faible (lenteurs très importantes)"
 
 msgid "Web browser"
-msgstr ""
+msgstr "Navigateur"
 
 msgid "Workstation performance"
-msgstr ""
+msgstr "Performance du poste de travail"
 
 msgid "You must activate JavaScript in your browser to run this application."
-msgstr ""
+msgstr "Vous devez activer JavaScript dans votre navigateur afin d'utiliser cette application."
 
 msgid "Your system is fully compliant."
-msgstr ""
+msgstr "Configuration conforme"
 
 msgid "Your system is not optimal, please contact your system administrator."
-msgstr ""
+msgstr "Configuration à risque (contactez votre plateforme académique)"
 
 msgid "Your system requires a compatibility update, please contact your system administrator."
-msgstr ""
+msgstr "Configuration nécessitant une mise en conformité (contactez votre plateforme académique)"
 
