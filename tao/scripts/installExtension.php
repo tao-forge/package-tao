@@ -1,33 +1,37 @@
 <?php
-/**  
+/**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
  * of the License (non-upgradable).
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- * 
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
- *               
- * 
+ *
+ * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
+ *
+ *
  */
-use oat\oatbox\service\ServiceManager;
-use oat\tao\model\entryPoint\BackOfficeEntrypoint;
-use oat\tao\model\entryPoint\EntryPointService;
-use oat\tao\model\entryPoint\PasswordReset;
+use oat\tao\model\search\SearchService;
+use oat\tao\helpers\InstallHelper;
 
-$serviceManager = ServiceManager::getServiceManager();
-$entryPointService = $serviceManager->get(EntryPointService::SERVICE_ID);
+require_once dirname(__FILE__) .'/../includes/raw_start.php';
 
-// register, don't activate
-$passwordResetEntry = new PasswordReset();
-$entryPointService->addEntryPoint($passwordResetEntry);
+$parms = $argv;
+array_shift($parms);
 
-$serviceManager->register(EntryPointService::SERVICE_ID, $entryPointService);
+if (count($parms) != 1) {
+    echo 'Usage: '.__FILE__.' EXTENSION_ID '.PHP_EOL;
+    die(1);
+}
+
+$extId = array_shift($parms);
+
+InstallHelper::installRecursively(array($extId));
+
