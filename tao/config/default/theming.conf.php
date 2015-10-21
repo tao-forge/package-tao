@@ -14,20 +14,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * 
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
  *               
  * 
  */
-use oat\oatbox\service\ServiceManager;
-use oat\tao\model\entryPoint\BackOfficeEntrypoint;
-use oat\tao\model\entryPoint\EntryPointService;
-use oat\tao\model\entryPoint\PasswordReset;
+use oat\tao\model\theme\ThemeService;
+use oat\tao\model\theme\DefaultTheme;
 
-$serviceManager = ServiceManager::getServiceManager();
-$entryPointService = $serviceManager->get(EntryPointService::SERVICE_ID);
-
-// register, don't activate
-$passwordResetEntry = new PasswordReset();
-$entryPointService->addEntryPoint($passwordResetEntry);
-
-$serviceManager->register(EntryPointService::SERVICE_ID, $entryPointService);
+/**
+ * Default state storage config
+ */
+return new ThemeService(array(
+	ThemeService::OPTION_AVAILABLE => array(
+	    'default' => new DefaultTheme()
+	),
+    ThemeService::OPTION_CURRENT => 'default'
+));

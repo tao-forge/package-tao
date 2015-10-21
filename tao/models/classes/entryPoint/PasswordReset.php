@@ -24,13 +24,28 @@ namespace oat\tao\model\entryPoint;
 use oat\oatbox\PhpSerializable;
 use tao_models_classes_accessControl_AclProxy;
 use oat\oatbox\Configurable;
-use oat\taoBackOffice\model\entryPoint\BackOfficeEntryPoint as RealEntryPoint;
 
-/**
- * 
- * @author bout
- * @deprecated
- */
-class BackOfficeEntrypoint extends RealEntryPoint
+class PasswordReset extends Configurable implements Entrypoint
 {
+
+    public function getId() {
+        return 'passwordreset';
+    }
+    
+    public function getTitle() {
+        return __("Unable to access your account?");
+    }
+    
+    public function getLabel() {
+        return __('Password reset');
+    }
+    
+    public function getDescription() {
+        return __('Request a password reset via Email.');
+    }
+    
+    public function getUrl() {
+        return _url('index', 'PasswordRecovery', 'tao');
+    }
+
 }
