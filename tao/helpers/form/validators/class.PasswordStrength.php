@@ -16,12 +16,32 @@
  *
  * Copyright (c) 2015 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
+ * @author Konstantin Sasim <sasim@1pt.com>
+ * @license GPLv2
+ * @package tao
  *
  */
 
-$loginFormSettings = array(
-    'elements' => array()
-);
+use oat\generis\model\user\PasswordConstraintsService;
 
-$ext = \common_ext_ExtensionsManager::singleton()->getExtensionById('tao');
-$ext->setConfig('loginForm', $loginFormSettings);
+class tao_helpers_form_validators_PasswordStrength extends tao_helpers_form_Validator
+{
+    /**
+     * Short description of method evaluate
+     *
+     * @access public
+     * @param  values
+     * @return boolean
+     */
+    public function evaluate($values)
+    {
+        $returnValue = PasswordConstraintsService::singleton()->validate($values);
+
+        if( !$returnValue && !isset($this->options['message']) ){
+            $this->setMessage(implode( ', ', PasswordConstraintsService::singleton()->getErrors()));
+        }
+
+        return (bool) $returnValue;
+    }
+
+}
