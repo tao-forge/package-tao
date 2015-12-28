@@ -18,40 +18,45 @@
  *
  *
  */
-namespace oat\taoProctoring\model;
 
-use oat\oatbox\user\User;
-use oat\taoDelivery\model\execution\DeliveryExecution;
+namespace oat\taoProctoring\model\monitorCache;
 
 /**
- * Interface for the proctoringservice
- * 
- * @author Joel Bout <joel@taotesting.com>
+ * Interface DeliveryMonitoringData
+ *
+ * Represents data model of delivery execution.
+ *
+ * @package oat\taoProctoring\model
+ * @author Aleh Hutnikau <hutnikau@1pt.com>
  */
-interface ProctorMonitor
+interface DeliveryMonitoringData
 {
     /**
-     * Get the deliveries accessible by a proctor
-     *
-     * @param User $proctor
-     * @return Delivery[]
+     * Save delivery execution data
+     * @param array $data data to be saved (key => value).
+     * @return mixed
      */
-    public function getProctorableDeliveries(User $proctor);
+    public function set(array $data);
 
     /**
-     * Gets the executions of a delivery
-     *
-     * @param $deliveryId
-     * @return DeliveryExecution[]
+     * Add value.
+     * @param $key
+     * @param $value
+     * @param bool $overwrite
+     * @return mixed
      */
-    public function getDeliveryExecutions($deliveryId);
-    
-    /**
-     * Get a delivery
-     *
-     * @param string $deliveryId
-     * @return Delivery
-     */
-    public function getDelivery($deliveryId);
+    public function add($key, $value, $overwrite = false);
 
+    /**
+     * Get delivery execution data
+     * @return array
+     */
+    public function get();
+
+
+    /**
+     * Validate data
+     * @return boolean
+     */
+    public function validate();
 }

@@ -18,32 +18,20 @@
  *
  *
  */
-namespace oat\taoProctoring\model\entrypoint;
+namespace oat\taoProctoring\model;
 
-use oat\oatbox\Configurable;
-use oat\tao\model\entryPoint\Entrypoint;
+use oat\oatbox\user\User;
+use oat\taoTestTaker\models\TestTakerService;
+use core_kernel_classes_Resource as Resource;
+use core_kernel_classes_Class;
+use core_kernel_classes_Property as Property;
+use tao_models_classes_ClassService;
+use taoDelivery_models_classes_DeliveryRdf;
 
-class ProctoringEntryPoint extends Configurable implements Entrypoint
+/**
+ * Service to manage eligible deliveries
+ */
+class IneligibileException extends \common_Exception
 {
-
-    public function getId() {
-        return 'proctoring';
-    }
-    
-    public function getTitle() {
-        return __('Proctors');
-    }
-    
-    public function getLabel() {
-        return __('Proctoring interface');
-    }
-    
-    public function getDescription() {
-        return __('Administer deliveries');
-    }
-    
-    public function getUrl() {
-        return _url("index", "TestCenter", "taoProctoring");
-    }
-
+        
 }

@@ -14,36 +14,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2015 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  *
  */
-namespace oat\taoProctoring\model\entrypoint;
+use oat\oatbox\service\ServiceManager;
+use oat\oatbox\event\EventManager;
+use oat\taoTests\models\event\TestChangedEvent;
 
-use oat\oatbox\Configurable;
-use oat\tao\model\entryPoint\Entrypoint;
+$serviceManager = ServiceManager::getServiceManager();
+$eventManager = $serviceManager->get(EventManager::CONFIG_ID);
 
-class ProctoringEntryPoint extends Configurable implements Entrypoint
-{
+$eventManager->attach(TestChangedEvent::EVENT_NAME,
+    array('oat\\taoProctoring\\model\\monitorCache\\update\\TestUpdate', 'testStateChange')
+);
 
-    public function getId() {
-        return 'proctoring';
-    }
-    
-    public function getTitle() {
-        return __('Proctors');
-    }
-    
-    public function getLabel() {
-        return __('Proctoring interface');
-    }
-    
-    public function getDescription() {
-        return __('Administer deliveries');
-    }
-    
-    public function getUrl() {
-        return _url("index", "TestCenter", "taoProctoring");
-    }
-
-}
+$serviceManager->register(EventManager::CONFIG_ID, $eventManager);

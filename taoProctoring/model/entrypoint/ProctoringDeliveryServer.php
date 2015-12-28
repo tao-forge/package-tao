@@ -23,27 +23,27 @@ namespace oat\taoProctoring\model\entrypoint;
 use oat\oatbox\Configurable;
 use oat\tao\model\entryPoint\Entrypoint;
 
-class ProctoringEntryPoint extends Configurable implements Entrypoint
+class ProctoringDeliveryServer extends Configurable implements Entrypoint
 {
 
     public function getId() {
-        return 'proctoring';
+        return 'proctoringDelivery';
     }
     
     public function getTitle() {
-        return __('Proctors');
+        return __('Proctored Test-Takers');
     }
     
     public function getLabel() {
-        return __('Proctoring interface');
+        return __('Proctored Delivery Server');
     }
     
     public function getDescription() {
-        return __('Administer deliveries');
+        return __('Take or continue a test controlled by a proctor');
     }
     
     public function getUrl() {
-        return _url("index", "TestCenter", "taoProctoring");
+        return _url("index", "DeliveryServer", "taoProctoring");
     }
 
 }
