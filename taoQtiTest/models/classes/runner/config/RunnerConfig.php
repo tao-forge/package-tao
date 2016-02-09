@@ -20,27 +20,33 @@
  * @author Jean-Sébastien Conan <jean-sebastien.conan@vesperiagroup.com>
  */
 
-namespace oat\taoQtiTest\models\runner\navigation;
+namespace oat\taoQtiTest\models\runner\config;
 
 use oat\taoQtiTest\models\runner\RunnerServiceContext;
 
 /**
- * Class QtiRunnerJumpItem
- * @package oat\taoQtiTest\models\runner\navigation
+ * Interface RunnerOptions
+ * @package oat\taoQtiTest\models\runner\options
  */
-class QtiRunnerNavigationJumpItem implements RunnerNavigation
+interface RunnerConfig
 {
     /**
-     * Do the move
-     * @param RunnerServiceContext $context
-     * @param mixed $ref
-     * @return boolean
-     * @throws \common_Exception
+     * Returns the config related to the runner
+     * @return mixed
      */
-    public function move(RunnerServiceContext $context, $ref)
-    {
-        QtiRunnerNavigation::checkTimedSectionExit($context, $ref);
-        $context->getTestSession()->jumpTo(intval($ref));
-        return true;
-    }
+    public function getConfig();
+    
+    /**
+     * Returns the value of a config entry
+     * @param string $name
+     * @return mixed
+     */
+    public function getConfigValue($name);
+    
+    /**
+     * Returns the options related to the current test context
+     * @param RunnerServiceContext $context The test context
+     * @return mixed
+     */
+    public function getOptions(RunnerServiceContext $context);
 }
