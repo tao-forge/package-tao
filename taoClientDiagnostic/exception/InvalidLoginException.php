@@ -14,14 +14,21 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
  *
  *
  */
 
-$dataPath = FILES_PATH . 'taoClientDiagnostic' . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR;
-if (file_exists($dataPath)) {
-    helpers_File::emptyDirectory($dataPath);
-} else {
-    mkdir($dataPath, 0777, true);
+namespace oat\taoClientDiagnostic\exception;
+
+class InvalidLoginException extends \Exception implements \common_exception_UserReadableException
+{
+    /**
+     * Return user compliant message
+     * @return string
+     */
+    public function getUserMessage()
+    {
+        return __('Invalid login');
+    }
 }

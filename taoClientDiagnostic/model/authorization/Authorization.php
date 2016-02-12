@@ -14,14 +14,31 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
  *
  *
  */
 
-$dataPath = FILES_PATH . 'taoClientDiagnostic' . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR;
-if (file_exists($dataPath)) {
-    helpers_File::emptyDirectory($dataPath);
-} else {
-    mkdir($dataPath, 0777, true);
+namespace oat\taoClientDiagnostic\model\authorization;
+
+/**
+ * Interface AnonymousAuthentificationInterface
+ * @package oat\taoClientDiagnostic\model\authorization
+ */
+interface Authorization
+{
+    const SERVICE_ID = 'taoClientDiagnostic/authorization';
+
+    /**
+     * Check if user is allowed
+     * @return boolean
+     */
+    public function isAuthorized();
+
+    /**
+     * Algorithm to redirect to login process
+     * @param $url URL to redirect after authorization
+     * @return mixed
+     */
+    public function getAuthorizationUrl($url);
 }
