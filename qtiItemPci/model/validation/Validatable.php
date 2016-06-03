@@ -12,27 +12,17 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+02110-1301, USA.
  *
  * Copyright (c) 2016 (original work) Open Assessment Technologies SA;
  *
  */
 
-namespace oat\qtiItemPci\controller;
+namespace oat\qtiItemPci\model\validation;
 
-use oat\qtiItemPci\model\PciRegistry;
-use \tao_actions_CommonModule;
-
-class PciLoader extends tao_actions_CommonModule
+interface Validatable
 {
-    /** @var PciRegistry */
-    protected $registry;
-
-    public function __construct(){
-        $this->registry = \oat\oatbox\service\ServiceManager::getServiceManager()->get(PciRegistry::SERVICE_ID);
-    }
-    
-    public function load(){
-        $this->returnJson($this->registry->getLatestRuntimes());
-    }
+    public function getModel();
+    public function getConstraints();
 }
