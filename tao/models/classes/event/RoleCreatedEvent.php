@@ -14,18 +14,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA;
- *
+ * Copyright (c) 2016 (original work) Open Assessment Technologies SA
  *
  */
-require_once dirname(__FILE__) .'/../includes/raw_start.php';
+namespace oat\tao\model\event;
 
-use oat\tao\model\extension\UpdateExtensions;
-use oat\oatbox\service\ServiceManager;
+class RoleCreatedEvent extends AbstractRoleEvent
+{
 
-$action = new UpdateExtensions();
-$action->setServiceLocator(ServiceManager::getServiceManager());
-$report = $action->__invoke(array());
-echo tao_helpers_report_Rendering::renderToCommandline($report);
-echo 'Update completed' . PHP_EOL;
-
+}

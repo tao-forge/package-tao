@@ -14,18 +14,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA;
- *
+ * Copyright (c) 2016 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
-require_once dirname(__FILE__) .'/../includes/raw_start.php';
+namespace oat\tao\model\clientConfig;
 
-use oat\tao\model\extension\UpdateExtensions;
-use oat\oatbox\service\ServiceManager;
+use oat\oatbox\PhpSerializable;
+/**
+ * 
+ * @author Joel Bout
+ */
+interface ClientConfig extends PhpSerializable {
 
-$action = new UpdateExtensions();
-$action->setServiceLocator(ServiceManager::getServiceManager());
-$report = $action->__invoke(array());
-echo tao_helpers_report_Rendering::renderToCommandline($report);
-echo 'Update completed' . PHP_EOL;
-
+    /**
+     * Returns either a JsonSerializable object or an associative array
+     * hat will be json encoded and passed to the client as is
+     * 
+     * @return mixed
+     */
+    public function getConfig();
+}

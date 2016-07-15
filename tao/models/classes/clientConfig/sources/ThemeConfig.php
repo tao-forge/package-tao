@@ -14,18 +14,25 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA;
- *
+ * Copyright (c) 2016 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
-require_once dirname(__FILE__) .'/../includes/raw_start.php';
+namespace oat\tao\model\clientConfig\sources;
 
-use oat\tao\model\extension\UpdateExtensions;
-use oat\oatbox\service\ServiceManager;
+use oat\oatbox\service\ConfigurableService;
+use oat\tao\model\clientConfig\ClientConfig;
+use oat\tao\model\ThemeRegistry;
+/**
+ * 
+ * @author Joel Bout
+ */
+class ThemeConfig extends ConfigurableService implements ClientConfig {
 
-$action = new UpdateExtensions();
-$action->setServiceLocator(ServiceManager::getServiceManager());
-$report = $action->__invoke(array());
-echo tao_helpers_report_Rendering::renderToCommandline($report);
-echo 'Update completed' . PHP_EOL;
-
+    /**
+     * (non-PHPdoc)
+     * @see \oat\tao\model\clientConfig\ClientConfig::getConfig()
+     */
+    public function getConfig() {
+        return ThemeRegistry::getRegistry()->getAvailableThemes();
+    }
+}
