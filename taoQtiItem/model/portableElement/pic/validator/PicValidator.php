@@ -28,6 +28,7 @@ class PicValidator extends PortableElementModelValidator
     public function isOptionalConstraint($key, $constraint)
     {
         array_push($this->optional['creator'], 'hook');
+        array_push($this->optional['creator'], 'icon');
         return parent::isOptionalConstraint($key, $constraint);
     }
 }
