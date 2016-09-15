@@ -12,22 +12,16 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2016 (original work) Open Assessment Technologies SA;
  *
  */
 
-namespace oat\qtiItemPic\controller;
+namespace oat\qtiItemPic\model\portableElement\dataObject;
 
-use oat\taoQtiItem\controller\AbstractPortableElementManager;
-use oat\qtiItemPic\model\CreatorRegistry;
+use oat\taoQtiItem\model\portableElement\element\PortableElementObject;
 
-class PicManager extends AbstractPortableElementManager
+class PicDataObject extends PortableElementObject
 {
-    
-    protected function getCreatorRegistry(){
-        return new CreatorRegistry();
-    }
-
 }
