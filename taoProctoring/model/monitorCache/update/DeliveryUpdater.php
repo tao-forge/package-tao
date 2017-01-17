@@ -14,35 +14,38 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
+ *
+ *
  */
 
 namespace oat\taoProctoring\model\monitorCache\update;
 
+use oat\tao\model\event\MetadataModified;
 use oat\taoProctoring\model\monitorCache\DeliveryMonitoringService;
 use oat\oatbox\service\ServiceManager;
-use oat\taoDelivery\models\classes\execution\event\DeliveryExecutionState;
+
 /**
  *
  * @package oat\taoProctoring
  * @author Mikhail Kamarouski <kamarouski@1pt.com>
  */
-class DeliveryExecutionStateUpdate
+class DeliveryUpdater
 {
 
-    public static function stateChange(DeliveryExecutionState $event)
+    public function changeLabel($service, $deliveryUri, $newLabel)
     {
-        /** @var DeliveryMonitoringService $service */
-        $service = ServiceManager::getServiceManager()->get(DeliveryMonitoringService::CONFIG_ID);
-        $deliveryExecution = $event->getDeliveryExecution();
+        $deliveryExecutionsData = $service->find([
+            DeliveryMonitoringService::DELIVERY_ID => $deliveryUri,
+        ], []);
 
-        $data = $service->getData($deliveryExecution, true);
-        
-        $success = $service->save($data);
-        if (!$success) {
-            \common_Logger::w('monitor cache for delivery ' . $deliveryExecution->getIdentifier() . ' could not be created');
+        foreach ($deliveryExecutionsData as $data) {
+            $data->update(DeliveryMonitoringService::DELIVERY_NAME, $newLabel);
+            $success = $service->save($data);
+            if (!$success) {
+                \common_Logger::w('monitor cache for delivery ' . $data[DeliveryMonitoringService::DELIVERY_EXECUTION_ID] . ' could not be updated. Label has not been changed');
+            }
         }
     }
-
 
 }
