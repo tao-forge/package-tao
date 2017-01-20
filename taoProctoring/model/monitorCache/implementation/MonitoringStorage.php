@@ -22,11 +22,12 @@
 namespace oat\taoProctoring\model\monitorCache\implementation;
 
 use core_kernel_classes_Resource;
-use oat\taoDelivery\models\classes\execution\DeliveryExecution;
+use oat\taoDelivery\model\execution\DeliveryExecution;
 use oat\taoProctoring\helpers\DeliveryHelper;
-use oat\taoProctoring\model\monitorCache\DeliveryMonitoringService as DeliveryMonitoringServiceInterface;
+use oat\taoProctoring\model\monitorCache\DeliveryMonitoringService;
 use oat\taoProctoring\model\monitorCache\DeliveryMonitoringData as DeliveryMonitoringDataInterface;
 use oat\oatbox\service\ConfigurableService;
+use oat\taoDelivery\models\classes\execution\event\DeliveryExecutionCreated;
 
 /**
  * Class DeliveryMonitoringService
@@ -57,7 +58,7 @@ use oat\oatbox\service\ConfigurableService;
  * @package oat\taoProctoring\model
  * @author Aleh Hutnikau <hutnikau@1pt.com>
  */
-class DeliveryMonitoringService extends ConfigurableService implements DeliveryMonitoringServiceInterface
+class MonitoringStorage extends ConfigurableService implements DeliveryMonitoringService
 {
     const OPTION_PERSISTENCE = 'persistence';
 
@@ -65,21 +66,20 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
 
     const TABLE_NAME = 'delivery_monitoring';
 
-    const COLUMN_ID = 'id';
-    const COLUMN_DELIVERY_EXECUTION_ID = DeliveryMonitoringServiceInterface::DELIVERY_EXECUTION_ID;
-    const COLUMN_DELIVERY_TEST_CENTER_ID = DeliveryMonitoringServiceInterface::TEST_CENTER_ID;
-    const COLUMN_STATUS = DeliveryMonitoringServiceInterface::STATUS;
-    const COLUMN_CURRENT_ASSESSMENT_ITEM = DeliveryMonitoringServiceInterface::CURRENT_ASSESSMENT_ITEM;
-    const COLUMN_TEST_TAKER = DeliveryMonitoringServiceInterface::TEST_TAKER;
-    const COLUMN_TEST_TAKER_FIRST_NAME = DeliveryMonitoringServiceInterface::TEST_TAKER_FIRST_NAME;
-    const COLUMN_TEST_TAKER_LAST_NAME = DeliveryMonitoringServiceInterface::TEST_TAKER_LAST_NAME;
-    const COLUMN_AUTHORIZED_BY = DeliveryMonitoringServiceInterface::AUTHORIZED_BY;
-    const COLUMN_START_TIME = DeliveryMonitoringServiceInterface::START_TIME;
-    const COLUMN_END_TIME = DeliveryMonitoringServiceInterface::END_TIME;
-    const COLUMN_REMAINING_TIME = DeliveryMonitoringServiceInterface::REMAINING_TIME;
-    const COLUMN_EXTRA_TIME = DeliveryMonitoringServiceInterface::EXTRA_TIME;
-    const COLUMN_CONSUMED_EXTRA_TIME = DeliveryMonitoringServiceInterface::CONSUMED_EXTRA_TIME;
-
+    const COLUMN_ID = DeliveryMonitoringService::DELIVERY_EXECUTION_ID;
+    const COLUMN_DELIVERY_EXECUTION_ID = DeliveryMonitoringService::DELIVERY_EXECUTION_ID;
+    const COLUMN_STATUS = DeliveryMonitoringService::STATUS;
+    const COLUMN_CURRENT_ASSESSMENT_ITEM = DeliveryMonitoringService::CURRENT_ASSESSMENT_ITEM;
+    const COLUMN_TEST_TAKER = DeliveryMonitoringService::TEST_TAKER;
+    const COLUMN_TEST_TAKER_FIRST_NAME = DeliveryMonitoringService::TEST_TAKER_FIRST_NAME;
+    const COLUMN_TEST_TAKER_LAST_NAME = DeliveryMonitoringService::TEST_TAKER_LAST_NAME;
+    const COLUMN_AUTHORIZED_BY = DeliveryMonitoringService::AUTHORIZED_BY;
+    const COLUMN_START_TIME = DeliveryMonitoringService::START_TIME;
+    const COLUMN_END_TIME = DeliveryMonitoringService::END_TIME;
+    const COLUMN_REMAINING_TIME = DeliveryMonitoringService::REMAINING_TIME;
+    const COLUMN_EXTRA_TIME = DeliveryMonitoringService::EXTRA_TIME;
+    const COLUMN_CONSUMED_EXTRA_TIME = DeliveryMonitoringService::CONSUMED_EXTRA_TIME;
+    
     const KV_TABLE_NAME = 'kv_delivery_monitoring';
     const KV_COLUMN_ID = 'id';
     const KV_COLUMN_PARENT_ID = 'parent_id';
@@ -99,24 +99,21 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
     protected $data = [];
 
     /**
-     * @param DeliveryExecution $deliveryExecution
-     * @param boolean $updateData whether DeliveryMonitoringData instance should be populated by data during instantiation.
-     * @return DeliveryMonitoringDataInterface
+     * (non-PHPdoc)
+     * @see \oat\taoProctoring\model\monitorCache\DeliveryMonitoringService::getData()
      */
-    public function getData(DeliveryExecution $deliveryExecution, $updateData = true)
+    public function getData(DeliveryExecution $deliveryExecution)
     {
         $id = $deliveryExecution->getIdentifier();
-
         if (!isset($this->data[$id])) {
-            $this->data[$id] = new DeliveryMonitoringData($deliveryExecution, false);
-        } else {
-            $this->data[$id]->setDeliveryExecution($deliveryExecution);
+            $results = $this->find([
+                [self::DELIVERY_EXECUTION_ID => $deliveryExecution->getIdentifier()],
+            ], ['asArray' => true], true);
+            $data = empty($results) ? [] : $results[0];
+            $dataObject = new DeliveryMonitoringData($deliveryExecution, $data);
+            $this->getServiceManager()->propagate($dataObject);
+            $this->data[$id] = $dataObject;
         }
-
-        if ($updateData) {
-            $this->data[$id]->updateData();
-        }
-        
         return $this->data[$id];
     }
 
@@ -244,8 +241,7 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
         } else {
             foreach($data as $row) {
                 $deliveryExecution = \taoDelivery_models_classes_execution_ServiceProxy::singleton()->getDeliveryExecution($row[self::COLUMN_DELIVERY_EXECUTION_ID]);
-                $monitoringData = new DeliveryMonitoringData($deliveryExecution, false);
-                $result[] = $monitoringData;
+                $result[] = $this->getData($deliveryExecution);
             }
         }
 
@@ -285,10 +281,6 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
         $result = $this->getPersistence()->insert(self::TABLE_NAME, $primaryTableData) === 1;
 
         if ($result) {
-            $id = $this->getPersistence()->lastInsertId(self::TABLE_NAME);
-
-            $data[static::COLUMN_ID] = $id;
-            $deliveryMonitoring->addValue(static::COLUMN_ID, $id);
             $this->saveKvData($deliveryMonitoring);
         }
 
@@ -332,20 +324,51 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
     {
         $data = $deliveryMonitoring->get();
         $isNewRecord = $this->isNewRecord($deliveryMonitoring);
-        $kvTableData = $this->extractKvData($data);
 
-        if (!$isNewRecord && !empty($kvTableData)) {
-            $this->deleteKvData($deliveryMonitoring);
-            $id = $data[static::COLUMN_ID];
+        if (!$isNewRecord) {
+            $id = $data[self::COLUMN_DELIVERY_EXECUTION_ID];
+            $kvTableData = $this->extractKvData($data);
+
+            if (empty($kvTableData)) {
+                return;
+            }
+
+            $query = 'SELECT ' . self::KV_COLUMN_KEY . ',' . self::KV_COLUMN_VALUE . '
+            FROM ' . self::KV_TABLE_NAME . '
+            WHERE ' . self::KV_COLUMN_PARENT_ID . ' =? AND ' . self::KV_COLUMN_KEY . ' IN(';
+            $keys = array_fill(0, count($kvTableData), '?');
+            $query .= implode(',', $keys);
+            $query .= ')';
+
+            $params = array_merge([$id], array_keys($kvTableData));
+
+            $stmt = $this->getPersistence()->query($query, $params);
+            $existent = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $existent = array_combine(array_column($existent, self::KV_COLUMN_KEY), array_column($existent, self::KV_COLUMN_VALUE));
+
             foreach($kvTableData as $kvDataKey => $kvDataValue) {
-                $this->getPersistence()->insert(
-                    self::KV_TABLE_NAME,
-                    array(
-                        self::KV_COLUMN_PARENT_ID => $id,
-                        self::KV_COLUMN_KEY => $kvDataKey,
-                        self::KV_COLUMN_VALUE => $kvDataValue,
-                    )
-                );
+                if (isset($existent[$kvDataKey]) && $existent[$kvDataKey] === $kvDataValue) {
+                    continue;
+                }
+
+                if (array_key_exists($kvDataKey, $existent)) {
+                    $this->getPersistence()->exec(
+                        'UPDATE ' . self::KV_TABLE_NAME . '
+                          SET '  . self::KV_COLUMN_VALUE . ' = ?
+                        WHERE ' . self::KV_COLUMN_PARENT_ID . ' = ?
+                          AND ' . self::KV_COLUMN_KEY . ' = ?;',
+                        [$kvDataValue, $id, $kvDataKey]
+                    );
+                } else {
+                    $this->getPersistence()->insert(
+                        self::KV_TABLE_NAME,
+                        array(
+                            self::KV_COLUMN_PARENT_ID => $id,
+                            self::KV_COLUMN_KEY => $kvDataKey,
+                            self::KV_COLUMN_VALUE => $kvDataValue,
+                        )
+                    );
+                }
             }
         }
     }
@@ -379,7 +402,7 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
         if (!$isNewRecord) {
             $sql = 'DELETE FROM ' . self::KV_TABLE_NAME . '
                     WHERE ' . self::KV_COLUMN_PARENT_ID . '=?';
-            $this->getPersistence()->exec($sql, [$data[static::COLUMN_ID]]);
+            $this->getPersistence()->exec($sql, [$data[self::COLUMN_DELIVERY_EXECUTION_ID]]);
             $result = true;
         }
 
@@ -447,7 +470,9 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
      */
     protected function getPersistence()
     {
-        return \common_persistence_Manager::getPersistence($this->getOption(self::OPTION_PERSISTENCE));
+        return $this->getServiceManager()
+            ->get(\common_persistence_Manager::SERVICE_ID)
+            ->getPersistenceById($this->getOption(self::OPTION_PERSISTENCE));
     }
 
     /**
@@ -511,6 +536,11 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
     }
 
     /**
+     * @param $parameters
+     * @param $selectClause
+     * @return string
+     */
+    /**
      * @param $condition
      * @param $parameters
      * @param $selectClause
@@ -522,7 +552,7 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
 
         //if condition is [ [ key => val ] ] then flatten to [ key => val ] 
         if (is_array($condition) && count($condition) === 1 && is_array(current($condition)) && gettype(array_keys($condition)[0]) == 'integer' ) {
-            $condition = current($condition);
+             $condition = current($condition);
         }
 
         if (is_string($condition) && in_array(mb_strtoupper($condition), ['OR', 'AND'])) {
@@ -558,7 +588,8 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
             } else {
                 $joinNum = count($this->joins);
                 $whereClause .= " (kv_t_$joinNum.monitoring_key = ? AND kv_t_$joinNum.monitoring_value $op) ";
-                $this->joins[] = "LEFT JOIN " . self::KV_TABLE_NAME . " kv_t_$joinNum ON kv_t_$joinNum. " . self::KV_COLUMN_PARENT_ID . " = t." . static::COLUMN_ID . PHP_EOL;
+
+                $this->joins[] = "LEFT JOIN " . self::KV_TABLE_NAME . " kv_t_$joinNum ON kv_t_$joinNum." . self::KV_COLUMN_PARENT_ID . " = t." . self::COLUMN_DELIVERY_EXECUTION_ID;
                 $parameters[] = trim($key);
             }
 
@@ -572,7 +603,12 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
     }
 
     /**
+     * @param DeliveryMonitoringDataInterface $deliveryMonitoring
+     * @return boolean
+     */
+    /**
      * Check if record for delivery execution already exists in the storage.
+     * @todo add isNewRecord property to DeliveryMonitoringDataInterface to prevent repeated queries to DB.
      * @param DeliveryMonitoringDataInterface $deliveryMonitoring
      * @return boolean
      */
@@ -581,47 +617,13 @@ class DeliveryMonitoringService extends ConfigurableService implements DeliveryM
         $data = $deliveryMonitoring->get();
         $deliveryExecutionId = $data[self::COLUMN_DELIVERY_EXECUTION_ID];
 
-        if (isset($data[static::COLUMN_ID])) {
-            $exists = true;
-        } else {
-            $sql = "SELECT EXISTS( " . PHP_EOL .
-                "SELECT " . self::COLUMN_DELIVERY_EXECUTION_ID . PHP_EOL .
-                "FROM " . self::TABLE_NAME . PHP_EOL .
-                "WHERE " . self::COLUMN_DELIVERY_EXECUTION_ID . "=?)";
-            $exists = $this->getPersistence()->query($sql, [$deliveryExecutionId])->fetch(\PDO::FETCH_COLUMN);
-        }
+        $sql = "SELECT EXISTS( " . PHP_EOL .
+            "SELECT " . self::COLUMN_DELIVERY_EXECUTION_ID . PHP_EOL .
+            "FROM " . self::TABLE_NAME . PHP_EOL .
+            "WHERE " . self::COLUMN_DELIVERY_EXECUTION_ID . "=?)";
+        $exists = $this->getPersistence()->query($sql, [$deliveryExecutionId])->fetch(\PDO::FETCH_COLUMN);
 
         return !((boolean) $exists);
-    }
-
-    /**
-     * @param core_kernel_classes_Resource $delivery
-     * @param core_kernel_classes_Resource $testCenter
-     * @param array $options
-     * @return DeliveryMonitoringData[]
-     */
-    public function getCurrentDeliveryExecutions(core_kernel_classes_Resource $delivery, core_kernel_classes_Resource $testCenter, array $options = array())
-    {
-
-        $sortBy = self::getSortByColumn(array_key_exists('sortBy',$options )?$options['sortBy']:'');
-        $sortOrder = array_key_exists('sortOrder', $options) ? $options['sortOrder'] : self::DEFAULT_SORT_ORDER;
-
-        $criteria = [
-            [self::TEST_CENTER_ID => $testCenter->getUri()],
-            'AND',
-            [self::DELIVERY_ID => $delivery->getUri()]
-        ];
-
-        if (isset($options['filter']) && $options['filter']) {
-            $criteria = array_merge($criteria, ['AND'], [['status' => $options['filter']]]);
-        }
-
-        $result = $this->find($criteria, ['asArray' => true,
-            'order'=> $sortBy.' '. $sortOrder,
-        ],
-            true);
-
-        return $result;
     }
 
     /**

@@ -22,13 +22,8 @@
 namespace oat\taoProctoring\controller;
 
 use common_session_SessionManager as SessionManager;
-use core_kernel_classes_Resource;
 use oat\taoProctoring\helpers\DataTableHelper;
-use oat\taoProctoring\helpers\DeliveryHelper;
-use oat\taoProctoring\helpers\TestCenterHelper;
-use oat\taoProctoring\helpers\ReasonCategoryHelper;
 use DateTime;
-use oat\taoProctoring\model\ReasonCategoryService;
 
 /**
  * Base proctoring interface controller
@@ -38,61 +33,17 @@ use oat\taoProctoring\model\ReasonCategoryService;
  * @license GPL-2.0
  *
  */
-abstract class ProctoringModule extends \tao_actions_CommonModule
+abstract class SimplePageModule extends \tao_actions_CommonModule
 {
-    const DEFAULT_SORT_COLUMN = 'firstname';
-    const DEFAULT_SORT_ORDER = 'asc';
-    protected $currentTestCenter = null;
-    protected $currentDelivery   = null;
-
-    /**
-     * Get the requested test center resource
-     * Use this to identify which test center is currently being selected buy the proctor
-     *
-     * @return core_kernel_classes_Resource
-     * @throws \common_Exception
-     */
-    protected function getCurrentTestCenter()
+    protected function singlePage($cssClass, $data = array(), $template = '', $extension = '')
     {
-        if (is_null($this->currentTestCenter)) {
-            if($this->hasRequestParameter('testCenter')){
-
-                //get test center resource from its uri
-                $testCenterUri           = $this->getRequestParameter('testCenter');
-                $this->currentTestCenter = TestCenterHelper::getTestCenter($testCenterUri);
-            }else{
-                //@todo use a better exception
-                throw new \common_Exception('no current test center');
-            }
-
-        }
-        return $this->currentTestCenter;
+        $currentExtension = \Context::getInstance()->getExtensionName();
+        $template = empty($template) ? 'pages/index.tpl' : $template;
+        $extension = empty($extension) ? $currentExtension : $extension;
+        $this->setData('content-template', array($template, $extension));
+        $this->setView('layout.tpl', 'tao');
     }
-
-    /**
-     * Get the requested delivery resource
-     * Use this to identify which delivery is currently being selected buy the proctor
-     *
-     * @param bool $mandatory Throws an exception if the delivery is not provided
-     * @return core_kernel_classes_Resource
-     * @throws \common_Exception
-     */
-    protected function getCurrentDelivery($mandatory = true)
-    {
-        if (is_null($this->currentDelivery)) {
-            if ($this->hasRequestParameter('delivery')) {
-
-                //get test center resource from its uri
-                $deliveryUri           = $this->getRequestParameter('delivery');
-                $this->currentDelivery = DeliveryHelper::getDelivery($deliveryUri);
-            } else if ($mandatory) {
-                //@todo use a better exception
-                throw new \common_Exception('no current delivery');
-            }
-        }
-        return $this->currentDelivery;
-    }
-
+    
     /**
      * Main method to render a view for all proctoring related controller actions
      *
@@ -100,8 +51,9 @@ abstract class ProctoringModule extends \tao_actions_CommonModule
      * @param array $data
      * @param array $breadcrumbs
      * @param String $template
+     * @param String $extension
      */
-    protected function composeView($cssClass, $data = array(), $breadcrumbs = array(), $template = '')
+    protected function composeView($cssClass, $data = array(), $breadcrumbs = array(), $template = '', $extension = '')
     {
         $data['breadcrumbs'] = $breadcrumbs;
 
@@ -116,8 +68,18 @@ abstract class ProctoringModule extends \tao_actions_CommonModule
         $this->setData('clientConfigUrl', $this->getClientConfigUrl());
         $this->setData('cls', $cssClass);
         $this->setData('data', $data);
-        $this->setData('content-template', empty($template) ? 'pages/index.tpl' : $template);
-        $this->setView('layout.tpl');
+        
+        $currentExtension = \Context::getInstance()->getExtensionName();
+        $template = empty($template) ? 'pages/index.tpl' : $template;
+        $extension = empty($extension) ? $currentExtension : $extension;
+
+        if (\tao_helpers_Request::isAjax()) {
+            $this->setView($template, $extension);
+        } else {
+            $this->setData('content-template', $template);
+            $this->setData('content-extension', $extension);
+            $this->setView('layout.tpl', $currentExtension);
+        }
     }
 
     /**
@@ -171,31 +133,4 @@ abstract class ProctoringModule extends \tao_actions_CommonModule
         ];
     }
 
-    /**
-     * Get the list of all available categories, sorted by action names
-     *
-     * @return array
-     */
-    protected function getAllReasonsCategories(){
-        /** @var ReasonCategoryService $categoryService */
-        $categoryService = $this->getServiceManager()->get(ReasonCategoryService::SERVICE_ID);
-
-        return array(
-            'authorize' => array(),
-            'pause' => $categoryService->getIrregularities(),
-            'terminate' => $categoryService->getIrregularities(),
-            'report' => $categoryService->getIrregularities(),
-            'print' => [],
-        );
-    }
-
-    /**
-     * Check is the current user in session is a proctor admin or not
-     * @return boolean
-     */
-    protected function isAdmin(){
-        $testSiteAdminRoleUri = 'http://www.tao.lu/Ontologies/TAOProctor.rdf#TestCenterAdministratorRole';
-        $roles = SessionManager::getSession()->getUserRoles();
-        return (isset($roles[$testSiteAdminRoleUri]) && $roles[$testSiteAdminRoleUri] = $testSiteAdminRoleUri);
-    }
 }
