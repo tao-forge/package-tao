@@ -14,38 +14,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA;
- *
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA
  *
  */
+namespace oat\tao\scripts\install;
 
-namespace oat\tao\model\asset;
-
-use oat\oatbox\service\ConfigurableService;
-use Jig\Utils\FsUtils;
+use oat\tao\model\ClientLibConfigRegistry;
 
 /**
- * Asset service to retrieve assets easily based on a config
- *
- * @author Antoine Robin
+ * Defines the default client logger config
+ * @author Bertrand Chevrier <bertrand@taotesting.com>
  */
-class AssetService extends ConfigurableService
+class SetClientLoggerConfig extends \common_ext_action_InstallAction
 {
-    const SERVICE_ID = 'tao/asset';
-
-    public function getAsset($asset, $extensionId)
+    public function __invoke($params)
     {
-        return $this->getJsBaseWww($extensionId) . FsUtils::normalizePath($asset);
+        ClientLibConfigRegistry::getRegistry()->register(
+            'core/logger', [
+                'level'   => 'warn',
+                'loggers' =>  ['core/logger/console']
+            ]
+        );
     }
-
-    public function getJsBaseWww($extensionId)
-    {
-        return $this->getAssetUrl() . $extensionId . '/views/';
-    }
-
-    protected function getAssetUrl()
-    {
-        return $this->hasOption('base') ? $this->getOption('base') : ROOT_URL;
-    }
-
 }
