@@ -23,17 +23,21 @@ namespace oat\tao\scripts\tools;
 use \common_report_Report as Report;
 
 /**
- * Script to extract duplicate rows from an indexed CSV file.
+ * Script to remove duplicate rows from an indexed CSV file.
  * 
- * The script enables you to extract duplicate entries in a CSV file.
+ * The script enables you to remove duplicate entries in a CSV file. In
+ * other words, only non duplicated rows will be written in a destination
+ * CSV file.
  */
-class ExtractCsvDuplicates extends AbstractIndexedCsv
+class RemoveCsvDuplicates extends AbstractIndexedCsv
 {
     /**
-     * Duplicate extraction logic.
+     * Duplicate removal logic.
      * 
-     * Extract duplicate rows from the source CSV file to the
-     * destination CSV file.
+     * Remove duplicate rows from the source CSV file and write
+     * them in the destination CSV file. In other words, only
+     * non duplicated rows will be written in the destination CSV
+     * file.
      * 
      * @see \oat\tao\scripts\tools\AbstractIndexedCsv
      */
@@ -43,24 +47,21 @@ class ExtractCsvDuplicates extends AbstractIndexedCsv
         $destinationFp = $this->getDestinationFp();
         $index = $this->getIndex();
         
-        // Extract duplicates in a separate file.
-        $duplicateCount = 0;
+        $writtenCount = 0;
         foreach ($index as $identifier => $positions) {
-            if (count($positions) > 1) {
-                // We have a duplicate.
-                foreach ($positions as $pos) {
-                    rewind($sourceFp);
-                    fseek($sourceFp, $pos);
-                    $sourceData = fgetcsv($sourceFp);
-                    fputcsv($destinationFp, $sourceData);
-                    $duplicateCount++;
-                }
+            if (count($positions) === 1) {
+                // No duplicate.
+                rewind($sourceFp);
+                fseek($sourceFp, $positions[0]);
+                $sourceData = fgetcsv($sourceFp);
+                fputcsv($destinationFp, $sourceData);
+                $writtenCount++;
             }
         }
         
         return new Report(
             Report::TYPE_INFO,
-            "${duplicateCount} duplicate records extracted in file '" . realpath($this->getDestination()) . "'."
+            "${writtenCount} records written in file '" . realpath($this->getDestination()) . "'."
         );
     }
 }
