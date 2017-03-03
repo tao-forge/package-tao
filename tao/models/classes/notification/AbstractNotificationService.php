@@ -14,17 +14,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
  *
  */
 
-namespace oat\tao\model\user;
+namespace oat\tao\model\notification;
 
-interface TaoRoles
+
+use oat\oatbox\service\ConfigurableService;
+
+abstract class AbstractNotificationService extends ConfigurableService implements NotificationServiceInterface
 {
-    const ANONYMOUS = 'http://www.tao.lu/Ontologies/generis.rdf#AnonymousRole';
-    
-    const BACK_OFFICE = 'http://www.tao.lu/Ontologies/TAO.rdf#BackOfficeRole';
+    /**
+     * @return bool
+     */
+    public function getVisibility()
+    {
+        if($this->hasOption('visibility')) {
+            return $this->getOption('visibility');
+        }
 
-    const SYSTEM_ADMINISTRATOR = 'http://www.tao.lu/Ontologies/TAO.rdf#SysAdminRole';
+        return false;
+    }
+
 }

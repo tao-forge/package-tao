@@ -14,17 +14,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
  *
  */
 
-namespace oat\tao\model\user;
+namespace oat\tao\model\notification\exception;
 
-interface TaoRoles
+
+class NotListedNotification extends \common_exception_ClientException
 {
-    const ANONYMOUS = 'http://www.tao.lu/Ontologies/generis.rdf#AnonymousRole';
-    
-    const BACK_OFFICE = 'http://www.tao.lu/Ontologies/TAO.rdf#BackOfficeRole';
 
-    const SYSTEM_ADMINISTRATOR = 'http://www.tao.lu/Ontologies/TAO.rdf#SysAdminRole';
+    public function __construct()
+    {
+        $message = __('notifications drivers aren\'t persistent. use a persistent database storage driver');
+        $code    = 0;
+        parent::__construct($message, $code);
+    }
+
+    public function getUserMessage()
+    {
+        return __('unable to search into notification.');
+    }
+
 }
