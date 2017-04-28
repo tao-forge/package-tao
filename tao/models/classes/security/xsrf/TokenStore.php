@@ -14,25 +14,33 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
- *
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA ;
  */
 
-namespace oat\tao\test\model\textConverter;
+namespace oat\tao\model\security\xsrf;
 
-use oat\tao\model\textConverter\NullTextConverter;
-
-class nullTextConverterTest extends \PHPUnit_Framework_TestCase
+/**
+ * Tokens' pool storage
+ *
+ * @author Bertrand Chevrier <bertrand@taotesting.com>
+ */
+interface TokenStore
 {
-    public function testGet()
-    {
-        $converter = new NullTextConverter();
-        $this->assertEquals('fixture', $converter->get('fixture'));
-    }
 
-    public function testGetRegistry()
-    {
-        $converter = new NullTextConverter();
-        $this->assertEquals([], $converter->getTextRegistry());
-    }
+    /**
+     * Retrieve the pool of tokens
+     * @return array the tokens
+     */
+    public function getTokens();
+
+    /**
+     * Set the pool of tokens
+     * @param array $tokens the poll
+     */
+    public function setTokens(array $tokens = []);
+
+    /**
+     * Remove all tokens
+     */
+    public function removeTokens();
 }
