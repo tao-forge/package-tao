@@ -14,32 +14,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2015 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA
  *
  */
-namespace oat\tao\model\theme;
+namespace oat\tao\model\cliArgument\argument;
 
-interface Theme
+use oat\oatbox\action\Action;
+
+interface Argument
 {
-    const CONTEXT_BACKOFFICE = 'backOffice';
-    
-    const CONTEXT_FRONTOFFICE = 'frontOffice';
-    
     /**
-     * Returns the path to the template file on the fs
-     * that is referenced by id and context
-     * 
-     * @param string $id
-     * @param string $context
-     * @return string filepath
+     * Propagate the argument process to Action
+     *
+     * @param Action $action
      */
-    public function getTemplate($id, $context = self::CONTEXT_BACKOFFICE);
-    
+    public function load(Action $action);
+
     /**
-     * Returns the url to the StyleSheet for the indicated context
-     * 
-     * @param string $context
-     * @return string url
+     * Check if current Argument can be applicable following params array content
+     *
+     * @param array $params
+     * @return bool
      */
-    public function getStylesheet($context = self::CONTEXT_BACKOFFICE);
+    public function isApplicable(array $params);
 }

@@ -14,32 +14,35 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2015 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
  *
  */
-namespace oat\tao\model\theme;
 
-interface Theme
+namespace oat\tao\model\cliArgument\argument\implementation\verbose;
+
+use Psr\Log\LogLevel;
+
+class Debug extends Verbose
 {
-    const CONTEXT_BACKOFFICE = 'backOffice';
-    
-    const CONTEXT_FRONTOFFICE = 'frontOffice';
-    
     /**
-     * Returns the path to the template file on the fs
-     * that is referenced by id and context
-     * 
-     * @param string $id
-     * @param string $context
-     * @return string filepath
+     * Check if params array contains targeted arguments, Short and Long
+     * In case of Long, check is done is following param argument
+     *
+     * @param array $params
+     * @return bool
      */
-    public function getTemplate($id, $context = self::CONTEXT_BACKOFFICE);
-    
+    public function isApplicable(array $params)
+    {
+        return $this->hasParameter($params, '-vvvv') || $this->hasParameter($params, '--verbose', 4);
+    }
+
     /**
-     * Returns the url to the StyleSheet for the indicated context
-     * 
-     * @param string $context
-     * @return string url
+     * Return the Psr3 logger level minimum to send log to logger
+     *
+     * @return string
      */
-    public function getStylesheet($context = self::CONTEXT_BACKOFFICE);
+    public function getMinimumLogLevel()
+    {
+        return LogLevel::DEBUG;
+    }
 }
