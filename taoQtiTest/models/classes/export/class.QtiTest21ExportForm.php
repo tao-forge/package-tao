@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
@@ -18,30 +18,18 @@
  *
  */
 
-namespace oat\taoQtiTest\models\import;
-
-use oat\oatbox\filesystem\File;
-use oat\taoTests\models\import\AbstractTestImporter;
-
 /**
- * Class QtiTestImport
- * @package oat\taoQtiTest\models\metadata
- * @author Aleh Hutnikau, <hutnikau@1pt.com>
+ * Export form for QTI 2.1 packages
+ *
+ * @access public
+ * @author Joel Bout, <joel.bout@tudor.lu>
+ * @package taoItems
+
  */
-class QtiTestImporter extends AbstractTestImporter
+class taoQtiTest_models_classes_export_QtiTest21ExportForm extends taoQtiTest_models_classes_export_ExportForm
 {
-
-    const IMPORTER_ID = 'taoQtiTest';
-
-    /**
-     * @param File $file
-     * @param \core_kernel_classes_Class $class
-     * @return \common_report_Report
-     */
-    public function import(File $file, \core_kernel_classes_Class $class = null)
-    {
-        \common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiTest');
-        $service = \taoQtiTest_models_classes_CrudQtiTestsService::singleton();
-        return $service->importQtiTest($file, $class);
+    protected function getFormGroupName(){
+        return __('Export QTI 2.1 Test Package');
     }
+
 }
