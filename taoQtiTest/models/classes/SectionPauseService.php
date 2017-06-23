@@ -14,16 +14,28 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016-2017 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA ;
+ *
+ * @author Alexander Zagovorychev <zagovorichev@1pt.com>
  */
-return new \oat\taoQtiTest\models\TestModelService([
-    'exportHandlers' => [
-        new \oat\taoQtiTest\models\export\metadata\TestMetadataByClassExportHandler(),
-        new taoQtiTest_models_classes_export_TestExport(),
-        new taoQtiTest_models_classes_export_TestExport22()
-    ],
-    'importHandlers' => [
-        new taoQtiTest_models_classes_import_TestImport()
-    ],
-    'testCompilerClass'  => 'taoQtiTest_models_classes_QtiTestCompiler'
-]);
+
+namespace oat\taoQtiTest\models;
+
+
+use oat\oatbox\service\ConfigurableService;
+use oat\taoQtiTest\models\runner\session\TestSession;
+
+class SectionPauseService extends ConfigurableService
+{
+    const SERVICE_ID = 'taoQtiTest/SectionPauseService';
+
+    /**
+     * Checked that section can be paused
+     * @param $session
+     * @return bool
+     */
+    public function isPausable(TestSession $session = null)
+    {
+        return false;
+    }
+}
