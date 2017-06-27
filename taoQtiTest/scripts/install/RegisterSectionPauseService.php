@@ -14,16 +14,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016-2017 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA ;
+ *
+ * @author Alexander Zagovorychev <zagovorichev@1pt.com>
  */
-return new \oat\taoQtiTest\models\TestModelService([
-    'exportHandlers' => [
-        new \oat\taoQtiTest\models\export\metadata\TestMetadataByClassExportHandler(),
-        new taoQtiTest_models_classes_export_TestExport(),
-        new taoQtiTest_models_classes_export_TestExport22()
-    ],
-    'importHandlers' => [
-        new taoQtiTest_models_classes_import_TestImport()
-    ],
-    'testCompilerClass'  => 'taoQtiTest_models_classes_QtiTestCompiler'
-]);
+
+namespace oat\taoQtiTest\scripts\install;
+
+use oat\oatbox\extension\InstallAction;
+use oat\taoQtiTest\models\SectionPauseService;
+
+class RegisterSectionPauseService extends InstallAction
+{
+    public function __invoke($params)
+    {
+        $this->registerService(SectionPauseService::SERVICE_ID, new SectionPauseService());
+    }
+}
