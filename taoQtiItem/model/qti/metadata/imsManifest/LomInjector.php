@@ -14,25 +14,25 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA
  *
  */
 
-namespace oat\taoQtiItem\controller;
 
-use oat\taoQtiItem\model\flyExporter\form\ItemMetadataByClassExportHandler;
+namespace oat\taoQtiItem\model\qti\metadata\imsManifest;
 
-class QtiExporter extends \tao_actions_Export
+class LomInjector extends ImsManifestMetadataInjector
 {
-    /**
-     * Override available export handlers
-     *
-     * @return array
-     */
-    protected function getAvailableExportHandlers()
+    public function __construct($version = null)
     {
-        return [
-            new ItemMetadataByClassExportHandler()
-        ];
+        $mappings = [];
+
+        $mappings[] = new ImsManifestMapping(
+            'http://ltsc.ieee.org/xsd/LOM',
+            'imsmd',
+            'http://www.imsglobal.org/xsd/imsmd_loose_v1p3p2.xsd'
+        );
+        parent::__construct($mappings);
     }
+
 }
