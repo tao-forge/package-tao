@@ -14,16 +14,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (update and modification) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
 
+namespace oat\tao\model\metadata\exception;
+
 /**
- * @author Ivan Klimchuk <klimchuk@1pt.com>
+ * Class MetadataExportException
+ *
+ * @package oat\tao\model\metadata\exception
  */
+class MetadataExportException extends \common_Exception
+{
 
-use oat\tao\model\ClientLibConfigRegistry;
-
-ClientLibConfigRegistry::getRegistry()->register(
-    'util/locale', ['decimalSeparator' => '.', 'thousandsSeparator' => '', 'dateTimeFormat' => 'DD/MM/YYYY HH:mm:ss']
-);
+}
