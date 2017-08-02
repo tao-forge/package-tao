@@ -15,9 +15,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
  * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
+ *
+ *
  */
-return new oat\taoQtiTest\models\QtiTestListenerService(
-    [
-        oat\taoQtiTest\models\QtiTestListenerService::OPTION_ARCHIVE_EXCLUDE => []
-    ]
-);
+return new oat\taoQtiTest\models\runner\rubric\QtiRunnerRubric();
