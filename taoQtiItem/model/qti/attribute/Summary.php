@@ -14,39 +14,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ *
  *
  */
 
-namespace oat\taoQtiItem\model\portableElement\model;
+namespace oat\taoQtiItem\model\qti\attribute;
 
-trait PortableElementModelTrait
+/**
+ * The Data attribute
+ *
+ * @access public
+ * @author Christophe Noël <christophe@taotesting.com>
+ * @package taoQTI
+
+ */
+class Summary extends Attribute
 {
-    /**
-     * @var PortableElementModel
-     */
-    protected $model;
 
-    /**
-     * @return PortableElementModel
-     */
-    public function getModel()
-    {
-        return $this->model;
-    }
+	static protected $name = 'summary';
+	static protected $type = 'oat\\taoQtiItem\\model\\qti\\datatype\\QtiString';
+	static protected $defaultValue = null;
+	static protected $required = false;
 
-    /**
-     * @param PortableElementModel $model
-     */
-    public function setModel(PortableElementModel $model)
-    {
-        $this->model = $model;
-    }
-
-    /**
-     * @return string
-     */
-    public function getModelId(){
-        return $this->model->getId();
-    }
 }
