@@ -21,26 +21,28 @@
 
 namespace oat\taoDeliveryRdf\install;
 
-use oat\taoDeliveryRdf\model\DeliveryContainerService;
-use oat\oatbox\service\ServiceManager;
+use oat\oatbox\extension\InstallAction;
+use oat\taoDeliveryRdf\model\DeliveryFactory;
 
 /**
  * Installation action that register the rdf implementation for the delivery container service
  *
  * @author Bertrand Chevrier <bertrand@taotesting.com>
  */
-class RegisterDeliveryContainerService extends \common_ext_action_InstallAction
+class RegisterDeliveryFactoryService extends InstallAction
 {
     /**
      * @param $params
      */
     public function __invoke($params)
     {
-        $serviceManager = ServiceManager::getServiceManager();
+        $serviceManager = $this->getServiceManager();
 
-        $deliveryContainerService = new DeliveryContainerService();
-        $deliveryContainerService->setServiceManager($serviceManager);
-        $serviceManager->register(DeliveryContainerService::SERVICE_ID, $deliveryContainerService);
+        $deliveryFactoryService = new DeliveryFactory([
+            DeliveryFactory::OPTION_PROPERTIES => []
+        ]);
+        $serviceManager->propagate($deliveryFactoryService);
+        $serviceManager->register(DeliveryFactory::SERVICE_ID, $deliveryFactoryService);
     }
 }
 
