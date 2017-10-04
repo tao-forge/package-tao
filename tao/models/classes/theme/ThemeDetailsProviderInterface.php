@@ -1,7 +1,4 @@
 <?php
-
-use oat\tao\model\TaoOntology;
-
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,21 +14,24 @@ use oat\tao\model\TaoOntology;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
-class tao_helpers_SysAdmin{
-    
-    /**
-     *
-     * @author "Lionel Lecaque, <lionel@taotesting.com>"
-     */
-    public static function isSysAdmin(){
-        $userService = tao_models_classes_UserService::singleton();
-        $currentUser = $userService->getCurrentUser();
-        $sysAdminRole =  new core_kernel_classes_Resource(TaoOntology::PROPERTY_INSTANCE_ROLE_SYSADMIN) ;
-        $returnValues = $currentUser != null ? $userService->userHasRoles($currentUser,$sysAdminRole) : false;
-        return $returnValues;
-    }
+namespace oat\tao\model\theme;
 
+interface ThemeDetailsProviderInterface
+{
+    /**
+     * Returns the theme id.
+     *
+     * @return string
+     */
+    public function getThemeId();
+
+    /**
+     * Tells if the page has to be headless: without header and footer.
+     *
+     * @return bool|mixed
+     */
+    public function isHeadless();
 }
