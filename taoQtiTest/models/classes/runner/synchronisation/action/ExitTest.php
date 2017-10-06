@@ -23,16 +23,17 @@ use oat\taoQtiTest\models\runner\synchronisation\TestRunnerAction;
 use oat\taoQtiTest\models\runner\QtiRunnerServiceContext;
 
 /**
- * Class Move
+ * Class ExitTest
+ * 
+ * Exit the current test abruptly
  *
- * Move forward or back item into the test context.
  *
  * @package oat\taoQtiTest\models\runner\synchronisation\action
  */
-class Move extends TestRunnerAction
+class ExitTest extends TestRunnerAction
 {
     /**
-     * Process the move action.
+     * Process the exitTest action.
      *
      * Validate required fields.
      * Stop/Start timer and save item state.
@@ -45,15 +46,10 @@ class Move extends TestRunnerAction
     {
         $this->validate();
 
-        $ref       = ($this->getRequestParameter('ref') === false) ? null : $this->getRequestParameter('ref');
-        $direction = $this->getRequestParameter('direction');
-        $scope     = $this->getRequestParameter('scope');
-        $start     = ($this->getRequestParameter('start') !== false);
-
         try {
 
             /** @var QtiRunnerServiceContext $serviceContext */
-            $serviceContext = $this->getServiceContext(false);
+            $serviceContext = $this->getServiceContext();
 
             if (!$this->getRunnerService()->isTerminated($serviceContext)) {
                 $this->endItemTimer($this->getTime());
@@ -61,29 +57,11 @@ class Move extends TestRunnerAction
             }
             $this->initServiceContext();
 
-            $this->saveItemResponses(false);
-
-            $this->setOffline();
-
-            $serviceContext->getTestSession()->initItemTimer($this->getTime());
-            $result = $this->getRunnerService()->move($serviceContext, $direction, $scope, $ref);
+            $this->saveItemResponses();
 
             $response = [
-                'success' => $result,
+                'success' => $this->getRunnerService()->exitTest($serviceContext),
             ];
-
-            if ($result) {
-                $response['testContext'] = $this->getRunnerService()->getTestContext($serviceContext);
-            }
-
-            \common_Logger::d('Test session state : ' . $serviceContext->getTestSession()->getState());
-
-            if ($start === true) {
-
-                // start the timer only when move starts the item session
-                // and after context build to avoid timing error
-                $this->getRunnerService()->startTimer($serviceContext, $this->getTime());
-            }
 
         } catch (\Exception $e) {
             \common_Logger::e($e->getMessage());
@@ -91,15 +69,5 @@ class Move extends TestRunnerAction
         }
 
         return $response;
-    }
-
-    /**
-     * Direction and scope are required for move action.
-     *
-     * @return array
-     */
-    protected function getRequiredFields()
-    {
-        return array_merge(parent::getRequiredFields(), ['direction', 'scope']);
     }
 }
