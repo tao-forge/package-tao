@@ -20,25 +20,26 @@
 namespace oat\taoQtiTest\scripts\install;
 
 use oat\oatbox\extension\InstallAction;
-use oat\tao\model\WidgetDefinitions;
-use oat\taoQtiTest\models\cat\CatService;
-use \common_report_Report as Report;
+use oat\taoQtiTest\models\PhpCodeCompilationDataService;
 
 /**
- * Class ShowQtiAdaptiveSectionIds
- * 
- * Show the QTI CAT Adaptive Section IDs on the Graphical User Interface.
- * 
- * @package oat\taoQtiTest\scripts\install
+ * Setup PHP code compilation for QTI-SDK components.
  */
-class ShowQtiAdaptiveSectionIds extends InstallAction
+class SetupPhpCodeCompilation extends InstallAction
 {
+    /**
+     * Invoke script.
+     * 
+     * @param $params
+     */
     public function __invoke($params)
     {
-        $adaptiveSectionIdsProperty = new \core_kernel_classes_Property(CatService::CAT_ADAPTIVE_IDS_PROPERTY);
-        $widgetProperty = new \core_kernel_classes_Property(PROPERTY_WIDGET);
-        $adaptiveSectionIdsProperty->editPropertyValues($widgetProperty, WidgetDefinitions::PROPERTY_JSONOBJECT);
-
-        return new Report(Report::TYPE_SUCCESS, 'QTI CAT Adaptive Section IDs are now visible in the GUI.');
+        $serviceManager = $this->getServiceManager();
+        $serviceManager->register(
+            PhpCodeCompilationDataService::SERVICE_ID,
+            new PhpCodeCompilationDataService()
+        );
+        
+        return new \common_report_Report(\common_report_Report::TYPE_SUCCESS, "PHP code compilation for QTI-SDK components enabled.");
     }
 }

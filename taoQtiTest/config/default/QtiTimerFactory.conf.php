@@ -1,32 +1,29 @@
 <?php
-/*  
+/**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
  * of the License (non-upgradable).
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- * 
- * Copyright (c) 2013-2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
- *               
+ *
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA ;
+ *
  */
+use oat\taoQtiTest\models\runner\time\QtiTimerFactory;
+use oat\taoQtiTest\models\runner\time\QtiTimer;
+use oat\taoQtiTest\models\runner\time\QtiTimeStorage;
+use oat\taoQtiTest\models\runner\time\storageFormat\QtiTimeStoragePackedFormat;
 
-use oat\tao\model\TaoOntology;
-
-$testClass = taoQtiTest_models_classes_QtiTestService::singleton()->getRootClass();
-$file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'qtiv2p1Examples.zip';
-
-try {
-    $report = taoQtiTest_models_classes_QtiTestService::singleton()->importMultipleTests(new core_kernel_classes_Class(TaoOntology::TEST_CLASS_URI), $file);
-}
-catch (Exception $e){
-    common_Logger::e('An error occured while importing QTI Test Example. The system reported the following error: ' . $e->getMessage());
-    throw $e;
-}
+return new QtiTimerFactory([
+    QtiTimerFactory::OPTION_TIMER_CLASS => QtiTimer::class,
+    QtiTimerFactory::OPTION_STORAGE_CLASS => QtiTimeStorage::class,
+    QtiTimerFactory::OPTION_STORAGE_FORMAT_CLASS => QtiTimeStoragePackedFormat::class,
+]);
