@@ -16,38 +16,7 @@
  *
  * Copyright (c) 2017 (original work) Open Assessment Technologies SA ;
  *
- * @author Alexander Zagovorychev <zagovorichev@1pt.com>
  */
+use oat\taoQtiTest\models\runner\StorageManager;
 
-namespace oat\taoQtiTest\models;
-
-
-use oat\oatbox\service\ConfigurableService;
-use oat\taoQtiTest\models\runner\session\TestSession;
-
-class SectionPauseService extends ConfigurableService
-{
-    const SERVICE_ID = 'taoQtiTest/SectionPauseService';
-
-    /**
-     * Checked that section can be paused
-     * @param $session
-     * @return bool
-     */
-    public function isPausable(TestSession $session = null)
-    {
-        return false;
-    }
-
-    /**
-     * Check if we can move backward : when leaving a pausable section,
-     * we can't move backward.
-     *
-     * @param TestSession $session
-     * @return bool
-     */
-    public function canMoveBackward(TestSession $session = null)
-    {
-        return true;
-    }
-}
+return new StorageManager();
