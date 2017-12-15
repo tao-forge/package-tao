@@ -14,11 +14,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
  *
- *
- */
+ * */
 
-use oat\taoQtiItem\model\HookRegistry;
+namespace oat\parccTei\scripts\install;
 
-HookRegistry::add('teiSystemItem', 'oat\parccTei\model\SystemItemHook');
+use oat\oatbox\service\ServiceManager;
+use oat\taoQtiItem\model\portableElement\action\RegisterPortableElement;
+
+class RegisterPciGraphPointLineGraphInteraction extends RegisterPortableElement
+{
+    protected function getSourceDirectory(){
+        $serviceManager = ServiceManager::getServiceManager();
+        $viewDir = $serviceManager->get(\common_ext_ExtensionsManager::SERVICE_ID)->getExtensionById('parccTei')->getConstant('DIR_VIEWS');
+        return $viewDir.implode(DIRECTORY_SEPARATOR, ['js', 'pciCreator', 'ims', 'graphPointLineGraphInteraction']);
+    }
+}
