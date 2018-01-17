@@ -23,23 +23,20 @@ use oat\tao\model\ClientLibConfigRegistry;
 use oat\oatbox\extension\InstallAction;
 
 /**
- * Defines the default client logger config
+ * Changes the default tree provider to the resource selector component
+ *
  * @author Bertrand Chevrier <bertrand@taotesting.com>
  */
-class SetClientLoggerConfig extends InstallAction
+class SetResourceSelector extends InstallAction
 {
     public function __invoke($params)
     {
-        ClientLibConfigRegistry::getRegistry()->remove('core/logger');
         ClientLibConfigRegistry::getRegistry()->register(
-            'core/logger', [
-                'level' => 'warn',
-                'loggers' =>  [
-                    'core/logger/console' => [
-                        'level' => 'warn',
-                    ]
-                ]
+            'layout/tree/loader', [
+                'treeProvider'   => 'resource-selector'
             ]
         );
+
+        return \common_report_Report::createSuccess('The tree provider is now the resource-selector by default');
     }
 }
