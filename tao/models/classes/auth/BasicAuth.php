@@ -14,17 +14,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2018  (original work) Open Assessment Technologies SA;
+ *
+ * @author Alexander Zagovorichev <olexander.zagovorychev@1pt.com>
  */
 
-/**
- * Default test runner config
- */
-return array(
-    /**
-     * Disable the browser ability to store login/passwords
-     * @type bool
-     */
-    'disableAutocomplete' => false,
-    'enablePasswordReveal' => false
-);
+namespace oat\tao\model\auth;
+
+
+interface BasicAuth
+{
+    const CLASS_BASIC_AUTH = 'http://www.tao.lu/Ontologies/TAO.rdf#BasicAuthConsumer';
+    const PROPERTY_LOGIN = 'http://www.tao.lu/Ontologies/TAO.rdf#BasicAuthLogin';
+    const PROPERTY_PASSWORD = 'http://www.tao.lu/Ontologies/TAO.rdf#BasicAuthPassword';
+}
