@@ -19,47 +19,14 @@
 
 namespace oat\tao\model\user\import;
 
-interface UserMapper
+use oat\tao\model\import\service\ImportMapperInterface;
+
+interface UserMapperInterface extends ImportMapperInterface
 {
-    const OPTION_SCHEMA = 'schema';
-    const OPTION_SCHEMA_MANDATORY = 'mandatory';
-    const OPTION_SCHEMA_OPTIONAL = 'optional';
-
-    /**
-     * Map CSV column to user properties
-     *
-     * @param array $data
-     * @throws \Exception
-     * @return UserMapper
-     */
-    public function map(array $data = []);
-
-    /**
-     * Merge some $extraProperties to already mapped properties
-     *
-     * @param array $extraProperties
-     * @return UserMapper
-     */
-    public function combine(array $extraProperties);
-
-    /**
-     * Check is current mapper achieve to extract data
-     *
-     * @return bool
-     */
-    public function isEmpty();
-
     /**
      * Get the plain password
      *
      * @return string|null
      */
     public function getPlainPassword();
-
-    /**
-     * Get user mapped properties
-     *
-     * @return array
-     */
-    public function getProperties();
 }
