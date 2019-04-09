@@ -18,22 +18,18 @@
  *
  */
 
-namespace oat\taoDeliveryRdf\test\model;
+namespace oat\taoDeliveryRdf\test\integration\model;
 
 use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\test\FileStorageTestCase;
+use oat\tao\test\integration\FileStorageTestCase;
 use oat\tao\test\TaoPhpUnitTestRunner;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use Prophecy\Argument;
-use Zend\ServiceManager\ServiceLocatorInterface;
+
+require_once dirname(__FILE__) .'/../../../../tao/includes/raw_start.php';
 
 class DeliveryAssemblyServiceTest extends FileStorageTestCase
 {
-    public function setUp()
-    {
-        \common_ext_ExtensionsManager::singleton()->getExtensionById('taoDeliveryRdf');
-        parent::setUp();
-    }
 
     /**
      * @dataProvider getResultsOfDeletion()
