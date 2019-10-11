@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TAO 3.4.0-sprint112\n"
-"PO-Revision-Date: 2019-10-11T09:17:26\n"
+"PO-Revision-Date: 2019-10-11T09:17:20\n"
 "Last-Translator: TAO Translation Team <translation@tao.lu>\n"
 "MIME-Version: 1.0\n"
-"Language: zh-CN\n"
+"Language: lt-LT\n"
 "sourceLanguage: en-US\n"
-"targetLanguage: zh-CN\n"
+"targetLanguage: lt-LT\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ../../\n"
@@ -14,453 +14,455 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 msgid " Fill in the gaps in a text from a set of choices."
-msgstr "从一组选择中填写文本中的空缺。"
+msgstr " Užpildyti tarpus su tekstu iš pasirikimų rinkinio."
 
 msgid " For Resource "
-msgstr ""
+msgstr " Resursui "
 
 msgid " or "
-msgstr ""
+msgstr " arba "
 
 msgid "%d characters allowed"
-msgstr ""
+msgstr "%d galimi ženklai"
 
 msgid "%d Item(s) of %d imported from the given IMS QTI Package."
-msgstr ""
+msgstr "%d Elementas(-ai) iš %d importuoti iš pateikto IMS QTI Paketo."
 
 msgid "%d/%d"
-msgstr ""
+msgstr "%d/%d"
 
 msgid "%s metadata values found in source by extractor(s)."
-msgstr ""
+msgstr "Rastos %s metaduomenų reikšmės šaltinyje pagal .ekstraktorių."
 
 msgid "-- Any kind of file --"
-msgstr "--任何类型的文件--"
+msgstr "-- Betkoks failas --"
 
 msgid "1 item imported from the given QTI/APIP XML Item Document."
-msgstr ""
+msgstr "1 elementas buvo importuotas iš pateikto QTI/APIP XML Elemento Dokumentas."
 
 msgid "A choice must be selected"
-msgstr "必须选择一个选项"
+msgstr "Variantas privalo būti pasirinktas"
 
 msgid "A human interpretation of the variable's value."
-msgstr ""
+msgstr "Žmogiška kintamojo reikšmės interpretacija."
 
 msgid "A QTI component is not supported. The system returned the following error: %s\n"
 ""
 msgstr ""
 
 msgid "A rubric block identifies part of an assessmentItem's itemBody that represents instructions to one or more of the actors that view the item. Although rubric blocks are defined as simpleBlocks they must not contain interactions."
-msgstr "指导语区块是一个题目的内容，也是给看题目的人使用的指示。 虽然专栏块被定义为简单的区块，他们不能与使用者有互动。"
+msgstr "Rubrikos blokas atpažįsta dalį assessmentItem - itemBody, kuris atstovauja instrukcijas vienam ar daugiau veiksmų, kurie atvaizduoja elementą. Nors rubrikos blokai yra numatyti simpleBlocks, jie neturi turėti jokių užduočių."
 
 msgid "Adapt to screen size"
-msgstr "调整到屏幕大小"
+msgstr "Prisitaikyti prie ekrano dydžio"
 
 msgid "Add"
-msgstr "添加"
+msgstr "Pridėti"
 
 msgid "Add a modal feedback"
-msgstr "添加一个模态反馈"
+msgstr "Pridėti modalinį atsiliepimą"
 
 msgid "Add a QTI/APIP XML Item Document"
-msgstr ""
+msgstr "Pridėti QTI/APIP XML Elemento Dokumentą"
 
 msgid "Add a ZIP file containing QTI/APIP items"
-msgstr ""
+msgstr "Pridėti ZIP failą turintį QTI/APIP elementus"
 
 msgid "Add another option"
-msgstr "添加另一个选项"
+msgstr "Pridėti kitą pasirinkimą"
 
 msgid "Add choice"
-msgstr "添加选项"
+msgstr "Pridėti variantą"
 
 msgid "Add else feedback"
-msgstr "添加其他建议"
+msgstr "Pridėti kitą atsiliepimą"
 
 msgid "Add new pairs"
-msgstr "添加配对选项"
+msgstr "Pridėti naujas poras"
 
 msgid "Add Style Sheet"
-msgstr "添加样式表"
+msgstr "Pridėti Stiliaus Lapą"
 
 msgid "Alignment"
-msgstr "对齐方式"
+msgstr "Lygiavimas"
 
 msgid "Allow elimination"
-msgstr ""
+msgstr "Leisti eliminavimą"
 
 msgid "Allowed associations"
-msgstr "准许的关联"
+msgstr "Leidžiami ryšiai"
 
 msgid "Allowed choices"
-msgstr "准许的选择"
+msgstr "Leidžiami variantąai"
 
 msgid "Allowed number of matches"
-msgstr "允许匹配数"
+msgstr "Leidžiamas kiekis sutapimų"
 
 msgid "Allowed number of uses"
-msgstr "允许使用次数"
+msgstr "Leistinas kiekis vartotojų"
 
 msgid "Alt Text"
-msgstr "替代文字"
+msgstr "Alternatyvus tekstas"
 
 msgid "An error occured while exporting an item."
-msgstr ""
+msgstr "Įvyko klaida eksportuojant elementą."
 
 msgid "An error occured while extracting the ZIP archive representing the IMS Content Package."
-msgstr "当在解压缩IMS内容包时，ZIP压缩文件发生了错误。"
+msgstr "Įvyko klaida išarchyvuojant ZIP archyvą, kuris atstovauja IMS Turinio Paketą."
 
 msgid "An error occured while loading a shared stimulus."
-msgstr "加载共用的刺激物时发生了发生错误。"
+msgstr "Įvyko klaida įkeliant bendrinamą stimulą."
 
 msgid "An error occured while parsing IMS QTI data."
-msgstr "在解析IMS QTI数据时发生错误。"
+msgstr "Įvyko klaida apdorojant IMS QTI duomenis."
 
 msgid "An error occurred at the level of the QTI model."
-msgstr ""
+msgstr "Įvyko klaida IMS QTI modelio lygmenyje."
 
 msgid "An unexpected error occured while dealing with Response Processing."
-msgstr "在处理回应时发生了错误。"
+msgstr "Įvyko netikėta klaida atliekant Atsakymo Apdorojimą."
 
 msgid "An unexpected error occurred during the import of the IMS QTI Item Package. "
-msgstr ""
+msgstr "Netikėta klaida įvyko IMS QTI Elemento Paketo importavimo metu."
 
 msgid "An unexpected error occurred during the import of the IMS QTI Item Package. The system returned the following error: \"%s"
-msgstr ""
+msgstr "Netikėta klaida įvyko IMS QTI Elemento Paketo importavimo metu. Sistema gražino šią klaidą: \"%s"
 
 msgid "An unexpected error occurred during the import of the QTI Item. The system returned the following error: %s\n"
 ""
-msgstr ""
+msgstr "Netikėta klaida įvyko QTI Elemento importavimo metu. Sistema gražino šią klaidą: \"%s\n"
+""
 
 msgid "An unknown error occured while importing the IMS QTI Package with identifier: "
-msgstr ""
+msgstr "Įvyko netikėta klaida importuojant IMS QTI Paketą su identifikatoriumi."
 
 msgid "APIP Content Package"
-msgstr ""
+msgstr "APIP Turinio Paketas"
 
 msgid "Apip Package successfully exported."
-msgstr ""
+msgstr "Apip Paketas sėkmingai išeksportuotas."
 
 msgid "Arrange a list of choices in the correct order."
-msgstr "按正确的顺序排列选项列表。"
+msgstr "Surikiuokite variantų sąrašą teisinga tvarka."
 
 msgid "Associate"
-msgstr "关联"
+msgstr "Asocijuoti"
 
 msgid "Associate Interaction"
-msgstr "关联互动"
+msgstr "Susiejimo Užduotis"
 
 msgid "association pairs"
-msgstr "关联配对"
+msgstr "ryšių poros"
 
 msgid "at least"
-msgstr "最少"
+msgstr "bent"
 
 msgid "Attempting to inject \"%s\" metadata values for target \"%s\" with metadata Injector \"%s\"."
-msgstr ""
+msgstr "Bandoma įterpti \"%s\" metaduomenų reikšmes šiam \"%s\" su \"%s\\n"
+"\"metaduomenų Injektoriumi."
 
 msgid "Autostart"
-msgstr "自动启动"
+msgstr "Automatiškai pradėti"
 
 msgid "Back to Manage Items"
-msgstr ""
+msgstr "Grįžti į Elementų Tvarkymą"
 
 msgid "Background color"
-msgstr "背景色彩"
+msgstr "Fono spalva"
 
 msgid "Base"
-msgstr ""
+msgstr "Pagrindas"
 
 msgid "Block"
-msgstr "区块"
+msgstr "Blokas"
 
 msgid "block"
-msgstr "区块"
+msgstr "blokas"
 
 msgid "Block contains the content (stimulus) of the item such as text or image. It is also required for Inline Interactions."
-msgstr "区块中含有题目内容(刺激物)，例如：文字或图片。 这是在线互动所需要的。"
+msgstr "Blokas sudarytas iš turinio (stimulus) elemento, kaip tekstas ar paveiksliukas. Tai taip pat privaloma Įterptoms Užduotims."
 
 msgid "Border color"
-msgstr "边界色彩"
+msgstr "Kraštinės spalva"
 
 msgid "Browse your computer and select the appropriate file."
-msgstr "浏览你的电脑，并选择文件。"
+msgstr "Naršyk savo kompiuterį ir pasirink atitinkamą failą."
 
 msgid "Browse..."
-msgstr "浏览..."
+msgstr "Naršyti..."
 
 msgid "Cancel"
-msgstr "取消"
+msgstr "Atšaukti"
 
 msgid "cancel"
-msgstr "取消"
+msgstr "atšaukti"
 
 msgid "Cannot create gap from this selection. Please check that you do not have partially selected elements."
-msgstr ""
+msgstr "Nepavyko sukurti tarpo iš šio pasirinkimo. Prašome patikrinti, ar jūs neturite dalinai pasirinktų elementų."
 
 msgid "Cannot delete a variable currently used in response processing"
-msgstr ""
+msgstr "Nepavyko ištrinti kintamojo, kuris naudojamas atsakymo apdorojime"
 
 msgid "Cannot edit a variable currently used in response processing"
-msgstr ""
+msgstr "Nepavyko redaguoti kintamojo, kuris naudojamas atsakymo apdorojime"
 
 msgid "cannot find QTI XML"
-msgstr ""
+msgstr "nepavyko rasti QTI XML"
 
 msgid "cannot load QTI XML"
-msgstr ""
+msgstr "nepavyko įkelti QTI XML"
 
 msgid "Cannot locate the file \"%s"
-msgstr ""
+msgstr "Nepavyko surasti failo \"%s"
 
 msgid "Center"
-msgstr ""
+msgstr "Centras"
 
 msgid "chars"
-msgstr "字符"
+msgstr "ženklai"
 
 msgid "Choice"
-msgstr "选择"
+msgstr "Pasirinkimas"
 
 msgid "Choice Image"
-msgstr "选择图片"
+msgstr "Pasirinkti Paveiksliuką"
 
 msgid "Choice Interaction"
-msgstr "选择的互动"
+msgstr "Pasirinkimo Užduotis"
 
 msgid "Choice Properties"
-msgstr "选择的属性"
+msgstr "Pasirinkti Savybes"
 
 msgid "Choices"
-msgstr "选择"
+msgstr "Pasirinkimai"
 
 msgid "choices"
-msgstr ""
+msgstr "pasirinkimai"
 
 msgid "Choose the horizontal alignment for the table."
-msgstr ""
+msgstr "Pasirinkite lentelei horizontalų lygiavimą."
 
 msgid "Class Lookup Successful. Resource \"%s\" will be stored in RDFS Class \"%s\"."
-msgstr ""
+msgstr "Klasės Peržiūra Sėkminga. Resursas \"%s\" bus patalpintas RDFS Klasėje \"%s\"."
 
 msgid "Class successfully created."
-msgstr ""
+msgstr "Klasė sėkmingai sukurta."
 
 msgid "Classification entries have to be an instance of ClassificationEntryMetadataValue"
-msgstr ""
+msgstr "Klasifikavimo įrašai privalo būti ClassificationEntryMetadataValue instancija"
 
 msgid "Classification metadata is required to be extracted."
-msgstr ""
+msgstr "Klasifikacijos metaduomenys yra reikalingi ištraukimui."
 
 msgid "Classification value to map has to a string"
 msgstr ""
 
 msgid "Click again to remove"
-msgstr "再点击一次以移除"
+msgstr "Spausk dar kartą, kad pašalinti"
 
 msgid "Click to display interaction widget"
-msgstr "点击以显示互动小部件"
+msgstr "Spauskite, kad parodytų užduoties plėtinį"
 
 msgid "Collect open-ended information in a short text input (strings or numeric values)."
-msgstr "使用输入短文字的方式来收集开放式资料(串或数字值)。"
+msgstr ""
 
 msgid "Collect open-ended information in one or more text area(s) (strings or numeric values)."
-msgstr "使用一个或多个文本字段的方式来收集开放式资料(串或数字值)。"
+msgstr ""
 
 msgid "Color Picker"
-msgstr "颜色挑选器"
+msgstr "Spalvos Pasirinkimas"
 
 msgid "Contraints"
-msgstr "约束"
+msgstr ""
 
 msgid "Control the playing parameters (auto-start, loop) of a video or audio file and report the number of time it has been played."
-msgstr "控制视频和音频的播放文件(自动播放，循环)再报告已播放的次数。"
+msgstr "Valdyk vaizdo arba garso įrašo failo atkūrimo nustatymus (automatinė paleistis, kartojimas) su ataskaita, kiek kartų buvo paleistas įrašas."
 
 msgid "correct"
-msgstr "正确"
+msgstr "teisingai"
 
 msgid "Correct"
-msgstr "正确"
+msgstr "Teisingai"
 
 msgid "Cosinus"
-msgstr ""
+msgstr "Kosinusas"
 
 msgid "Create assocations and fill the score in the form below"
-msgstr "创建关联然后在以下的表格填写比分"
+msgstr ""
 
 msgid "Create association(s) between areas (hotspots) displayed on a picture."
-msgstr "在显示的图片上创建区域(热点)之间的关联"
+msgstr "Sukurkite ryšius tarp plotų atvaizduotų paveikslėlyje."
 
 msgid "Create association(s) between two sets of choices displayed in a table (row and column)."
-msgstr "在表(行和列)显示的两组选择中创建关联。"
+msgstr "Sukurkite ryšius tarp dviejų rinkinių pasirinkimų atvaizduotų lentelėje (stulpelis ir eilutė)."
 
 msgid "Create gap"
-msgstr "建立空格"
+msgstr "Sukurti tarpą"
 
 msgid "Create hottext"
-msgstr "建立突出文字"
+msgstr "Sukurti karštąjį tekstą"
 
 msgid "Create pair(s) from a series of choices."
-msgstr "从一系列的选择创建对组"
+msgstr "Sukurti porą(–as) iš pasirinkimų serijos."
 
 msgid "CSV file"
-msgstr "CSV 文件"
+msgstr "CSV failas"
 
 msgid "Current value:"
-msgstr "当前值："
+msgstr "Dabartinė reikšmė:"
 
 msgid "Currently conversion from MathML to LaTeX is not available. Editing MathML here will have the LaTex code discarded."
-msgstr "目前，不可从MathML转换到LaTeX。 在这里编辑MathML会丢弃LaTeX的代码。"
+msgstr "Šiuo metu konversija iš MathML į LaTeX nėra galima. Redaguojant MathML čia, LaTeX kodas bus atmestas."
 
 msgid "custom"
-msgstr ""
+msgstr "pasirinktinas"
 
 msgid "Custom Response Processing Mode"
-msgstr "订制回应处理模式"
-
-msgid "Default"
-msgstr "默认值"
-
-msgid "default"
-msgstr "默认值"
-
-msgid "Define correct response"
-msgstr "设定正确回应"
-
-msgid "Define item language."
 msgstr ""
 
+msgid "Default"
+msgstr "Numatytas"
+
+msgid "default"
+msgstr "numatytas"
+
+msgid "Define correct response"
+msgstr "Nustatyti teisingą atsakymą"
+
+msgid "Define item language."
+msgstr "Nustatyti elemento kalbą."
+
 msgid "define prompt"
-msgstr "设定提示"
+msgstr "nustatyti pranešimą"
 
 msgid "Define the correct response."
-msgstr "设定正确回应。"
+msgstr "Nustatyti teisingą atsakymą."
 
 msgid "Define whether a choice must be selected by the candidate in order to form a valid response to the interaction."
-msgstr "设定考生是否需要选一个选择，才能成立一个有效应得回应。"
+msgstr "Nurodyti ar pasirinkimas privalo būti pasirinktas kandidato, kad būtų suformuotas taisyklis užduoties atsakymas."
 
 msgid "Define whether the item should be time dependent on delivery."
-msgstr "设定当在递送时，题目是否有记考生载累计运行的时间。"
+msgstr "Nustatyti kada elementas turėtų būti priklausomas nuo laiko pateiktyje."
 
 msgid "Defined width"
-msgstr "限定的阔度"
+msgstr "Nustatytas plotis"
 
 msgid "Defines the maximum magnitude of numeric outcome variables, the maximum must be a positive value and the minimum may be negative."
 msgstr ""
 
 msgid "Delete"
-msgstr ""
+msgstr "Ištrinti"
 
 msgid "delete"
-msgstr "删除"
+msgstr "ištrinti"
 
 msgid "Delete else statement"
-msgstr "删除else语句"
+msgstr ""
 
 msgid "Delete this modal feedback"
-msgstr "删除这个模式反馈"
+msgstr "Ištrinti modalinį atsiliepimą"
 
 msgid "Delimiter"
-msgstr ""
+msgstr "Skirtukas"
 
 msgid "Description"
-msgstr "描述"
+msgstr "Aprašymas"
 
 msgid "Disable this stylesheet temporarily"
-msgstr "暂时禁用这个样式表"
+msgstr "Išjungti šį stilių laikinam"
 
 msgid "Display"
-msgstr "显示"
+msgstr "Rodyti"
 
 msgid "Display the choices either horizontally or vertically"
-msgstr ""
+msgstr "Rodyti variantus horizontaliai arba vertikaliai"
 
 msgid "Divide"
-msgstr ""
+msgstr "Dalinti"
 
 msgid "Don\'t save"
 msgstr ""
 
 msgid "Done"
-msgstr ""
+msgstr "Atlikta"
 
 msgid "done"
-msgstr "完成"
+msgstr "atlikta"
 
 msgid "Download this stylesheet"
-msgstr "下载这个样式表"
+msgstr "Atsiųsti šį stilių"
 
 msgid "Draw a circle on the image"
-msgstr "在图片上画圆圈"
+msgstr "Piešti apskritimą ant paveiksliuko"
 
 msgid "Draw a free form on the image"
-msgstr "在图上画自由形式"
+msgstr "Piešti laisvą formą ant paveiksliuko"
 
 msgid "Draw a rectangle on the image"
-msgstr "在图上画长方形"
+msgstr "Piešti keturkampį ant paveiksliuko"
 
 msgid "Draw an ellipsis on the image"
-msgstr "在图上画椭圆形"
+msgstr "Piešti elipsę ant paveiksliuko"
 
 msgid "Drop the target to select a point"
-msgstr "把目标放 ​​在所选的点"
+msgstr "Numesk, kad pasirinktum tašką"
 
 msgid "e.g. 13"
-msgstr "例如：13"
+msgstr "pvz.: 13"
 
 msgid "e.g. 960"
-msgstr "例如：960"
+msgstr "pvz.: 960"
 
 msgid "Edit"
-msgstr ""
+msgstr "Keisti"
 
 msgid "edit choices"
-msgstr "编辑选择"
+msgstr "keisti variantus"
 
 msgid "Edit math expression using LaTex type setting system, e.g. e^{i \pi} = -1"
-msgstr "用LaTeX type setting系统来编辑数学表达式。 例如：e^{i \\ pi} = -1"
+msgstr ""
 
 msgid "Edit math expression using MathML"
-msgstr "用MathML来编辑数学表达式"
+msgstr "Redaguoti matematinę išraišką naudojant MathML"
 
 msgid "Edit modal feedback"
 msgstr ""
 
 msgid "Edit modal feedback title"
-msgstr "编辑模式反馈标题"
+msgstr "Redaguoti modalinio atsiliepimo pavadinimą"
 
 msgid "Edit stylesheet label"
-msgstr "编辑样式表标签"
+msgstr "Redaguoti stiliaus šablono pavadinimą"
 
 msgid "Editing Mode"
-msgstr "编辑模式"
+msgstr "Redagavimo Režimas"
 
 msgid "Element Properties"
-msgstr "元素属性"
+msgstr "Elemento Savybės"
 
 msgid "elements"
-msgstr "元素"
+msgstr "elementai"
 
 msgid "Eliminate"
-msgstr ""
+msgstr "Eliminuoti"
 
 msgid "Enable the test taker to pause and restart the playing."
-msgstr "允许考生暂停并重新启动播放。"
+msgstr "Leisti testo laikytojui pristabdyti arba paleisti iš naujo atkūrimą."
 
 msgid "End Attempt"
-msgstr "结束考试"
+msgstr "Baigti Bandymą"
 
 msgid "End Attempt Interaction"
-msgstr "结束考试互动"
+msgstr "Užbaigimo Užduotis"
 
 msgid "Enlarge font size"
-msgstr "放大字型大小"
+msgstr "Padidinti šriftą"
 
 msgid "Enter a select MIME-type"
-msgstr ""
+msgstr "Įveskite pasirinktiną MIME-tipą"
 
 msgid "Enter choices…"
-msgstr ""
+msgstr "Įveskite variantus…"
 
 msgid "Enter tooltip content"
 msgstr ""
@@ -469,543 +471,545 @@ msgid "Enter tooltip target"
 msgstr ""
 
 msgid "Error on item %1$s : %2$s"
-msgstr ""
+msgstr "Klaida elemente %1$s : %2$s"
 
 msgid "Error on item %s"
-msgstr ""
+msgstr "Klaida elemente %s"
 
 msgid "Error to export item %s: %s"
-msgstr ""
+msgstr "Klaida eksportuojant elementą %s: %s"
 
 msgid "Euler\'s constant"
 msgstr ""
 
 msgid "Exponent"
-msgstr ""
+msgstr "Eksponentas"
 
 msgid "Export"
-msgstr "导出"
+msgstr "Eksportuoti"
 
 msgid "Export APIP 1.0 Package"
-msgstr "导出 APIP 1.0 包"
+msgstr "Eksportuoti APIP 1.0 Paketą"
 
 msgid "Export failed for the item \"%s\": %s"
-msgstr ""
+msgstr "Eksportavimas nepavyko elementui \"%s\": %s"
 
 msgid "Export metadata"
-msgstr ""
+msgstr "Eksportuoti metaduomenis"
 
 msgid "Export metadata item"
-msgstr ""
+msgstr "Eksportuoti elemento meta duomenis"
 
 msgid "Export QTI 2.1 Package"
-msgstr "导出 QTI 2.1包"
+msgstr "Eksportuoti QTI 2.1 Paketą"
 
 msgid "Export QTI 2.2 Package"
-msgstr ""
+msgstr "Eksportuoti QTI 2.2 Paketą"
 
 msgid "Extended Text"
-msgstr "长文本"
+msgstr "Išplėstas Tekstas"
 
 msgid "Extended Text Interaction"
-msgstr "长文本互动"
+msgstr "Išplėsto Teksto Užduotis"
 
 msgid "Fail to export item"
-msgstr ""
+msgstr "Nepavyko eksportuoti elemento"
 
 msgid "Failed to publish %1$s in %2$s"
-msgstr ""
+msgstr "Nepavyko paskelbti %1$s į %2$s"
 
 msgid "Failed to save item"
-msgstr "无法储存题目"
+msgstr "Nepavyko išsaugoti elemento"
 
 msgid "Feedback"
-msgstr "回馈"
+msgstr "Atsiliepimas"
 
 msgid "Feedback Style"
-msgstr ""
+msgstr "Atsiliepimo Stilius"
 
 msgid "Field"
-msgstr ""
+msgstr "Laukas"
 
 msgid "File"
-msgstr "文件"
+msgstr "Failas"
 
 msgid "File name"
-msgstr "文件名"
+msgstr "Failo pavadinimas"
 
 msgid "File Upload"
-msgstr "上传文件"
+msgstr "Failo Įkėlimas"
 
 msgid "File Upload Interaction"
-msgstr "上传文件的互动"
+msgstr "Failo Įkėlimo Užduotis"
 
 msgid "Fill in the gaps on a picture with a set of image choices."
-msgstr "在空格中填充的一组选择的图像的图片。"
+msgstr "Užpildyti tarpus su paveiksliuku iš paveiksliukų pasirikimų rinkinio."
 
 msgid "Flash video"
-msgstr "Flash视讯"
+msgstr "Flash vaizdo įrašas"
 
 msgid "Font family"
-msgstr "字型家族"
+msgstr "Šrifto šeima"
 
 msgid "Font size"
-msgstr "字型大小"
+msgstr "Šrifto dydis"
 
 msgid "Format"
-msgstr "格式"
+msgstr "Formatas"
 
 msgid "Fraction"
-msgstr ""
+msgstr "Frakcija"
 
 msgid "Gap"
-msgstr "空格"
+msgstr "Tarpas"
 
 msgid "Gap Match"
-msgstr "空格匹配"
+msgstr ""
 
 msgid "Gap Match Interaction"
-msgstr "空格匹配互动"
+msgstr ""
 
 msgid "GIF image"
-msgstr "GIF 图像"
+msgstr "GIF paveikslėlis"
 
 msgid "Graphic Associate Interaction"
-msgstr "图像相连互动"
+msgstr "Grafinės Asociacijos Užduotis"
 
 msgid "Graphic Gap Match Interaction"
-msgstr "图像空格匹配互动"
+msgstr ""
 
 msgid "Graphic Order Interaction"
-msgstr "图像顺序互动"
+msgstr "Grafinė Eiliškumo Užduotis"
 
 msgid "Greater than or equal"
-msgstr ""
+msgstr "Daugiau negu arba lygu"
 
 msgid "Guard for resource \"%s\"..."
-msgstr ""
+msgstr "Apsauga resursui \"%s\"..."
 
 msgid "Height"
-msgstr "长度"
+msgstr "Aukštis"
 
 msgid "Horizontal"
-msgstr ""
+msgstr "Horizontalus"
 
 msgid "Hotspot"
-msgstr "热点"
+msgstr "Karštas taškas"
 
 msgid "Hotspot Interaction"
-msgstr "热点互动"
+msgstr "Karšto-taško Užduotis"
 
 msgid "Hottext"
-msgstr "突出文本"
+msgstr "Karštas tekstas"
 
 msgid "Hottext Interaction"
-msgstr "突出文本互动"
+msgstr "Karšto-teksto Užduotis"
 
 msgid "How the math expression should be displayed."
-msgstr "如何显示数学表达式"
+msgstr "Kaip matematinė išraiška turėtų būti atvaizduojama."
 
 msgid "How the math expression should be edited"
-msgstr "如何编辑数学表达式"
+msgstr "Kaip matematinė išraiška turėtų būti redaguojama"
 
 msgid "identical pair already exists"
-msgstr "相同的对已经存在"
+msgstr "identiška pora jau yra"
 
 msgid "Identifier"
-msgstr "识别码"
+msgstr "Identifikatorius"
 
 msgid "identifier"
-msgstr "识别码"
+msgstr "identifikatorius"
 
 msgid "identifier already taken"
-msgstr ""
+msgstr "identifikatorius jau užimtas"
 
 msgid "If given, the pattern mask specifies a regular expression that the candidate's response must match in order to be considered valid"
-msgstr "如有图样面具，考生的回应必须要与正则表达式相应，这样考生的回应才能列为有效的。"
+msgstr "Jeigu pateikta, šablonas nurodo įprastą išraišką, kuriai kandidato atsakymas privalo atitikti, kad būtu laikomas teisingu"
 
 msgid "If the string interaction is bound to a numeric response variable then the base attribute must be used to set the number base in which to interpret the value entered by the candidate."
-msgstr "如果字符串的互动被限制为数字回应，那基本属性必须被使用来设置基数，这也是用来解释由考生输入的值。"
+msgstr ""
 
 msgid "If the variable value is a float and powerForm is set to 'false', the variable will be rendered using the 'e' or 'E' format. If the powerform is set to 'true', the form 'e+n' is changed to 'x 10n'."
 msgstr ""
 
 msgid "If this box is checked the student will be able to eliminate choices."
-msgstr ""
+msgstr "Pasirinkus šį nustatymą - studentas galės pašalinti pasirinkimus."
 
 msgid "Import"
-msgstr "导入"
+msgstr "Importuoti"
 
 msgid "Import a QTI/APIP Content Package"
-msgstr ""
+msgstr "Importuoti QTI/APIP Turinio Paketą"
 
 msgid "Import a QTI/APIP XML Item Document"
-msgstr ""
+msgstr "Importuoti QTI/APIP XML Elemento Dokumentą"
 
 msgid "Import QTI ITEM into \"%s"
-msgstr ""
+msgstr "Importuoti QTI Elementą į \"%s"
 
 msgid "IMS QTI Item referenced as \"%s\" contains a portable element and cannot be imported."
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" turi kilnojamą elementą ir negali būti importuotas."
 
 msgid "IMS QTI Item referenced as \"%s\" in the IMS Manifest file could not be imported."
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" IMS Manifesto faile negali būti importuotas."
 
 msgid "In Progress"
-msgstr ""
+msgstr "Vykdoma"
 
 msgid "In seconds. Delay during which the replay of the media is allowed. Once reached, the media is disabled and cannot be played anymore."
-msgstr ""
+msgstr "Sekundėmis. Delsa, per kurią atkūrimas iš naujo yra leidžiamas. Kai pasiektas, medija yra nebeleidžiama ir negali būti atkurta."
 
 msgid "In visual environments, string interactions are typically represented by empty boxes into which the candidate writes or types.  Delivery engines should use the value of this attribute (if provided) instead of their default placeholder text when this is required."
-msgstr "在可视化的环境中，字符串互动通常由空框表示。 考生把回应输入到空框里。 递送器应该使用这个属性的值(如果有的话) ，而不是使用它们的默认占位符文。"
+msgstr "Vaizdinėje aplinkoje, tekstinės užduotys tipiškai yra tos, kurias kandidatas įrašo.  Pateikties variklis turėtų naudoti reikšmę šios savybės (jeigu ji pateikta), vietoj numatyto teksto, kai tai yra reikalaujama."
 
 msgid "incorrect"
-msgstr "不对"
+msgstr "neteisingas"
 
 msgid "Index"
-msgstr ""
+msgstr "Indeksas"
 
 msgid "Infinity"
-msgstr ""
+msgstr "Begalybė"
 
 msgid "inline"
-msgstr "行内"
+msgstr "įterptas"
 
 msgid "Inline Choice"
-msgstr "行内选择"
+msgstr "Įterptas Pasirinkimas"
 
 msgid "Inline Choice Interaction"
-msgstr "行内选择互动"
+msgstr "Įterpto Pasirinkimo Užduotis"
 
 msgid "Inline interactions need to be inserted into a text block."
-msgstr "行内互动需要被插入到文本块中。"
+msgstr "Įterptos užduotis turi būti įdėtos į teksto bloką."
 
 msgid "Interaction Background"
-msgstr "互动背景"
+msgstr "Užduoties Fonas"
 
 msgid "Interaction Properties"
-msgstr "互动属性"
+msgstr "Užduoties Savybės"
 
 msgid "Interpretation"
-msgstr ""
+msgstr "Interpretacija"
 
 msgid "invalid identifier"
-msgstr "无效的识别符"
+msgstr "blogas identifikatorius"
 
 msgid "invalid QTI XML"
-msgstr ""
+msgstr "blogas QTI XML"
 
 msgid "Is this choice the correct response?"
-msgstr "这个选择是对的答案吗？"
+msgstr "Ar šis pasirinkimas yra teisingas atsakymas?"
 
 msgid "Is this pair the correct response?"
-msgstr "这一对是正确的答案吗？"
+msgstr "Ar ši pora yra teisingas atsakymas?"
 
 msgid "Item \"%s\" cannot be exported: %s"
-msgstr ""
+msgstr "Elementas \"%s\" negali būti eksportuotas: %s"
 
 msgid "Item \"%s\" has no xml document"
-msgstr ""
+msgstr "Elementas \"%s\" neturi xml dokumento"
 
 msgid "Item \"%s\" is not available in any language"
-msgstr ""
+msgstr "Elementas \"%s\" nepasiekiamas jokia kalba"
 
 msgid "Item \"%s\" is ready to be exported"
-msgstr ""
+msgstr "Elementas \"%s\" paruoštas būti eksportuotam"
 
 msgid "Item metadata successfully exported."
-msgstr ""
+msgstr "Elemento meta duomenys sėkmingai išeksportuoti."
 
 msgid "Item metadata with identifier \"%s\" is not valid: "
-msgstr ""
+msgstr "Elemento meta duomenys su identifikatoriumi \"%s\" nėra teisingi: "
 
 msgid "Item properties"
-msgstr "题目属性"
+msgstr "Elemento savybės"
 
 msgid "Item Properties"
-msgstr "题目属性"
+msgstr "Nuotraukos Savybės"
 
 msgid "Item width"
-msgstr "题目阔度"
+msgstr "Elemento plotis"
 
 #, tao-public
 msgid "Items"
-msgstr "题目"
+msgstr "Elementai"
 
 msgid "JPEG image"
-msgstr "JPEG图片"
+msgstr "JPEG paveiksliukas"
 
 msgid "Label"
-msgstr "标签"
+msgstr "Pavadinimas"
 
 msgid "Language"
-msgstr ""
+msgstr "Kalba"
 
 msgid "Large editor"
-msgstr ""
+msgstr "Didelis redaguoklis"
 
 msgid "Latex"
-msgstr "LaTeX"
+msgstr "Latex"
 
 msgid "LaTeX"
-msgstr ""
+msgstr "LaTeX"
 
 msgid "leave empty"
-msgstr "留空"
+msgstr "palikti tuščią"
 
 msgid "Left"
-msgstr "左"
+msgstr "Kairė"
 
 msgid "left"
-msgstr "左"
+msgstr "kairė"
 
 msgid "Left bracket"
-msgstr ""
+msgstr "Kairys skliaustas"
 
 msgid "Length"
-msgstr "长度"
+msgstr "Ilgis"
 
 msgid "Level"
-msgstr ""
+msgstr "Lygis"
 
 msgid "Lines"
-msgstr "线"
+msgstr "Linijos"
 
 msgid "List Style"
-msgstr "列表样式"
+msgstr "Sąrašo Stilius"
 
 msgid "Ln"
-msgstr ""
+msgstr "Ln"
 
 msgid "Log"
-msgstr ""
+msgstr "Žurnalas"
 
 msgid "Loop"
-msgstr "循环"
+msgstr "Ciklas"
 
 msgid "Lower Bound"
-msgstr "下限"
+msgstr "Apatinė Riba"
 
 msgid "Lower than or equal"
-msgstr ""
+msgstr "Mažiau negu arba lygu"
 
 msgid "Malformed XML[%s]:\n"
 "%s"
-msgstr ""
+msgstr "Klaidingas XML[%s]:\n"
+"%s"
 
 #, tao-public
 msgid "Manage items"
-msgstr "管理题目"
+msgstr "Tvarkyti elementus"
 
 msgid "Manage Items"
-msgstr "管理题目"
+msgstr "Tvarkyti Elementus"
 
 msgid "map response"
 msgstr ""
 
 msgid "Mapping default"
-msgstr "默认映射"
+msgstr ""
 
 msgid "Mapping Indicator"
 msgstr ""
 
 msgid "Match"
-msgstr "匹配"
+msgstr "Sutapimas"
 
 msgid "match correct"
-msgstr ""
+msgstr "Pilnas teisingas"
 
 msgid "Match Interaction"
-msgstr "匹配互动"
+msgstr "Sutapimų Užduotis"
 
 msgid "MathJax is not installed."
-msgstr "MathJax 还未安装。"
+msgstr "MathJax neįdiegtas."
 
 msgid "MathML"
 msgstr "MathML"
 
 msgid "Max"
-msgstr "最大值"
+msgstr "Maks"
 
 msgid "Max Length"
-msgstr "最大长度"
+msgstr "Maks. Ilgis"
 
 msgid "Max length"
-msgstr "最大长度"
+msgstr "Maks. ilgis"
 
 msgid "Max plays count"
-msgstr ""
+msgstr "Maks. paleidimų kiekis"
 
 msgid "Max Words"
-msgstr "最多字数"
+msgstr "Maks. Žodžių"
 
 msgid "Max words"
-msgstr "最多字数"
+msgstr "Maks. žodžių"
 
 msgid "Max. number of matches"
-msgstr "最多的匹配"
+msgstr "Maks. kiekis sutapimų"
 
 msgid "Maximal score for this interaction."
-msgstr "这个互动的最高分数。"
+msgstr "Maksimalūs balai šiai užduočiai."
 
 msgid "maximum"
-msgstr "最大上限"
+msgstr "maksimalus"
 
 msgid "Maximum choices reached"
-msgstr "已达到最多选择数量的限制"
+msgstr "Jau pasirinkote didžiausią leidžiamą kiekį variantų"
 
 msgid "Maximum number of choices reached."
-msgstr "已达到最多选择数量的限制。"
+msgstr "Jau pasirinkote didžiausią leidžiamą kiekį variantų"
 
 msgid "Media"
-msgstr "媒体"
+msgstr "Medija"
 
 msgid "Media file path or YouTube video address"
-msgstr "媒体文件路径或YouTube视频地址"
+msgstr "Medijos failo kelias arba YouTube vaizdo įrašo adresas"
 
 msgid "Media Interaction"
-msgstr "媒体互动"
+msgstr "Medijos Užduotis"
 
 msgid "Metadata export requires an instance of core_kernel_classes_Resource to extract metadata"
-msgstr ""
+msgstr "Meta duomenų eksportavimui reikalinga core_kernel_classes_Resource instancija, kad išeksportuoti meta duomenis"
 
 msgid "Metadata export requires an instance of DomManifest to inject metadata"
-msgstr ""
+msgstr "Meta duomenų eksportavimui reikalinga DomManifest instancija, kad įterpti meta duomenis"
 
 msgid "Metadata import requires an instance of core_kernel_classes_Resource to inject metadata"
-msgstr ""
+msgstr "Meta duomenų eksportavimui reikalinga core_kernel_classes_Resource instancija, kad įterpti meta duomenis"
 
 msgid "Metadata import requires an instance of DomManifest to extract metadata"
-msgstr ""
+msgstr "Meta duomenų eksportavimui reikalinga DomManifest instancija, kad įterpti meta duomenis"
 
 msgid "Microsoft Excel"
 msgstr "Microsoft Excel"
 
 msgid "Microsoft Powerpoint"
-msgstr "Microsoft PowerPoint"
+msgstr "Microsoft Powerpoint"
 
 msgid "Microsoft Word"
 msgstr "Microsoft Word"
 
 msgid "MIME-type"
-msgstr "MIME 类型"
+msgstr "MIME tipas"
 
 msgid "Min"
-msgstr "最低"
+msgstr "Min."
 
 msgid "Minimal  score for this interaction."
-msgstr "这个互动的最低分数。"
+msgstr "Minimalūs balai šiai užduočiai."
 
 msgid "Modal feedback is shown to the candidate directly following response processing."
-msgstr "回应处理后，模态反馈将会显示给考生看。"
+msgstr "Modalinis atsiliepimas yra rodomas kandidatui tiesiogiai sekant atsakymo apdorojimą."
 
 msgid "Modal Feedback Prop."
-msgstr "模态反馈道具。"
+msgstr ""
 
 msgid "Modal Feedbacks"
-msgstr "模态反馈"
+msgstr "Modaliniai Atsiliepimai"
 
 msgid "MP4 video"
-msgstr "模态反馈"
+msgstr "MP4 vaizdo įrašas"
 
 msgid "MPEG audio"
-msgstr "MPEG音效档"
+msgstr "MPEG garso įrašas"
 
 msgid "MPEG video"
-msgstr "MPEG影音档"
+msgstr "MPEG vaizdo įrašas"
 
 msgid "Multiply"
-msgstr ""
+msgstr "Dauginti"
 
 msgid "negative"
-msgstr ""
+msgstr "negatyvus"
 
 #, tao-public
 msgid "New item"
-msgstr "新增题目"
+msgstr "Naujas elementas"
 
 msgid "No"
-msgstr "否"
+msgstr "Ne"
 
 msgid "no configuration property needed"
-msgstr "没有组态属性的需要"
+msgstr "nereikalaujama konfigūracijos savybė"
 
 msgid "No file selected"
-msgstr "未选取任何文件"
+msgstr "Joks failas nepasirinktas"
 
 msgid "no item content"
-msgstr ""
+msgstr "nėra elemento turinio"
 
 msgid "No Items could be imported from the given IMS QTI package."
-msgstr "没有题目可以从所选择的IMS QTI包导入。"
+msgstr "Joks Elementas negali būti importuotas iš pateikto IMS QTI paketo."
 
 msgid "No preview available"
-msgstr ""
+msgstr "Nėra galimos peržiūros"
 
 msgid "No value set"
-msgstr "没有设定数值"
+msgstr "Nenustatyta jokia reikšmė"
 
 msgid "None"
-msgstr "无"
+msgstr "Nėra"
 
 msgid "none"
-msgstr ""
+msgstr "nėra"
 
 msgid "None defined yet."
-msgstr "还未定义。"
+msgstr "Niekas nenustatyta."
 
 msgid "not a QTI item"
-msgstr ""
+msgstr "tai ne QTI elementas"
 
 msgid "Number of associations"
-msgstr "相连的数量"
+msgstr "Ryšių kiekis"
 
 msgid "of"
-msgstr "的"
+msgstr "iš"
 
 msgid "OK"
-msgstr ""
+msgstr "Gerai"
 
 msgid "one association pair"
-msgstr "一对组合"
+msgstr "vienas ryšys per porą"
 
 msgid "One or more QTI components are not supported by the system. The system returned the following error: %s\n"
 ""
-msgstr ""
+msgstr "Vienas ar daugiau QTI komponentų nėra palaikomas sistemos. Sistema gražino šią klaidą: %s\n"
+""
 
 msgid "Order"
-msgstr "排序"
+msgstr "Eiliškumas"
 
 msgid "Order Interaction"
-msgstr "排序互动"
+msgstr "Eiliškumo Užduotis"
 
 msgid "Order the areas (hotspots) displayed on a picture."
-msgstr "在图片上排列这些区域(热点)。"
+msgstr ""
 
 msgid "Orientation"
-msgstr ""
+msgstr "Orientacija"
 
 msgid "Outcome Declarations"
 msgstr ""
 
 msgid "Pair scoring"
-msgstr "对得分"
+msgstr "Poros vertinimas"
 
 msgid "Pattern"
-msgstr "样式"
+msgstr "Šablonas"
 
 msgid "Pause"
-msgstr "暂停"
+msgstr "Pristabdyti"
 
 msgid "PDF file"
-msgstr "PDF文件"
+msgstr "PDF failas"
 
 msgid "Pi"
-msgstr ""
+msgstr "Pi"
 
 msgid "Plain text"
-msgstr "纯文字"
+msgstr "Paprastas tekstas"
 
 msgid "Please add one or more gaps to the text in question mode."
 msgstr ""
@@ -1015,427 +1019,427 @@ msgid "Please create areas that correspond to the response and associate them a 
 msgstr ""
 
 msgid "Please define association pairs and their scores below."
-msgstr "您也可以定位目标到精确点作为正确的回应。"
+msgstr "Prašome nurodyti ryšių poras ir jų taškus žemiau."
 
 msgid "Please define the correct association pairs below."
-msgstr "请定义以下正确的关联配对。"
+msgstr "Prašome nurodyti teisingas ryšių poras žemiau."
 
 msgid "Please define the correct order in the box to the right."
-msgstr "请在右侧的框中定义该正确顺序。"
+msgstr "Prašome nurodyti teisingą asociacijų porų tvarką lentelėje dešinėje."
 
 msgid "Please define the correct response and the score below."
-msgstr "请定义以下的正确回应和分数。"
+msgstr "Prašome nurodyti teisingą atsakymą ir taškus žemiau."
 
 msgid "Please define the correct response below."
-msgstr "请定义以下的正确回应。"
+msgstr "Prašome nurodyti teisingą atsakymą žemiau."
 
 msgid "Please define the correct response using the slider."
-msgstr "请用滑动钮定义正确的回应。"
+msgstr "Prašome nurodyti teisingą atsakymą naudojant slankiklį."
 
 msgid "Please enter the score for the given hottexts."
-msgstr "请输入突出文本的比分。"
+msgstr ""
 
 msgid "Please fill the gap with the correct choices below."
-msgstr "请在空格填写以下的正确选择。"
+msgstr "Prašome užpildyti tarpą su teisingu atsakymu apačioje."
 
 msgid "Please fill the gap with the correct choices."
-msgstr "请在空格中填写正确的选择。"
+msgstr "Prašome užpildyti tarpą su teisingais pasirinkimais."
 
 msgid "Please fill the gap with the images below, then edit the score for each gap/image pair."
-msgstr "请在空格填充以下的图像，然后编辑每一个空格或图像配对的分数。"
+msgstr "Prašome užpildyti tarpą su paveiksliuku apačioje, tada redaguokite įvertinimą kiekvienai tarpo/paveiksliuko porai."
 
 msgid "Please fill the gap with the texts below, then edit the score for each pair."
-msgstr "请在空格填写以下的文字，然后编辑每一对的分数。"
+msgstr "Prašome užpildyti tarpą su tekstu apačioje, tada redaguokite įvertinimą kiekvienai porai."
 
 msgid "Please order the choices below to set the correct answer"
-msgstr "请顺序以下的选项从而设置正确的答案"
+msgstr "Prašome surikiuoti variantus apačioje, kad nustatytumėte teisingą atsakymą."
 
 msgid "Please select a media file (video or audio) from the resource manager. You can add files from your computer with the button \"Add file(s)\"."
-msgstr "请从资源管理器中选择一个媒体文件(视频或音频).你可以从你的计算机有按钮\"添加文件\"中添加新的文件。"
+msgstr "Prašome pasirinkti medijos failą (vaizdo arba garso) iš resursų tvarkytojo. Jūs galite pridėti failus iš jūsų kompiuterio su mygtuku \"Pridėti failą(-us)\"."
 
 msgid "Please select a media file from the resource manager. You can add files from your computer with the button \"Add file(s)\"."
-msgstr ""
+msgstr "Prašome pasirinkti medijos failą iš resursų tvarkytojo. Jūs galite pridėti failus iš jūsų kompiuterio su mygtuku „Pridėti failą(-us)“."
 
 msgid "Please select a shared stimulus file from the resource manager."
-msgstr "请从资源管理器选一个共用的刺激物档案."
+msgstr "Prašome pasirinkti bendrinamo stimulo failą iš resursų tvarkytojo."
 
 msgid "Please select an image file from the resource manager. You can add files from your computer with the button \"Add file(s)\"."
-msgstr "请从资源管理器中选择一个图像文档。 你可以在你的计算机有按钮\"添加档案\"中添加新的档案。"
+msgstr "Prašome pasirinkti paveiksliuko failą iš resursų tvarkytojo. Jūs galite pridėti failus iš jūsų kompiuterio su mygtuku „Pridėti failą(-us)“."
 
 msgid "Please select the correct hotspot choices below."
-msgstr "请选择以下正确的热点选项。"
+msgstr "Prašome pasirinkti teisingus karšto taško pasirinkimus apačioje."
 
 msgid "Please select the correct hottext choices below."
-msgstr "请选择以下正确的突出文本的选项。"
+msgstr "Prašome pasirinkti teisingus karšto teksto pasirinkimus apačioje."
 
 msgid "Please set the correct associations by linking the choices."
-msgstr "请通过链接的选择设定正确的关联。"
+msgstr "Prašome nustatyti teisingus ryšius sujungdami pasirinkimus."
 
 msgid "Please the score of each hotspot choice."
-msgstr "请各热点选择得分。"
+msgstr ""
 
 msgid "Please type the correct response below."
-msgstr "请输入以下正确的回应。"
+msgstr "Prašome įvesti teisingą atsakymą apačioje."
 
 msgid "Please type the correct response in the box below."
-msgstr "请在下面的框中输入正确的回应。"
+msgstr "Prašome įvesti teisingą atsakymą ploto apačioje."
 
 msgid "PNG image"
-msgstr "PNG图像"
+msgstr "PNG paveiksliukas"
 
 msgid "Portable element model %s not found. Required extension might be missing"
-msgstr ""
+msgstr "Portatyvus elemento modelis %s nerastas. Reikalaujamas plėtinys galbūt nerastas"
 
 msgid "Position one or more points on a picture (response areas are not displayed)."
-msgstr "在图片上定位一个或多个点(反应区域不能显示)。"
+msgstr "Paženklinti vieną arba daugiau taškų paveikslėlyje (pasirinkimų laukai nėra atvaizduoti)."
 
 msgid "positive"
-msgstr ""
+msgstr "pozityvus"
 
 msgid "Power form"
 msgstr ""
 
 msgid "Pre-formatted text"
-msgstr "预格式化文本"
+msgstr "Prieš-formatuotas tekstas"
 
 msgid "Preparing CSS, please wait…"
-msgstr "正在预备CSS，请稍后。 。 。"
+msgstr "Ruošiamas CSS, prašome palaukti…"
 
 msgid "Preparing Metadata Values for target \"%s\"..."
-msgstr ""
+msgstr "Ruošiamos Metaduomenų Reikšmės į \"%s\"..."
 
 msgid "Preview"
-msgstr "预览"
+msgstr "Peržiūra"
 
 msgid "Preview the item"
-msgstr ""
+msgstr "Peržiūrėti elementą"
 
 msgid "Print"
-msgstr "列印"
+msgstr "Spausdinti"
 
 msgid "Print the item"
-msgstr ""
+msgstr "Spausdinti elementą"
 
 msgid "Printed Variable"
-msgstr ""
+msgstr "Atspausdintas Kintamasis"
 
 msgid "PropertyUri to map has to a valid uri"
 msgstr ""
 
 msgid "Provides a hint to the candidate as to the expected number of lines of input required. A line is expected to have about 72 characters."
-msgstr "提供考生一个提示作为输入的行所要求的预期数。 一条线预计将有大约72个字符。"
+msgstr "Pateikia kandidatui užuominą, koks yra norimas kiekis eilučių, privalomam teksto įvedimui. Eilutė laikoma ta, kuri turi apie 72 simbolius."
 
 msgid "Provides a hint to the candidate as to the expected overall length of the desired response measured in number of characters."
-msgstr "提供报考者一个提示作为预计总长度所需回应的字符数的测量。"
+msgstr ""
 
 msgid "Provides a hint to the candidate as to the expected overall length of the desired response measured in number of characters. This is not a validity constraint."
 msgstr ""
 
 msgid "Published %s"
-msgstr ""
+msgstr "Paskelbta %s"
 
 msgid "QTI Item Runner"
-msgstr ""
+msgstr "QTI Elemento Vykdytojas"
 
 msgid "QTI Metadata"
-msgstr ""
+msgstr "QTI Metaduomenys"
 
 msgid "QTI Package 2.1"
-msgstr "QTI包2.1"
+msgstr "QTI Paketas 2.1"
 
 msgid "QTI Package 2.2"
-msgstr ""
+msgstr "QTI Paketas 2.2"
 
 msgid "QTI-XML error at line %1$d \"%2$s\"."
-msgstr ""
+msgstr "QTI-XML klaida eilutėje %1$d \"%2$s\"."
 
 msgid "QTI/APIP Content Package"
-msgstr ""
+msgstr "QTI/APIP Turinio Paketas"
 
 msgid "QTI/APIP XML Item Document"
-msgstr ""
+msgstr "QTI/APIP XML Elemento Dokumentas"
 
 msgid "Question"
-msgstr "问题"
+msgstr "Klausimas"
 
 msgid "Quicktime video"
-msgstr "QuickTime视讯"
+msgstr "Quicktime vaizdo įrašas"
 
 msgid "recommanded"
-msgstr "所建议的"
+msgstr "rekomenduojama"
 
 msgid "Recommendations"
-msgstr "建议"
+msgstr "Patarimai"
 
 msgid "recommended"
-msgstr "所建议的"
+msgstr "Patarimas"
 
 msgid "Reduce font size"
-msgstr "缩小字型"
+msgstr "Sumažinti šrifto dydį"
 
 msgid "Register method expects $key and $name parameters"
-msgstr ""
+msgstr "Registravimo metodas tikisi $key ir $name parametrų"
 
 msgid "Register method expects $key and $name parameters."
-msgstr ""
+msgstr "Registravimo metodas tikisi $key ir $name parametrų."
 
 msgid "remove"
-msgstr "移除"
+msgstr "ištrinti"
 
 msgid "Remove"
-msgstr "移除"
+msgstr "Ištrinti"
 
 msgid "Remove custom background color"
-msgstr "移除自订背景颜色"
+msgstr "Panaikinti pasirinktą fono spalvą"
 
 msgid "Remove custom border color"
-msgstr "移除自订边界颜色"
+msgstr "Panaikinti pasirinktą kraštinės spalvą"
 
 msgid "Remove custom font family"
-msgstr "移除自订字型系列"
+msgstr "Panaikinti pasirinktą šrifto šeimą"
 
 msgid "Remove custom font size"
-msgstr "移除自订字型大小"
+msgstr "Panaikinti pasirinktą šrifto dydį"
 
 msgid "Remove custom item width"
-msgstr "删除自订题目宽度"
+msgstr "Pašalinti pasirinktinį elemento plotį"
 
 msgid "Remove custom text color"
-msgstr "删除自定文字颜色"
+msgstr "Panaikinti pasirinktą teksto spalvą"
 
 msgid "Remove Message"
-msgstr "移除信件"
+msgstr "Pašalinti Pranešimą"
 
 msgid "Remove pair"
-msgstr "移除这对"
+msgstr "Pašalinti porą"
 
 msgid "Remove the selected shape"
-msgstr "移除选取的形状"
+msgstr "Pašalinti pasirinktą formą"
 
 msgid "Remove this stylesheet"
-msgstr "移除这个样式表"
+msgstr "Pašalinti šitą stilių"
 
 msgid "Replay timeout"
-msgstr ""
+msgstr "Pakartojimo laiko trukmė"
 
 msgid "required"
-msgstr "必要的"
+msgstr "reikalaujama"
 
 msgid "Resource "
-msgstr ""
+msgstr "Resursas"
 
 msgid "Resource(s) successfully exported."
-msgstr ""
+msgstr "Resursas(-ai) sėkmingai eksportuoti."
 
 msgid "Response"
-msgstr "回应"
+msgstr "Atsakymas"
 
 msgid "Response identifier"
-msgstr "回应辨识码"
+msgstr "Atsakymo identifikatorius"
 
 msgid "Response processing"
-msgstr "处理回应"
+msgstr "Atsakymo apdorojimas"
 
 msgid "Response Properties"
-msgstr "回应属性"
+msgstr "Atsakymo Savybės"
 
 msgid "Right"
-msgstr ""
+msgstr "Dešinė"
 
 msgid "right"
-msgstr "右"
+msgstr "dešinė"
 
 msgid "Right bracket"
-msgstr ""
+msgstr "Dešinys skliaustas"
 
 msgid "Rollback on..."
-msgstr "倒转..."
+msgstr "Atstatytmas..."
 
 msgid "Save"
-msgstr "储存"
+msgstr "Išsaugoti"
 
 msgid "Save the item"
-msgstr ""
+msgstr "Išsaugoti elementą"
 
 msgid "Scale size"
-msgstr ""
+msgstr "Skalės dydis"
 
 msgid "Score"
-msgstr "分数"
+msgstr "Balai"
 
 msgid "score"
-msgstr "分数"
+msgstr "balai"
 
 msgid "Score range"
-msgstr "分数范围"
+msgstr "Balo intervalas"
 
 msgid "Score value"
-msgstr "分值"
+msgstr "Balo reikšmė"
 
 msgid "Select"
-msgstr ""
+msgstr "Pasirinkti"
 
 msgid "Select a "
-msgstr "选一个"
+msgstr "Pasirinkti"
 
 msgid "select a choice"
-msgstr "选一个选择"
+msgstr "pasirinkti variantą"
 
 msgid "Select a choice from a drop-down list."
-msgstr "从下拉列表中选择。"
+msgstr "Pasirink variantą iš sąrašo."
 
 msgid "Select a response identifier from the list."
-msgstr "从该列表选择一个回应的识别码。"
+msgstr "Pasirinkite atsakymo identifikatorių iš sąrašo."
 
 msgid "Select a single (radio buttons) or multiple (check boxes) responses among a set of choices."
-msgstr "在一系列的选项中选择一个(单选按钮)或多个(复选框)回应。"
+msgstr ""
 
 msgid "Select a value within a numerical range."
-msgstr "在一个数值范围选择一个数值。"
+msgstr "Pasirinkite reikšmę skaitmenų intervale."
 
 msgid "Select an image first"
-msgstr "先选择图片档案"
+msgstr "Pirma pasirinkite paveiksliuką."
 
 msgid "Select an image first."
-msgstr "先选择图片档案。"
+msgstr "Pirma pasirinkite paveiksliuką."
 
 msgid "select correct choice"
-msgstr "选择正确答案"
+msgstr "pasirinkite teisingą variantą"
 
 msgid "Select image"
-msgstr "选择图片"
+msgstr "Pasirinkti paveiksliuką"
 
 msgid "Select media file"
-msgstr "选择媒体文件"
+msgstr "Pasirinkti medijos failą"
 
 msgid "Select object"
-msgstr ""
+msgstr "Pasirinkti objektą"
 
 msgid "Select one or more areas (hotspots) displayed on an picture."
-msgstr "在图片中选择显示的一个或多个区域(热点)。"
-
-msgid "Select one or more text parts (hottext) within a text."
-msgstr "在文章中择一个或多个突出文本部分"
-
-msgid "Select Point"
-msgstr "选择点处"
-
-msgid "Select Point Interaction"
-msgstr "点处互动"
-
-msgid "Select predefined feedback style from the list."
 msgstr ""
 
+msgid "Select one or more text parts (hottext) within a text."
+msgstr ""
+
+msgid "Select Point"
+msgstr "Pasirinkti Tašką"
+
+msgid "Select Point Interaction"
+msgstr "Taško Pasirinkimo Užduotis"
+
+msgid "Select predefined feedback style from the list."
+msgstr "Pasirinkti nustatytą atsiliepimo stilių iš sąrašo."
+
 msgid "Select shared stimulus"
-msgstr "选择共用的刺激物"
+msgstr "Pasirinkti bendrinamą stimulą"
 
 msgid "Select the area to add an image"
-msgstr "选择添加图片的区域"
+msgstr "Pasirinkite plotą, kad pridėti paveikslėlį"
 
 msgid "Select the outcome variable you want to display."
 msgstr ""
 
 msgid "Select the way the response of your interaction should be processed"
-msgstr "选择你互动的反应应当被处理的方式。"
+msgstr "Pasirinkite kokiu būdu jūsų užduoties atsakymas turėtų būti apdorojamas"
 
 msgid "Select this area"
-msgstr "选择这个区域"
+msgstr "Pasirinkti šį plotą"
 
 msgid "Select this area to start an association"
-msgstr "选择这个区域来开始一个关联"
+msgstr "Pasirinkti šį plotą, kad pradėti ryšį"
 
 msgid "Set a CSS class name in order to customize the display style."
-msgstr ""
+msgstr "Nustatyti CSS klasės pavadinimą norint pakeisti atvaizduojamą stilių."
 
 msgid "Set the score for this response"
-msgstr "设定这个回应的分数"
+msgstr "Nustatyti balus šiam atsakymui"
 
 msgid "Shape position"
-msgstr "形成的位置"
+msgstr "Formos pozicija"
 
 msgid "Shuffle choices"
-msgstr "随机设定选择的位置"
+msgstr "Maišyti variantus"
 
 msgid "Sinus"
-msgstr ""
+msgstr "Sinusas"
 
 msgid "Size and position"
-msgstr "大小和位置"
+msgstr "Dydis ir vieta"
 
 msgid "Slider"
-msgstr "滑动钮"
+msgstr "Slankiklis"
 
 msgid "Slider Interaction"
-msgstr "滑动钮互动"
+msgstr "Slankiklio Užduotis"
 
 msgid "some text ..."
-msgstr "一些文本..."
+msgstr "kažkoks tekstas..."
 
 msgid "Square root"
-msgstr ""
+msgstr "Kvadratinė šaknis"
 
 msgid "standard"
-msgstr ""
+msgstr "standartas"
 
 msgid "Step"
-msgstr "步骤"
+msgstr "Žingsnis"
 
 msgid "Style Editor"
-msgstr "样式编辑器"
+msgstr "Stiliaus Redagavimas"
 
 msgid "Style Sheet <b>%s</b> removed<br> Click <i>Add Style Sheet</i> to re-apply."
-msgstr "样式表<b> %s </b> 删除 <br> 点击 <i> 添加样式表 </i> 以重新申请。"
+msgstr "Stiliaus Šablonas <b>%s</b> pašalintas<br> Paspauskite <i>Pridėti Stiliaus Šabloną</i> - taikyti iš naujo."
 
 msgid "Style Sheet Manager"
-msgstr "样式表管理器"
+msgstr "Stiliaus Šablono Tvarkytojas"
 
 msgid "Success"
-msgstr ""
+msgstr "Pavyko"
 
 msgid "Successfully compiled \"%s"
-msgstr ""
+msgstr "Sėkmingai sukompiliuota \"%s"
 
 msgid "Successfully created item \"%s"
 msgstr ""
 
 msgid "SVG image"
-msgstr "SVG图片"
+msgstr "SVG paveiksliukas"
 
 msgid "Table headings"
-msgstr "表格标题"
+msgstr "Lentelės antraštės"
 
 msgid "TAO default styles"
-msgstr "TAO默认的样式"
+msgstr "TAO numatyti stiliai"
 
 msgid "Target Class Lookup for resource \"%s\"..."
-msgstr ""
+msgstr "Pasirinktos Klasės Paieška resursui \"%s\"..."
 
 msgid "Text Block"
-msgstr "文字块"
+msgstr "Teksto Blokas"
 
 msgid "Text Block CSS Class"
-msgstr ""
+msgstr "Teksto Bloko CSS Klasė"
 
 msgid "Text Block Properties"
-msgstr "文本区块属性"
+msgstr "Teksto Bloko Savybės"
 
 msgid "Text color"
-msgstr "文字颜色"
+msgstr "Teksto spalva"
 
 msgid "Text Entry"
-msgstr "文字输入"
+msgstr "Teksto Įvestis"
 
 msgid "Text Entry Interaction"
-msgstr "输入文字互动"
+msgstr "Teksto Įvesties Užduotis"
 
 msgid "The autostart attribute determines if the media object should begin as soon as the candidate starts the attempt (checked) or if the media object should be started under the control of the candidate (unchecked)."
-msgstr "自动启动属性取决于媒体对象是否应该在报考者一开始尝试(核对)就开始或媒体对象是否应该在报考者的控制下(未经核对)启动。"
+msgstr ""
 
 msgid "The button label."
-msgstr "按钮标签。"
+msgstr "Mygtuko pavadinimas."
 
 msgid "The default value from the target set to be used when no explicit mapping for a source value is given."
-msgstr "当没有给出显示映射的源值时，从目标设定的默认值将被使用。"
+msgstr ""
 
 msgid "The delimiter to use between values when displaying variables of ordered, multiple or record cardinality. \";\" is default when delimiter is not declared. Implementations can override this default with personal preferences or locale settings."
 msgstr ""
@@ -1444,13 +1448,13 @@ msgid "The field specifier to use when displaying variables of record cardinalit
 msgstr ""
 
 msgid "The file path to the image."
-msgstr "图片文件路径。"
+msgstr "Failo kelias iki paveiksliuko."
 
 msgid "The file path to the object."
-msgstr ""
+msgstr "Failo kelias iki objekto."
 
 msgid "The file path to the shared stimulus."
-msgstr "共用激勵物的路徑。"
+msgstr "Failo kelias iki bendrinamo stimulo."
 
 msgid "The format conversion specifier to use when converting numerical values to strings. See QTI Number Formatting Rules for details."
 msgstr ""
@@ -1459,79 +1463,79 @@ msgid "The given target is not an instance of core_kernel_classes_Resource"
 msgstr ""
 
 msgid "The highlighted choice cannot be associated more than %d time(s)."
-msgstr "突出显示的选择不能被相关联超过%d次数。"
+msgstr "Pasirinkimas negali būti susietas daugiau, nei %d kartą (-us)."
 
 msgid "The identifier of the choice. This identifier must not be used by any other choice or item variable. An identifier is a string of characters that must start with a Letter or an underscore (\"_\") and contain only Letters, underscores, hyphens (\"-\"), period (\".\", a.k.a. full-stop), Digits, CombiningChars and Extenders."
-msgstr "这是考题选项的识别符。 这个标识符不能被任何其他的选项或题目使用。 一个标识符是一个字符串的字符而且必须以字母或下划线(\"_\")为第一个字并且只包含字母，下划线，连字符(\"-\")，句号(\".\")数字，组合字符和扩展字符。"
+msgstr "Pasirinkimo identifikatorius. Šis identifikatorius privalo nebūti naudojamas jokio kito pasirinkimo ar elemento kintamojo. Identifikatorius yra rinkinys raidžių ir simbolių, kurie privalo prasidėti su Raide arba apatiniu brūkšniu (\"_\") ir sudarytas tik iš Raidžių, apatinių brūkšnių, brūkšnių (\"-\"), taško (\".\"), Skaičių, jungiamųjų ženklų (CombiningChars) ir pratesėjų (Extenders)."
 
 msgid "The identifier of the choice. This identifier must not be used by any other response or item variable. An identifier is a string of characters that must start with a Letter or an underscore (\"_\") and contain only Letters, underscores, hyphens (\"-\"), period (\".\", a.k.a. full-stop), Digits, CombiningChars and Extenders."
-msgstr "这是考题选项的识别符。 这个标识符不能被任何其他的选项或题目使用。 一个标识符是一个字符串的字符而且必须以字母或下划线(\"_\")为第一个字并且只包含字母，下划线，连字符(\"-\")，句号(\".\")数字，组合字符和扩展字符。"
+msgstr "Pasirinkimo identifikatorius. Šis identifikatorius privalo nebūti naudojamas jokio kito atsakymo ar elemento kintamojo. Identifikatorius yra rinkinys raidžių ir simbolių, kurie privalo prasidėti su Raide arba apatiniu brūkšniu (\"_\") ir sudarytas tik iš Raidžių, apatinių brūkšnių, brūkšnių (\"-\"), taško (\".\"), Skaičių, jungiamųjų ženklų (CombiningChars) ir pratesėjų (Extenders)."
 
 msgid "The identifier of the modal feedback. This identifier must not be used by any other modal feedback or item variable. An identifier is a string of characters that must start with a Letter or an underscore (\"_\") and contain only Letters, underscores, hyphens (\"-\"), period (\".\", a.k.a. full-stop), Digits, CombiningChars and Extenders."
-msgstr "这是模式反馈的标识符。 这个标识符不能被任何其他模式反馈或题目使用。 一个标识符是一个字符串的字符而且必须以字母或下划线(\"_\")为第一个字并且只包含字母，下划线，连字符(\"-\")，句号(\".\")数字，组合字符和扩展字符。"
+msgstr "Pasirinkimo identifikatorius. Šis identifikatorius privalo nebūti naudojamas jokio kito modalinio atsiliepimo ar elemento kintamojo. Identifikatorius yra rinkinys raidžių ir simbolių, kurie privalo prasidėti su Raide arba apatiniu brūkšniu (\"_\") ir sudarytas tik iš Raidžių, apatinių brūkšnių, brūkšnių (\"-\"), taško (\".\"), Skaičių, jungiamųjų ženklų (CombiningChars) ir pratesėjų (Extenders)."
 
 msgid "The identifier of the response identifier. This identifier must not be used by any other response or item variable. An identifier is a string of characters that must start with a Letter or an underscore (\"_\") and contain only Letters, underscores, hyphens (\"-\"), period (\".\", a.k.a. full-stop), Digits, CombiningChars and Extenders."
-msgstr "这是模式反馈的标识符。 这个标识符不能被任何其他模式反馈或题目使用。 一个标识符是一个字符串的字符而且必须以字母或下划线(\"_\")为第一个字并且只包含字母，下划线，连字符(\"-\")，句号(\".\")数字，组合字符和扩展字符。"
+msgstr "Pasirinkimo identifikatorius. Šis identifikatorius privalo nebūti naudojamas jokio kito atsakymo ar elemento kintamojo. Identifikatorius yra rinkinys raidžių ir simbolių, kurie privalo prasidėti su Raide arba apatiniu brūkšniu (\"_\") ir sudarytas tik iš Raidžių, apatinių brūkšnių, brūkšnių (\"-\"), taško (\".\"), Skaičių, jungiamųjų ženklų (CombiningChars) ir pratesėjų (Extenders)."
 
 msgid "The IMS QTI Item could not be imported."
-msgstr "无法导入IMS QTI题目。"
+msgstr "IMS QTI Elementas negali būti importuotas."
 
 msgid "The IMS QTI Item referenced as \"%s\" in the IMS Manifest file failed:  %s"
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" IMS Manifesto faile nepavyko: %s"
 
 msgid "The IMS QTI Item referenced as \"%s\" in the IMS Manifest file has incorrect Response Processing and outcomeDeclaration definitions."
 msgstr ""
 
 msgid "The IMS QTI Item referenced as \"%s\" in the IMS Manifest file should have been found the Item Bank. Item not found."
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" IMS Manifesto faile turėtų būti randamas Elementų Banke. Elementas nerastas."
 
 msgid "The IMS QTI Item referenced as \"%s\" in the IMS Manifest file was already stored in the Item Bank."
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" IMS Manifesto failas jau buvo patalpintas Elementų Banke."
 
 msgid "The IMS QTI Item referenced as \"%s\" in the IMS Manifest file was successfully imported."
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" IMS Manifesto failas buvo sėkmingai importuotas."
 
 msgid "The IMS QTI Item referenced as \"%s\" in the IMS Manifest file was successfully overwritten."
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" IMS Manifesto failas buvo sėkmingai perrašytas."
 
 msgid "The IMS QTI Item referenced as \"%s\" in the IMS Manifest was successfully rolled back."
-msgstr ""
+msgstr "IMS QTI Elementas nurodytas kaip \"%s\" IMS Manifesto failas buvo sėkmingai atstatytas."
 
 msgid "The IMS QTI Item was successfully imported."
-msgstr ""
+msgstr "IMS QTI Elementas buvo sėkmingai importuotas."
 
 msgid "The index to use when displaying a variable of ordered cardinality. If a variable of ordered cardinality is to be displayed and index is not set, all the values in the container are displayed."
 msgstr ""
 
 msgid "The item cannot be saved because it contains an unsupported custom interaction."
-msgstr ""
+msgstr "Elementas negali būti išsaugotas, nes turi nepalaikomą pasirinktiną užduotį."
 
 msgid "The item has not been saved!"
-msgstr ""
+msgstr "Elementas nebuvo išsaugotas!"
 
 msgid "The item has unsaved changes, are you sure you want to leave ?"
-msgstr ""
+msgstr "Elementas turi neišsaugotus pakeitimus, ar jūs tikrai norite išeiti?"
 
 msgid "The item has unsaved changes, would you like to save it ?"
-msgstr ""
+msgstr "Elementas turi neišsaugotus pakeitimus, ar norėtumėte juos išsaugoti?"
 
 msgid "The item needs to be saved before it can be previewed"
-msgstr "该题目需先储存才可以可以预览"
+msgstr "Šis elementas privalo būti išsaugotas norint pamatyti peržiūrą"
 
 msgid "The item of the qti item. It is currently used as a meta data only. It is required by the QTI standard."
-msgstr "太多的建议符合您的查询，所以这里只列出几个建议"
+msgstr "Elementas iš QTI Elemento. Šiuo metu naudojamas tik meta duomenims. Jis yra reikalingas QTI standartui."
 
 msgid "The left position of the shape relative to the top left corner of the background in pixels. This value may be scaled when the background image size is adapted to it's container"
-msgstr "形状的左部相对于像素为背景的左上角。 当背景图像的尺寸适于容器，这个值可以被缩放。"
+msgstr ""
 
 msgid "The loop attribute is used to set continuous play mode. In continuous play mode, once the media object has started to play it should play continuously (subject to maxPlays)."
-msgstr "环路属性用于设置连续播放模式。 在连续播放模式中，一旦媒体对象已经开始播放，它就应该继续播放(需maxPlays)。"
+msgstr ""
 
 msgid "The lower bound of the slider"
-msgstr "滑块钮的下限"
+msgstr "Slankiklio apatinė riba"
 
 msgid "The manifest argument must be an instance of DOMDocument."
-msgstr "清单参数必须是DOMDocument的实例。"
+msgstr "Manifesto argumentas privalo būti DOMDocument instancija."
 
 msgid "The mapping indicator to use between field name and field value when displaying variables of record cardinality. \"=\" is default when mappingIndicator is not declared. Implementations can override this default with personal preferences or locale settings."
 msgstr ""
@@ -1540,128 +1544,129 @@ msgid "The mapping options are available when at least one map entry is defined.
 msgstr ""
 
 msgid "The maximum number of association is unlimited."
-msgstr "关联的使用次数没有限制。"
+msgstr "Maksimalus kiekis ryšių yra neribojamas."
 
 msgid "The maximum number of associations that the candidate is allowed to make."
-msgstr "考生最多可选的关联。"
+msgstr "Maksimalus kiekis ryšių, kurių kandidatui leidžiama sudaryti."
 
 msgid "The maximum number of choices that the candidate is allowed to select."
-msgstr "考生可以使用的最多选择数量。"
+msgstr "Maksimalus kiekis variantų, kurį kandidatui leidžiama pasirinkti."
 
 msgid "The maximum number of choices that the candidate is required to select to form a valid response."
-msgstr ""
+msgstr "Maksimalus kiekis pasirinkimų, kuriuos kandidatas privalo pasirinkti, norint suformuoti taisyklingą atsakymą."
 
 msgid "The maximum number of choices this choice may be associated with."
-msgstr "这个选择可以与多少其他选择有相关联(最多数量)。"
+msgstr "Maksimalus kiekis variantų, kurių šiam variantui galima asocijuoti."
 
 msgid "The maximum number of choices this choice may be associated with. If matchMax is 0 there is no restriction."
-msgstr "这个选择可以与多少其他选择有相关联(最多数量）。 如果matchMax是0就没有限制。"
+msgstr "Maksimalus kiekis pasirinkimų, kuriuos galima susieti. Jeigu matchMax yra 0, nėra jokio apribojimo."
 
 msgid "The maxPlays attribute indicates that the media object can be played at most maxPlays times - it must not be possible for the candidate to play the media object more than maxPlay times. A value of 0 (the default) indicates that there is no limit."
-msgstr "maxPlays属性所述媒体对象可以播放的最多次数。 考生播放媒体对象必须不能多于maxPlay次数。 当指数是0(预设)就表示没有限制。"
+msgstr ""
 
 msgid "The MIME-type attribute describes which kind of file may be uploaded."
-msgstr "MIME类型属性描述哪一种文件可以上载。"
+msgstr "MIME-tipo atributas nusako, kokia rūšis failo gali būti įkelta."
 
 msgid "The minimum number of answers is "
-msgstr "最少回应的数量是"
+msgstr "Minimalus kiekis atsakymų yra"
 
 msgid "The minimum number of associations that the candidate is required to make to form a valid response."
-msgstr "当考生填写回应时，必须使用多少相关联才是有效的回应。"
+msgstr "Minimalus kiekis ryšių, kurių kandidatui reikia sudaryti norint pateikti teisinga atsakymą."
 
 msgid "The minimum number of choices that the candidate is required to select to form a valid response."
-msgstr "当考生填写回应时，必须选多少选择才是有效的回应。"
+msgstr "Minimalus kiekis pasirinkimų, kuriuos kandidatas privalo pasirinkti, kad būtų suformuotas teisingas atsakymas."
 
 msgid "The minimum number of choices this choice must be associated with to form a valid response."
-msgstr "此选择至少要跟多少其他的选择有相关联才是一个有效的回应。"
+msgstr "Minimalus kiekis pasirinkimų, kurie privalo būti susieti, kad suformuoti teisingą atsakymą."
 
 msgid "The number base to use when converting integer variables to strings with the i conversion type code."
 msgstr ""
 
 msgid "The number of units corresponding to a step on the slider"
-msgstr "滑动钮的每一个阶段等于多少个单位"
+msgstr "Vieneto kiekis atitinkantis žingsnį slankikliui"
 
 msgid "The path argument for extractor must be a non-empty array."
-msgstr ""
+msgstr "Kelio argumentas ekstraktoriui privalo būti ne tuščias masyvas."
 
 msgid "The principle identifier of the item. This identifier must have a corresponding entry in the item's metadata."
-msgstr "该题目的原理标识符。 这个标识符必须在题目的元数据中有对应的条目。"
+msgstr "Pagrindinis elemento identifikatorius. Šis identifikatorius privalo turėti papildomą įrašą elemento meta duomenyse."
 
 msgid "The purpose for which the rubric is intended to be used. As a reading passage for multiple items, or instructions for a particular section, for example."
-msgstr "使用指导语目的。 例如：有多个题目的文章，或作为于某部分的说明。"
+msgstr "Tikslas dėl kurio rubriką turi būti naudojama. Pavyzdžiui, kaip skaitymui skirta ištrauka keliems elementams arba instrukcijos pasirinktai sekcijai."
 
 msgid "The QTI class \"%1$s\" located at line \"%2$d\" is currently not supported."
-msgstr "此QTI类别\"%1$s\"在于第\"%2$d\"行已经不被支援。"
+msgstr "QTI klasė \"%1$s\" esanti \"%2$d\" eilutėje yra nepalaikoma."
 
 msgid "The Response Processing Template \"%s\" is not supported."
-msgstr ""
+msgstr "Atsakymo Apdorojimo Šablonas \"%s\" yra nepalaikomas."
 
 msgid "The score format is not numeric"
-msgstr ""
+msgstr "Įvertinimo formatas nėra skaitmeninis"
 
 msgid "The selected file is ready to be sent."
-msgstr "所选择的文件已预备好，可以发送。"
+msgstr "Pasirinktas failas paruoštas išsiųsti."
 
 msgid "The shape height in pixels. This value may be scaled when the background image size is adapted to it's container"
-msgstr "形状高度以像素为单位。 当背景图像的尺寸适于容器，这个值可以被缩放。"
+msgstr "Formos aukštis pikseliais. Ši reikšmė gali būti keičiama, kai fono paveikslėlio dydis prisitaiko prie savo konteinerio"
 
 msgid "The shape width in pixels. This value may be scaled when the background image size is adapted to it's container"
-msgstr "形状宽度以像素为单位。 当背景图像的尺寸适于容器，这个值可以被缩放。"
+msgstr "Formos plotis pikseliais. Ši reikšmė gali būti keičiama, kai fono paveikslėlio dydis prisitaiko prie savo konteinerio"
 
 msgid "The target must be an instance of DOMDocument"
-msgstr "目标必须是DOMDocument的一个实例"
+msgstr "Tikslas privalo būti DOMDocument instancija"
 
 msgid "The text to be displayed if the image is not available."
-msgstr "如果没有提供图像，此文本会显示。"
+msgstr "Tekstas, kuris bus rodomas, jeigu nebus paveikslėlio."
 
 msgid "The top position of the shape relative to the top left corner of the background in pixels. This value may be scaled when the background image size is adapted to it's container"
-msgstr "形状的顶部相对于像素为背景的左上角。 当背景图像的尺寸适于容器，这个值可以被缩放。"
+msgstr ""
 
 msgid "The upper bound of the slider"
-msgstr "滑动钮的上限"
+msgstr "Slankiklio viršutinė riba"
 
 msgid "The validation of the imported QTI item failed. The system returned the following error:%s\n"
 ""
-msgstr ""
+msgstr "Patvirtinimas importuotam QTI elementui nepavyko. Sistema gražino šią klaidą:%s\n"
+""
 
 msgid "The ZIP archive containing the IMS QTI Item cannot be extracted."
-msgstr "此含有IMS QTI题目的ZIP压缩文件不能被提取。"
+msgstr "ZIP archyvas turintis IMS QTI Elementą negali būti išskleistas."
 
 msgid "The ZIP archive does not contain an imsmanifest.xml file or is an invalid ZIP archive."
-msgstr "此ZIP压缩文件没有imsmanifest.xml档案或它一个无效的ZIP压缩文件。"
+msgstr "ZIP archyvas neturi imsmanifest.xml failo arba blogas ZIP archyvas."
 
 msgid "There are errors in the following shared stimulus : "
-msgstr ""
+msgstr "Yra klaidų šiame bendriname stimule : "
 
 msgid "There is an incomplete element in your item: please click on it to complete it."
-msgstr "在您的题目中有个一个不完整的元素：请点击它来完成它。"
+msgstr "Yra neužbaigta dalis jūsų elemente: prašome paspausti kad užbaigtumėte."
 
 msgid "There was a problem downloading your CSS, please try again."
-msgstr "下载CSS时发生了问题，请重试一次。"
+msgstr "Įvyko problema atsiunčiant jūsų CSS, prašome bandyti dar kartą."
 
 msgid "this identifier is already in use"
-msgstr "这个标识符已被使用"
+msgstr "identifikatorius jau yra užimtas"
 
 msgid "This interaction has no text defined in question mode."
 msgstr ""
 
 msgid "This is not a valid answer"
-msgstr "这不是一个有效的答案"
+msgstr "Tai nėra teisingas atsakymas"
 
 msgid "This is required"
-msgstr ""
+msgstr "Šis laukas yra privalomas"
 
 msgid "This stylesheet has not been found on the server. you may want to delete this reference"
-msgstr "这个样式表没有在服务器上找到。 您可能需要删除这个参照。"
+msgstr "Stiliaus šablonas nerastas serveryje. Jums galite ištrinti šį šaltinį"
 
 msgid "Time dependent"
-msgstr "累计运行的时间"
+msgstr "Laiko priklausomas"
 
 msgid "Title"
-msgstr "标题"
+msgstr "Pavadinimas"
 
 msgid "to"
-msgstr ""
+msgstr "į"
 
 msgid "Tooltip Content"
 msgstr ""
@@ -1673,155 +1678,155 @@ msgid "Tooltip Target"
 msgstr ""
 
 msgid "Top"
-msgstr "上面"
+msgstr "Viršus"
 
 msgid "Trigger the end of the item attempt."
-msgstr "停止使用此题目。"
+msgstr "Iškviesti pabaigą elemento bandyme."
 
 msgid "Unable to process your request"
 msgstr ""
 
 msgid "Unable to retrieve asset \"%s"
-msgstr ""
+msgstr "Nepavyko gauti resurso \"%s"
 
 msgid "Unable to retrieve item : "
-msgstr ""
+msgstr "Nepavyko gauti elemento : "
 
 msgid "Unable to validate %s: %s"
-msgstr ""
+msgstr "Nepavyko patvirtinti %s: %s"
 
 msgid "undo"
-msgstr "复原"
+msgstr "anuliuoti"
 
 msgid "Undo"
-msgstr "复原"
+msgstr "Anuliuoti"
 
 msgid "Unknown $key to register MetadataService instance"
-msgstr ""
+msgstr "Nežinomas $key registruoti MetadataService instanciją"
 
 msgid "Unregister method expects $key and $name parameters."
 msgstr ""
 
 msgid "Upload a file (e.g. document, picture...) as a response."
-msgstr "上传一个文件(例如：档案，图片)作为一个回应。"
+msgstr "Įkelti failą (pvz.: dokumentas, paveiksliukas...), kaip atsakymą."
 
 msgid "Upper Bound"
-msgstr "上限"
+msgstr "Viršutinė Riba"
 
 msgid "Use this if you want the list of choices to be prefixed (e.g. 1,2,3 a,b,c)"
-msgstr "如果你想为前缀的选择列表中使用此(例如: 1,2,3,a,b,c)"
+msgstr "Naudoti šį, jeigu norite, kad sąrašo pasirinkimai būtų prefiksuojami (pvz.: 1,2,3 arba a,b,c)"
 
 msgid "Used to control the format of the text entered by the candidate."
-msgstr "用来控制考生输入的文本格式。"
+msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Reikšmė"
 
 msgid "Vertical"
-msgstr ""
+msgstr "Veritkalus"
 
 msgid "WAV audio"
-msgstr "WAV音讯"
+msgstr "WAV garso įrašas"
 
 msgid "We will use the patternMask to do this, to be compliant with the IMS standard"
-msgstr "我们用样式面具，这样才符合IMS标准"
+msgstr "Mes naudosime patternMask atlikti tai, kad atitiktų IMS standartą"
 
 msgid "Width"
-msgstr "宽度"
+msgstr "Plotis"
 
 msgid "Windows Media audio"
-msgstr "Windows Media音讯"
+msgstr "Windows Media garso įrašas"
 
 msgid "Windows Media video"
-msgstr "Windows Media视讯"
+msgstr "Windows Media vaizdo įrašas"
 
 msgid "words"
-msgstr "字词"
+msgstr "žodžiai"
 
 msgid "Would you like to replace the alt text"
-msgstr "你想更换替代文字吗？"
+msgstr "Ar jūs norėtumėte pakeisti alternatyvų tekstą"
 
 msgid "WYSIWYG editor"
-msgstr ""
+msgstr "WYSIWYG redaktorius"
 
 msgid "XHTML"
 msgstr "XHTML"
 
 msgid "XML error \"%1$s\"."
-msgstr ""
+msgstr "XML klaida \"%1$s\"."
 
 msgid "XML error at line %1$d \"%2$s\"."
-msgstr ""
+msgstr "XML klaida eilutėje %1$d \"%2$s\"."
 
 msgid "Yes"
-msgstr "是"
+msgstr "Taip"
 
 msgid "You can select maximum %d choice"
-msgstr ""
+msgstr "Jūs galite pažymėti daugiausiai %d pasirinkimą"
 
 msgid "You can select maximum %d choices"
-msgstr ""
+msgstr "Jūs galite pažymėti daugiausiai %d pasirinkimus"
 
 msgid "You can select maximum of %s choices"
-msgstr ""
+msgstr "Galite pažymėti ne daugiau, kaip %s atsakymus"
 
 msgid "You can select maximum of 1 choice"
-msgstr ""
+msgstr "Galite pažymėti tik 1 atsakymą"
 
 msgid "You can use maximum %d choices"
-msgstr ""
+msgstr "Galite panaudoti ne daugiau, kaip %d pasirinkimus"
 
 msgid "You have deleted"
-msgstr "您已删除"
+msgstr "Jūs ištrynėte"
 
 msgid "You have deleted an element"
-msgstr "您已删除元素"
+msgstr "Jūs ištrynėte elementą"
 
 msgid "You have deleted an element."
-msgstr "您已删除元素"
+msgstr "Jūs ištrynėte elementą."
 
 msgid "You may make as many association pairs as you want."
-msgstr "您可以建立无限组关联配对。"
+msgstr "Jūs galite sukurti, kiek tik norite ryšių porų."
 
 msgid "You must select %1$d to %2$d choices."
-msgstr "您必须选%1$d至%2$d个选择。"
+msgstr "Turite pažymėti nuo %1$d iki %2$d atsakymų."
 
 msgid "You must select 0 to %d choices."
-msgstr "您必须选0至%d个选择。"
+msgstr "Turite pažymėti nuo 0 iki %d atsakymų"
 
 msgid "You must select at least %d choice"
-msgstr ""
+msgstr "Jūs privalote pasirinkti bent %d pasirinkimą"
 
 msgid "You must select at least %d choices"
-msgstr ""
+msgstr "Turite pažymėti mažiausiai %d atsakymus (–ų/–ą)"
 
 msgid "You must select at least %s choices"
-msgstr ""
+msgstr "Turite pažymėti mažiausiai %s atsakymus (–ų/–ą)"
 
 msgid "You must select at least 1 choice"
-msgstr ""
+msgstr "Turite pažymėti mažiausiai 1 atsakymą"
 
 msgid "You must select exactly %d choice"
-msgstr ""
+msgstr "Turite pažymėti lygiai %d atsakymus (–ų/–ą)"
 
 msgid "You must select exactly %d choice(s)."
-msgstr "您必须选刚好%d个选择。"
+msgstr "Turite pažymėti lygiai %d atsakymus (–ų/–ą)"
 
 msgid "You must select exactly %d choices"
-msgstr ""
+msgstr "Turite pažymėti lygiai %d atsakymus (–ų/–ą)"
 
 msgid "You must select exactly %s choices"
-msgstr ""
+msgstr "Turite pažymėti mažiausiai %s atsakymus (–ų/–ą)"
 
 msgid "You must use at least %d choices"
-msgstr ""
+msgstr "Jūs privalote bent jau pasirinkti %d"
 
 msgid "You need to make"
-msgstr "您必需使"
+msgstr "Jums reikia padaryti"
 
 msgid "Your item has been saved"
-msgstr "您的题目已储存"
+msgstr "Jūsų elementas buvo išsaugotas"
 
 msgid "ZIP archive"
-msgstr "ZIP压缩档"
+msgstr "ZIP archyvas"
 
