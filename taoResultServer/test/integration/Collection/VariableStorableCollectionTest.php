@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,13 +20,14 @@
  *
  */
 
-namespace oat\taoResultServer\test\Unit\Collection;
+namespace oat\taoResultServer\test\integration\Collection;
 
 use oat\taoResultServer\models\Collection\VariableStorableCollection;
 use taoResultServer_models_classes_OutcomeVariable;
 use taoResultServer_models_classes_Variable;
+use oat\generis\test\TestCase;
 
-class VariableStorableCollectionTest extends \PHPUnit_Framework_TestCase
+class VariableStorableCollectionTest extends TestCase
 {
     public function testCreateWithSuccess()
     {
@@ -65,8 +67,8 @@ class VariableStorableCollectionTest extends \PHPUnit_Framework_TestCase
         $array = $collection->toStorableArray();
         $this->assertArrayHasKey('variable1', $array);
         $this->assertArrayHasKey('variable2', $array);
-        $this->assertInternalType('string', $array['variable1']);
-        $this->assertInternalType('string', $array['variable2']);
+        $this->assertIsString($array['variable1']);
+        $this->assertIsString($array['variable2']);
         $this->assertSame('callIdTest', $collection->getIdentifier());
     }
 
@@ -94,8 +96,8 @@ class VariableStorableCollectionTest extends \PHPUnit_Framework_TestCase
         $array = $collection->toStorableArray();
         $this->assertArrayHasKey('variable1', $array);
         $this->assertArrayHasKey('variable2', $array);
-        $this->assertInternalType('string', $array['variable1']);
-        $this->assertInternalType('string', $array['variable2']);
+        $this->assertIsString($array['variable1']);
+        $this->assertIsString($array['variable2']);
         $this->assertSame('callIdItem', $collection->getIdentifier());
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,28 +20,29 @@
  *
  */
 
-namespace oat\taoResultServer\test\Unit\Entity;
+namespace oat\taoResultServer\test\integration\Entity;
 
-use oat\taoResultServer\models\Entity\ItemVariableStorable;
+use oat\taoResultServer\models\Entity\TestVariableStorable;
+use taoResultServer_models_classes_OutcomeVariable;
+use oat\generis\test\TestCase;
 
-class ItemVariableStorableTest extends \PHPUnit_Framework_TestCase
+class TestVariableStorableTest extends TestCase
 {
-
     public function testSerializeAsExpected()
     {
-        $resultVariable = $this->getMockBuilder(\taoResultServer_models_classes_Variable::class)->disableOriginalConstructor()->getMock();
+        $resultVariable = $this->getMockBuilder(taoResultServer_models_classes_OutcomeVariable::class)->disableOriginalConstructor()->getMock();
 
-        $var = new \oat\taoResultServer\models\Entity\ItemVariableStorable('deliveryResultIdentifier', 'test', $resultVariable, 'item', 'callIdItem');
+        $var = new TestVariableStorable('deliveryResultIdentifier', 'test', $resultVariable, 'callIdTest');
 
         $this->assertInstanceOf(\JsonSerializable::class, $var);
         $this->assertEquals([
             "deliveryResultIdentifier" => 'deliveryResultIdentifier',
             "test" => 'test',
-            "item" => 'item',
+            "item" => null,
             "variable" => serialize($resultVariable),
-            "callIdItem" => 'callIdItem',
-            "callIdTest" => null,
-            "uri" => 'deliveryResultIdentifiercallIdItem',
+            "callIdItem" => null,
+            "uri" => 'deliveryResultIdentifiercallIdTest',
+            "callIdTest" => 'callIdTest',
             "class" => get_class($resultVariable)
 
         ], $var->jsonSerialize());
