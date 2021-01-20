@@ -1,0 +1,142 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TAO 3.4.0-sprint133\n"
+"PO-Revision-Date: 2020-07-17T08:39:56\n"
+"Last-Translator: TAO Translation Team <translation@tao.lu>\n"
+"MIME-Version: 1.0\n"
+"Language: it-IT\n"
+"sourceLanguage: en-US\n"
+"targetLanguage: it-IT\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "%s created"
+msgstr ""
+
+#, tao-public
+msgid "Add Consumer"
+msgstr "Aggiungi consumatore"
+
+#, tao-public
+msgid "Add Provider"
+msgstr ""
+
+msgid "Authorization failed"
+msgstr ""
+
+msgid "Back"
+msgstr "Indietro"
+
+msgid "Create instance of "
+msgstr ""
+
+#, tao-public
+msgid "Delete"
+msgstr "Elimina"
+
+msgid "Edit Instance"
+msgstr ""
+
+msgid "Error"
+msgstr "Errore"
+
+msgid "Error (%s): "
+msgstr ""
+
+msgid "Error(%s): [key %s] %s \"%s"
+msgstr ""
+
+msgid "Error: "
+msgstr ""
+
+msgid "Error: [key %s] \"%s"
+msgstr ""
+
+#, tao-public
+msgid "Export"
+msgstr "Esporta"
+
+msgid "Generate a new secret key"
+msgstr ""
+
+#, tao-public
+msgid "Import"
+msgstr "Importa"
+
+#, tao-public
+msgid "Index"
+msgstr "Indice"
+
+msgid "Instance saved"
+msgstr ""
+
+msgid "Learning Tools Interoperability"
+msgstr "Strumenti di apprendimento "
+
+msgid "link"
+msgstr "link"
+
+#, tao-public
+msgid "LTI Consumers"
+msgstr "Cliente LTI "
+
+#, tao-public
+msgid "LTI Providers"
+msgstr ""
+
+msgid "Oauth consumer secret has been copied to the clipboard"
+msgstr ""
+
+msgid "Open in a new window"
+msgstr "Apri in nuova finestra"
+
+msgid "Please consider that generating a new key will replace the previously generated one."
+msgstr ""
+
+msgid "Please give the key value persistence id"
+msgstr ""
+
+#, tao-public
+msgid "Properties"
+msgstr "Proprietà"
+
+msgid "Registered Lti user in Key value"
+msgstr ""
+
+msgid "Registered Lti user in ontology"
+msgstr ""
+
+msgid "Return to %s."
+msgstr "Torna a "
+
+msgid "Server Error"
+msgstr "Errore del server"
+
+#, tao-public
+msgid "Settings"
+msgstr "Impostazioni"
+
+msgid "The LTI connection could not be established"
+msgstr "La connessione a LTI non può essere stabilita"
+
+msgid "The LTI Provider library."
+msgstr "Raccolta di Provider LTI"
+
+msgid "The LTI tool could not be opened in the current window. Please click on the button to open it in a new window."
+msgstr "Lo strumento LTI non può essere aperto nella finestra corrente. Si prega di premere il bottone per visualizzarlo in una nuova finestra"
+
+msgid "Third party cookies are not supported by your browser"
+msgstr "I cookies da terze parti non sono supportati dal tuo browser"
+
+msgid "Unable to restore Session"
+msgstr "Impossibile ripristinare la sessione"
+
+msgid "user"
+msgstr "utente"
+
+msgid "You are not authorized to use this system"
+msgstr "Non sei autorizzato ad usare questo sistema"
+
