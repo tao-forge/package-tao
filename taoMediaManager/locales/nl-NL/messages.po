@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TAO 3.4.0-sprint132\n"
+"PO-Revision-Date: 2020-07-03T09:31:49\n"
+"Last-Translator: TAO Translation Team <translation@tao.lu>\n"
+"MIME-Version: 1.0\n"
+"Language: nl-NL\n"
+"sourceLanguage: en-US\n"
+"targetLanguage: nl-NL\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "%s media on this environment"
+msgstr ""
+
+msgid "%s media successfully modified"
+msgstr ""
+
+msgid "%s media to modify"
+msgstr ""
+
+msgid "Add a media file"
+msgstr "Voeg een media bestand toe"
+
+msgid "An error has occurred. Please contact your administrator."
+msgstr ""
+
+msgid "Are you sure you want to delete this"
+msgstr ""
+
+msgid "Are you sure you want to delete this class and all of its content?"
+msgstr ""
+
+#, tao-public
+msgid "Assets"
+msgstr ""
+
+#, tao-public
+msgid "Authoring"
+msgstr ""
+
+msgid "Back to Manage Assets"
+msgstr ""
+
+msgid "Center"
+msgstr ""
+
+msgid "Define item language."
+msgstr ""
+
+#, tao-public
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Deleting this class will break the items and the tests that are currently using them."
+msgstr ""
+
+msgid "Edit Instance"
+msgstr "Pas instantie aan"
+
+msgid "Edited %s"
+msgstr "Geredigeerd %s"
+
+msgid "Element Properties"
+msgstr ""
+
+#, tao-public
+msgid "Export"
+msgstr "Exporteren"
+
+msgid "Export Media as Zip file"
+msgstr "Exporteer media als zip bestand"
+
+msgid "Fail to edit shared stimulus"
+msgstr "Aanpassen gedeelde stimulus heeft gefaald"
+
+msgid "Fail to edit Shared Stimulus"
+msgstr "Aanpassen gedeelde stimulus heeft gefaald"
+
+msgid "Fail to import media"
+msgstr "Importeren media heeft gefaald"
+
+msgid "Fail to import Shared Stimulus"
+msgstr "Importeren gedeelde stimulus heeft gefaald"
+
+msgid "File"
+msgstr "Bestand"
+
+msgid "File name"
+msgstr "Bestandsnaam"
+
+msgid "Forbidden action"
+msgstr ""
+
+#, tao-public
+msgid "Import"
+msgstr "Importeren"
+
+msgid "Imported %s"
+msgstr "Geïmporteerd: %s"
+
+msgid "Imported new file"
+msgstr "Een nieuw bestand geïmporteerd "
+
+msgid "Initial import"
+msgstr "Initiële import"
+
+msgid "Instance saved"
+msgstr "Instantie opgeslagen"
+
+msgid "is currently used in"
+msgstr ""
+
+msgid "Issue while modifying %s"
+msgstr ""
+
+msgid "item(s)"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+#, tao-public
+msgid "Manage Assets"
+msgstr ""
+
+#, tao-public
+msgid "Manage Schema"
+msgstr "Schema beheren"
+
+msgid "Media imported"
+msgstr ""
+
+msgid "Media imported successfully"
+msgstr "Media succesvol geïmporteerd"
+
+#, tao-public
+msgid "Media Manager"
+msgstr "Media beheer"
+
+#, tao-public
+msgid "Media Manager extension"
+msgstr "Media beheer extensie"
+
+msgid "Media Options"
+msgstr "Media opties"
+
+msgid "Media successfully exported."
+msgstr "Media met succes geëxporteerd."
+
+#, tao-public
+msgid "Move"
+msgstr "Verplaatsen"
+
+#, tao-public
+msgid "New class"
+msgstr "Nieuwe klasse"
+
+#, tao-public
+msgid "New passage"
+msgstr ""
+
+msgid "No file found for this media"
+msgstr "Geen bestand gevonden voor deze media"
+
+msgid "Passage Properties"
+msgstr ""
+
+msgid "Please delete the subclasses before."
+msgstr ""
+
+msgid "Preview"
+msgstr "Voorbeeld"
+
+msgid "Preview the item"
+msgstr ""
+
+#, tao-public
+msgid "Properties"
+msgstr "Eigenschappen"
+
+msgid "Replace Asset"
+msgstr ""
+
+msgid "Resource deleted"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save the asset"
+msgstr ""
+
+msgid "Shared Stimulus"
+msgstr "Gedeelde stimulus"
+
+msgid "Shared Stimulus edited successfully"
+msgstr "Gedeelde stimulus succesvol aangepast"
+
+msgid "Shared Stimulus imported successfully"
+msgstr "Gedeelde stimulus succesvol geïmporteerd"
+
+msgid "some text ..."
+msgstr ""
+
+msgid "The class"
+msgstr ""
+
+msgid "This"
+msgstr ""
+
+msgid "Unable to delete the selected resource"
+msgstr ""
+
+msgid "Unable to extract the archive"
+msgstr "Kon archief niet uitpakken"
+
+msgid "Unable to import"
+msgstr ""
+
+msgid "Upload Media"
+msgstr "Media uploaden"
+
+msgid "Usage: ImportMedia MEDIA_FILE [DESTINATION_CLASS]"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "which contains assets that are in use elsewhere."
+msgstr ""
+
+msgid "You are about to delete the class"
+msgstr ""
+
+msgid "you are trying to delete is too large and contains too many subclasses."
+msgstr ""
+
+msgid "You can\'t upload a zip file as a media"
+msgstr ""
+
+msgid "Your passage is saved"
+msgstr ""
+
+msgid "Zip"
+msgstr "Postcode"
+

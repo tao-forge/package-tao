@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TAO 3.4.0-sprint132\n"
+"PO-Revision-Date: 2020-07-03T09:31:49\n"
+"Last-Translator: TAO Translation Team <translation@tao.lu>\n"
+"MIME-Version: 1.0\n"
+"Language: lt-LT\n"
+"sourceLanguage: en-US\n"
+"targetLanguage: lt-LT\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "%s media on this environment"
+msgstr ""
+
+msgid "%s media successfully modified"
+msgstr ""
+
+msgid "%s media to modify"
+msgstr ""
+
+msgid "Add a media file"
+msgstr "Pridėti medijos failą"
+
+msgid "An error has occurred. Please contact your administrator."
+msgstr ""
+
+msgid "Are you sure you want to delete this"
+msgstr ""
+
+msgid "Are you sure you want to delete this class and all of its content?"
+msgstr ""
+
+#, tao-public
+msgid "Assets"
+msgstr ""
+
+#, tao-public
+msgid "Authoring"
+msgstr ""
+
+msgid "Back to Manage Assets"
+msgstr ""
+
+msgid "Center"
+msgstr ""
+
+msgid "Define item language."
+msgstr ""
+
+#, tao-public
+msgid "Delete"
+msgstr "Ištrinti"
+
+msgid "Deleting this class will break the items and the tests that are currently using them."
+msgstr ""
+
+msgid "Edit Instance"
+msgstr "Redaguoti Instanciją"
+
+msgid "Edited %s"
+msgstr "Redaguota %s"
+
+msgid "Element Properties"
+msgstr ""
+
+#, tao-public
+msgid "Export"
+msgstr "Eksportuoti"
+
+msgid "Export Media as Zip file"
+msgstr "Eksportuoti Mediją kaip ZIP failą"
+
+msgid "Fail to edit shared stimulus"
+msgstr "Nepavyko redaguoti bendrinamo stimulo"
+
+msgid "Fail to edit Shared Stimulus"
+msgstr "Nepavyko redaguoti Bendrinamo Stimulo"
+
+msgid "Fail to import media"
+msgstr "Nepavyko importuoti medijos"
+
+msgid "Fail to import Shared Stimulus"
+msgstr "Nepavyko importuoti Bendrinamo Stimulo"
+
+msgid "File"
+msgstr "Failas"
+
+msgid "File name"
+msgstr "Failo pavadinimas"
+
+msgid "Forbidden action"
+msgstr ""
+
+#, tao-public
+msgid "Import"
+msgstr "Importuoti"
+
+msgid "Imported %s"
+msgstr "Importuota %s"
+
+msgid "Imported new file"
+msgstr "Importuotas naujas failas"
+
+msgid "Initial import"
+msgstr "Pradinis importavimas"
+
+msgid "Instance saved"
+msgstr "Instanciją išsaugota"
+
+msgid "is currently used in"
+msgstr ""
+
+msgid "Issue while modifying %s"
+msgstr ""
+
+msgid "item(s)"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+#, tao-public
+msgid "Manage Assets"
+msgstr ""
+
+#, tao-public
+msgid "Manage Schema"
+msgstr "Tvarkyti Schemą"
+
+msgid "Media imported"
+msgstr ""
+
+msgid "Media imported successfully"
+msgstr "Medija importuota sėkmingai"
+
+#, tao-public
+msgid "Media Manager"
+msgstr "Medijos Tvarkytojas"
+
+#, tao-public
+msgid "Media Manager extension"
+msgstr "Medijos Tvarkytojo plėtinys"
+
+msgid "Media Options"
+msgstr "Medijos Parametrai"
+
+msgid "Media successfully exported."
+msgstr "Medija sėkmingai eksportuota."
+
+#, tao-public
+msgid "Move"
+msgstr "perkelti"
+
+#, tao-public
+msgid "New class"
+msgstr "Nauja klasė"
+
+#, tao-public
+msgid "New passage"
+msgstr ""
+
+msgid "No file found for this media"
+msgstr "Nerasta failas šiai medijai"
+
+msgid "Passage Properties"
+msgstr ""
+
+msgid "Please delete the subclasses before."
+msgstr ""
+
+msgid "Preview"
+msgstr "Peržiūra"
+
+msgid "Preview the item"
+msgstr ""
+
+#, tao-public
+msgid "Properties"
+msgstr "Savybės"
+
+msgid "Replace Asset"
+msgstr ""
+
+msgid "Resource deleted"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save the asset"
+msgstr ""
+
+msgid "Shared Stimulus"
+msgstr "Bendrinamas Stimulas"
+
+msgid "Shared Stimulus edited successfully"
+msgstr "Bendrinamas Stimulas redaguotas sėkmingai"
+
+msgid "Shared Stimulus imported successfully"
+msgstr "Bendrinamas Stimulas importuotas sėkmingai"
+
+msgid "some text ..."
+msgstr ""
+
+msgid "The class"
+msgstr ""
+
+msgid "This"
+msgstr ""
+
+msgid "Unable to delete the selected resource"
+msgstr ""
+
+msgid "Unable to extract the archive"
+msgstr "Nepavyko išarchyvuoti archyvo"
+
+msgid "Unable to import"
+msgstr ""
+
+msgid "Upload Media"
+msgstr "Įkelti Mediją"
+
+msgid "Usage: ImportMedia MEDIA_FILE [DESTINATION_CLASS]"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "which contains assets that are in use elsewhere."
+msgstr ""
+
+msgid "You are about to delete the class"
+msgstr ""
+
+msgid "you are trying to delete is too large and contains too many subclasses."
+msgstr ""
+
+msgid "You can\'t upload a zip file as a media"
+msgstr ""
+
+msgid "Your passage is saved"
+msgstr ""
+
+msgid "Zip"
+msgstr "ZIP"
+
