@@ -1,0 +1,9 @@
+/.project
+/.settings/
+/.buildpath
+composer.lock
+/vendor/
+var/
+phpunit.xml
+node_modules
+.idea
