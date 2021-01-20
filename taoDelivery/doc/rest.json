@@ -1,0 +1,252 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": ""
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "taoDelivery",
+      "description": "Operations about delivery executions"
+    }
+  ],
+  "basePath": "/taoDelivery",
+  "paths": {
+    "/RestExecution/unstop": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "description": "Unstop execution from the terminated state",
+        "tags": [
+          "executions"
+        ],
+        "parameters": [
+          {
+            "name": "deliveryExecution",
+            "in": "query",
+            "description": "Execution identifier, in URI format",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "description": "Unstop reason, free text description",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "title": "response",
+              "format": "json",
+              "type": "object",
+              "required": [
+                "success",
+                "version",
+                "data"
+              ],
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "description": "True on success"
+                },
+                "version": {
+                  "type": "string",
+                  "description": "Tao version"
+                },
+                "data": {
+                  "type": "string",
+                  "description": "Unstop successful"
+                }
+              }
+            },
+            "examples": {
+              "application/json": {
+                "success": true,
+                "data": "Unstop successful",
+                "version": "3.1.0"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/genericValidationError"
+          },
+          "401": {
+            "$ref": "#/responses/genericAuthenticationError"
+          },
+          "403": {
+            "$ref": "#/responses/genericAuthorizationError"
+          },
+          "404": {
+            "$ref": "#/responses/executionNotFoundError"
+          },
+          "500": {
+            "$ref": "#/responses/genericInternalError"
+          }
+        }
+      }
+    },
+    "/DeliveryExecutionState": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "executions"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "description": "Execution identifier, in URI format",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "body",
+            "description": "State to set the execution to",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "value"
+              ],
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "http://www.tao.lu/Ontologies/TAODelivery.rdf#DeliveryExecutionStatusActive",
+                    "http://www.tao.lu/Ontologies/TAODelivery.rdf#DeliveryExecutionStatusPaused",
+                    "http://www.tao.lu/Ontologies/TAODelivery.rdf#DeliveryExecutionStatusFinished"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": []
+            }
+          },
+          "400": {
+            "$ref": "#/responses/genericValidationError"
+          },
+          "401": {
+            "$ref": "#/responses/genericAuthenticationError"
+          },
+          "403": {
+            "$ref": "#/responses/genericAuthorizationError"
+          },
+          "404": {
+            "$ref": "#/responses/executionNotFoundError"
+          },
+          "500": {
+            "$ref": "#/responses/genericInternalError"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "errorModel": {
+      "type": "object",
+      "description": "contain error",
+      "required": [
+        "success",
+        "version",
+        "errorCode",
+        "errorMsg"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "false on failure",
+          "default": false
+        },
+        "version": {
+          "type": "string",
+          "description": "tao version",
+          "default": "3.1.0"
+        },
+        "errorCode": {
+          "type": "integer",
+          "description": "error code",
+          "default": 0
+        },
+        "errorMsg": {
+          "type": "string",
+          "description": "error description"
+        }
+      }
+    }
+  },
+  "responses": {
+    "genericValidationError": {
+      "description": "Bad request if you send invalid parameters.",
+      "examples": {
+        "application/json": {
+          "success": false,
+          "errorCode": 0,
+          "errorMsg": "At least one mandatory parameter was required but found missing in your request",
+          "version": "3.1.0"
+        }
+      },
+      "schema": {
+        "$ref": "#/definitions/errorModel"
+      }
+    },
+    "genericAuthenticationError": {
+      "description": "Not authenticated"
+    },
+    "genericAuthorizationError": {
+      "description": "User isn't authorized to access to this functionality"
+    },
+    "executionNotFoundError": {
+      "description": "Delivery can't be found",
+      "examples": {
+        "application/json": {
+          "success": false,
+          "errorCode": 0,
+          "errorMsg": "Delivery Execution not found",
+          "version": "3.1.0"
+        }
+      },
+      "schema": {
+        "$ref": "#/definitions/errorModel"
+      }
+    },
+    "genericInternalError": {
+      "description": "Internal error (should not occur)"
+    }
+  },
+  "externalDocs": {
+    "description": "taoDelivery on Github",
+    "url": "https://github.com/oat-sa/extension-tao-delivery"
+  }
+}
+
