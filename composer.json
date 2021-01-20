@@ -1,0 +1,69 @@
+{
+	"name" : "oat-sa/tao-community",
+	"license" : "GPL-2.0-only",
+	"config" : {
+		"preferred-install" : "dist"
+	},
+	"support" : {
+		"issues" : "http://forge.taotesting.com",
+		"forum" : "http://forum.taotesting.com"
+	},
+	"authors" : [{
+			"homepage" : "http://www.taotesting.com",
+			"name" : "Open Assessment Technologies S.A."
+		}
+	],
+	"keywords" : [
+		"sprint 137",
+		"tao",
+		"oat",
+		"computer-based-assessment"
+	],
+	"repositories" : [
+      { "type" : "vcs", "url" : "https://github.com/oat-sa/extension-parcc-tei" }
+	],
+	"homepage" : "http://www.taotesting.com",
+	"require" : {
+		"oat-sa/generis" : "13.4.0",
+		"jbout/tao-core" : "dev-develop",
+		"oat-sa/extension-tao-community" : "9.0.1",
+		"oat-sa/extension-tao-funcacl" : "6.0.1",
+		"oat-sa/extension-tao-dac-simple" : "6.8.3",
+		"oat-sa/extension-tao-testtaker" : "7.7.2",
+		"oat-sa/extension-tao-group" : "6.6.2",
+		"oat-sa/extension-tao-item" : "10.11.0",
+		"oat-sa/extension-tao-itemqti-pci" : "6.9.0",
+		"oat-sa/extension-tao-itemqti" : "25.9.2.3",
+		"oat-sa/extension-tao-itemqti-pic" : "5.6.4",
+		"oat-sa/extension-tao-test" : "14.4.0",
+		"oat-sa/extension-tao-testqti" : "39.7.6.3",
+		"oat-sa/extension-tao-outcome" : "12.3.0",
+		"oat-sa/extension-tao-outcomeui" : "9.4.3",
+		"oat-sa/extension-tao-outcomerds" : "7.3.2",
+		"oat-sa/extension-tao-outcomekeyvalue" : "5.7.1",
+		"oat-sa/extension-tao-outcomelti" : "4.0.0",
+		"oat-sa/extension-tao-delivery" : "14.18.2",
+		"oat-sa/extension-tao-delivery-rdf" : "13.1.0",
+		"oat-sa/extension-tao-revision" : "8.8.2.1",
+		"oat-sa/extension-tao-mediamanager" : "11.4.0",
+		"oat-sa/extension-pcisample" : "2.10.2",
+		"oat-sa/extension-tao-backoffice" : "5.1.0",
+		"oat-sa/extension-tao-proctoring" : "19.19.1",
+		"oat-sa/extension-tao-clientdiag" : "7.8.1",
+		"oat-sa/extension-tao-eventlog" : "2.10.2",
+		"oat-sa/extension-tao-task-queue" : "5.5.1",
+		"oat-sa/extension-tao-testqti-previewer" : "2.19.1"
+		,"oat-sa/extension-tao-lti" : "11.12.0"
+		,"oat-sa/extension-tao-ltideliveryprovider" : "11.4.1"
+		,"oat-sa/extension-lti-proctoring" : "9.1.1"
+		,"oat-sa/extension-lti-clientdiag" : "2.1.0"
+		,"oat-sa/extension-lti-test-review" : "1.17.0.1"
+		,"oat-sa/extension-tao-oauth" : "5.3.1"
+		,"oat-sa/extension-tao-openid" : "1.3.0"
+		,"oat-sa/extension-tao-publishing" : "5.1.0"
+		,"oat-sa/extension-tao-xmledit" : "3.3.0"
+		,"oat-sa/extension-tao-xmledit-responseprocessing" : "1.2.0"
+		,"oat-sa/extension-parcc-tei" : "0.6.0.1"
+	},
+	"description" : "TAO is an Open Source e-Testing platform that empowers you to build, deliver, and share innovative and engaging assessments online \u2013 in any language or subject matter. Sep 11 Release"
+}
