@@ -1,0 +1,393 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TAO 3.4.0-sprint131\n"
+"PO-Revision-Date: 2020-07-17T08:30:47\n"
+"Last-Translator: TAO Translation Team <translation@tao.lu>\n"
+"MIME-Version: 1.0\n"
+"Language: nl-NL\n"
+"sourceLanguage: en-US\n"
+"targetLanguage: nl-NL\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "%d sources (%s)"
+msgstr "%d bronnen (%s)"
+
+msgid "All rights reserved."
+msgstr "Alle rechten voorbehouden."
+
+msgid "An error occurred! Please verify your input!"
+msgstr "Er is een fout opgetreden! Controleer uw invoer!"
+
+msgid "Average bandwidth"
+msgstr "Gemiddelde bandbreedte"
+
+msgid "Average intensive bandwidth"
+msgstr "Gemiddelde intensieve bandbreedte"
+
+msgid "Average performances"
+msgstr "Gemiddelde prestatie"
+
+msgid "Average rendering time"
+msgstr "Gemiddelde weergave tijd"
+
+msgid "Average upload speed"
+msgstr "Gemiddelde upload snelheid"
+
+msgid "Bandwidth"
+msgstr "Bandbreedte"
+
+msgid "Be aware that these tests will take up to several minutes."
+msgstr "Houdt er rekening mee dat deze testen tot enkele minuten kunnen duren."
+
+msgid "Browser"
+msgstr "Browser"
+
+msgid "Cannot get your fingerprint"
+msgstr "Kan uw vingerafdruk niet verkrijgen"
+
+msgid "Cannot retrieve the school name. Please verify your input"
+msgstr "Kan de naam van de school niet achterhalen. Gelieve uw input te verifiëren"
+
+msgid "Change since last fingerprint"
+msgstr "Verandering sinds de laatste vingerafdruk"
+
+msgid "Checking the bandwidth..."
+msgstr "Bandbreedte aan het controleren..."
+
+msgid "Checking the browser..."
+msgstr "Browser aan het controleren..."
+
+msgid "Checking the media intensive bandwidth..."
+msgstr "Het checken van de media-intensieve bandbreedte..."
+
+msgid "Checking the performances..."
+msgstr "Prestaties aan het controleren..."
+
+msgid "Checking the screen..."
+msgstr "Het scherm wordt gecontroleerd...."
+
+msgid "Checking upload speed..."
+msgstr "Upload snelheid aan het controleren..."
+
+msgid "Compatible"
+msgstr "compatibel"
+
+msgid "Computing the fingerprint..."
+msgstr "Het berekenen van de vingerafdruk..."
+
+msgid "Connect to the diagnostic tool"
+msgstr "Verbind met de diagnostische tool"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Diagnostic Tool"
+msgstr "Diagnostische tool"
+
+msgid "diagnostics.csv"
+msgstr ""
+
+msgid "Done!"
+msgstr "Klaar!"
+
+msgid "Dynamic UID"
+msgstr ""
+
+msgid "Errors occurred! Please see details"
+msgstr "Er zijn fouten opgetreden! Zie details"
+
+msgid "Exit"
+msgstr "Afsluiten"
+
+msgid "Export CSV"
+msgstr ""
+
+msgid "Failed to get school name"
+msgstr "We zijn er niet in geslaagd om de naam van de school te achterhalen"
+
+msgid "Fingerprint"
+msgstr "Vingerafdruk"
+
+msgid "Fingerprint error"
+msgstr "Fout in de vingerafdruk"
+
+msgid "Fingerprint errors"
+msgstr "Fouten in de vingerafdruk"
+
+msgid "Fingerprint sources"
+msgstr ""
+
+msgid "Getting school name..."
+msgstr "Het verkrijgen van schoolnaam..."
+
+msgid "Good bandwidth"
+msgstr "Goede bandbreedte"
+
+msgid "Good performances"
+msgstr "Goede prestaties"
+
+msgid "Good upload speed"
+msgstr "Goede upload snelheid"
+
+msgid "Hide Details"
+msgstr "Details verbergen"
+
+msgid "Intensive bandwidth"
+msgstr "Intensieve bandbreedte"
+
+msgid "Interface not available"
+msgstr "Service is niet beschikbaar"
+
+msgid "Launch another readiness check"
+msgstr "Start een andere gereedheid controle"
+
+msgid "Launch readiness check"
+msgstr "Start gereedheid controle"
+
+msgid "List of readiness checks"
+msgstr "Lijst van gereedheid controles"
+
+msgid "Loading"
+msgstr "Bezig met laden…"
+
+msgid "Log in"
+msgstr "Aanmelden"
+
+msgid "Login"
+msgstr "Aanmelden"
+
+msgid "Logout"
+msgstr "Afmelden"
+
+msgid "Low bandwidth"
+msgstr "Lage bandbreedte"
+
+msgid "Low upload speed"
+msgstr "Lage upload snelheid"
+
+msgid "Max upload speed"
+msgstr "Maximum uploadsnelheid"
+
+msgid "Maximum bandwidth"
+msgstr "Maximale bandbreedte"
+
+msgid "Maximum intensive bandwidth"
+msgstr "Maximale intensieve bandbreedte"
+
+msgid "Maximum rendering time"
+msgstr "Maximale weergavetijd"
+
+msgid "Media intensive bandwidth"
+msgstr "Media-intensieve bandbreedte"
+
+msgid "Minimum bandwidth"
+msgstr "Minimale bandbreedte"
+
+msgid "Minimum intensive bandwidth"
+msgstr "Minimale intensieve bandbreedte"
+
+msgid "Minimum rendering time"
+msgstr "Minimale weergavetijd"
+
+msgid "Missing field %s"
+msgstr "Ontbrekend veld %s"
+
+msgid "No"
+msgstr "Nee"
+
+msgid "No diagnostic service defined"
+msgstr "Geen diagnostische service gedefinieerd"
+
+msgid "No readiness checks have been done!"
+msgstr "Er zijn geen gereedheid checks gedaan!"
+
+msgid "Number of simultaneous test takers the connection can handle"
+msgstr "Aantal simultane afnames die de connectie aan kan"
+
+msgid "Number of simultaneous test takers the connection can handle with media intensive"
+msgstr "Aantal simultane testgebruikers dat de verbinding kan verwerken in geval van media-intensief"
+
+msgid "Operating system"
+msgstr "Besturingssysteem"
+
+msgid "Operating system and web browser"
+msgstr "Besturingssysteem en web browser"
+
+msgid "OS"
+msgstr "Besturingssysteem"
+
+msgid "Performances"
+msgstr "Prestaties"
+
+msgid "Readiness Check"
+msgstr "Gereedheid check"
+
+msgid "Readiness checks already done"
+msgstr "Gereedheid checks zijn al gedaan"
+
+msgid "Readiness diagnostics"
+msgstr "Gereed diagnostiek"
+
+msgid "Refresh"
+msgstr "Verversen"
+
+msgid "Refresh the page"
+msgstr "Pagina verversen"
+
+msgid "Remove"
+msgstr "Verwijderen"
+
+msgid "Remove the readiness check result?"
+msgstr "Het gereedheid controle resultaat verwijderen?"
+
+msgid "Remove the selected readiness check results"
+msgstr "Verwijder het gereedheid controle resultaat"
+
+msgid "Return to the list"
+msgstr "Keer terug naar de lijst"
+
+msgid "School ID"
+msgstr ""
+
+msgid "School id"
+msgstr ""
+
+msgid "School ID:"
+msgstr ""
+
+msgid "School name"
+msgstr "Naam van de school"
+
+msgid "School name:"
+msgstr "Naam van de school:"
+
+msgid "School number"
+msgstr "Nummer van de school"
+
+msgid "School number:"
+msgstr "Nummer van de school:"
+
+msgid "School PIN code (4 digits)"
+msgstr "PIN-code van de school (4 cijfers)"
+
+msgid "School PIN:"
+msgstr "PIN-code van de school:"
+
+msgid "Screen Height"
+msgstr "Hoogte van het scherm"
+
+msgid "Screen resolution"
+msgstr "Scherm resolutie"
+
+msgid "Screen Width"
+msgstr "Scherm wijdte"
+
+msgid "Show Details"
+msgstr "Toon details"
+
+msgid "Show fingerprint details"
+msgstr "Toon vingerafdrukgegevens"
+
+msgid "Simultaneous test takers under normal connection conditions."
+msgstr ""
+
+msgid "Something went wrong ..."
+msgstr "Er ging iets verkeerd..."
+
+msgid "Starting..."
+msgstr "Bezig met starten..."
+
+msgid "System Compatibility"
+msgstr ""
+
+msgid "Test system compatibility"
+msgstr ""
+
+msgid "The device screen does not meet the minimum resolution of %s!"
+msgstr "Het scherm voldoet niet aan de minimale resolutie van %s!"
+
+msgid "The device screen has the minimum required resolution."
+msgstr "Het scherm heeft de minimaal vereiste resolutie."
+
+msgid "The device screen resolution meets the requirements."
+msgstr "De schermresolutie voldoet aan de eisen."
+
+msgid "The readiness check result have been removed"
+msgstr "Het resultaat van de gereedheid controle is verwijderd"
+
+msgid "The readiness check result will be removed. Continue ?"
+msgstr "Het resultaat van de gereedheid controle zal worden verwijderd. Verder gaan?"
+
+msgid "The selected readiness check results will be removed. Continue ?"
+msgstr "Het geselecteerde resultaat van de gereedheid controle zal worden verwijderd. Verder gaan?"
+
+msgid "The storage service provided to store the diagnostic results must be upgraded to support reads!"
+msgstr "De opslagdienst die wordt aangeboden om de diagnostische resultaten op te slaan, moet worden opgewaardeerd om reads te ondersteunen!"
+
+msgid "This browser is not tested."
+msgstr "Deze browser is nog niet getest."
+
+msgid "This tool will run a number of tests in order to establish how well your current environment is suitable to run the TAO platform."
+msgstr "Deze tool zal een aantal testen uitvoeren om te bepalen in hoeverre uw huidige omgeving geschikt is om het TAO platform te draaien."
+
+msgid "Total"
+msgstr "Totaal"
+
+msgid "Try a test delivery"
+msgstr "Probeer een test levering"
+
+msgid "Unable to get the workstation name!"
+msgstr "Het lukt niet om de naam van het werkstation te achterhalen!"
+
+msgid "Unstable bandwidth, temporary fluctuations in connection speed may affect test taker experience."
+msgstr ""
+
+msgid "Upload speed"
+msgstr "Uploadsnelheid"
+
+msgid "Very slow performances"
+msgstr "Zeer lage prestaties"
+
+msgid "Web browser"
+msgstr "Webbrowser"
+
+msgid "Workstation"
+msgstr "Werkstation"
+
+msgid "Workstation name"
+msgstr "Naam van werkstation"
+
+msgid "Workstation performances"
+msgstr "Werkstation prestaties"
+
+msgid "Workstation:"
+msgstr "Werkstation:"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Your fingerprint is %s"
+msgstr "Uw vingerafdruk is %s"
+
+msgid "Your fingerprint is %s. However it seems it has changed since the last check. It could be related to changes in your system."
+msgstr "Uw vingerafdruk is %s. Het lijkt er echter op dat het veranderd is sinds de laatste check. Het kan verband houden met veranderingen in uw systeem."
+
+msgid "Your fingerprint is %s. However we encountered issue while retrieving the data. Maybe your available disk space is too small"
+msgstr "Uw vingerafdruk is %s. We hebben echter problemen ondervonden tijdens het ophalen van de gegevens. Misschien is uw beschikbare schijfruimte te klein"
+
+msgid "Your system is fully compliant."
+msgstr "Uw systeem is volledig compatibel."
+
+msgid "Your system is not optimal, please contact your system administrator."
+msgstr "Uw systeem is niet optimaal. Neem contact op met uw systeembeheerder."
+
+msgid "Your system requires a compatibility update, please contact your system administrator."
+msgstr "Uw systeem benodigd een comptabiliteits-update. Neem contact op met uw systeembeheerder."
+
