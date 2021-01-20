@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TAO 3.4.0-sprint137\n"
+"PO-Revision-Date: 2020-09-11T08:31:14\n"
+"Last-Translator: TAO Translation Team <translation@tao.lu>\n"
+"MIME-Version: 1.0\n"
+"Language: it-IT\n"
+"sourceLanguage: en-US\n"
+"targetLanguage: it-IT\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid " . \common_Utils::toPHPVariableString($this->getDescription()) . "
+msgstr ""
+
+msgid " . \common_Utils::toPHPVariableString($this->getLabel()) . "
+msgstr ""
+
+#, tao-public
+msgid "Authoring"
+msgstr "Authoring"
+
+#, tao-public
+msgid "Combine a selection of items into tests."
+msgstr "Combina una selezione di item nel test"
+
+#, tao-public
+msgid "Copy To"
+msgstr ""
+
+#, tao-public
+msgid "Delete"
+msgstr "Cancella"
+
+#, tao-public
+msgid "Duplicate"
+msgstr "Duplica"
+
+#, tao-public
+msgid "Export"
+msgstr "Esporta"
+
+#, tao-public
+msgid "Import"
+msgstr "Importa"
+
+msgid "Last updated on %2s"
+msgstr ""
+
+#, tao-public
+msgid "Manage Schema"
+msgstr ""
+
+#, tao-public
+msgid "Manage tests"
+msgstr "Gestisci i test"
+
+#, tao-public
+msgid "Move"
+msgstr "Sposta"
+
+#, tao-public
+msgid "Move To"
+msgstr ""
+
+#, tao-public
+msgid "New class"
+msgstr "Nuova classe"
+
+#, tao-public
+msgid "New test"
+msgstr "Nuovo test"
+
+#, tao-public
+msgid "Preview"
+msgstr ""
+
+#, tao-public
+msgid "Properties"
+msgstr "Proprietà"
+
+msgid "Security plugins"
+msgstr ""
+
+msgid "Set of plugins with \'security\' category"
+msgstr ""
+
+msgid "Test Preview is not installed, please contact to your administrator."
+msgstr ""
+
+msgid "Test properties"
+msgstr "Proprietà testo"
+
+msgid "Test saved"
+msgstr "Test salvato"
+
+msgid "Test was successfully deleted."
+msgstr ""
+
+#, tao-public
+msgid "Tests"
+msgstr "Test"
+
+#, tao-public
+msgid "Tests library"
+msgstr "Biblioteca di test"
+
+msgid "The Test mode (sequencing, scoring, cumulating, etc.) and layout are also configured here."
+msgstr "La modalita' test (sequenza, punteggio, cumulo, ecc.) e il layout sono anche configurati qui."
+
+msgid "The Tests module allows to combine a selection of Items to a Test."
+msgstr "La modalita' test ti consente di mettere insieme una selezione di item nel test"
+
+msgid "Unable to delete test."
+msgstr ""
+
+msgid "Unable to process your request"
+msgstr ""
+
+msgid "You checked out this test %2s ago"
+msgstr "Hai controllato questo test %2s "
+
