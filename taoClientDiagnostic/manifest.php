@@ -37,8 +37,6 @@ return array(
         'tao'        => '>=35.0.0',
         'taoQtiItem' => '>=18.0.0',
     ),
-    // for compatibility
-    'dependencies' => array('tao'),
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#taoClientDiagnosticManager',
     'acl' => array(
         array('grant', 'http://www.tao.lu/Ontologies/generis.rdf#taoClientDiagnosticManager', array('ext'=>'taoClientDiagnostic')),
@@ -58,7 +56,6 @@ return array(
     ),
     'uninstall' => array(
     ),
-    'update' => 'oat\\taoClientDiagnostic\\scripts\\update\\Updater',
     'routes' => array(
         '/taoClientDiagnostic' => 'oat\\taoClientDiagnostic\\controller'
     ),

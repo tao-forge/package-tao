@@ -41,24 +41,17 @@ return [
         'generis'      => '>=12.15.0',
         'tao' => '>=36.1.0'
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOGroup.rdf'
-    ],
     'install' => [
         'rdf' => [
             dirname(__FILE__) . '/models/ontology/taogroup.rdf'
         ]
     ],
-    'update' => 'oat\\taoGroups\\models\\update\\Updater',
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOGroup.rdf#GroupsManagerRole',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOGroup.rdf#GroupsManagerRole', ['ext' => 'taoGroups']]
     ],
     'routes' => [
         '/taoGroups' => 'oat\\taoGroups\\controller'
-    ],
-    'optimizableClasses' => [
-        'http://www.tao.lu/Ontologies/TAOGroup.rdf#Group'
     ],
     'constants' => [
         # actions directory

@@ -39,7 +39,6 @@ return array(
     ),
     'uninstall' => array(
     ),
-    'update' => 'oat\\xmlEdit\\scripts\\update\\Updater',
     'routes' => array(
         '/xmlEdit' => 'oat\\xmlEdit\\controller'
     ),

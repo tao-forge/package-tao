@@ -32,10 +32,6 @@ return [
     'version' => '1.0',
     'author' => 'TAO Team',
     'dependencies' => ['taoItemBank', 'taoDocuments'],
-    'models' => [
-        'http://www.tao.lu/Ontologies/taoFuncACL.rdf',
-        'http://www.tao.lu/Ontologies/taoItemBank.rdf'
-    ],
     'install' => [
         'rdf' => [
                 ['ns' => 'http://www.tao.lu/Ontologies/taoFuncACL.rdf', 'file' => '/extension/path/models/ontology/taofuncacl.rdf'],
@@ -54,13 +50,5 @@ return [
          // web services
          'WS_ENDPOINT_TWITTER' => 'http://twitter.com/statuses/',
          'WS_ENDPOINT_FACEBOOK' => 'http://api.facebook.com/restserver.php'
-     ],
-     'optimizableClasses' => [
-        'http://www.linkeddata.org/ontologies/data.rdf#myClass1',
-        'http://www.linkeddata.org/ontologies/data.rdf#myClass2'
-     ],
-     'optimizableProperties' => [
-        'http://www.linkeddata.org/ontologies/props.rdf#myProp1',
-        'http://www.linkeddata.org/ontologies/props.rdf#myProp2'
      ]
 ];

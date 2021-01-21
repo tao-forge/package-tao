@@ -53,7 +53,6 @@ return [
     'routes' => [
         '/taoBackOffice' => 'oat\\taoBackOffice\\controller'
     ],
-    'update' => 'oat\taoBackOffice\scripts\update\Updater',
     'constants' => [
         # views directory
         "DIR_VIEWS" => __DIR__ . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR,

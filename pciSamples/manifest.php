@@ -41,13 +41,7 @@ return array(
 			RegisterPciTextReader::class
 		)
     ),
-    'update' => 'oat\\pciSamples\\scripts\\update\\Updater',
     'uninstall' => array(
-    ),
-    'autoload' => array (
-        'psr-4' => array(
-            'oat\\pciSamples\\' => dirname(__FILE__).DIRECTORY_SEPARATOR
-        )
     ),
     'routes' => array(
         '/pciSamples' => 'oat\\pciSamples\\controller'

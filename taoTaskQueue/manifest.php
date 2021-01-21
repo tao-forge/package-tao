@@ -49,7 +49,6 @@ return [
     ],
     'uninstall' => [
     ],
-    'update' => oat\taoTaskQueue\scripts\update\Updater::class,
     'routes' => [
         '/taoTaskQueue' => 'oat\\taoTaskQueue\\controller'
     ],

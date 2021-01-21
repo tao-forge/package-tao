@@ -68,9 +68,6 @@ class UpdateExtensions extends \common_ext_UpdateExtensions
         $updateId = $this->generateUpdateId();
         $this->updateCacheBuster($report, $updateId);
 
-        $postUpdateReport = $this->runPostUpdateScripts();
-        $report->add($postUpdateReport);
-
         $report->add(new common_report_Report(common_report_Report::TYPE_INFO, __('Update ID : %s', $updateId)));
 
         return $report;
@@ -102,39 +99,5 @@ class UpdateExtensions extends \common_ext_UpdateExtensions
             \common_Logger::e($e->getMessage());
             $report->add(new common_report_Report(common_report_Report::TYPE_WARNING, __('Unable to update the asset service')));
         }
-    }
-
-    /**
-     * @throws \common_exception_Error
-     */
-    private function runPostUpdateScripts()
-    {
-        $report = new common_report_Report(common_report_Report::TYPE_INFO, 'Post update actions:');
-        $extManager = $this->getServiceLocator()->get(ExtensionManager::SERVICE_ID);
-        $sorted = \helpers_ExtensionHelper::sortByDependencies($extManager->getInstalledExtensions());
-        foreach ($sorted as $ext) {
-            $postUpdateExtensionReport = $this->runPostUpdateScript($ext);
-            if ($postUpdateExtensionReport !== null) {
-                $report->add($postUpdateExtensionReport);
-            }
-        }
-        if (!$report->hasChildren()) {
-            $report->add(new common_report_Report(common_report_Report::TYPE_INFO, 'No actions to be executed'));
-        }
-        return $report;
-    }
-
-    /**
-     * @param Extension $ext
-     * @return common_report_Report|null
-     */
-    private function runPostUpdateScript(Extension $ext) : ?common_report_Report
-    {
-        try {
-            $report = $ext->getUpdater()->postUpdate();
-        } catch (\common_ext_ManifestException $e) {
-            $report = new common_report_Report(common_report_Report::TYPE_WARNING, $e->getMessage());
-        }
-        return $report;
     }
 }

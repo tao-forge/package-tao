@@ -43,7 +43,6 @@ return array(
             \oat\taoOauth\scripts\install\RegisterPublishingOauthAction::class,
         )
     ),
-    'update' => oat\taoOauth\scripts\update\Updater::class,
     'routes' => array(
         '/taoOauth' => 'oat\\taoOauth\\controller'
     ),

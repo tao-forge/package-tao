@@ -49,6 +49,5 @@ return [
             TaskQueue::class,
             SetupDefaultKvPersistence::class
         ],
-    ],
-    'update' => 'oat\\generis\\scripts\\update\\Updater',
+    ]
 ];

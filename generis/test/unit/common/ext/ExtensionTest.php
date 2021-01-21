@@ -44,7 +44,5 @@ class ExtensionTest extends TestCase
                 return $this->dir.$this->getId().DIRECTORY_SEPARATOR;
             }
         };
-        $ext->setServiceLocator($this->getServiceLocatorMock([]));
-        $this->assertInstanceOf(\common_ext_ExtensionUpdater::class, $ext->getUpdater());
     }
 }

@@ -48,7 +48,6 @@ return array(
             \oat\parccTei\scripts\install\RegisterPciGraphZoomNumberLineInteraction::class,
 		)
     ),
-    'update' => 'oat\\parccTei\\scripts\\update\\Updater',
     'uninstall' => array(
     ),
     'autoload' => array (

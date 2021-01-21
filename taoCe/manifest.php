@@ -41,7 +41,6 @@ return [
         'taoOutcomeRds' => '*',
         'taoDeliveryRdf' => '*',
     ],
-    'update' => 'oat\\taoCe\\scripts\\update\\Updater',
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#taoCeManager',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAO.rdf#BackOfficeRole', ['ext' => 'taoCe', 'mod' => 'Main', 'act' => 'index']],

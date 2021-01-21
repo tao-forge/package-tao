@@ -25,7 +25,6 @@ use oat\taoPublishing\scripts\install\RegisterDeliveryEventsListener;
 use oat\taoPublishing\scripts\install\RegisterGenerisSearch;
 use oat\taoPublishing\scripts\install\RegisterPublishingFileSystem;
 use oat\taoPublishing\scripts\install\UpdateConfigDeliveryFactoryService;
-use oat\taoPublishing\scripts\update\Updater;
 
 return array(
     'name' => 'taoPublishing',
@@ -63,7 +62,6 @@ return array(
         '/taoPublishing/api' => ['class' => ApiRoute::class],
         '/taoPublishing' => 'oat\\taoPublishing\\controller'
     ),
-    'update' => Updater::class,
 	'constants' => array(
 	    # views directory
 	    "DIR_VIEWS" => __DIR__ .DIRECTORY_SEPARATOR."views".DIRECTORY_SEPARATOR,

@@ -50,15 +50,6 @@ abstract class common_ext_ExtensionUpdater extends common_ext_ExtensionHandler i
     abstract public function update($initialVersion);
 
     /**
-     * @return Report|null
-     */
-    public function postUpdate(): ?Report
-    {
-        //to be replaced in child class if needed
-        return null;
-    }
-
-    /**
      * Update the current version of the extension to the provided version
      * Ensures that a successful update doesn't get executed twice
      *

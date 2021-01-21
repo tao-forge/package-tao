@@ -48,7 +48,6 @@ return [
         ]
     ],
     'uninstall' => [],
-    'update' => 'oat\\ltiClientdiag\\scripts\\update\\Updater',
     'routes' => [
         '/ltiClientdiag' => 'oat\\ltiClientdiag\\controller'
     ],

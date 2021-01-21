@@ -82,7 +82,6 @@ return array(
     ),
     'uninstall' => array(
     ),
-    'update' => 'oat\\ltiProctoring\\scripts\\update\\Updater',
     'routes' => array(
         '/ltiProctoring' => 'oat\\ltiProctoring\\controller'
     ),

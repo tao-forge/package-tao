@@ -59,7 +59,6 @@ return array(
     ),
     'uninstall' => array(
     ),
-    'update' => 'oat\\qtiItemPic\\scripts\\update\\Updater',
     'routes' => array(
         '/qtiItemPic' => 'oat\\qtiItemPic\\controller'
     ),

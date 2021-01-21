@@ -34,7 +34,6 @@ use oat\taoQtiItem\scripts\install\RegisterNpmPaths;
 use oat\taoQtiItem\scripts\install\SetItemModel;
 use oat\taoQtiItem\scripts\install\SetQtiCreatorConfig;
 use oat\taoQtiItem\scripts\install\SetUpQueueTasks;
-use oat\taoQtiItem\scripts\update\Updater;
 use oat\taoQtiItem\scripts\install\RegisterPortableContexts;
 
 $extpath = __DIR__ . DIRECTORY_SEPARATOR;
@@ -50,9 +49,6 @@ return [
         'taoItems' => '>=10.11.0',
         'tao'      => '>=45.2.0',
         'generis'  => '>=12.17.0',
-    ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOItem.rdf'
     ],
     'install' => [
         'rdf' => [
@@ -83,7 +79,6 @@ return [
         'php'   => [
         ]
     ],
-    'update' => Updater::class,
     'routes' => [
         '/taoQtiItem' => 'oat\\taoQtiItem\\controller'
     ],

@@ -31,11 +31,6 @@ return [
         'taoResultServer' => '>=11.0.0',
         'generis' => '>=12.15.0'
     ],
-    // for compatibility
-    'dependencies' => ['tao', 'taoResultServer'],
-    'models' => [
-        'http://www.tao.lu/Ontologies/taoOutcomeRds.rdf#'
-    ],
     'install' => [
         'rdf' => [
             dirname(__FILE__) . '/scripts/install/taoOutcomeRds.rdf'
@@ -47,12 +42,6 @@ return [
     'uninstall' => [
         'php' => [
             \oat\taoOutcomeRds\scripts\uninstall\removeTables::class
-        ]
-    ],
-    'update' => 'oat\\taoOutcomeRds\\scripts\\update\\Updater',
-    'autoload' => [
-        'psr-4' => [
-            'oat\\taoOutcomeRds\\' => dirname(__FILE__) . DIRECTORY_SEPARATOR
         ]
     ],
     'routes' => [

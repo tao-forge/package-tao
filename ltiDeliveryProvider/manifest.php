@@ -30,7 +30,6 @@ use oat\ltiDeliveryProvider\scripts\install\RegisterMetrics;
 use oat\ltiDeliveryProvider\scripts\install\RegisterOverriddenLtiToolRepository;
 use oat\ltiDeliveryProvider\scripts\install\RegisterServices;
 use oat\ltiDeliveryProvider\scripts\install\RegisterSessionCookieAttributesFactory;
-use oat\ltiDeliveryProvider\scripts\update\Updater;
 use oat\tao\model\user\TaoRoles;
 use oat\taoLti\models\classes\LtiRoles;
 
@@ -51,10 +50,6 @@ return [
         'taoOutcomeUi' => '>=7.0.0',
         'taoQtiTest' => '>=37.1.0',
     ],
-    'models' => [
-         'http://www.tao.lu/Ontologies/TAOLTI.rdf',
-        'http://www.imsglobal.org/imspurl/lis/v1/vocab/membership'
-     ],
     'install' => [
         'php' => [
             InstallAssignmentService::class,
@@ -74,7 +69,6 @@ return [
     'routes' => [
         '/ltiDeliveryProvider' => 'oat\\ltiDeliveryProvider\\controller'
     ],
-    'update' => Updater::class,
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOLTI.rdf#LtiDeliveryProviderManagerRole',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOLTI.rdf#LtiDeliveryProviderManagerRole', ['ext' => 'ltiDeliveryProvider']],

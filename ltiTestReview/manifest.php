@@ -19,7 +19,6 @@
 
 use oat\ltiTestReview\controller\Review;
 use oat\ltiTestReview\controller\ReviewTool;
-use oat\ltiTestReview\scripts\update\Updater;
 use oat\tao\model\accessControl\func\AccessRule;
 use oat\tao\model\user\TaoRoles;
 use oat\taoLti\models\classes\LtiRoles;
@@ -48,7 +47,6 @@ return [
         'php' => [],
     ],
     'uninstall' => [],
-    'update' => Updater::class,
     'routes' => [
         '/ltiTestReview' => 'oat\\ltiTestReview\\controller',
     ],

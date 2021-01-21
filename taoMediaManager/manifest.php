@@ -38,9 +38,6 @@ return [
         'taoQtiTestPreviewer' => '>=2.13.0',
         'taoTests' => '>=14.0.0'
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOMedia.rdf'
-    ],
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOMedia.rdf#MediaManagerRole',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOMedia.rdf#MediaManagerRole', ['ext' => 'taoMediaManager']],
@@ -54,7 +51,6 @@ return [
             SetMediaManager::class,
         ]
     ],
-    'update' => 'oat\\taoMediaManager\\scripts\\update\\Updater',
     'uninstall' => [
         'php' => [
             __DIR__ . '/scripts/uninstall/unsetMediaManager.php',

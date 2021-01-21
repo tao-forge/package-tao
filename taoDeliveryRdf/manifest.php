@@ -28,7 +28,6 @@ use oat\taoDeliveryRdf\scripts\install\OverrideRuntime;
 use oat\taoDeliveryRdf\scripts\install\RegisterDeliveryAssemblyWrapperService;
 use oat\taoDeliveryRdf\scripts\install\RegisterFileSystem;
 use oat\taoDeliveryRdf\scripts\install\SetUpQueueTasks;
-use oat\taoDeliveryRdf\scripts\update\Updater;
 use oat\tao\model\user\TaoRoles;
 
 return [
@@ -70,7 +69,6 @@ return [
         ]
     ],
     //'uninstall' => array(),
-    'update' => Updater::class,
     'routes' => [
         '/taoDeliveryRdf' => 'oat\\taoDeliveryRdf\\controller'
     ],

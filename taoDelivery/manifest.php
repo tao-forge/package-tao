@@ -55,7 +55,6 @@ return [
             RegisterWebhookEvents::class
         ]
     ],
-    'update' => 'oat\\taoDelivery\\scripts\\update\\Updater',
     'acl' => [
         ['grant', TaoRoles::DELIVERY, DeliveryServer::class],
         ['grant', TaoRoles::ANONYMOUS, DeliveryServer::class . '@logout'],

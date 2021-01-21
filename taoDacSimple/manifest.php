@@ -1,7 +1,5 @@
 <?php
 
-use oat\taoDacSimple\scripts\update\Updater;
-
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -37,8 +35,6 @@ return [
        'generis' => '>=12.15.0',
        'tao' => '>=40.9.0'
     ],
-    // for compatibility
-    'dependencies' => ['tao', 'taoItems'],
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#taoDacSimpleManager',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/generis.rdf#taoDacSimpleManager', ['ext' => 'taoDacSimple']],
@@ -59,7 +55,6 @@ return [
             RemoveDataAccess::class
         ]
     ],
-    'update' => Updater::class,
     'routes' => [
         '/taoDacSimple' => 'oat\\taoDacSimple\\controller'
     ],

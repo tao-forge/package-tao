@@ -39,9 +39,6 @@ return [
         'taoBackOffice' => '>=3.0.0',
         'tao' => '>=38.5.0'
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOTest.rdf',
-    ],
     'install' => [
         'rdf' => [
             __DIR__ . '/models/ontology/taotest.rdf'
@@ -52,14 +49,10 @@ return [
                 'oat\\taoTests\\scripts\\install\\RegisterFrontendPaths'
             ]
     ],
-    'update' => "oat\\taoTests\\scripts\\update\\Updater",
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestsManagerRole',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestsManagerRole', ['ext' => 'taoTests']],
         ['grant', \oat\tao\model\user\TaoRoles::REST_PUBLISHER, ['ext' => 'taoTests', 'mod' => 'RestTests']],
-    ],
-    'optimizableClasses' => [
-        'http://www.tao.lu/Ontologies/TAOTest.rdf#Test'
     ],
     'constants' => [
         # actions directory

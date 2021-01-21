@@ -45,9 +45,6 @@ return [
         'generis' => '>=12.5.0',
         'tao' => '>=45.2.0'
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOItem.rdf'
-    ],
     'install' => [
         'rdf' => [
             __DIR__ . '/models/ontology/taoitem.rdf',
@@ -61,7 +58,6 @@ return [
             RegisterNpmPaths::class,
         ]
     ],
-    'update' => 'taoItems_scripts_update_Updater',
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOItem.rdf#ItemsManagerRole',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOItem.rdf#ItemsManagerRole', ['ext' => 'taoItems']],
@@ -69,11 +65,6 @@ return [
         ['grant', 'http://www.tao.lu/Ontologies/TAO.rdf#DeliveryRole', ['ext' => 'taoItems', 'mod' => 'ItemRunner']],
         ['grant', TaoRoles::REST_PUBLISHER, ['ext' => 'taoItems', 'mod' => 'RestItems']],
         ['grant', TaoRoles::REST_PUBLISHER, ['ext' => 'taoItems', 'mod' => 'RestFormItem']],
-    ],
-    'optimizableClasses' => [
-            'http://www.tao.lu/Ontologies/TAOItem.rdf#Item',
-            'http://www.tao.lu/Ontologies/TAOItem.rdf#ItemModels',
-            'http://www.tao.lu/Ontologies/TAOItem.rdf#ModelStatus'
     ],
     'constants' => [
         # actions directory

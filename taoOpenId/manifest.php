@@ -18,7 +18,6 @@
  *               
  * 
  */
-use oat\taoOpenId\scripts\update\Updater;
 
 /**
  * Generated using taoDevTools 2.17.0
@@ -60,7 +59,6 @@ return array(
         #BASE URL (usually the domain root)
         'BASE_URL' => ROOT_URL.'taoOpenId/',
     ),
-    'update'    => Updater::class,
     'extra' => array(
         'structures' => dirname(__FILE__).DIRECTORY_SEPARATOR.'controller'.DIRECTORY_SEPARATOR.'structures.xml',
     )

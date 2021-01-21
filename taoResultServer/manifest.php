@@ -6,8 +6,6 @@
  *
  */
 
-use oat\taoResultServer\scripts\update\Updater;
-
 $extpath = __DIR__ . DIRECTORY_SEPARATOR;
 
 return [
@@ -22,9 +20,6 @@ return [
         'generis' => '>=12.15.0',
         'tao' => '>=27.2.0'
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOResultServer.rdf#'
-    ],
     'install' => [
         'rdf' => [
             __DIR__ . '/models/ontology/taoResultServer.rdf'
@@ -32,7 +27,6 @@ return [
         'php' => [
         ]
     ],
-    'update' => Updater::class,
 
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOResultServer.rdf#ResultServerRole',
     'acl' => [

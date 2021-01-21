@@ -53,7 +53,6 @@ use oat\tao\scripts\install\SetServiceFileStorage;
 use oat\tao\scripts\install\SetServiceState;
 use oat\tao\scripts\install\SetupMaintenanceService;
 use oat\tao\scripts\install\SetUpQueueTasks;
-use oat\tao\scripts\update\Updater;
 
 $extpath = __DIR__ . DIRECTORY_SEPARATOR;
 
@@ -136,7 +135,6 @@ return [
             RegisterSessionCookieService::class,
         ]
     ],
-    'update' => Updater::class,
     'managementRole' => TaoRoles::TAO_MANAGER,
     'acl' => [
         [AccessRule::GRANT, TaoRoles::ANONYMOUS,            ['ext' => 'tao','mod' => 'Main', 'act' => 'entry']],

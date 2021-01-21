@@ -155,7 +155,6 @@
             "oat\\taoRevision\\": "taoRevision\/",
             "oat\\taoDeliveryRdf\\": "taoDeliveryRdf\/",
             "oat\\taoDelivery\\": "taoDelivery\/",
-            "oat\\taoAltResultStorage\\": "taoAltResultStorage\/",
             "oat\\taoOutcomeRds\\": "taoOutcomeRds\/",
             "oat\\taoOutcomeUi\\": "taoOutcomeUi\/",
             "oat\\taoResultServer\\": "taoResultServer\/",

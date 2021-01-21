@@ -22,7 +22,6 @@
 use oat\tao\model\user\TaoRoles;
 use oat\taoLti\controller\CookieUtils;
 use oat\taoLti\scripts\install\InstallServices;
-use oat\taoLti\scripts\update\Updater;
 
 /**
  * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
@@ -44,11 +43,6 @@ return [
     'routes' => [
         '/taoLti' => 'oat\\taoLti\\controller'
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOLTI.rdf',
-        'http://www.imsglobal.org/imspurl/lis/v1/vocab/person',
-        'http://www.imsglobal.org/imspurl/lis/v1/vocab/membership'
-     ],
     'install' => [
         'rdf' => [
             $extpath . 'install/ontology/lti.rdf',
@@ -60,7 +54,6 @@ return [
             InstallServices::class
         ]
     ],
-    'update' => Updater::class,
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOLTI.rdf#LtiManagerRole',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOLTI.rdf#LtiManagerRole', ['ext' => 'taoLti']],

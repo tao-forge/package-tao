@@ -60,9 +60,6 @@ return [
         'taoDelivery' => '>=14.18.0',
         'taoItems'   => '>=6.0.0',
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOTest.rdf'
-    ],
     'install' => [
         'rdf' => [
             __DIR__ . '/models/ontology/qtitest.rdf',
@@ -95,7 +92,6 @@ return [
             RegisterQtiPackageExporter::class
         ]
     ],
-    'update' => 'oat\\taoQtiTest\\scripts\\update\\Updater',
     'local' => [
         'php'   => [
             __DIR__ . '/install/local/addQTIExamples.php'

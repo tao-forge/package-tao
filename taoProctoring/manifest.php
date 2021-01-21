@@ -116,7 +116,6 @@ return array(
     'routes' => array(
         'taoProctoring' => 'oat\\taoProctoring\\controller'
     ),
-    'update' => 'oat\\taoProctoring\\scripts\\update\\Updater',
 	'constants' => array(
 	    # views directory
 	    'DIR_VIEWS' => __DIR__ . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR,

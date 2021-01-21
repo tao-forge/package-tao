@@ -21,7 +21,6 @@
  */
 
 use oat\taoRevision\controller\History;
-use oat\taoRevision\scripts\update\Updater;
 use oat\taoRevision\scripts\install\SetupRevisions;
 
 return [
@@ -50,7 +49,6 @@ return [
             SetupRevisions::class,
         ],
     ],
-    'update' => Updater::class,
     'routes' => [
         '/taoRevision' => 'oat\\taoRevision\\controller',
     ],

@@ -47,9 +47,6 @@ return [
         'tao' => '>=41.1.1',
         'taoBackOffice' => '>=3.0.0'
     ],
-    'models' => [
-        'http://www.tao.lu/Ontologies/TAOSubject.rdf'
-    ],
     'install' => [
         'rdf' => [
                 dirname(__FILE__) . '/models/ontology/taosubject.rdf'
@@ -59,7 +56,6 @@ return [
             SetupTesttakerCsvImporter::class,
         ]
     ],
-    'update' => "oat\\taoTestTaker\\scripts\\update\\Updater",
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOSubject.rdf#SubjectsManagerRole',
     'acl' => [
         ['grant', TestTakerService::ROLE_SUBJECT_MANAGER, ['ext' => 'taoTestTaker']]

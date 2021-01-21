@@ -28,7 +28,6 @@ use oat\qtiItemPci\scripts\install\RegisterPciLiquid;
 use oat\qtiItemPci\scripts\install\RegisterPciMathEntry;
 use oat\qtiItemPci\scripts\install\RegisterPciModel;
 use oat\qtiItemPci\scripts\install\SetupAudioRecordingInteractionCreatorConfigurationRegistry;
-use oat\qtiItemPci\scripts\update\Updater;
 use oat\taoQtiItem\scripts\SetupPortableElementFileStorage;
 
 return [
@@ -74,7 +73,6 @@ return [
     ],
     'uninstall' => [
     ],
-    'update' => Updater::class,
     'routes' => [
         '/qtiItemPci' => 'oat\\qtiItemPci\\controller'
     ],

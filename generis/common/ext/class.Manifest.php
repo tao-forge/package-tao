@@ -176,21 +176,6 @@ class common_ext_Manifest
      * @var array
      */
     private $localData = [];
-    
-    /**
-     * The RDFS Classes that are considered optimizable for the described Extension.
-     *
-     * @access private
-     * @var array
-     */
-    private $optimizableClasses = [];
-    
-    /**
-     * The RDF Properties that are considered optimizable for the described Extension.
-     * @access private
-     * @var array
-     */
-    private $optimizableProperties = [];
 
     /**
      * The Access Control Layer table
@@ -319,14 +304,6 @@ class common_ext_Manifest
             
             if (!empty($array['managementRole'])) {
                 $this->setManagementRole($array['managementRole']);
-            }
-            
-            if (!empty($array['optimizableClasses'])) {
-                if (!is_array($array['optimizableClasses'])) {
-                    throw new common_ext_MalformedManifestException("The 'optimizableClasses' component must be an array.");
-                } else {
-                    $this->setOptimizableClasses($array['optimizableClasses']);
-                }
             }
             
             if (!empty($array['optimizableProperties'])) {
@@ -984,63 +961,5 @@ class common_ext_Manifest
     private function setManagementRole($managementRoleUri)
     {
         $this->managementRoleUri = $managementRoleUri;
-    }
-    
-    /**
-     * Get an array of Class URIs (as strings) that are considered optimizable for the
-     * described Extension.
-     *
-     * @access public
-     * @author Jerome Bogaerts <jerome@taotesting.com>
-     * @return array
-     */
-    public function getOptimizableClasses()
-    {
-        $returnValue = [];
-        
-        $returnValue = $this->optimizableClasses;
-        
-        return $returnValue;
-    }
-    
-    /**
-     * Set the Classes that are considered optimizable for the described Extension.
-     *
-     * The array passed as a parameter must be a set of URIs (as strings) referencing
-     * RDFS Classes.
-     *
-     * @param array $optimizableClasses
-     */
-    private function setOptimizableClasses(array $optimizableClasses)
-    {
-        $this->optimizableClasses = $optimizableClasses;
-    }
-    
-    /**
-     * Get an array of Property URIs (as strings) that are considered optimizable for the
-     * described Extension.
-     *
-     * @return array
-     */
-    public function getOptimizableProperties()
-    {
-        $returnValue = [];
-        
-        $returnValue = $this->optimizableProperties;
-        
-        return $returnValue;
-    }
-    
-    /**
-     * Set the Properties that are considered optimizable for the described Extension.
-     *
-     * The array passed as a parameter must be a set of URIs (as strings) referencing
-     * RDF Properties.
-     *
-     * @param array $optimizableProperties
-     */
-    private function setOptimizableProperties(array $optimizableProperties)
-    {
-        $this->optimizableProperties = $optimizableProperties;
     }
 }

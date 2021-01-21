@@ -19,7 +19,6 @@
  *
  */
 
-use oat\taoQtiTestPreviewer\scripts\update\Updater;
 use oat\taoQtiTestPreviewer\scripts\install\RegisterPreviewers;
 use oat\taoQtiTestPreviewer\scripts\install\RegisterTestPreviewer;
 
@@ -52,7 +51,6 @@ return [
             __DIR__ . '/install/ontology/previewerRole.rdf',
         ],
     ],
-    'update' => Updater::class,
     'uninstall' => [
     ],
     'routes' => [

@@ -40,7 +40,6 @@ return array(
         )
     ),
     'uninstall' => array(),
-    'update' => 'oat\\xmlEditRp\\scripts\\update\\Updater',
     'routes' => array(
         '/xmlEditRp' => 'oat\\xmlEditRp\\controller'
     ),
