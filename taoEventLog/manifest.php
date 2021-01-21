@@ -28,7 +28,6 @@ return array(
         'generis'        => '>=12.15.0',
         'tao'            => '>=32.0.0',
         'taoDeliveryRdf' => '*',
-        'funcAcl'        => '*',
         'taoTests'       => '*',
         'taoTestTaker'   => '*',
         'taoItems'       => '*',
@@ -39,7 +38,6 @@ return array(
     'acl' => array(
         array('grant', 'http://www.tao.lu/Ontologies/generis.rdf#taoEventLogManager', array('ext' => 'taoEventLog')),
     ),
-    'update' => 'oat\\taoEventLog\\scripts\\update\\Updater',
     'install' => [
         'php' => [
             \oat\taoEventLog\scripts\install\RegisterRdsStorage::class,

@@ -35,6 +35,7 @@ use oat\taoQtiItem\scripts\install\SetItemModel;
 use oat\taoQtiItem\scripts\install\SetQtiCreatorConfig;
 use oat\taoQtiItem\scripts\install\SetUpQueueTasks;
 use oat\taoQtiItem\scripts\update\Updater;
+use oat\taoQtiItem\scripts\install\RegisterPortableContexts;
 
 $extpath = __DIR__ . DIRECTORY_SEPARATOR;
 $taopath = dirname(__FILE__, 2) . DIRECTORY_SEPARATOR . 'tao' . DIRECTORY_SEPARATOR;
@@ -63,7 +64,7 @@ return [
         ],
         'php' => [
             __DIR__ . '/install/local/setDefaultTheme.php',
-            __DIR__ . '/install/local/addPortableContexts.php',
+            RegisterPortableContexts::class,
             __DIR__ . '/install/scripts/setQtiRunnerConfig.php',
             addValidationSettings::class,
             SetDragAndDropConfig::class,

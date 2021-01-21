@@ -129,4 +129,9 @@ class AssetService extends ConfigurableService
     {
         return $this->setOption(self::BUSTER_OPTION_KEY, $buster);
     }
+    
+    public function hasCacheBuster() : bool
+    {
+        return $this->hasOption(self::BUSTER_OPTION_KEY);
+    }
 }

@@ -64,11 +64,6 @@ $eventManager->detach(RdfImportEvent::class, [LoggerService::class, 'logEvent'])
 $eventManager->detach(CsvImportEvent::class, [LoggerService::class, 'logEvent']);
 $eventManager->detach(RdfExportEvent::class, [LoggerService::class, 'logEvent']);
 
-if ($extensionManager->getExtensionById('funcAcl')) {
-    $eventManager->detach('oat\\funcAcl\\model\\event\\AccessRightAddedEvent', [LoggerService::class, 'logEvent']);
-    $eventManager->detach('oat\\funcAcl\\model\\event\\AccessRightRemovedEvent', [LoggerService::class, 'logEvent']);
-}
-
 if ($extensionManager->isEnabled('taoDeliveryRdf')) {
     $eventManager->detach('oat\\taoDeliveryRdf\\model\\event\\DeliveryCreatedEvent', [LoggerService::class, 'logEvent']);
     $eventManager->detach('oat\\taoDeliveryRdf\\model\\event\\DeliveryRemovedEvent', [LoggerService::class, 'logEvent']);

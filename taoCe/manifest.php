@@ -29,7 +29,6 @@ return [
     'author' => 'Open Assessment Technologies SA',
     'requires' => [
         'tao' => '>=36.1.0',
-        'funcAcl' => '*',
         'taoItems' => '*',
         'taoQtiItem' => '*',
         'qtiItemPci' => '*',
