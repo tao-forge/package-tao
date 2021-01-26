@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,6 +19,8 @@
  *
  */
 
+namespace oat\taoResultServer\models\classes\implementation;
+
 use oat\oatbox\service\ConfigurableService;
 use oat\taoResultServer\models\Entity\ItemVariableStorable;
 use oat\taoResultServer\models\Entity\TestVariableStorable;
@@ -25,6 +28,10 @@ use oat\taoResultServer\models\Entity\VariableStorable;
 use oat\taoResultServer\models\classes\ResultDeliveryExecutionDelete;
 use oat\taoResultServer\models\classes\ResultManagement;
 use oat\taoResultServer\models\Exceptions\DuplicateVariableException;
+use taoResultServer_models_classes_WritableResultStorage;
+use common_persistence_AdvKeyValuePersistence;
+use taoResultServer_models_classes_Variable;
+use oat\generis\persistence\PersistenceManager;
 
 /**
  * Implements tao results storage using the configured persistency "taoAltResultStorage"
@@ -41,7 +48,7 @@ use oat\taoResultServer\models\Exceptions\DuplicateVariableException;
  * ...
  * }
  */
-class taoAltResultStorage_models_classes_KeyValueResultStorage extends ConfigurableService
+class KeyValueResultStorage extends ConfigurableService
     implements taoResultServer_models_classes_WritableResultStorage, ResultManagement
 {
     use ResultDeliveryExecutionDelete;
@@ -74,7 +81,7 @@ class taoAltResultStorage_models_classes_KeyValueResultStorage extends Configura
     private function getPersistence()
     {
         if (is_null($this->persistence)) {
-            $perisistenceManager = $this->getServiceLocator()->get(common_persistence_Manager::SERVICE_ID);
+            $perisistenceManager = $this->getServiceLocator()->get(PersistenceManager::SERVICE_ID);
             $this->persistence = $perisistenceManager->getPersistenceById($this->getOption(self::OPTION_PERSISTENCE));
         }
 
@@ -126,13 +133,11 @@ class taoAltResultStorage_models_classes_KeyValueResultStorage extends Configura
     
     /**
      *
-     * @param type $deliveryResultIdentifier
+     * @param string $deliveryResultIdentifier
      *            lis_result_sourcedid
-     * @param type $test
-     *            ignored
+     * @param string $test ignored
      * @param taoResultServer_models_classes_Variable $testVariable            
-     * @param type $callIdTest
-     *            ignored
+     * @param string $callIdTest ignored
      */
     public function storeTestVariable($deliveryResultIdentifier, $test, taoResultServer_models_classes_Variable $testVariable, $callIdTest)
     {
@@ -241,7 +246,7 @@ class taoAltResultStorage_models_classes_KeyValueResultStorage extends Configura
 
             foreach ($tmpVariables as $variableIdentifier => $variableObservations) {
                 $observations = $this->unserializeVariableValue($variableObservations);
-                foreach ($observations as $key => $observation) {
+                foreach ($observations as $observation) {
                     $observation->variable = unserialize($observation->variable);
                     $observation->uri = $observation->uri . static::PROPERTY_SEPARATOR . $observation->variable->getIdentifier();
                 }
