@@ -19,7 +19,11 @@
  *
  */
 
-use \oat\generis\model\user\PasswordConstraintsService;
+namespace oat\tao\model\form;
+
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use oat\generis\model\user\PasswordConstraintsService;
 
 /**
  * This container initialize the password reset form.
@@ -27,7 +31,7 @@ use \oat\generis\model\user\PasswordConstraintsService;
  * @author Aleh Hutnikau <hutnikau@1pt.com>
  * @package tao
  */
-class tao_actions_form_ResetUserPassword extends tao_helpers_form_FormContainer
+class ResetUserPasswordForm extends tao_helpers_form_FormContainer
 {
 
     /**

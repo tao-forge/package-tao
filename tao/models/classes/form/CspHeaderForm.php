@@ -19,6 +19,12 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_xhtml_Form;
+use \tao_helpers_form_xhtml_TagWrapper;
 use oat\oatbox\service\ServiceManagerAwareTrait;
 use oat\tao\helpers\form\validators\CspHeaderValidator;
 use oat\tao\model\security\Business\Domain\SettingsCollection;
@@ -28,7 +34,7 @@ use oat\tao\model\security\Business\Domain\SettingsCollection;
  *
  * @author Martijn Swinkels <m.swinkels@taotesting.com>
  */
-class tao_actions_form_CspHeader extends tao_helpers_form_FormContainer
+class CspHeaderForm extends tao_helpers_form_FormContainer
 {
     use ServiceManagerAwareTrait;
 

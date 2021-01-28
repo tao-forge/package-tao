@@ -20,8 +20,9 @@
  */
 
 use oat\generis\model\OntologyAwareTrait;
-use oat\tao\model\resources\ResourceService;
 use oat\oatbox\log\LoggerAwareTrait;
+use oat\tao\model\form\RestForm;
+use oat\tao\model\resources\ResourceService;
 
 /**
  * Class tao_actions_RestResourceController
@@ -229,11 +230,11 @@ class tao_actions_RestResource extends tao_actions_CommonModule
      * The $instance should be a class for creation or resource in case of edit
      *
      * @param $instance
-     * @return tao_actions_form_RestForm
+     * @return oat\tao\model\form\RestForm
      */
     protected function getForm($instance)
     {
-        return new \tao_actions_form_RestForm($instance);
+        return new RestForm($instance);
     }
 
     /**

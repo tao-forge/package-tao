@@ -103,7 +103,7 @@ class TestTaker extends tao_actions_SaSModule
      *
      * @author Lionel Lecaque, lionel@taotesting.com
      * @param core_kernel_classes_Class $clazz
-     * @return tao_actions_form_Search
+     * @return oat\tao\model\form\SearchForm
      */
     protected function getSearchForm($clazz)
     {

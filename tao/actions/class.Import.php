@@ -21,12 +21,13 @@
  *               2013-2018 (update and modification) Open Assessment Technologies SA;
  */
 
+use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\event\EventManager;
+use oat\tao\model\form\ImportForm;
 use oat\tao\model\import\TaskParameterProviderInterface;
-use oat\tao\model\task\ImportByHandler;
 use oat\tao\model\taskQueue\QueueDispatcher;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
-use oat\generis\model\OntologyAwareTrait;
+use oat\tao\model\task\ImportByHandler;
 
 /**
  * This controller provide the actions to import resources
@@ -65,7 +66,7 @@ class tao_actions_Import extends tao_actions_CommonModule
 
         $this->propagate($importer);
 
-        $formContainer = new tao_actions_form_Import(
+        $formContainer = new ImportForm(
             $importer,
             $this->getAvailableImportHandlers(),
             $this->getCurrentClass()

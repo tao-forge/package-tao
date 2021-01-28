@@ -22,13 +22,15 @@
 
 namespace oat\taoMediaManager\model;
 
+use oat\tao\model\form\InstanceForm;
+
 /**
  * Service methods to manage the Media
  *
  * @access public
  * @package taoMediaManager
  */
-class editInstanceForm extends \tao_actions_form_Instance
+class editInstanceForm extends InstanceForm
 {
 
     protected function initForm()

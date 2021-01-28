@@ -19,6 +19,11 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+
 /**
  * This container initialize the list form.
  *
@@ -27,7 +32,7 @@
  * @package tao
 
  */
-class tao_actions_form_List extends tao_helpers_form_FormContainer
+class ListForm extends tao_helpers_form_FormContainer
 {
     // --- ASSOCIATIONS ---
 

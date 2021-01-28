@@ -18,6 +18,15 @@
  *               2009-2012 (update and modification) Public Research Centre Henri Tudor (under the project TAO-SUSTAIN & TAO-DEV);
  *
  */
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Resource;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_xhtml_Form;
+use \tao_helpers_form_xhtml_TagWrapper;
+
 /**
  * This container initialize the export form.
  *
@@ -26,7 +35,7 @@
  * @package tao
 
  */
-class tao_actions_form_Export extends tao_helpers_form_FormContainer
+class ExportForm extends tao_helpers_form_FormContainer
 {
     // --- ASSOCIATIONS ---
 

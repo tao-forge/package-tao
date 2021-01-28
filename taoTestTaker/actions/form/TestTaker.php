@@ -24,6 +24,7 @@
 namespace oat\taoTestTaker\actions\form;
 
 use oat\generis\model\GenerisRdf;
+use oat\tao\model\form\UsersForm;
 
 /**
  * Short description of class taoSubjects_actions_form_Subject
@@ -33,7 +34,7 @@ use oat\generis\model\GenerisRdf;
  * @package taoSubjects
 
  */
-class TestTaker extends \tao_actions_form_Users
+class TestTaker extends UsersForm
 {
 
     /**

@@ -19,7 +19,12 @@
  *
  */
 
-class tao_actions_form_RemoteList extends tao_helpers_form_FormContainer
+namespace oat\tao\model\form;
+
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+
+class RemoteListForm extends tao_helpers_form_FormContainer
 {
     public const FIELD_NAME = 'name';
     public const FIELD_SOURCE_URL = 'source';

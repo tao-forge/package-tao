@@ -1,5 +1,12 @@
 <?php
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Resource;
+use \tao_helpers_Display;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
 use oat\generis\model\OntologyAwareTrait;
 
 /**
@@ -22,7 +29,7 @@ use oat\generis\model\OntologyAwareTrait;
  *
  */
 
-abstract class tao_actions_form_AbstractProperty extends tao_helpers_form_FormContainer
+abstract class AbstractPropertyForm extends tao_helpers_form_FormContainer
 {
     use OntologyAwareTrait;
 

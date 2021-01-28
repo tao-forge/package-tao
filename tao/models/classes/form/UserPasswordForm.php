@@ -20,17 +20,22 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_models_classes_UserService;
 use oat\generis\model\user\PasswordConstraintsService;
 
 /**
- * Short description of class tao_actions_form_UserPassword
+ * Short description of class oat\tao\model\form\UserPasswordForm
  *
  * @access public
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
 
  */
-class tao_actions_form_UserPassword extends tao_helpers_form_FormContainer
+class UserPasswordForm extends tao_helpers_form_FormContainer
 {
     /**
      * Short description of method initForm

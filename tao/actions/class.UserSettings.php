@@ -25,6 +25,8 @@
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\user\UserLanguageServiceInterface;
+use oat\tao\model\form\UserPasswordForm;
+use oat\tao\model\form\UserSettingsForm;
 use oat\tao\model\service\ApplicationService;
 use tao_helpers_form_FormContainer as FormContainer;
 
@@ -49,7 +51,7 @@ class tao_actions_UserSettings extends tao_actions_CommonModule
         if ($this->getServiceLocator()->get(ApplicationService::SERVICE_ID)->isDemo()) {
             $this->setData('myForm', __('Unable to change passwords in demo mode'));
         } else {
-            $myFormContainer = new tao_actions_form_UserPassword([], [FormContainer::CSRF_PROTECTION_OPTION => true]);
+            $myFormContainer = new UserPasswordForm([], [FormContainer::CSRF_PROTECTION_OPTION => true]);
             $myForm = $myFormContainer->getForm();
             if ($myForm->isSubmited() && $myForm->isValid()) {
                 $user = $this->getUserService()->getCurrentUser();
@@ -68,7 +70,7 @@ class tao_actions_UserSettings extends tao_actions_CommonModule
      */
     public function properties()
     {
-        $myFormContainer = new tao_actions_form_UserSettings(
+        $myFormContainer = new UserSettingsForm(
             $this->getUserSettings(),
             [FormContainer::CSRF_PROTECTION_OPTION => true]
         );

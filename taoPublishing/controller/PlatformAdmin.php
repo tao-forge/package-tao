@@ -21,14 +21,15 @@
 
 namespace oat\taoPublishing\controller;
 
-use common_ext_ExtensionsManager;
+use common_ext_ExtensionsManager as common_ext_ExtensionsManager;
 use oat\generis\model\OntologyAwareTrait;
-use oat\tao\model\auth\AbstractAuthType;
-use oat\tao\model\auth\BasicAuth;
-use oat\tao\model\oauth\DataStore;
 use oat\taoPublishing\model\PlatformService;
 use oat\taoPublishing\model\publishing\PublishingAuthService;
 use oat\taoPublishing\model\publishing\PublishingService;
+use oat\tao\model\auth\AbstractAuthType;
+use oat\tao\model\auth\BasicAuth;
+use oat\tao\model\form\InstanceForm;
+use oat\tao\model\oauth\DataStore;
 
 /**
  * Sample controller
@@ -63,7 +64,7 @@ class PlatformAdmin extends \tao_actions_SaSModule
         /** @var PublishingService $publishingService */
         $publishingService = $this->getServiceLocator()->get(PublishingService::SERVICE_ID);
         $clazz = $this->getCurrentClass();
-        $myFormContainer = new \tao_actions_form_Instance($clazz, $instance);
+        $myFormContainer = new InstanceForm($clazz, $instance);
 
         $myForm = $myFormContainer->getForm();
 

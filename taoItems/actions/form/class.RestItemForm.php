@@ -19,15 +19,16 @@
  *
  */
 
-use \Zend\ServiceManager\ServiceLocatorAwareTrait;
-use \Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use oat\tao\model\form\RestForm;
 
 /**
  * Class tao_actions_form_RestItemForm
  *
- * Implementation of tao_actions_form_RestForm to manage generis item forms for edit and create
+ * Implementation of oat\tao\model\form\RestForm to manage generis item forms for edit and create
  */
-class taoItems_actions_form_RestItemForm extends tao_actions_form_RestForm implements ServiceLocatorAwareInterface
+class taoItems_actions_form_RestItemForm extends RestForm implements ServiceLocatorAwareInterface
 {
     use ServiceLocatorAwareTrait;
 

@@ -19,6 +19,12 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Resource;
+use \tao_helpers_form_FormContainer;
+
 /**
  * This container enables gives you tools to create a form from ontology
  *
@@ -28,7 +34,7 @@
  * @package tao
 
  */
-abstract class tao_actions_form_Generis extends tao_helpers_form_FormContainer
+abstract class GenerisForm extends tao_helpers_form_FormContainer
 {
     // --- ASSOCIATIONS ---
 
@@ -157,4 +163,4 @@ abstract class tao_actions_form_Generis extends tao_helpers_form_FormContainer
 
         return $returnValue;
     }
-} /* end of abstract class tao_actions_form_Generis */
+} /* end of abstract class oat\tao\model\form\GenerisForm */

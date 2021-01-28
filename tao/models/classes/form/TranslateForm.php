@@ -20,6 +20,17 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \common_session_SessionManager;
+use \core_kernel_classes_Property;
+use \core_kernel_classes_Resource;
+use \tao_helpers_I18n;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_elements_Hidden;
+use \tao_helpers_form_elements_Textbox;
+use \tao_models_classes_LanguageService;
 use oat\generis\model\OntologyRdfs;
 use oat\tao\model\TaoOntology;
 
@@ -31,7 +42,7 @@ use oat\tao\model\TaoOntology;
  * @package tao
 
  */
-class tao_actions_form_Translate extends tao_actions_form_Instance
+class TranslateForm extends InstanceForm
 {
     // --- ASSOCIATIONS ---
 

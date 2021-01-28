@@ -20,6 +20,10 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
 use oat\tao\helpers\Layout;
 
 /**
@@ -30,7 +34,7 @@ use oat\tao\helpers\Layout;
  * @package tao
 
  */
-class tao_actions_form_Login extends tao_helpers_form_FormContainer
+class LoginForm extends tao_helpers_form_FormContainer
 {
     // --- ASSOCIATIONS ---
 

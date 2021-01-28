@@ -20,17 +20,25 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \common_ext_NamespaceManager;
+use \core_kernel_classes_Class;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_GenerisFormFactory;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdfs;
 
 /**
- * Short description of class tao_actions_form_Clazz
+ * Short description of class oat\tao\model\form\ClazzForm
  *
  * @access public
  * @author Bertrand Chevrier, <bertrand.chevrier@tudor.lu>
  * @package tao
  */
-class tao_actions_form_Clazz extends tao_helpers_form_FormContainer
+class ClazzForm extends tao_helpers_form_FormContainer
 {
     /**
      * @var core_kernel_classes_Class
@@ -87,7 +95,7 @@ class tao_actions_form_Clazz extends tao_helpers_form_FormContainer
      */
     protected function getPropertyForm($property, $index, $isParentProp, $propData)
     {
-        $propFormContainer = new tao_actions_form_SimpleProperty($this->getClassInstance(), $property, ['index' => $index, 'isParentProperty' => $isParentProp ], $propData);
+        $propFormContainer = new SimplePropertyForm($this->getClassInstance(), $property, ['index' => $index, 'isParentProperty' => $isParentProp ], $propData);
         return $propFormContainer->getForm();
     }
 

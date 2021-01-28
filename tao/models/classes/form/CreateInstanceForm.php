@@ -20,23 +20,34 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Literal;
+use \core_kernel_classes_Property;
+use \core_kernel_classes_Resource;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_GenerisFormFactory;
+use \tao_helpers_form_elements_Label;
+use \tao_helpers_form_elements_Treeview;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\service\ServiceManager;
 use oat\tao\helpers\form\validators\ResourceSignatureValidator;
+use oat\tao\model\TaoOntology;
 use oat\tao\model\security\SignatureGenerator;
 use oat\tao\model\security\SignatureValidator;
-use oat\tao\model\TaoOntology;
 use tao_helpers_form_elements_Treeview as TreeView;
 
 /**
- * Short description of class tao_actions_form_CreateInstance
+ * Short description of class oat\tao\model\form\CreateInstanceForm
  *
  * @access public
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package tao
 
  */
-class tao_actions_form_CreateInstance extends tao_helpers_form_FormContainer
+class CreateInstanceForm extends tao_helpers_form_FormContainer
 {
     // --- ASSOCIATIONS ---
 

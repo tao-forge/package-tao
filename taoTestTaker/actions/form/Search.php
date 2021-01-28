@@ -22,13 +22,14 @@
 namespace oat\taoTestTaker\actions\form;
 
 use oat\generis\model\GenerisRdf;
+use oat\tao\model\form\SearchForm;
 
-class Search extends \tao_actions_form_Search
+class Search extends SearchForm
 {
     
     /**
      * (non-PHPdoc)
-     * @see tao_actions_form_Search::getClassProperties()
+     * @see oat\tao\model\form\SearchForm::getClassProperties()
      */
     protected function getClassProperties()
     {

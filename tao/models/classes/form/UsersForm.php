@@ -20,11 +20,21 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \Exception;
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Property;
+use \core_kernel_classes_Resource;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormFactory;
+use \tao_models_classes_LanguageService;
+use \tao_models_classes_UserService;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\user\PasswordConstraintsService;
-use oat\tao\helpers\ApplicationHelper;
 use oat\generis\model\user\UserRdf;
 use oat\oatbox\user\UserLanguageServiceInterface;
+use oat\tao\helpers\ApplicationHelper;
 use oat\tao\model\controller\SignedFormInstance;
 
 /**
@@ -35,7 +45,7 @@ use oat\tao\model\controller\SignedFormInstance;
  * @package tao
 
  */
-class tao_actions_form_Users extends SignedFormInstance
+class UsersForm extends SignedFormInstance
 {
     // --- ASSOCIATIONS ---
 

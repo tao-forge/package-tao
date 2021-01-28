@@ -19,6 +19,14 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Property;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_GenerisFormFactory;
 use oat\generis\model\OntologyRdfs;
 use oat\tao\helpers\form\validators\ResourceSignatureValidator;
 use oat\tao\model\security\SignatureValidator;
@@ -29,7 +37,7 @@ use oat\tao\model\security\SignatureValidator;
  *
  * @author Bertrand Chevrier, <bertrand@taotesting.com>
  */
-class tao_actions_form_EditClassLabel extends \tao_helpers_form_FormContainer
+class EditClassLabelForm extends \tao_helpers_form_FormContainer
 {
     /**
      * @var core_kernel_classes_Class

@@ -22,17 +22,19 @@
  *
  */
 
-use oat\generis\model\user\UserRdf;
 use oat\generis\Helper\UserHashForEncryption;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
+use oat\generis\model\user\UserRdf;
 use oat\oatbox\event\EventManager;
+use oat\oatbox\log\LoggerAwareTrait;
+use oat\oatbox\user\UserLanguageServiceInterface;
 use oat\tao\helpers\ApplicationHelper;
 use oat\tao\helpers\UserHelper;
 use oat\tao\model\TaoOntology;
+use oat\tao\model\form\CreateInstanceForm;
+use oat\tao\model\form\UsersForm;
 use oat\tao\model\user\UserLocks;
-use oat\oatbox\user\UserLanguageServiceInterface;
-use oat\oatbox\log\LoggerAwareTrait;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -236,7 +238,7 @@ class tao_actions_Users extends tao_actions_CommonModule
     public function add()
     {
         $this->defaultData();
-        $container = new tao_actions_form_Users(
+        $container = new UsersForm(
             $this->getClass(TaoOntology::CLASS_URI_TAO_USER),
             null,
             false,
@@ -280,7 +282,7 @@ class tao_actions_Users extends tao_actions_CommonModule
         }
 
         $clazz = $this->getClass(TaoOntology::CLASS_URI_TAO_USER);
-        $formContainer = new tao_actions_form_CreateInstance([$clazz], [FormContainer::CSRF_PROTECTION_OPTION => true]);
+        $formContainer = new CreateInstanceForm([$clazz], [FormContainer::CSRF_PROTECTION_OPTION => true]);
         $form = $formContainer->getForm();
 
         if ($form->isSubmited() && $form->isValid()) {
@@ -334,7 +336,7 @@ class tao_actions_Users extends tao_actions_CommonModule
         $user = $this->getUserResource();
 
         $types = $user->getTypes();
-        $myFormContainer = new tao_actions_form_Users(
+        $myFormContainer = new UsersForm(
             reset($types),
             $user,
             false,

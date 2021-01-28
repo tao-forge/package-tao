@@ -19,6 +19,10 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
 use oat\tao\helpers\Layout;
 
 /**
@@ -27,7 +31,7 @@ use oat\tao\helpers\Layout;
  * @author Aleh Hutnikau <hutnikau@1pt.com>
  * @package tao
  */
-class tao_actions_form_PasswordRecovery extends tao_helpers_form_FormContainer
+class PasswordRecoveryForm extends tao_helpers_form_FormContainer
 {
     /**
      * Initialize password recovery form

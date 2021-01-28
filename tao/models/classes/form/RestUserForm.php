@@ -19,21 +19,30 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use \common_exception_ValidationFailed;
+use \common_report_Report;
+use \core_kernel_classes_Property;
+use \core_kernel_users_Service;
+use \tao_helpers_form_elements_Readonly;
+use \tao_helpers_form_validators_NotEmpty;
+use \tao_models_classes_UserService;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdfs;
-use \oat\generis\model\user\PasswordConstraintsService;
-use \oat\oatbox\validator\ValidatorInterface;
+use oat\generis\model\user\PasswordConstraintsService;
+use oat\oatbox\validator\ValidatorInterface;
 use tao_helpers_form_elements_Readonly as ReadOnly;
 use tao_models_classes_UserService as UserService;
-use \Zend\ServiceManager\ServiceLocatorAwareTrait;
-use \Zend\ServiceManager\ServiceLocatorAwareInterface;
 
 /**
- * Class tao_actions_form_RestUserForm
+ * Class oat\tao\model\form\RestUserForm
  *
- * Implementation of tao_actions_form_RestForm to manage generis user forms for edit and create
+ * Implementation of oat\tao\model\form\RestForm to manage generis user forms for edit and create
  */
-class tao_actions_form_RestUserForm extends tao_actions_form_RestForm implements ServiceLocatorAwareInterface
+class RestUserForm extends RestForm implements ServiceLocatorAwareInterface
 {
     use ServiceLocatorAwareTrait;
 

@@ -18,6 +18,7 @@
  * Copyright (c) 2019 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  */
 
+use oat\tao\model\form\CspHeaderForm;
 use oat\tao\model\security\Business\Contract\SecuritySettingsRepositoryInterface;
 use tao_helpers_form_FormContainer as FormContainer;
 
@@ -45,8 +46,8 @@ class tao_actions_Security extends tao_actions_CommonModule
     {
         $this->setView('security/view.tpl');
 
-        $formFactory = new tao_actions_form_CspHeader(
-            [tao_actions_form_CspHeader::SETTINGS_DATA => $this->repository->findAll()],
+        $formFactory = new CspHeaderForm(
+            [CspHeaderForm::SETTINGS_DATA => $this->repository->findAll()],
             [FormContainer::CSRF_PROTECTION_OPTION => true]
         );
 

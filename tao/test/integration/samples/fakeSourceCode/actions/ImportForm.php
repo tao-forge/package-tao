@@ -19,6 +19,13 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \tao_helpers_Display;
+use \tao_helpers_data_GenerisAdapterCsv;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+
 /**
  * This container initialize the import form.
  *
@@ -27,7 +34,7 @@
  * @package tao
 
  */
-class tao_actions_form_Import extends tao_helpers_form_FormContainer
+class ImportForm extends tao_helpers_form_FormContainer
 {
     // --- ASSOCIATIONS ---
 

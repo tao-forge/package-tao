@@ -21,6 +21,18 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use Zend\ServiceManager\ServiceLocatorInterface;
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Literal;
+use \core_kernel_classes_Property;
+use \core_kernel_classes_Resource;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_GenerisFormFactory;
+use \tao_helpers_form_elements_Label;
+use \tao_helpers_form_elements_Readonly;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\service\ServiceManager;
 use oat\tao\helpers\form\ElementMapFactory;
@@ -29,7 +41,6 @@ use oat\tao\model\Lists\Business\Domain\ValueCollectionSearchRequest;
 use oat\tao\model\Lists\Business\Input\ValueCollectionSearchInput;
 use oat\tao\model\Lists\Business\Service\ValueCollectionService;
 use oat\tao\model\TaoOntology;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Create a form from a  resource of your ontology.
@@ -40,7 +51,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @package tao
 
  */
-class tao_actions_form_Instance extends tao_actions_form_Generis
+class InstanceForm extends GenerisForm
 {
     /**
      * Initialize the form

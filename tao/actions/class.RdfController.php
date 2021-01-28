@@ -24,8 +24,12 @@
 
 use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
+use oat\oatbox\user\User;
 use oat\tao\model\accessControl\data\DataAccessControl;
 use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\form\CreateInstanceForm;
+use oat\tao\model\form\EditClassLabelForm;
+use oat\tao\model\form\TranslateForm;
 use oat\tao\model\lock\LockManager;
 use oat\tao\model\menu\ActionService;
 use oat\tao\model\menu\MenuService;
@@ -35,7 +39,6 @@ use oat\tao\model\security\SecurityException;
 use oat\tao\model\security\SignatureGenerator;
 use oat\tao\model\security\SignatureValidator;
 use tao_helpers_form_FormContainer as FormContainer;
-use oat\oatbox\user\User;
 
 /**
  * The TaoModule is an abstract controller,
@@ -416,7 +419,7 @@ abstract class tao_actions_RdfController extends tao_actions_CommonModule
         $classUri       = $class->getUri();
         $hasWriteAccess = $this->hasWriteAccess($classUri);
 
-        $editClassLabelForm = new tao_actions_form_EditClassLabel(
+        $editClassLabelForm = new EditClassLabelForm(
             $class,
             $this->getRequestParameters(),
             $signature,
@@ -543,7 +546,7 @@ abstract class tao_actions_RdfController extends tao_actions_CommonModule
         }
 
         $class = $this->getCurrentClass();
-        $formContainer = new tao_actions_form_CreateInstance([$class], [FormContainer::CSRF_PROTECTION_OPTION => true]);
+        $formContainer = new CreateInstanceForm([$class], [FormContainer::CSRF_PROTECTION_OPTION => true]);
         $addInstanceForm = $formContainer->getForm();
 
         if ($addInstanceForm->isSubmited() && $addInstanceForm->isValid()) {
@@ -846,7 +849,7 @@ abstract class tao_actions_RdfController extends tao_actions_CommonModule
     {
         $instance = $this->getCurrentInstance();
 
-        $formContainer = new tao_actions_form_Translate(
+        $formContainer = new TranslateForm(
             $this->getCurrentClass(),
             $instance,
             [FormContainer::CSRF_PROTECTION_OPTION => true]

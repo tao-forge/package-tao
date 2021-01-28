@@ -23,9 +23,10 @@
  */
 
 use oat\generis\model\GenerisRdf;
+use oat\generis\model\OntologyAwareTrait;
 use oat\tao\model\TaoOntology;
 use oat\tao\model\exceptions\UserErrorException;
-use oat\generis\model\OntologyAwareTrait;
+use oat\tao\model\form\RoleForm;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -67,7 +68,7 @@ class tao_actions_Roles extends tao_actions_RdfController
         $clazz = $this->getCurrentClass();
         $role = $this->getCurrentInstance();
 
-        $formContainer = new tao_actions_form_Role($clazz, $role, [FormContainer::CSRF_PROTECTION_OPTION => true]);
+        $formContainer = new RoleForm($clazz, $role, [FormContainer::CSRF_PROTECTION_OPTION => true]);
         $myForm = $formContainer->getForm();
         if ($myForm->isSubmited() && $myForm->isValid()) {
             $formValues = $myForm->getValues();

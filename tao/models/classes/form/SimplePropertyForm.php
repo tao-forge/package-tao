@@ -20,11 +20,20 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Literal;
+use \core_kernel_classes_Property;
+use \core_kernel_classes_Resource;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_GenerisFormFactory;
+use \tao_models_classes_ListService;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdfs;
-use oat\tao\model\TaoOntology;
 use oat\taoBackOffice\model\tree\TreeService;
 use oat\tao\helpers\form\ValidationRuleRegistry;
+use oat\tao\model\TaoOntology;
 use oat\tao\model\search\index\OntologyIndex;
 
 /**
@@ -35,7 +44,7 @@ use oat\tao\model\search\index\OntologyIndex;
  * @package tao
 
  */
-class tao_actions_form_SimpleProperty extends tao_actions_form_AbstractProperty
+class SimplePropertyForm extends AbstractPropertyForm
 {
 
     /**
@@ -145,7 +154,7 @@ class tao_actions_form_SimpleProperty extends tao_actions_form_AbstractProperty
         $indexes = $property->getPropertyValues(new core_kernel_classes_Property(OntologyIndex::PROPERTY_INDEX));
         foreach ($indexes as $i => $indexUri) {
             $indexProperty = new OntologyIndex($indexUri);
-            $indexFormContainer = new tao_actions_form_IndexProperty($indexProperty, $index . $i);
+            $indexFormContainer = new IndexPropertyForm($indexProperty, $index . $i);
             /** @var tao_helpers_form_Form $indexForm */
             $indexForm = $indexFormContainer->getForm();
             foreach ($indexForm->getElements() as $element) {

@@ -18,16 +18,19 @@
  * Copyright (c) 2015-2018 Open Assessment Technologies S.A.
  */
 
-use oat\oatbox\event\EventManager;
-use oat\tao\model\event\ClassFormUpdatedEvent;
 use oat\generis\model\GenerisRdf;
+use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
 use oat\generis\model\WidgetRdf;
+use oat\oatbox\event\EventManager;
+use oat\oatbox\log\LoggerAwareTrait;
+use oat\tao\helpers\form\ValidationRuleRegistry;
+use oat\tao\model\event\ClassFormUpdatedEvent;
+use oat\tao\model\form\ClazzForm;
+use oat\tao\model\form\IndexPropertyForm;
+use oat\tao\model\form\SimplePropertyForm;
 use oat\tao\model\search\index\OntologyIndex;
 use oat\tao\model\search\index\OntologyIndexService;
-use oat\tao\helpers\form\ValidationRuleRegistry;
-use oat\generis\model\OntologyAwareTrait;
-use oat\oatbox\log\LoggerAwareTrait;
 
 /**
  * Regrouping all actions related to authoring
@@ -92,7 +95,7 @@ class tao_actions_PropertiesAuthoring extends tao_actions_CommonModule
             $index = count($clazz->getProperties(false)) + 1;
         }
 
-        $propFormContainer = new tao_actions_form_SimpleProperty($clazz, $clazz->createProperty('Property_' . $index), ['index' => $index]);
+        $propFormContainer = new SimplePropertyForm($clazz, $clazz->createProperty('Property_' . $index), ['index' => $index]);
         $myForm = $propFormContainer->getForm();
 
         $this->setData('data', $myForm->renderElements());
@@ -246,7 +249,7 @@ class tao_actions_PropertiesAuthoring extends tao_actions_CommonModule
         $property->setPropertyValue($this->getProperty(OntologyIndex::PROPERTY_INDEX), $indexProperty);
 
         //generate form
-        $indexFormContainer = new tao_actions_form_IndexProperty(new OntologyIndex($indexProperty), $propertyIndex . $index);
+        $indexFormContainer = new IndexPropertyForm(new OntologyIndex($indexProperty), $propertyIndex . $index);
         $myForm = $indexFormContainer->getForm();
         $form = trim(preg_replace('/\s+/', ' ', $myForm->renderElements()));
         $this->returnJson(['form' => $form]);
@@ -293,7 +296,7 @@ class tao_actions_PropertiesAuthoring extends tao_actions_CommonModule
     public function getClassForm(core_kernel_classes_Class $clazz)
     {
         $data = $this->getRequestParameters();
-        $formContainer = new tao_actions_form_Clazz($clazz, $this->extractClassData($data), $this->extractPropertyData($data));
+        $formContainer = new ClazzForm($clazz, $this->extractClassData($data), $this->extractPropertyData($data));
         $myForm = $formContainer->getForm();
 
         if ($myForm->isSubmited()) {

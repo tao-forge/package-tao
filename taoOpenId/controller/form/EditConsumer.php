@@ -3,8 +3,8 @@
 namespace oat\taoOpenId\controller\form;
 
 use oat\taoOpenId\model\ConsumerService;
-use tao_actions_form_Instance;
-use tao_helpers_Uri;
+use oat\tao\model\form\InstanceForm;
+use tao_helpers_Uri as tao_helpers_Uri;
 
 /**
  * This program is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@ use tao_helpers_Uri;
  *
  * @author Mikhail Kamarouski <kamarouski@1pt.com>
  */
-class EditConsumer extends tao_actions_form_Instance
+class EditConsumer extends InstanceForm
 {
     protected function initElements()
     {

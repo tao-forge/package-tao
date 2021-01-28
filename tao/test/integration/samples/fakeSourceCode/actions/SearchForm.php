@@ -20,6 +20,18 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Resource;
+use \tao_helpers_I18n;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_GenerisFormFactory;
+use \tao_helpers_form_elements_Authoring;
+use \tao_helpers_form_elements_Hidden;
+use \tao_helpers_form_elements_Hiddenbox;
+use \tao_helpers_form_elements_Htmlarea;
+use \tao_helpers_form_elements_MultipleElement;
+use \tao_models_classes_LanguageService;
 use oat\tao\model\TaoOntology;
 
 /**
@@ -30,7 +42,7 @@ use oat\tao\model\TaoOntology;
  * @package tao
 
  */
-class tao_actions_form_Search extends tao_actions_form_Instance
+class SearchForm extends InstanceForm
 {
     // --- ASSOCIATIONS ---
 

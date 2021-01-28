@@ -24,12 +24,14 @@
 
 namespace oat\taoBackOffice\controller;
 
-use common_exception_BadRequest;
+use RuntimeException as RuntimeException;
+use common_exception_BadRequest as common_exception_BadRequest;
 use common_ext_ExtensionException as ExtensionException;
 use core_kernel_classes_Class as RdfClass;
 use core_kernel_classes_Property as RdfProperty;
-use core_kernel_persistence_Exception;
+use core_kernel_persistence_Exception as core_kernel_persistence_Exception;
 use oat\generis\model\OntologyAwareTrait;
+use oat\taoBackOffice\model\lists\ListService;
 use oat\tao\helpers\Template;
 use oat\tao\model\Lists\Business\Domain\CollectionType;
 use oat\tao\model\Lists\Business\Domain\Value;
@@ -41,14 +43,12 @@ use oat\tao\model\Lists\Business\Service\RemoteSourcedListOntology;
 use oat\tao\model\Lists\Business\Service\ValueCollectionService;
 use oat\tao\model\Lists\DataAccess\Repository\ValueConflictException;
 use oat\tao\model\TaoOntology;
-use oat\taoBackOffice\model\lists\ListService;
-use RuntimeException;
-use tao_actions_CommonModule;
-use tao_actions_form_List;
-use tao_actions_form_RemoteList;
-use tao_helpers_Scriptloader;
-use tao_helpers_Uri;
-use tao_models_classes_LanguageService;
+use oat\tao\model\form\ListForm;
+use oat\tao\model\form\RemoteListForm;
+use tao_actions_CommonModule as tao_actions_CommonModule;
+use tao_helpers_Scriptloader as tao_helpers_Scriptloader;
+use tao_helpers_Uri as tao_helpers_Uri;
+use tao_models_classes_LanguageService as tao_models_classes_LanguageService;
 
 /**
  * This controller provide the actions to manage the lists of data
@@ -73,7 +73,7 @@ class Lists extends tao_actions_CommonModule
         tao_helpers_Scriptloader::addCssFile(Template::css('lists.css', 'tao'));
         $this->defaultData();
 
-        $myAdderFormContainer = new tao_actions_form_List();
+        $myAdderFormContainer = new ListForm();
         $myForm = $myAdderFormContainer->getForm();
 
         if ($myForm->isSubmited()) {
@@ -110,7 +110,7 @@ class Lists extends tao_actions_CommonModule
 
         $this->defaultData();
 
-        $remoteListFormFactory = new tao_actions_form_RemoteList();
+        $remoteListFormFactory = new RemoteListForm();
         $remoteListForm = $remoteListFormFactory->getForm();
 
         if ($remoteListForm === null) {
@@ -122,10 +122,10 @@ class Lists extends tao_actions_CommonModule
                 $values = $remoteListForm->getValues();
 
                 $newList = $this->createList(
-                    $values[tao_actions_form_RemoteList::FIELD_NAME],
-                    $values[tao_actions_form_RemoteList::FIELD_SOURCE_URL],
-                    $values[tao_actions_form_RemoteList::FIELD_ITEM_LABEL_PATH],
-                    $values[tao_actions_form_RemoteList::FIELD_ITEM_URI_PATH]
+                    $values[RemoteListForm::FIELD_NAME],
+                    $values[RemoteListForm::FIELD_SOURCE_URL],
+                    $values[RemoteListForm::FIELD_ITEM_LABEL_PATH],
+                    $values[RemoteListForm::FIELD_ITEM_URI_PATH]
                 );
 
                 try {
@@ -148,7 +148,7 @@ class Lists extends tao_actions_CommonModule
             }
         } else {
             $newListLabel = __('List') . ' ' . (count($this->getListService()->getLists()) + 1);
-            $remoteListForm->getElement(tao_actions_form_RemoteList::FIELD_NAME)->setValue($newListLabel);
+            $remoteListForm->getElement(RemoteListForm::FIELD_NAME)->setValue($newListLabel);
         }
         $this->setData('form', $remoteListForm->render());
         $this->setData('lists', $this->getListData(true));

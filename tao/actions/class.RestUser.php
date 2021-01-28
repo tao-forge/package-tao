@@ -20,6 +20,7 @@
  */
 
 use oat\generis\model\GenerisRdf;
+use oat\tao\model\form\RestUserForm;
 
 /**
  * Class tao_actions_RestUser
@@ -49,11 +50,11 @@ class tao_actions_RestUser extends tao_actions_RestResource
      * Return the form object to manage user edition or creation
      *
      * @param $instance
-     * @return tao_actions_form_RestUserForm
+     * @return oat\tao\model\form\RestUserForm
      */
     protected function getForm($instance)
     {
-        return $this->propagate(new \tao_actions_form_RestUserForm($instance));
+        return $this->propagate(new RestUserForm($instance));
     }
 
     /**

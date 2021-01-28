@@ -20,6 +20,13 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Resource;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_models_classes_LanguageService;
 use oat\oatbox\service\ServiceManager;
 use oat\oatbox\user\UserLanguageServiceInterface;
 use oat\oatbox\user\UserTimezoneServiceInterface;
@@ -32,7 +39,7 @@ use oat\oatbox\user\UserTimezoneServiceInterface;
  * @package tao
 
  */
-class tao_actions_form_UserSettings extends tao_helpers_form_FormContainer
+class UserSettingsForm extends tao_helpers_form_FormContainer
 {
 
     /**

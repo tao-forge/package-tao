@@ -20,17 +20,21 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Class;
+use \tao_helpers_Uri;
 use oat\generis\model\GenerisRdf;
 
 /**
- * Short description of class tao_actions_form_Role
+ * Short description of class oat\tao\model\form\RoleForm
  *
  * @access public
  * @author Joel Bout, <joel@taotesting.com>
  * @package tao
 
  */
-class tao_actions_form_Role extends tao_actions_form_Instance
+class RoleForm extends InstanceForm
 {
     // --- ASSOCIATIONS ---
 
@@ -73,7 +77,7 @@ class tao_actions_form_Role extends tao_actions_form_Instance
      * @access public
      * @author Joel Bout, <joel@taotesting.com>
      * @return core_kernel_classes_Class
-     * @see tao_actions_form_Generis::getTopClazz()
+     * @see oat\tao\model\form\GenerisForm::getTopClazz()
      */
     public function getTopClazz()
     {

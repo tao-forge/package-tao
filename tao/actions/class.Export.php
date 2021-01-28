@@ -24,10 +24,11 @@
 
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\log\LoggerAwareTrait;
+use oat\tao\model\form\ExportForm;
 use oat\tao\model\resources\SecureResourceServiceInterface;
-use oat\tao\model\task\ExportByHandler;
 use oat\tao\model\taskQueue\QueueDispatcher;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
+use oat\tao\model\task\ExportByHandler;
 
 /**
  * This controller provide the actions to export and manage exported data
@@ -76,7 +77,7 @@ class tao_actions_Export extends tao_actions_CommonModule
             throw new common_exception_MissingParameter();
         }
 
-        $formFactory = new tao_actions_form_Export($handlers, $exporter->getExportForm($selectedResource), $formData);
+        $formFactory = new ExportForm($handlers, $exporter->getExportForm($selectedResource), $formData);
         $exportForm = $formFactory->getForm();
         if ($exporter !== null) {
             $exportForm->setValues(['exportHandler' => get_class($exporter)]);

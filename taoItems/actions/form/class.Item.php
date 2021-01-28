@@ -21,6 +21,7 @@
  */
 
 use oat\taoItems\model\ItemModelStatus;
+use oat\tao\model\form\InstanceForm;
 
 /**
  * Short description of class taoItems_actions_form_Item
@@ -30,11 +31,11 @@ use oat\taoItems\model\ItemModelStatus;
  * @package taoItems
 
  */
-class taoItems_actions_form_Item extends tao_actions_form_Instance
+class taoItems_actions_form_Item extends InstanceForm
 {
     /**
      * (non-PHPdoc)
-     * @see tao_actions_form_Instance::initElements()
+     * @see oat\tao\model\form\InstanceForm::initElements()
      */
     protected function initElements()
     {

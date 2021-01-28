@@ -19,18 +19,30 @@
  *
  */
 
-use \oat\generis\model\OntologyAwareTrait;
-use \oat\tao\helpers\form\ValidationRuleRegistry;
-use \oat\oatbox\validator\ValidatorInterface;
+namespace oat\tao\model\form;
+
+use \common_Exception;
+use \common_exception_NotFound;
+use \common_exception_ValidationFailed;
+use \common_report_Report;
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Literal;
+use \core_kernel_classes_Property;
+use \core_kernel_classes_Resource;
+use \tao_helpers_form_GenerisFormFactory;
+use \tao_models_classes_dataBinding_GenerisFormDataBinder;
+use oat\generis\model\OntologyAwareTrait;
+use oat\oatbox\validator\ValidatorInterface;
+use oat\tao\helpers\form\ValidationRuleRegistry;
 use oat\tao\model\TaoOntology;
 
 /**
- * Class tao_actions_form_RestForm
+ * Class oat\tao\model\form\RestForm
  *
  * Form object to handle rdf resource
  * It manages data to create and edit a resource into a given class
  */
-class tao_actions_form_RestForm
+class RestForm
 {
     use OntologyAwareTrait;
 
@@ -50,7 +62,7 @@ class tao_actions_form_RestForm
     protected $ranges = [];
 
     /**
-     * tao_actions_form_RestForm constructor.
+     * oat\tao\model\form\RestForm constructor.
      *
      * Create a form for a given $instance
      * If $instance is a resource, it's an edition. The class is the resource class

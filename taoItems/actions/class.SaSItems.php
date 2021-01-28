@@ -22,6 +22,7 @@
  */
 
 use oat\generis\model\OntologyRdfs;
+use oat\tao\model\form\InstanceForm;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -60,7 +61,7 @@ class taoItems_actions_SaSItems extends taoItems_actions_Items
         $clazz = $this->getCurrentClass();
         $instance = $this->getCurrentInstance();
 
-        $formContainer = new tao_actions_form_Instance($clazz, $instance, [FormContainer::CSRF_PROTECTION_OPTION => true]);
+        $formContainer = new InstanceForm($clazz, $instance, [FormContainer::CSRF_PROTECTION_OPTION => true]);
         $myForm = $formContainer->getForm();
 
         if ($myForm->isSubmited() && $myForm->isValid()) {

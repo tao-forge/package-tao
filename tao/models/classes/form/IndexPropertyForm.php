@@ -20,10 +20,19 @@
  *
  */
 
+namespace oat\tao\model\form;
+
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Property;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormContainer;
+use \tao_helpers_form_FormFactory;
+use \tao_helpers_form_validators_IndexIdentifier;
+use \tao_helpers_form_validators_NotEmpty;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdfs;
-use oat\tao\model\search\index\OntologyIndex;
 use oat\tao\model\TaoOntology;
+use oat\tao\model\search\index\OntologyIndex;
 
 /**
  * Enable you to edit a property
@@ -32,7 +41,7 @@ use oat\tao\model\TaoOntology;
  * @author Bertrand Chevrier, <bertrand.chevrier@tudor.lu>
  * @package tao
  */
-class tao_actions_form_IndexProperty extends tao_helpers_form_FormContainer
+class IndexPropertyForm extends tao_helpers_form_FormContainer
 {
     /**
      * @var OntologyIndex

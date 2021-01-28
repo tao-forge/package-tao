@@ -24,6 +24,7 @@
 
 use oat\generis\model\user\UserRdf;
 use oat\oatbox\event\EventManager;
+use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\user\LoginService;
 use oat\tao\helpers\TaoCe;
 use oat\tao\model\accessControl\ActionResolver;
@@ -32,13 +33,13 @@ use oat\tao\model\entryPoint\EntryPointService;
 use oat\tao\model\event\LoginFailedEvent;
 use oat\tao\model\event\LoginSucceedEvent;
 use oat\tao\model\event\LogoutSucceedEvent;
+use oat\tao\model\form\LoginForm;
 use oat\tao\model\menu\MenuService;
 use oat\tao\model\menu\Perspective;
 use oat\tao\model\mvc\DefaultUrlService;
 use oat\tao\model\notification\Notification;
 use oat\tao\model\notification\NotificationServiceInterface;
 use oat\tao\model\user\UserLocks;
-use oat\oatbox\log\LoggerAwareTrait;
 
 /**
  * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
@@ -142,7 +143,7 @@ class tao_actions_Main extends tao_actions_CommonModule
             }
         }
 
-        $container = new tao_actions_form_Login($params);
+        $container = new LoginForm($params);
         $form = $container->getForm();
 
         if ($form->isSubmited()) {
