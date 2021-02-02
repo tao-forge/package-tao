@@ -58,4 +58,11 @@ interface Theme
      * @return string url
      */
     public function getStylesheet($context = self::CONTEXT_BACKOFFICE);
+
+    /**
+     * Returns the url of he logo in the upper left corner
+     *
+     * @return string url
+     */
+    public function getLogoUrl(): string;
 }

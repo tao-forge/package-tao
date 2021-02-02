@@ -221,39 +221,7 @@ class Layout
      */
     public static function getLogoUrl()
     {
-        $theme = self::getCurrentTheme();
-        if (
-            $theme instanceof ConfigurableTheme ||
-            $theme instanceof ConfigurablePlatformTheme
-        ) {
-            $logoFile = $theme->getLogoUrl();
-            if (! empty($logoFile)) {
-                return $logoFile;
-            }
-        }
-
-        return static::getDefaultLogoUrl();
-    }
-
-    /**
-     * Returns the default logo url.
-     *
-     * @return string
-     */
-    public static function getDefaultLogoUrl()
-    {
-        switch (TAO_RELEASE_STATUS) {
-            case 'alpha':
-            case 'demoA':
-                return Template::img('tao-logo-alpha.png', 'tao');
-                break;
-            case 'beta':
-            case 'demoB':
-                return Template::img('tao-logo-beta.png', 'tao');
-                break;
-        }
-
-        return $logoFile = Template::img('tao-logo.png', 'tao');
+        return self::getCurrentTheme()->getLogoUrl();
     }
 
     /**

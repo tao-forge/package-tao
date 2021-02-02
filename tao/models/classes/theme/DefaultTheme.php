@@ -28,7 +28,7 @@ use oat\tao\helpers\Template;
  *
  * @package oat\tao\model\theme
  */
-class DefaultTheme extends ConfigurableTheme
+class DefaultTheme implements Theme
 {
     public function getId()
     {
@@ -51,5 +51,51 @@ class DefaultTheme extends ConfigurableTheme
     public function getStylesheet($context = Theme::CONTEXT_BACKOFFICE)
     {
         return Template::css('tao-3.css', 'tao');
+    }
+
+    /**
+     * Get a template associated to given $id
+     *
+     * @param string $id
+     * @param string $context
+     * @return null|string
+     */
+    public function getTemplate($id, $context = Theme::CONTEXT_BACKOFFICE)
+    {
+        switch ($id) {
+            case 'head':
+                $template = Template::getTemplate('blocks/head.tpl', 'tao');
+                break;
+            case 'header-logo':
+                $template = Template::getTemplate('blocks/header-logo.tpl', 'tao');
+                break;
+            case 'footer':
+                $template = Template::getTemplate('blocks/footer.tpl', 'tao');
+                break;
+            case 'login-message':
+                $template = Template::getTemplate('blocks/login-message.tpl', 'tao');
+                break;
+            case 'login':
+                $template = Template::getTemplate('blocks/login.tpl', 'tao');
+                break;
+            default:
+                $template = Template::getTemplate($id, 'tao');
+        }
+        return $template;
+    }
+
+    public function getLogoUrl(): string
+    {
+        switch (TAO_RELEASE_STATUS) {
+            case 'alpha':
+            case 'demoA':
+                return Template::img('tao-logo-alpha.png', 'tao');
+                break;
+            case 'beta':
+            case 'demoB':
+                return Template::img('tao-logo-beta.png', 'tao');
+                break;
+        }
+        return Template::img('tao-logo.png', 'tao');
     }
 }
