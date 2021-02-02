@@ -19,7 +19,7 @@
  */
 
 use oat\tao\model\routing\Resolver;
-use oat\tao\model\mvc\Breadcrumbs;
+use oat\tao\model\mvc\Breadcrumbs as BreadcrumbsInterface;
 
 /**
  * Controller that will serve breadcrumbs depending on context routes.
@@ -38,7 +38,7 @@ use oat\tao\model\mvc\Breadcrumbs;
  * @package oat\tao\actions
  *
  */
-class tao_actions_Breadcrumbs extends \tao_actions_CommonModule implements Breadcrumbs
+class tao_actions_Breadcrumbs extends \tao_actions_CommonModule implements BreadcrumbsInterface
 {
     /**
      * Parses the provided context route
@@ -126,7 +126,7 @@ class tao_actions_Breadcrumbs extends \tao_actions_CommonModule implements Bread
             $service = $this;
         }
 
-        if ($service instanceof Breadcrumbs) {
+        if ($service instanceof BreadcrumbsInterface) {
             return $service->breadcrumbs($route, $parsedRoute);
         } else {
             throw new common_exception_NoImplementation('Class ' . get_class($service) . ' does not implement the Breadcrumbs interface!');

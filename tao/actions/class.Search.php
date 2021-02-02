@@ -27,7 +27,7 @@ use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
 use oat\tao\model\search\index\OntologyIndexService;
 use oat\tao\model\search\ResultSet;
-use oat\tao\model\search\Search;
+use oat\tao\model\search\Search as SearchEngine;
 
 /**
  * Controller for indexed searches
@@ -68,10 +68,10 @@ class tao_actions_Search extends tao_actions_CommonModule
      * Search results
      * The search is paginated and initiated by the datatable component.
      *
-     * @param Search    $searchService
+     * @param SearchEngine    $searchService
      * @param PermissionHelper $permissionHelper
      */
-    public function search(Search $searchService, PermissionHelper $permissionHelper): void
+    public function search(SearchEngine $searchService, PermissionHelper $permissionHelper): void
     {
         $params = $this->getRequestParameter('params');
         $query = $params['query'];

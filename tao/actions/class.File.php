@@ -21,7 +21,7 @@
  *               2013-2018 (update and modification) Open Assessment Technologies SA;
  */
 
-use oat\oatbox\filesystem\File;
+use oat\oatbox\filesystem\File as FileObject;
 use oat\tao\model\upload\UploadService;
 use oat\tao\model\websource\WebsourceManager;
 use oat\tao\model\websource\ActionWebSource;
@@ -104,7 +104,7 @@ class tao_actions_File extends tao_actions_CommonModule
                 $fileService = $this->getServiceLocator()->get(FileReferenceSerializer::SERVICE_ID);
                 $file = $fileService->unserialize($fileResource);
 
-                if ($file instanceof File) {
+                if ($file instanceof FileObject) {
                     $data['name'] = $file->getBasename();
                 }
             }
