@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,7 +21,6 @@
  *
  * @author Sergei Mikhailov <sergei.mikhailov@taotesting.com>
  */
-declare(strict_types=1);
 
 namespace oat\taoDelivery\controller;
 
