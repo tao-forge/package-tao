@@ -19,8 +19,9 @@
  */
 
 use oat\generis\model\OntologyRdfs;
-use oat\taoQtiTest\models\creator\CreatorItems;
 use oat\taoItems\model\CategoryService;
+use oat\taoQtiTest\models\creator\CreatorItems;
+use oat\tao\controller\CommonModule;
 use qtism\common\utils\Format;
 
 /**
@@ -29,7 +30,7 @@ use qtism\common\utils\Format;
  * @author Bertrand Chevrier <bertrand@taotesting.com>
  * @author Jérôme Bogaerts <jerome@taotesting.com>
  */
-class taoQtiTest_actions_Items extends tao_actions_CommonModule
+class taoQtiTest_actions_Items extends CommonModule
 {
     /**
      * Get ALL QTI items within the platform.

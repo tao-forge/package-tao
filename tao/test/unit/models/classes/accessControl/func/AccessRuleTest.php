@@ -20,6 +20,7 @@
 namespace oat\tao\test\unit\models\classes\accessControl\func;
 
 use oat\generis\test\TestCase;
+use oat\tao\controller\Main;
 use oat\tao\model\accessControl\func\AccessRule;
 
 class AccessRuleTest extends TestCase
@@ -50,17 +51,17 @@ class AccessRuleTest extends TestCase
                 'mask' => 'NotAmasK'
             ],
             'valid controller string mask' => [
-                'mask' => \tao_actions_Main::class,
+                'mask' => Main::class,
                 'expected' => [
                     'scope' => AccessRule::SCOPE_CONTROLLER,
-                    'ctrl' => \tao_actions_Main::class
+                    'ctrl' => Main::class
                 ],
             ],
             'valid action string mask' => [
-                'mask' => \tao_actions_Main::class.'@index',
+                'mask' => Main::class.'@index',
                 'expected' => [
                     'scope' => AccessRule::SCOPE_ACTION,
-                    'ctrl' => \tao_actions_Main::class,
+                    'ctrl' => Main::class,
                     'act' => 'index'
                 ],
             ],
@@ -77,17 +78,17 @@ class AccessRuleTest extends TestCase
                 ],
             ],
             'valid controller string mask' => [
-                'mask' => \tao_actions_Main::class,
+                'mask' => Main::class,
                 'expected' => [
                     'scope' => AccessRule::SCOPE_CONTROLLER,
-                    'ctrl' => \tao_actions_Main::class
+                    'ctrl' => Main::class
                 ],
             ],
             'valid action string mask' => [
-                'mask' => \tao_actions_Main::class.'@index',
+                'mask' => Main::class.'@index',
                 'expected' => [
                     'scope' => AccessRule::SCOPE_ACTION,
-                    'ctrl' => \tao_actions_Main::class,
+                    'ctrl' => Main::class,
                     'act' => 'index'
                 ],
             ],

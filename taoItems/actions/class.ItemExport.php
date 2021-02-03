@@ -20,6 +20,8 @@
  *               2012-2018 (update and modification) Open Assessment Technologies SA;
  */
 
+use oat\tao\controller\Export;
+
 /**
  * This controller provide the actions to export items
  *
@@ -28,13 +30,13 @@
  * @package taoItems
  *
  */
-class taoItems_actions_ItemExport extends tao_actions_Export
+class taoItems_actions_ItemExport extends Export
 {
     /**
      * overwrite the parent index to add the requiresRight for Items only
      *
      * @requiresRight id READ
-     * @see           tao_actions_Import::index()
+     * @see           oat\tao\controller\Import::index()
      */
     public function index()
     {

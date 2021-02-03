@@ -23,13 +23,14 @@ namespace oat\taoTaskQueue\controller;
 
 use common_session_SessionManager;
 use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\model\routing\AnnotationReader\security;
 use oat\taoTaskQueue\model\TaskLogInterface;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\routing\AnnotationReader\security;
 
 /**
  * @deprecated Use oat\taoTaskQueue\controller\TaskQueueWebApi instead!
  */
-class RestTask extends \tao_actions_CommonModule
+class RestTask extends CommonModule
 {
     const PARAMETER_TASK_ID = 'taskId';
     const PARAMETER_LIMIT = 'limit';

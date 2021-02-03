@@ -22,6 +22,7 @@
  */
 
 use oat\taoItems\model\CsvImporter;
+use oat\tao\controller\Import;
 
 /**
  * This controller provide the actions to import items
@@ -31,13 +32,13 @@ use oat\taoItems\model\CsvImporter;
  * @package taoItems
  *
  */
-class taoItems_actions_ItemImport extends tao_actions_Import
+class taoItems_actions_ItemImport extends Import
 {
     /**
      * overwrite the parent index to add the requiresRight for Items only
      *
      * @requiresRight id WRITE
-     * @see           tao_actions_Import::index()
+     * @see           oat\tao\controller\Import::index()
      */
     public function index()
     {

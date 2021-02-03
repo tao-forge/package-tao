@@ -20,9 +20,10 @@
  */
 
 use oat\generis\model\OntologyAwareTrait;
+use oat\taoItems\model\media\ItemMediaResolver;
+use oat\tao\controller\CommonModule;
 use oat\tao\helpers\FileUploadException;
 use oat\tao\model\accessControl\data\PermissionException;
-use oat\taoItems\model\media\ItemMediaResolver;
 
 /**
  * Items Content Controller provide access to the files of an item
@@ -30,7 +31,7 @@ use oat\taoItems\model\media\ItemMediaResolver;
  * @author Joel Bout, <joel@taotesting.com>
  * @package taoItems
  */
-class taoItems_actions_ItemContent extends tao_actions_CommonModule
+class taoItems_actions_ItemContent extends CommonModule
 {
     use OntologyAwareTrait;
 

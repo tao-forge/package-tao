@@ -18,11 +18,13 @@
  *
  */
 
+use oat\tao\controller\RestResource;
+
 /**
  * Rest interface to manage forms to create and edit items
  *
  */
-class taoItems_actions_RestFormItem extends \tao_actions_RestResource
+class taoItems_actions_RestFormItem extends RestResource
 {
 
     /**

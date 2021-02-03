@@ -24,14 +24,15 @@
 
 namespace oat\taoBackOffice\controller;
 
-use RuntimeException as RuntimeException;
-use common_exception_BadRequest as common_exception_BadRequest;
+use RuntimeException;
+use common_exception_BadRequest;
 use common_ext_ExtensionException as ExtensionException;
 use core_kernel_classes_Class as RdfClass;
 use core_kernel_classes_Property as RdfProperty;
-use core_kernel_persistence_Exception as core_kernel_persistence_Exception;
+use core_kernel_persistence_Exception;
 use oat\generis\model\OntologyAwareTrait;
 use oat\taoBackOffice\model\lists\ListService;
+use oat\tao\controller\CommonModule;
 use oat\tao\helpers\Template;
 use oat\tao\model\Lists\Business\Domain\CollectionType;
 use oat\tao\model\Lists\Business\Domain\Value;
@@ -45,10 +46,9 @@ use oat\tao\model\Lists\DataAccess\Repository\ValueConflictException;
 use oat\tao\model\TaoOntology;
 use oat\tao\model\form\ListForm;
 use oat\tao\model\form\RemoteListForm;
-use tao_actions_CommonModule as tao_actions_CommonModule;
-use tao_helpers_Scriptloader as tao_helpers_Scriptloader;
-use tao_helpers_Uri as tao_helpers_Uri;
-use tao_models_classes_LanguageService as tao_models_classes_LanguageService;
+use tao_helpers_Scriptloader;
+use tao_helpers_Uri;
+use tao_models_classes_LanguageService;
 
 /**
  * This controller provide the actions to manage the lists of data
@@ -58,7 +58,7 @@ use tao_models_classes_LanguageService as tao_models_classes_LanguageService;
  * @package taoBackOffice
  *
  */
-class Lists extends tao_actions_CommonModule
+class Lists extends CommonModule
 {
     use OntologyAwareTrait;
 

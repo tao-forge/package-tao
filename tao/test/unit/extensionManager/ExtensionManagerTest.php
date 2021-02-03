@@ -2,9 +2,10 @@
 
 namespace oat\tao\test\unit\extensionManager;
 
-use oat\generis\test\TestCase;
-use oat\tao\model\service\ApplicationService;
 use PHPUnit\Framework\ExpectationFailedException;
+use oat\generis\test\TestCase;
+use oat\tao\controller\ExtensionsManager;
+use oat\tao\model\service\ApplicationService;
 
 class ExtensionManagerTest extends TestCase
 {
@@ -147,7 +148,7 @@ class ExtensionManagerTest extends TestCase
     }
 }
 
-class ExtensionManagerFake extends \tao_actions_ExtensionsManager
+class ExtensionManagerFake extends ExtensionsManager
 {
     public function __construct()
     {

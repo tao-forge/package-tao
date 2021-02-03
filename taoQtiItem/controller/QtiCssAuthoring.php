@@ -22,19 +22,19 @@
 
 namespace oat\taoQtiItem\controller;
 
-use tao_actions_CommonModule;
-use oat\taoQtiItem\helpers\CssHelper;
-use tao_helpers_Request;
+use common_exception_InvalidArgumentType;
 use common_exception_IsAjaxAction;
 use common_exception_MissingParameter;
-use common_exception_InvalidArgumentType;
+use oat\taoQtiItem\helpers\CssHelper;
+use oat\tao\controller\CommonModule;
+use tao_helpers_Request;
 
 /**
  * Class QtiCssAuthoring
  *
  * @package oat\taoQtiItem\controller
  */
-class QtiCssAuthoring extends tao_actions_CommonModule
+class QtiCssAuthoring extends CommonModule
 {
 
     /**

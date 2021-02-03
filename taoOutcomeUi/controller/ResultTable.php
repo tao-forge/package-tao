@@ -22,25 +22,26 @@
 
 namespace oat\taoOutcomeUi\controller;
 
-use \common_Exception;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
-use oat\taoOutcomeUi\model\export\ColumnsProvider;
+use common_Exception;
 use oat\generis\model\OntologyAwareTrait;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoOutcomeUi\model\ResultsService;
+use oat\taoOutcomeUi\model\export\ColumnsProvider;
 use oat\taoOutcomeUi\model\export\DeliveryCsvResultsExporterFactory;
 use oat\taoOutcomeUi\model\export\DeliveryResultsExporterFactoryInterface;
 use oat\taoOutcomeUi\model\export\DeliverySqlResultsExporterFactory;
 use oat\taoOutcomeUi\model\export\ResultsExporter;
-use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoOutcomeUi\model\table\ResultsPayload;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
 use tao_helpers_Uri;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 
 /**
  * Delivery Results export functionalities
  *
  * @author Gyula Szucs <gyula@taotesting.com>
  */
-class ResultTable extends \tao_actions_CommonModule
+class ResultTable extends CommonModule
 {
     const PARAMETER_COLUMNS = 'columns';
     const PARAMETER_DELIVERY_URI = 'uri';

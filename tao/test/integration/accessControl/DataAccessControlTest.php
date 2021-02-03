@@ -133,7 +133,7 @@ class DataAccessControlTest extends GenerisPhpUnitTestRunner
      */
     private function check(User $user, array $urisList = [])
     {
-        $expectedClassName = 'tao_actions_RdfController';
+        $expectedClassName = 'oat\\tao\\controller\\RdfController';
         $expectedAction = 'moveAll';
 
         //Check if admin user has access to functionality

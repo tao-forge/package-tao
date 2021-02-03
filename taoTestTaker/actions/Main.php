@@ -23,13 +23,15 @@
 
 namespace oat\taoTestTaker\actions;
 
+use oat\tao\controller\Main as Main_2;
+
 /**
  * @author Bertrand Chevrier, <taosupport@tudor.lu>
  * @package taoTestTaker
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  *
  */
-class Main extends \tao_actions_Main
+class Main extends Main_2
 {
     
 }

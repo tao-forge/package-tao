@@ -22,6 +22,8 @@
  *
  */
 
+use oat\tao\controller\Lock;
+use oat\tao\controller\PropertiesAuthoring;
 use oat\tao\controller\api\Users;
 use oat\tao\install\services\SetupSettingsStorage;
 use oat\tao\model\accessControl\func\AccessRule;
@@ -51,8 +53,8 @@ use oat\tao\scripts\install\SetDefaultCSPHeader;
 use oat\tao\scripts\install\SetLocaleNumbersConfig;
 use oat\tao\scripts\install\SetServiceFileStorage;
 use oat\tao\scripts\install\SetServiceState;
-use oat\tao\scripts\install\SetupMaintenanceService;
 use oat\tao\scripts\install\SetUpQueueTasks;
+use oat\tao\scripts\install\SetupMaintenanceService;
 
 $extpath = __DIR__ . DIRECTORY_SEPARATOR;
 
@@ -160,8 +162,8 @@ return [
         [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['ext' => 'tao','mod' => 'GenerisTree']],
         [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['ext' => 'tao','mod' => 'Search']],
         [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['ext' => 'tao','mod' => 'Main', 'act' => 'index']],
-        [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['act' => tao_actions_Lock::class.'@locked']],
-        [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['act' => tao_actions_Lock::class.'@release']],
+        [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['act' => Lock::class.'@locked']],
+        [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['act' => Lock::class.'@release']],
         [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['ext' => 'tao','mod' => 'TaskQueueData']],
         [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['ext' => 'tao','mod' => 'RestResource']],
         [AccessRule::GRANT, TaoRoles::BACK_OFFICE,          ['ext' => 'tao','mod' => 'RestClass']],
@@ -185,14 +187,14 @@ return [
         [AccessRule::GRANT, TaoRoles::REST_PUBLISHER,       ['ext' => 'tao','mod' => 'TaskQueue', 'act' => 'get']],
         [AccessRule::GRANT, TaoRoles::REST_PUBLISHER,       ['ext' => 'tao','mod' => 'TaskQueue', 'act' => 'getStatus']],
         [AccessRule::GRANT, TaoRoles::SYSTEM_ADMINISTRATOR, ['ext' => 'tao','mod' => 'ExtensionsManager']],
-        [AccessRule::GRANT, TaoRoles::LOCK_MANAGER,         tao_actions_Lock::class.'@forceRelease'],
-        [AccessRule::GRANT, TaoRoles::PROPERTY_MANAGER,     tao_actions_PropertiesAuthoring::class],
+        [AccessRule::GRANT, TaoRoles::LOCK_MANAGER,         Lock::class.'@forceRelease'],
+        [AccessRule::GRANT, TaoRoles::PROPERTY_MANAGER,     PropertiesAuthoring::class],
         [AccessRule::GRANT, TaoRoles::SYSTEM_ADMINISTRATOR, Users::class],
         [AccessRule::GRANT, TaoRoles::GLOBAL_MANAGER,       Users::class],
     ],
     'routes' => [
         '/tao/api'  => ['class' => ApiRoute::class],
-        '/tao'      => ['class' => LegacyRoute::class],
+        '/tao'      => 'oat\\tao\\controller',
     ],
     'constants' => [
         #TAO version number

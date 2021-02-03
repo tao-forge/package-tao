@@ -23,23 +23,24 @@ namespace oat\taoTaskQueue\controller;
 
 use common_session_SessionManager;
 use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\model\routing\AnnotationReader\security;
-use oat\tao\model\taskQueue\QueueDispatcherInterface;
-use oat\tao\model\taskQueue\TaskLog\Broker\TaskLogBrokerInterface;
-use oat\tao\model\taskQueue\TaskLog\TaskLogFilter;
-use oat\tao\model\taskQueue\TaskLogInterface;
 use oat\taoTaskQueue\model\Entity\Decorator\CategoryEntityDecorator;
 use oat\taoTaskQueue\model\Entity\Decorator\HasFileEntityDecorator;
 use oat\taoTaskQueue\model\TaskLog\Decorator\SimpleManagementCollectionDecorator;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\routing\AnnotationReader\security;
+use oat\tao\model\taskQueue\QueueDispatcherInterface;
+use oat\tao\model\taskQueue\TaskLogInterface;
+use oat\tao\model\taskQueue\TaskLog\Broker\TaskLogBrokerInterface;
+use oat\tao\model\taskQueue\TaskLog\TaskLogFilter;
 
 /**
  * API controller to get task queue data from the WEB.
  *
- * @deprecated Use \tao_actions_TaskQueueWebApi
+ * @deprecated Use \oat\tao\controller\TaskQueueWebApi
  *
  * @author Gyula Szucs <gyula@taotesting.com>
  */
-class TaskQueueWebApi extends \tao_actions_CommonModule
+class TaskQueueWebApi extends CommonModule
 {
     const PARAMETER_TASK_ID = 'taskId';
     const PARAMETER_LIMIT = 'limit';

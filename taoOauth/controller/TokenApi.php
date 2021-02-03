@@ -25,13 +25,15 @@ use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\log\TaoLoggerAwareInterface;
 use oat\taoOauth\model\OAuthClient;
 use oat\taoOauth\model\provider\Provider;
-use oat\taoOauth\model\token\provider\TokenProviderFactory;
 use oat\taoOauth\model\token\TokenService;
+use oat\taoOauth\model\token\provider\TokenProviderFactory;
+use oat\tao\controller\CommonModule;
+use oat\tao\controller\RestTrait;
 
-class TokenApi extends \tao_actions_CommonModule implements TaoLoggerAwareInterface
+class TokenApi extends CommonModule implements TaoLoggerAwareInterface
 {
     use LoggerAwareTrait;
-    use \tao_actions_RestTrait;
+    use RestTrait;
 
     /**
      * Check response encoding requested

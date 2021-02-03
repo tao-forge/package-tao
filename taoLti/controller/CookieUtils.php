@@ -23,7 +23,7 @@
 namespace oat\taoLti\controller;
 
 use common_Logger;
-use tao_actions_CommonModule;
+use oat\tao\controller\CommonModule;
 
 /**
  * A controller to bypass some restrictions on cookies
@@ -32,7 +32,7 @@ use tao_actions_CommonModule;
  * @package taoLti
 
  */
-class CookieUtils extends tao_actions_CommonModule
+class CookieUtils extends CommonModule
 {
     /**
      * Verifies whenever or not the cookie was set correctly

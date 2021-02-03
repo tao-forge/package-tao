@@ -26,7 +26,7 @@ use core_kernel_classes_Class;
 use core_kernel_classes_Resource;
 use oat\ltiDeliveryProvider\model\LTIDeliveryTool;
 use oat\taoLti\models\classes\ConsumerService;
-use tao_actions_CommonModule;
+use oat\tao\controller\CommonModule;
 use tao_helpers_Uri;
 
 /**
@@ -35,7 +35,7 @@ use tao_helpers_Uri;
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  * @package filemanager
  */
-class DeliveryLinks extends tao_actions_CommonModule
+class DeliveryLinks extends CommonModule
 {
     /**
      * Displays the LTI link for the consumer with respect to the currently selected delviery

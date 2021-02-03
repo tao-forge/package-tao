@@ -23,12 +23,13 @@
 namespace oat\ltiDeliveryProvider\controller;
 
 use oat\ltiDeliveryProvider\model\LTIDeliveryTool;
+use oat\tao\controller\RestController;
 use oat\tao\model\TaoOntology;
 
 /**
  * LTI Delivery REST API
  */
-class DeliveryRestService extends \tao_actions_RestController
+class DeliveryRestService extends RestController
 {
     
     /**

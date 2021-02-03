@@ -23,10 +23,12 @@
 
 namespace oat\taoTestTaker\actions;
 
+use oat\tao\controller\Export as Export_2;
+
 /**
  * Class Export
  * @package oat\taoTestTaker\actions
  */
-class Export extends \tao_actions_Export
+class Export extends Export_2
 {
 }

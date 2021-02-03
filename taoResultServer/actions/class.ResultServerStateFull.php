@@ -20,7 +20,8 @@
  *
  */
 
-use \oat\tao\model\routing\AnnotationReader\security;
+use oat\tao\controller\SaSModule;
+use oat\tao\model\routing\AnnotationReader\security;
 
 /**
  *
@@ -31,7 +32,7 @@ use \oat\tao\model\routing\AnnotationReader\security;
  * @package taoResultServer
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class taoResultServer_actions_ResultServerStateFull extends tao_actions_SaSModule
+class taoResultServer_actions_ResultServerStateFull extends SaSModule
 {
 
     protected $service;

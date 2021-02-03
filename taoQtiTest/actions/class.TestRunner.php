@@ -20,27 +20,28 @@
  *
  */
 
+use oat\oatbox\service\ServiceManager;
 use oat\taoDelivery\model\execution\DeliveryServerService;
-use qtism\runtime\tests\AssessmentTestSessionException;
-use qtism\runtime\tests\AssessmentTestSessionState;
-use qtism\runtime\tests\AssessmentTestSession;
-use qtism\data\AssessmentTest;
-use qtism\runtime\common\State;
-use qtism\runtime\common\ResponseVariable;
-use qtism\common\enums\BaseType;
-use qtism\common\enums\Cardinality;
-use qtism\common\datatypes\QtiString as QtismString;
-use qtism\runtime\storage\binary\BinaryAssessmentTestSeeker;
-use qtism\runtime\storage\common\AbstractStorage;
-use qtism\data\SubmissionMode;
-use qtism\data\NavigationMode;
 use oat\taoQtiItem\helpers\QtiRunner;
-use oat\taoQtiTest\models\TestSessionMetaData;
+use oat\taoQtiTest\models\CompilationDataService;
 use oat\taoQtiTest\models\QtiTestCompilerIndex;
+use oat\taoQtiTest\models\TestSessionMetaData;
 use oat\taoQtiTest\models\files\QtiFlysystemFileManager;
 use oat\taoQtiTest\models\runner\StorageManager;
-use oat\oatbox\service\ServiceManager;
-use oat\taoQtiTest\models\CompilationDataService;
+use oat\tao\controller\ServiceModule;
+use qtism\common\datatypes\QtiString as QtismString;
+use qtism\common\enums\BaseType;
+use qtism\common\enums\Cardinality;
+use qtism\data\AssessmentTest;
+use qtism\data\NavigationMode;
+use qtism\data\SubmissionMode;
+use qtism\runtime\common\ResponseVariable;
+use qtism\runtime\common\State;
+use qtism\runtime\storage\binary\BinaryAssessmentTestSeeker;
+use qtism\runtime\storage\common\AbstractStorage;
+use qtism\runtime\tests\AssessmentTestSession;
+use qtism\runtime\tests\AssessmentTestSessionException;
+use qtism\runtime\tests\AssessmentTestSessionState;
 
 /**
  * Runs a QTI Test.
@@ -51,7 +52,7 @@ use oat\taoQtiTest\models\CompilationDataService;
  * @deprecated old testrunner is deprecated. use taoQtiTest_actions_Runner instead
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class taoQtiTest_actions_TestRunner extends tao_actions_ServiceModule
+class taoQtiTest_actions_TestRunner extends ServiceModule
 {
 
     /**

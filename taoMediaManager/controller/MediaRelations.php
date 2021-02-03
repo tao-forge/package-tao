@@ -22,17 +22,17 @@ declare(strict_types=1);
 
 namespace oat\taoMediaManager\controller;
 
-use oat\oatbox\log\LoggerAwareTrait;
-use oat\tao\model\http\formatter\ResponseFormatter;
-use oat\tao\model\http\HttpJsonResponseTrait;
-use oat\tao\model\http\response\JsonResponseInterface;
-use oat\taoMediaManager\model\relation\factory\QueryFactory;
-use oat\taoMediaManager\model\relation\MediaRelationService;
 use Psr\Http\Message\ResponseInterface;
-use tao_actions_CommonModule;
 use Throwable;
+use oat\oatbox\log\LoggerAwareTrait;
+use oat\taoMediaManager\model\relation\MediaRelationService;
+use oat\taoMediaManager\model\relation\factory\QueryFactory;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\http\HttpJsonResponseTrait;
+use oat\tao\model\http\formatter\ResponseFormatter;
+use oat\tao\model\http\response\JsonResponseInterface;
 
-class MediaRelations extends tao_actions_CommonModule
+class MediaRelations extends CommonModule
 {
     use LoggerAwareTrait;
     use HttpJsonResponseTrait;

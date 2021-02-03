@@ -42,7 +42,7 @@ class ActionResolverTest extends GenerisPhpUnitTestRunner
     public function testActionResolver()
     {
         $url = ROOT_URL . 'tao/Main/index';
-        $expectedClassName = 'tao_actions_Main';
+        $expectedClassName = 'oat\\tao\\controller\\Main';
         $expectedAction = 'index';
 
         $resolver = new ActionResolver($url);
@@ -71,7 +71,7 @@ class ActionResolverTest extends GenerisPhpUnitTestRunner
     public function getByControllerNameProvider()
     {
         return [
-            ['tao', 'Main', 'tao_actions_Main', 'index'],
+            ['tao', 'Main', 'oat\\tao\\controller\\Main', 'index'],
         ];
     }
 

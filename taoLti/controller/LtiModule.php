@@ -22,16 +22,16 @@
 
 namespace oat\taoLti\controller;
 
-use oat\taoLti\models\classes\LtiException;
-use \tao_actions_CommonModule;
 use oat\taoLti\controller\traits\LtiModuleTrait;
+use oat\taoLti\models\classes\LtiException;
+use oat\tao\controller\CommonModule;
 
 /**
  * An abstract lti controller
  *
  * @package taoLti
  */
-abstract class LtiModule extends tao_actions_CommonModule
+abstract class LtiModule extends CommonModule
 {
     use LtiModuleTrait;
 

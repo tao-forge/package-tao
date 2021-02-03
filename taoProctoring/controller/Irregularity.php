@@ -21,9 +21,10 @@
 namespace oat\taoProctoring\controller;
 
 use oat\generis\model\OntologyAwareTrait;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
 use oat\taoProctoring\controller\form\IrregularitiesExportForm;
 use oat\taoProctoring\model\service\IrregularityReport;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -34,7 +35,7 @@ use tao_helpers_form_FormContainer as FormContainer;
  * @license GPL-2.0
  *
  */
-class Irregularity extends \tao_actions_CommonModule
+class Irregularity extends CommonModule
 {
     use TaskLogActionTrait;
     use OntologyAwareTrait;

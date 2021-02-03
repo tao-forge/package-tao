@@ -23,23 +23,24 @@ namespace oat\qtiItemPci\controller;
 
 use oat\qtiItemPci\model\PciModel;
 use oat\qtiItemPci\model\portableElement\dataObject\PciDataObject;
-use oat\tao\model\routing\AnnotationReader\security;
+use oat\taoQtiItem\model\portableElement\PortableElementService;
+use oat\taoQtiItem\model\portableElement\element\PortableElementObject;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementException;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementInvalidModelException;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementNotFoundException;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementParserException;
-use oat\taoQtiItem\model\portableElement\element\PortableElementObject;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementVersionIncompatibilityException;
 use oat\taoQtiItem\model\portableElement\model\PortableModelRegistry;
 use oat\taoQtiItem\model\portableElement\storage\PortableElementRegistry;
-use oat\taoQtiItem\model\portableElement\PortableElementService;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\routing\AnnotationReader\security;
 
 /**
  * Actions for pci portable custom elements management
  * Class PciManager
  * @author Bartlomiej Marszal
  */
-class PciManager extends \tao_actions_CommonModule
+class PciManager extends CommonModule
 {
     /**
      * @var PortableElementRegistry

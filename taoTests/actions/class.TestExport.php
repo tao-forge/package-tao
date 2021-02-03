@@ -22,6 +22,7 @@
  */
 
 use oat\taoTests\models\MissingTestmodelException;
+use oat\tao\controller\Export;
 
 /**
  * This controller provide the actions to export tests
@@ -31,13 +32,13 @@ use oat\taoTests\models\MissingTestmodelException;
  * @package taoTests
  *
  */
-class taoTests_actions_TestExport extends tao_actions_Export
+class taoTests_actions_TestExport extends Export
 {
     /**
      * overwrite the parent index to add the requiresRight for Tests
      *
      * @requiresRight id READ
-     * @see           tao_actions_Export::index()
+     * @see           oat\tao\controller\Export::index()
      */
     public function index()
     {

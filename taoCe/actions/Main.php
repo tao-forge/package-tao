@@ -22,6 +22,7 @@
 
 namespace oat\taoCe\actions;
 
+use oat\tao\controller\Main as Main_2;
 use oat\tao\helpers\TaoCe;
 use oat\tao\model\mvc\DefaultUrlService;
 
@@ -33,7 +34,7 @@ use oat\tao\model\mvc\DefaultUrlService;
  * @license GPL-2.0
  *
  */
-class Main extends \tao_actions_Main
+class Main extends Main_2
 {
 
     /**

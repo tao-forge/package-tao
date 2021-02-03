@@ -25,12 +25,13 @@
 use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\event\EventManager;
-use oat\tao\model\lock\LockManager;
+use oat\taoItems\model\ItemModelStatus;
 use oat\taoItems\model\event\ItemRdfUpdatedEvent;
 use oat\taoItems\model\event\ItemUpdatedEvent;
-use oat\taoItems\model\ItemModelStatus;
-use oat\tao\model\resources\ResourceWatcher;
+use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\lock\LockManager;
+use oat\tao\model\resources\ResourceWatcher;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -40,7 +41,7 @@ use tao_helpers_form_FormContainer as FormContainer;
  * @package taoItems
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class taoItems_actions_Items extends tao_actions_SaSModule
+class taoItems_actions_Items extends SaSModule
 {
     use OntologyAwareTrait;
 
@@ -72,7 +73,7 @@ class taoItems_actions_Items extends tao_actions_SaSModule
 
     /**
      * (non-PHPdoc)
-     * @see tao_actions_RdfController::getClassService()
+     * @see oat\tao\controller\RdfController::getClassService()
      * @return taoItems_models_classes_ItemsService
      */
     protected function getClassService()

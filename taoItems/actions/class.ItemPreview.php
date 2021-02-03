@@ -21,13 +21,13 @@
  *               2013-2018(update and modification) Open Assessment Technologies SA;
  */
 
-use oat\tao\helpers\Base64;
+use function GuzzleHttp\Psr7\stream_for;
 use oat\generis\model\OntologyAwareTrait;
 use oat\taoItems\model\media\ItemMediaResolver;
-use oat\tao\model\media\sourceStrategy\HttpSource;
 use oat\taoItems\model\preview\OntologyItemNotFoundException;
-
-use function GuzzleHttp\Psr7\stream_for;
+use oat\tao\controller\CommonModule;
+use oat\tao\helpers\Base64;
+use oat\tao\model\media\sourceStrategy\HttpSource;
 
 /**
  * Preview API
@@ -36,7 +36,7 @@ use function GuzzleHttp\Psr7\stream_for;
  * @package taoItems
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class taoItems_actions_ItemPreview extends tao_actions_CommonModule
+class taoItems_actions_ItemPreview extends CommonModule
 {
     use OntologyAwareTrait;
 

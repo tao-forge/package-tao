@@ -191,7 +191,7 @@ class ActionEnforcer implements IExecutable, ServiceManagerAwareInterface, TaoLo
             //forward the action (yes it's an awful hack, but far better than adding a step in Bootstrap's dispatch error).
             Context::getInstance()->setExtensionName('tao');
             $this->action       = 'denied';
-            $this->controllerClass   = 'tao_actions_Permission';
+            $this->controllerClass   = 'oat\\tao\\controller\\Permission';
             $this->extension    = 'tao';
         }
 

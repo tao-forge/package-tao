@@ -24,15 +24,15 @@
 namespace oat\taoGroups\controller;
 
 use common_ext_ExtensionsManager;
-use oat\tao\model\controller\SignedFormInstance;
-use oat\tao\model\resources\ResourceWatcher;
 use oat\taoDeliveryRdf\helper\DeliveryWidget;
 use oat\taoGroups\models\GroupsService;
-use tao_actions_SaSModule;
-use tao_helpers_form_GenerisTreeForm;
+use oat\tao\controller\SaSModule;
+use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\resources\ResourceWatcher;
 use tao_helpers_Uri;
-use tao_models_classes_dataBinding_GenerisFormDataBinder;
 use tao_helpers_form_FormContainer as FormContainer;
+use tao_helpers_form_GenerisTreeForm;
+use tao_models_classes_dataBinding_GenerisFormDataBinder;
 
 /**
  * This Module aims at managing the Group class and its instances.
@@ -42,12 +42,12 @@ use tao_helpers_form_FormContainer as FormContainer;
 
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class Groups extends tao_actions_SaSModule
+class Groups extends SaSModule
 {
 
     /**
      * (non-PHPdoc)
-     * @see tao_actions_SaSModule::getClassService()
+     * @see oat\tao\controller\SaSModule::getClassService()
      */
     protected function getClassService()
     {

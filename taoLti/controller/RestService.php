@@ -24,9 +24,10 @@ namespace oat\taoLti\controller;
 
 use oat\generis\model\OntologyRdfs;
 use oat\taoLti\models\classes\LtiRestApiService;
+use oat\tao\controller\CommonRestModule;
 use oat\tao\model\oauth\DataStore;
 
-class RestService extends \tao_actions_CommonRestModule
+class RestService extends CommonRestModule
 {
     const LTI_USER_ID = 'lti_user_id';
     const LTI_CONSUMER_KEY = 'lti_consumer_key';

@@ -21,6 +21,8 @@
 
 namespace oat\xmlEditRp\controller;
 
+use oat\tao\controller\CommonModule;
+
 /**
  * Simple controller for customRpEditor services
  *
@@ -29,7 +31,7 @@ namespace oat\xmlEditRp\controller;
  * @license GPL-2.0
  *
  */
-class CustomRpEditor extends \tao_actions_CommonModule
+class CustomRpEditor extends CommonModule
 {
 
     /**

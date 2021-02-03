@@ -21,10 +21,11 @@
 
 namespace oat\taoProctoring\controller;
 
-use common_session_SessionManager as SessionManager;
-use oat\tao\model\mvc\DefaultUrlService;
-use oat\taoProctoring\helpers\DataTableHelper;
 use DateTime;
+use common_session_SessionManager as SessionManager;
+use oat\taoProctoring\helpers\DataTableHelper;
+use oat\tao\controller\SinglePageModule;
+use oat\tao\model\mvc\DefaultUrlService;
 
 /**
  * Base proctoring interface controller
@@ -34,7 +35,7 @@ use DateTime;
  * @license GPL-2.0
  *
  */
-abstract class SimplePageModule extends \tao_actions_SinglePageModule
+abstract class SimplePageModule extends SinglePageModule
 {
     /**
      * Retrieve the data from the url and make the base initialization

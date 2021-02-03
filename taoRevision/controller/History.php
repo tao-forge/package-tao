@@ -26,12 +26,12 @@ use common_exception_ResourceNotFound;
 use core_kernel_classes_Resource;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\service\ConfigurableService;
-use oat\oatbox\service\exception\InvalidServiceManagerException;
 use oat\oatbox\service\ServiceManagerAwareTrait;
-use oat\tao\helpers\UserHelper;
+use oat\oatbox\service\exception\InvalidServiceManagerException;
 use oat\taoRevision\model\RepositoryInterface;
 use oat\taoRevision\model\RevisionNotFoundException;
-use tao_actions_CommonModule;
+use oat\tao\controller\CommonModule;
+use oat\tao\helpers\UserHelper;
 use tao_helpers_Date;
 use tao_helpers_Display;
 
@@ -43,7 +43,7 @@ use tao_helpers_Display;
  * @license GPL-2.0
  *
  */
-class History extends tao_actions_CommonModule
+class History extends CommonModule
 {
     use ServiceManagerAwareTrait;
     use OntologyAwareTrait;

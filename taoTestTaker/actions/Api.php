@@ -25,14 +25,15 @@ namespace oat\taoTestTaker\actions;
 
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdf;
-use oat\tao\model\routing\AnnotationReader\security;
 use oat\taoTestTaker\models\CrudService;
+use oat\tao\controller\CommonRestModule;
+use oat\tao\model\routing\AnnotationReader\security;
 
 /**
  * @deprecated
  * @see RestTestTakers
  */
-class Api extends \tao_actions_CommonRestModule
+class Api extends CommonRestModule
 {
 
     /**

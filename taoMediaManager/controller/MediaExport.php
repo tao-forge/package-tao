@@ -22,11 +22,12 @@
 namespace oat\taoMediaManager\controller;
 
 use oat\taoMediaManager\model\ZipExporter;
+use oat\tao\controller\Export;
 
 /**
  * This controller provide the actions to import medias
  */
-class MediaExport extends \tao_actions_Export
+class MediaExport extends Export
 {
     protected function getAvailableExportHandlers()
     {

@@ -22,28 +22,28 @@
 
 namespace oat\taoQtiItem\controller;
 
+use common_exception_BadRequest;
 use common_exception_Error;
 use core_kernel_classes_Resource;
 use oat\generis\model\data\event\ResourceUpdated;
 use oat\oatbox\event\EventManager;
-use oat\tao\model\TaoOntology;
 use oat\taoItems\model\event\ItemCreatedEvent;
+use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoQtiItem\helpers\Authoring;
 use oat\taoQtiItem\model\CreatorConfig;
-use oat\taoQtiItem\model\event\ItemCreatorLoad;
 use oat\taoQtiItem\model\HookRegistry;
-use oat\taoQtiItem\model\qti\event\UpdatedItemEventDispatcher;
-use oat\taoQtiItem\model\qti\parser\XmlToItemParser;
+use oat\taoQtiItem\model\ItemModel;
+use oat\taoQtiItem\model\event\ItemCreatorLoad;
 use oat\taoQtiItem\model\qti\Service;
-use tao_actions_CommonModule;
+use oat\taoQtiItem\model\qti\event\UpdatedItemEventDispatcher;
+use oat\taoQtiItem\model\qti\exception\QtiModelException;
+use oat\taoQtiItem\model\qti\parser\XmlToItemParser;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\media\MediaService;
+use taoItems_models_classes_ItemsService;
 use tao_helpers_File;
 use tao_helpers_Uri;
-use taoItems_models_classes_ItemsService;
-use oat\taoQtiItem\model\ItemModel;
-use oat\taoItems\model\media\ItemMediaResolver;
-use oat\tao\model\media\MediaService;
-use oat\taoQtiItem\model\qti\exception\QtiModelException;
-use common_exception_BadRequest;
 
 /**
  * QtiCreator Controller provide actions to edit a QTI item
@@ -52,7 +52,7 @@ use common_exception_BadRequest;
  * @package taoQTI
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class QtiCreator extends tao_actions_CommonModule
+class QtiCreator extends CommonModule
 {
     /**
      * @return EventManager

@@ -22,16 +22,16 @@ declare(strict_types=1);
 
 namespace oat\taoQtiTestPreviewer\controller;
 
-use common_exception_UserReadableException;
 use InvalidArgumentException;
-use oat\tao\model\http\HttpJsonResponseTrait;
-use oat\taoQtiTestPreviewer\models\test\service\TestPreviewer as TestPreviewerService;
-use oat\taoQtiTestPreviewer\models\test\TestPreviewRequest;
-use oat\taoQtiTestPreviewer\models\testConfiguration\service\TestPreviewerConfigurationService;
-use tao_actions_ServiceModule;
 use Throwable;
+use common_exception_UserReadableException;
+use oat\taoQtiTestPreviewer\models\testConfiguration\service\TestPreviewerConfigurationService;
+use oat\taoQtiTestPreviewer\models\test\TestPreviewRequest;
+use oat\taoQtiTestPreviewer\models\test\service\TestPreviewer as TestPreviewerService;
+use oat\tao\controller\ServiceModule;
+use oat\tao\model\http\HttpJsonResponseTrait;
 
-class TestPreviewer extends tao_actions_ServiceModule
+class TestPreviewer extends ServiceModule
 {
     use HttpJsonResponseTrait;
 

@@ -116,7 +116,7 @@ class FactoryTest extends TaoPhpUnitTestRunner
     {
         return [
             [
-                'tao_actions_Main',
+                'oat\\tao\\controller\\Main',
                 'missingAction'
             ],
             [

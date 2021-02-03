@@ -20,6 +20,7 @@
  *
  */
 
+use oat\tao\controller\Import;
 use taoTests_models_classes_TestsService as TestService;
 
 /**
@@ -30,13 +31,13 @@ use taoTests_models_classes_TestsService as TestService;
  * @package taoItems
  *
  */
-class taoTests_actions_TestImport extends tao_actions_Import
+class taoTests_actions_TestImport extends Import
 {
     /**
      * overwrite the parent index to add the requiresRight for Tests
      *
      * @requiresRight id WRITE
-     * @see           tao_actions_Import::index()
+     * @see           oat\tao\controller\Import::index()
      */
     public function index()
     {

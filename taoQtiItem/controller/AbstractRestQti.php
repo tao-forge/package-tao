@@ -22,8 +22,9 @@
 
 namespace oat\taoQtiItem\controller;
 
-use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
+use oat\tao\controller\RestController;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
+use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
 
 /**
  * Class AbstractRestQti
@@ -31,7 +32,7 @@ use oat\tao\model\taskQueue\TaskLogActionTrait;
  * @author Aleh Hutnikau, <hutnikau@1pt.com>
  * @author Gyula Szucs <gyula@taotesting.com>
  */
-abstract class AbstractRestQti extends \tao_actions_RestController
+abstract class AbstractRestQti extends RestController
 {
     use TaskLogActionTrait;
 

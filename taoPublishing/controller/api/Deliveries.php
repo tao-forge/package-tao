@@ -23,16 +23,17 @@ declare(strict_types=1);
 
 namespace oat\taoPublishing\controller\api;
 
+use Exception;
+use GuzzleHttp\Psr7\ServerRequest;
 use common_exception_BadRequest;
 use common_exception_NotImplemented;
 use common_exception_RestApi;
-use Exception;
-use GuzzleHttp\Psr7\ServerRequest;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
 use oat\taoPublishing\model\publishing\delivery\RemotePublishingService;
 use oat\taoPublishing\model\publishing\exception\PublishingInvalidArgumentException;
+use oat\tao\controller\RestController;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
 
-class Deliveries extends \tao_actions_RestController
+class Deliveries extends RestController
 {
     use TaskLogActionTrait;
 

@@ -21,13 +21,14 @@
 namespace oat\taoBackOffice\controller;
 
 use oat\generis\model\OntologyAwareTrait;
-use oat\tao\model\taskQueue\TaskLogInterface;
 use oat\taoBackOffice\model\routing\ResourceUrlBuilder;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\taskQueue\TaskLogInterface;
 
 /**
  * @author Gyula Szucs <gyula@taotesting.com>
  */
-class Redirector extends \tao_actions_CommonModule
+class Redirector extends CommonModule
 {
     const PARAMETER_TASK_ID = 'taskId';
 

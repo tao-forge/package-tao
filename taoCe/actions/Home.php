@@ -22,10 +22,11 @@
 
 namespace oat\taoCe\actions;
 
-use oat\tao\model\menu\MenuService;
-use tao_models_classes_accessControl_AclProxy;
+use oat\tao\controller\CommonModule;
 use oat\tao\helpers\TaoCe;
+use oat\tao\model\menu\MenuService;
 use oat\tao\model\menu\Perspective;
+use tao_models_classes_accessControl_AclProxy;
 
 /**
  * The Home controller provides actions for the Home screen of the Community Edition
@@ -36,7 +37,7 @@ use oat\tao\model\menu\Perspective;
  * @license GPL-2.0
  *
  */
-class Home extends \tao_actions_CommonModule
+class Home extends CommonModule
 {
     /**
      * This action renders the template used by the splash screen popup

@@ -23,6 +23,7 @@
 namespace oat\ltiTestReview\controller;
 
 use common_Exception;
+use common_exception_ClientException;
 use common_exception_Error;
 use common_exception_NotFound;
 use common_exception_Unauthorized;
@@ -31,8 +32,6 @@ use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
 use oat\ltiTestReview\models\DeliveryExecutionFinderService;
 use oat\ltiTestReview\models\QtiRunnerInitDataBuilderFactory;
-use oat\tao\model\http\HttpJsonResponseTrait;
-use oat\tao\model\mvc\DefaultUrlService;
 use oat\taoLti\models\classes\LtiException;
 use oat\taoLti\models\classes\LtiInvalidLaunchDataException;
 use oat\taoLti\models\classes\LtiService;
@@ -41,14 +40,15 @@ use oat\taoLti\models\classes\TaoLtiSession;
 use oat\taoProctoring\model\execution\DeliveryExecutionManagerService;
 use oat\taoQtiTestPreviewer\models\ItemPreviewer;
 use oat\taoResultServer\models\classes\ResultServerService;
-use tao_actions_SinglePageModule;
-use common_exception_ClientException;
+use oat\tao\controller\SinglePageModule;
+use oat\tao\model\http\HttpJsonResponseTrait;
+use oat\tao\model\mvc\DefaultUrlService;
 
 /**
  * Review controller class thar provides data for js-application
  * @package oat\ltiTestReview\controller
  */
-class Review extends tao_actions_SinglePageModule
+class Review extends SinglePageModule
 {
     use OntologyAwareTrait;
     use HttpJsonResponseTrait;

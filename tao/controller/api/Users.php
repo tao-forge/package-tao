@@ -22,21 +22,21 @@
 namespace oat\tao\controller\api;
 
 use common_Exception;
+use common_Utils;
 use common_exception_Error;
 use common_exception_MethodNotAllowed;
 use common_exception_MissingParameter;
 use common_exception_RestApi;
 use common_exception_ValidationFailed;
-use common_Utils;
 use core_kernel_classes_Resource;
 use core_kernel_users_Exception;
+use oat\generis\Helper\UserHashForEncryption;
 use oat\generis\model\user\UserRdf;
 use oat\oatbox\service\ServiceManager;
-use tao_actions_CommonRestModule;
+use oat\tao\controller\CommonRestModule;
 use tao_models_classes_LanguageService;
 use tao_models_classes_RoleService;
 use tao_models_classes_UserService;
-use oat\generis\Helper\UserHashForEncryption;
 
 /**
  * @OA\Post(
@@ -60,7 +60,7 @@ use oat\generis\Helper\UserHashForEncryption;
  *     )
  * )
  */
-class Users extends tao_actions_CommonRestModule
+class Users extends CommonRestModule
 {
     /**
      * @OA\Schema(

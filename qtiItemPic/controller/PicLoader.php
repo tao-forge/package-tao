@@ -23,9 +23,9 @@ namespace oat\qtiItemPic\controller;
 use oat\qtiItemPic\model\PicModel;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementException;
 use oat\taoQtiItem\model\portableElement\storage\PortableElementRegistry;
-use \tao_actions_CommonModule;
+use oat\tao\controller\CommonModule;
 
-class PicLoader extends tao_actions_CommonModule
+class PicLoader extends CommonModule
 {
     /** @var PortableElementRegistry */
     protected $registry;

@@ -21,6 +21,8 @@
 
 namespace oat\xmlEdit\controller;
 
+use oat\tao\controller\CommonModule;
+
 /**
  * Sample controller
  *
@@ -29,7 +31,7 @@ namespace oat\xmlEdit\controller;
  * @license GPL-2.0
  *
  */
-class XmlEdit extends \tao_actions_CommonModule {
+class XmlEdit extends CommonModule {
     /**
      * A possible entry point to tao
      */

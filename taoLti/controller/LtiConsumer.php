@@ -24,16 +24,16 @@ declare(strict_types=1);
 
 namespace oat\taoLti\controller;
 
-use oat\taoLti\models\classes\LtiUtils;
 use common_exception_Error;
 use common_exception_MissingParameter;
 use common_http_Request;
 use common_session_SessionManager;
-use tao_actions_ServiceModule;
+use oat\taoLti\models\classes\LtiUtils;
+use oat\tao\controller\ServiceModule;
 use tao_models_classes_oauth_Credentials;
 use tao_models_classes_oauth_Service;
 
-class LtiConsumer extends tao_actions_ServiceModule
+class LtiConsumer extends ServiceModule
 {
     /**
      * Launches a oauth tool

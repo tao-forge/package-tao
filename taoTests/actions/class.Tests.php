@@ -22,10 +22,11 @@
  */
 
 use oat\oatbox\event\EventManager;
+use oat\taoTests\models\event\TestUpdatedEvent;
+use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
 use oat\tao\model\lock\LockManager;
 use oat\tao\model\resources\ResourceWatcher;
-use oat\taoTests\models\event\TestUpdatedEvent;
 use oat\tao\model\routing\AnnotationReader\security;
 use tao_helpers_form_FormContainer as FormContainer;
 
@@ -38,7 +39,7 @@ use tao_helpers_form_FormContainer as FormContainer;
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  *
  */
-class taoTests_actions_Tests extends tao_actions_SaSModule
+class taoTests_actions_Tests extends SaSModule
 {
 
     /**

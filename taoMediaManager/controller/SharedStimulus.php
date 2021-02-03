@@ -23,24 +23,24 @@ declare(strict_types=1);
 
 namespace oat\taoMediaManager\controller;
 
-use common_session_SessionManager;
 use League\OpenAPIValidation\PSR7\ServerRequestValidator;
 use League\OpenAPIValidation\PSR7\ValidatorBuilder;
+use Throwable;
+use common_session_SessionManager;
 use oat\oatbox\log\LoggerAwareTrait;
-use oat\tao\model\http\formatter\ResponseFormatter;
-use oat\tao\model\http\response\ErrorJsonResponse;
-use oat\tao\model\http\response\SuccessJsonResponse;
+use oat\taoMediaManager\model\sharedStimulus\SharedStimulus as SharedStimulusObject;
 use oat\taoMediaManager\model\sharedStimulus\factory\CommandFactory;
 use oat\taoMediaManager\model\sharedStimulus\factory\QueryFactory;
 use oat\taoMediaManager\model\sharedStimulus\parser\JsonQtiAttributeParser;
 use oat\taoMediaManager\model\sharedStimulus\repository\SharedStimulusRepository;
 use oat\taoMediaManager\model\sharedStimulus\service\CreateService;
-use oat\taoMediaManager\model\sharedStimulus\SharedStimulus as SharedStimulusObject;
 use oat\taoMediaManager\model\sharedStimulus\service\PatchService;
-use tao_actions_CommonModule;
-use Throwable;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\http\formatter\ResponseFormatter;
+use oat\tao\model\http\response\ErrorJsonResponse;
+use oat\tao\model\http\response\SuccessJsonResponse;
 
-class SharedStimulus extends tao_actions_CommonModule
+class SharedStimulus extends CommonModule
 {
     use LoggerAwareTrait;
 

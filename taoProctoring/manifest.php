@@ -19,7 +19,6 @@
  *
  */
 
-use oat\tao\model\user\TaoRoles;
 use oat\taoProctoring\controller\DeliverySelection;
 use oat\taoProctoring\controller\Monitor;
 use oat\taoProctoring\controller\MonitorProctorAdministrator;
@@ -41,13 +40,15 @@ use oat\taoProctoring\scripts\install\RegisterReasonCategoryService;
 use oat\taoProctoring\scripts\install\RegisterRunnerMessageService;
 use oat\taoProctoring\scripts\install\RegisterServices;
 use oat\taoProctoring\scripts\install\RegisterWebhookEvents;
+use oat\taoProctoring\scripts\install\SetUpProctoringUrlService;
+use oat\taoProctoring\scripts\install\SetUpQueueTasks;
 use oat\taoProctoring\scripts\install\SetupDeliveryMonitoring;
 use oat\taoProctoring\scripts\install\SetupProctorCsvImporter;
 use oat\taoProctoring\scripts\install\SetupProctoringEventListeners;
-use oat\taoProctoring\scripts\install\SetUpProctoringUrlService;
-use oat\taoProctoring\scripts\install\SetUpQueueTasks;
 use oat\taoProctoring\scripts\uninstall\RestoreServices;
 use oat\taoProctoring\scripts\uninstall\UnregisterProctoringEvents;
+use oat\tao\controller\Breadcrumbs;
+use oat\tao\model\user\TaoRoles;
 
 return array(
     'name' => 'taoProctoring',
@@ -71,7 +72,7 @@ return array(
         array('grant', 'http://www.tao.lu/Ontologies/TAO.rdf#GlobalManagerRole', array('ext' => 'taoProctoring', 'mod'=>'Irregularity')),
         array('grant', ProctorService::ROLE_PROCTOR, DeliverySelection::class),
         array('grant', ProctorService::ROLE_PROCTOR, Monitor::class),
-        array('grant', ProctorService::ROLE_PROCTOR, tao_actions_Breadcrumbs::class),
+        array('grant', ProctorService::ROLE_PROCTOR, Breadcrumbs::class),
         array('grant', ProctorService::ROLE_PROCTOR, array('ext'=>'taoProctoring', 'mod'=>'Reporting')),
         array('grant', ProctorService::ROLE_PROCTOR, array('ext'=>'taoProctoring', 'mod'=>'TextConverter')),
         array('grant', TaoRoles::DELIVERY, array('ext'=>'taoProctoring', 'mod'=>'DeliveryServer')),

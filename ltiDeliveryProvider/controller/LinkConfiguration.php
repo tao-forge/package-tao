@@ -22,15 +22,15 @@
 
 namespace oat\ltiDeliveryProvider\controller;
 
+use core_kernel_classes_Property;
+use core_kernel_classes_Resource;
 use oat\ltiDeliveryProvider\model\LTIDeliveryTool;
-use oat\tao\helpers\UrlHelper;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDelivery\model\execution\ServiceProxy;
 use oat\taoLti\models\classes\LtiLaunchData;
 use oat\taoLti\models\classes\LtiService;
-use \tao_actions_CommonModule;
-use \core_kernel_classes_Resource;
-use \core_kernel_classes_Property;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\tao\controller\CommonModule;
+use oat\tao\helpers\UrlHelper;
 
 /**
  * Allows instructors to configure the LTI remote_link
@@ -40,7 +40,7 @@ use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
  * @package ltiDeliveryProvider
 
  */
-class LinkConfiguration extends tao_actions_CommonModule
+class LinkConfiguration extends CommonModule
 {
 
     /**

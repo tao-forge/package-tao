@@ -18,13 +18,16 @@
  *
  *
  */
+
+use oat\tao\controller\CommonModule;
+
  
 /**
  * Tests Content Controller provide access to the files of an test
  *
  * @package taoQtiTest
  */
-class taoQtiTest_actions_TestContent extends tao_actions_CommonModule
+class taoQtiTest_actions_TestContent extends CommonModule
 {
     /**
      * Returns a json encoded array describign a directory

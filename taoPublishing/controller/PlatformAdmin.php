@@ -21,11 +21,12 @@
 
 namespace oat\taoPublishing\controller;
 
-use common_ext_ExtensionsManager as common_ext_ExtensionsManager;
+use common_ext_ExtensionsManager;
 use oat\generis\model\OntologyAwareTrait;
 use oat\taoPublishing\model\PlatformService;
 use oat\taoPublishing\model\publishing\PublishingAuthService;
 use oat\taoPublishing\model\publishing\PublishingService;
+use oat\tao\controller\SaSModule;
 use oat\tao\model\auth\AbstractAuthType;
 use oat\tao\model\auth\BasicAuth;
 use oat\tao\model\form\InstanceForm;
@@ -39,7 +40,7 @@ use oat\tao\model\oauth\DataStore;
  * @license GPL-2.0
  *
  */
-class PlatformAdmin extends \tao_actions_SaSModule
+class PlatformAdmin extends SaSModule
 {
 
     use OntologyAwareTrait;
@@ -158,7 +159,7 @@ class PlatformAdmin extends \tao_actions_SaSModule
     /**
      * (non-PHPdoc)
      *
-     * @see tao_actions_RdfController::getClassService()
+     * @see oat\tao\controller\RdfController::getClassService()
      */
     public function getClassService()
     {

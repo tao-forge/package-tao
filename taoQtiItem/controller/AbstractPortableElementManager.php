@@ -21,15 +21,15 @@
 
 namespace oat\taoQtiItem\controller;
 
-use \core_kernel_classes_Resource;
-use oat\tao\model\routing\AnnotationReader\security;
+use common_exception_Error;
+use core_kernel_classes_Resource;
 use oat\taoQtiItem\model\CreatorRegistry;
-use \tao_actions_CommonModule;
-use \common_exception_Error;
-use \tao_helpers_File;
-use \tao_helpers_Http;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\routing\AnnotationReader\security;
+use tao_helpers_File;
+use tao_helpers_Http;
 
-abstract class AbstractPortableElementManager extends tao_actions_CommonModule
+abstract class AbstractPortableElementManager extends CommonModule
 {
     /**
      * @var CreatorRegistry

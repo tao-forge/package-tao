@@ -21,10 +21,10 @@
 
 namespace oat\taoQtiItem\controller;
 
-use \tao_actions_CommonModule;
-use \common_Exception;
+use common_Exception;
 use oat\taoQtiItem\helpers\Authoring;
 use oat\taoQtiItem\model\qti\Parser as QtiParser;
+use oat\tao\controller\CommonModule;
 
 /**
  * QtiCreator Controller provide actions to edit a QTI item
@@ -34,7 +34,7 @@ use oat\taoQtiItem\model\qti\Parser as QtiParser;
 
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class Parser extends tao_actions_CommonModule
+class Parser extends CommonModule
 {
 
     public function getJson()

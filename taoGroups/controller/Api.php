@@ -21,15 +21,15 @@
 
 namespace oat\taoGroups\controller;
 
-use \tao_actions_CommonRestModule;
 use oat\taoGroups\models\CrudGroupsService;
 use oat\taoGroups\models\GroupsService;
+use oat\tao\controller\CommonRestModule;
 
 /**
  *
  * @author plichart
  */
-class Api extends tao_actions_CommonRestModule
+class Api extends CommonRestModule
 {
     /**
      * @return CrudGroupsService

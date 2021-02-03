@@ -26,6 +26,7 @@ namespace oat\taoBackOffice\controller;
 
 use core_kernel_classes_Class;
 use oat\taoBackOffice\model\tree\TreeService;
+use oat\tao\controller\RdfController;
 
 /**
  * This controller provide the actions to manage the lists of data
@@ -36,7 +37,7 @@ use oat\taoBackOffice\model\tree\TreeService;
  *
  *
  */
-class Trees extends \tao_actions_RdfController
+class Trees extends RdfController
 {
 
     /**

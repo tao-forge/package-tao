@@ -20,6 +20,8 @@
  *               2012-2018 (update and modification) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  */
 
+use oat\tao\controller\Main;
+
 /**
  * @author Bertrand Chevrier, <taosupport@tudor.lu>
  * @package taoItems
@@ -28,7 +30,7 @@
  *
  */
 
-class taoItems_actions_Main extends tao_actions_Main
+class taoItems_actions_Main extends Main
 {
 
 }

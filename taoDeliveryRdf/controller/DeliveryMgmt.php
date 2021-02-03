@@ -22,25 +22,26 @@
 
 namespace oat\taoDeliveryRdf\controller;
 
-use oat\generis\model\kernel\persistence\smoothsql\search\ComplexSearchService;
 use oat\generis\model\OntologyRdfs;
+use oat\generis\model\kernel\persistence\smoothsql\search\ComplexSearchService;
 use oat\oatbox\event\EventManager;
-use oat\tao\helpers\Template;
-use oat\tao\model\resources\ResourceWatcher;
-use oat\tao\model\TaoOntology;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
-use oat\taoDelivery\model\AssignmentService;
-use oat\taoDelivery\model\execution\ServiceProxy;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDeliveryRdf\model\DeliveryContainerService;
 use oat\taoDeliveryRdf\model\DeliveryFactory;
-use oat\taoDeliveryRdf\model\event\DeliveryUpdatedEvent;
 use oat\taoDeliveryRdf\model\GroupAssignment;
-use oat\taoDeliveryRdf\model\tasks\CompileDelivery;
-use oat\taoDeliveryRdf\view\form\WizardForm;
 use oat\taoDeliveryRdf\model\NoTestsException;
+use oat\taoDeliveryRdf\model\event\DeliveryUpdatedEvent;
+use oat\taoDeliveryRdf\model\tasks\CompileDelivery;
 use oat\taoDeliveryRdf\view\form\DeliveryForm;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoDeliveryRdf\view\form\WizardForm;
+use oat\taoDelivery\model\AssignmentService;
 use oat\taoDelivery\model\execution\Monitoring;
+use oat\taoDelivery\model\execution\ServiceProxy;
+use oat\tao\controller\SaSModule;
+use oat\tao\helpers\Template;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\resources\ResourceWatcher;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -49,7 +50,7 @@ use tao_helpers_form_FormContainer as FormContainer;
  * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
  * @package taoDelivery
  */
-class DeliveryMgmt extends \tao_actions_SaSModule
+class DeliveryMgmt extends SaSModule
 {
     use TaskLogActionTrait;
 
@@ -63,7 +64,7 @@ class DeliveryMgmt extends \tao_actions_SaSModule
 
     /**
      * (non-PHPdoc)
-     * @see \tao_actions_SaSModule::getClassService()
+     * @see \oat\tao\controller\SaSModule::getClassService()
      */
     protected function getClassService()
     {

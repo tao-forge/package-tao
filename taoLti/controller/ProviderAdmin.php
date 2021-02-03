@@ -21,7 +21,7 @@
 namespace oat\taoLti\controller;
 
 use oat\taoLti\models\classes\LtiProvider\RdfLtiProviderRepository;
-use tao_actions_SaSModule;
+use oat\tao\controller\SaSModule;
 
 /**
  * This controller allows the adding and deletion of LTI Oauth Providers
@@ -29,12 +29,12 @@ use tao_actions_SaSModule;
  * @package taoLti
  * @license GPLv2 http://www.opensource.org/licenses/gpl-2.0.php
  */
-class ProviderAdmin extends tao_actions_SaSModule
+class ProviderAdmin extends SaSModule
 {
     /**
      * (non-PHPdoc)
      *
-     * @see \tao_actions_RdfController::getClassService()
+     * @see \oat\tao\controller\RdfController::getClassService()
      * @security("hide");
      */
     public function getClassService()

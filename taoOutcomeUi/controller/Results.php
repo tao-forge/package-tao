@@ -22,19 +22,20 @@
 
 namespace oat\taoOutcomeUi\controller;
 
+use Exception;
 use common_Exception;
+use common_exception_BadRequest;
 use common_exception_NotFound;
-use \Exception;
-use \common_exception_BadRequest;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\event\EventManager;
-use oat\tao\model\plugins\PluginModule;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDelivery\model\execution\DeliveryExecutionInterface;
 use oat\taoDelivery\model\execution\ServiceProxy;
 use oat\taoOutcomeUi\helper\ResponseVariableFormatter;
+use oat\taoOutcomeUi\model\ResultsService;
+use oat\taoOutcomeUi\model\Wrapper\ResultServiceWrapper;
 use oat\taoOutcomeUi\model\event\ResultsListPluginEvent;
 use oat\taoOutcomeUi\model\export\DeliveryCsvResultsExporterFactory;
 use oat\taoOutcomeUi\model\export\DeliveryResultsExporterFactoryInterface;
@@ -43,17 +44,17 @@ use oat\taoOutcomeUi\model\export\ResultsExporter;
 use oat\taoOutcomeUi\model\plugins\ResultsPluginService;
 use oat\taoOutcomeUi\model\search\ResultsWatcher;
 use oat\taoOutcomeUi\model\table\ResultsMonitoringDatatable;
-use oat\taoOutcomeUi\model\Wrapper\ResultServiceWrapper;
+use oat\taoResultServer\models\Formatter\ItemResponseCollectionNormalizer;
 use oat\taoResultServer\models\classes\NoResultStorage;
 use oat\taoResultServer\models\classes\NoResultStorageException;
 use oat\taoResultServer\models\classes\QtiResultsService;
-use oat\taoResultServer\models\Formatter\ItemResponseCollectionNormalizer;
-use \tao_helpers_Uri;
-use oat\taoOutcomeUi\model\ResultsService;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoResultServer\models\classes\ResultServerService;
+use oat\tao\controller\CommonModule;
 use oat\tao\helpers\UserHelper;
 use oat\tao\model\datatable\implementation\DatatableRequest;
+use oat\tao\model\plugins\PluginModule;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
+use tao_helpers_Uri;
 
 /**
  * Results Controller provide actions performed from url resolution
@@ -64,7 +65,7 @@ use oat\tao\model\datatable\implementation\DatatableRequest;
  * @package taoOutcomeUi
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class Results extends \tao_actions_CommonModule
+class Results extends CommonModule
 {
     use TaskLogActionTrait;
     use OntologyAwareTrait;

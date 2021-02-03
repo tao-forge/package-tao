@@ -26,11 +26,11 @@ use core_kernel_classes_Resource as KernelResource;
 use oat\taoLti\models\classes\ConsumerService;
 use oat\taoLti\models\classes\Security\Business\Contract\SecretKeyServiceInterface;
 use oat\taoLti\models\classes\Security\Business\Domain\Exception\SecretKeyGenerationException;
+use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
 use oat\tao\model\form\CreateInstanceForm as CreateInstanceContainer;
 use oat\tao\model\form\CreateInstanceForm;
 use oat\tao\model\oauth\DataStore;
-use tao_actions_SaSModule as tao_actions_SaSModule;
 use tao_helpers_Uri as UriHelper;
 use tao_helpers_form_Form as Form;
 use tao_helpers_form_FormFactory as FormFactory;
@@ -44,7 +44,7 @@ use tao_models_classes_dataBinding_GenerisFormDataBindingException as FormDataBi
  * @package taoLti
  * @license GPLv2 http://www.opensource.org/licenses/gpl-2.0.php
  */
-class ConsumerAdmin extends tao_actions_SaSModule
+class ConsumerAdmin extends SaSModule
 {
     private const EXCLUDED_FIELDS = [
         'id',

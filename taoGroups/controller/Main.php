@@ -23,7 +23,7 @@
 
 namespace oat\taoGroups\controller;
 
-use \tao_actions_Main;
+use oat\tao\controller\Main as Main_2;
 
 /**
  * The Main Module of the taoGroups extension.
@@ -33,7 +33,7 @@ use \tao_actions_Main;
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  *
  */
-class Main extends tao_actions_Main
+class Main extends Main_2
 {
 
 }

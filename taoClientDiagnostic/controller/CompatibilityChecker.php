@@ -20,21 +20,22 @@
 
 namespace oat\taoClientDiagnostic\controller;
 
-use oat\tao\model\mvc\DefaultUrlService;
+use Sinergi\BrowserDetector\Browser;
+use Sinergi\BrowserDetector\Os;
 use oat\taoClientDiagnostic\exception\StorageException;
-use oat\taoClientDiagnostic\model\authorization\Authorization;
 use oat\taoClientDiagnostic\model\CompatibilityChecker as CompatibilityCheckerModel;
+use oat\taoClientDiagnostic\model\authorization\Authorization;
 use oat\taoClientDiagnostic\model\diagnostic\DiagnosticServiceInterface;
 use oat\taoClientDiagnostic\model\schoolName\SchoolNameService;
 use oat\taoClientDiagnostic\model\storage\Storage;
-use Sinergi\BrowserDetector\Browser;
-use Sinergi\BrowserDetector\Os;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\mvc\DefaultUrlService;
 
 /**
  * Class CompatibilityChecker
  * @package oat\taoClientDiagnostic\controller
  */
-class CompatibilityChecker extends \tao_actions_CommonModule
+class CompatibilityChecker extends CommonModule
 {
 
     const COOKIE_ID = 'compatibility_checker_id';

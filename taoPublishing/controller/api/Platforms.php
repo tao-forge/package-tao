@@ -23,19 +23,19 @@ declare(strict_types=1);
 
 namespace oat\taoPublishing\controller\api;
 
+use Exception;
 use common_exception_BadRequest;
 use common_exception_RestApi;
-use Exception;
-use oat\taoPublishing\model\entity\Platform;
-use oat\taoPublishing\model\PlatformService;
 use oat\taoPublishing\model\CrudPlatformsService;
-use tao_actions_CommonRestModule;
-use tao_actions_RestController;
+use oat\taoPublishing\model\PlatformService;
+use oat\taoPublishing\model\entity\Platform;
+use oat\tao\controller\CommonRestModule;
+use oat\tao\controller\RestController;
 
 /**
  * @OA\Info(title="Platform API", version="0.1")
  */
-class Platforms extends tao_actions_CommonRestModule
+class Platforms extends CommonRestModule
 {
     public function __construct()
     {

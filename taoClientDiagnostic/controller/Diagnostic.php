@@ -20,14 +20,15 @@
 
 namespace oat\taoClientDiagnostic\controller;
 
-use oat\generis\model\OntologyAwareTrait;
-use oat\oatbox\service\ServiceNotFoundException;
-use oat\tao\model\theme\ThemeService;
-use oat\taoClientDiagnostic\model\diagnostic\Paginator;
 use DateTime;
 use common_session_SessionManager as SessionManager;
-use oat\taoClientDiagnostic\model\diagnostic\DiagnosticServiceInterface;
+use oat\generis\model\OntologyAwareTrait;
+use oat\oatbox\service\ServiceNotFoundException;
 use oat\taoClientDiagnostic\model\diagnostic\DiagnosticDataTable;
+use oat\taoClientDiagnostic\model\diagnostic\DiagnosticServiceInterface;
+use oat\taoClientDiagnostic\model\diagnostic\Paginator;
+use oat\tao\controller\CommonModule;
+use oat\tao\model\theme\ThemeService;
 
 /**
  * Diagnostic controller for the readiness check list screen
@@ -37,7 +38,7 @@ use oat\taoClientDiagnostic\model\diagnostic\DiagnosticDataTable;
  * @license GPL-2.0
  *
  */
-class Diagnostic extends \tao_actions_CommonModule
+class Diagnostic extends CommonModule
 {
     use OntologyAwareTrait;
 

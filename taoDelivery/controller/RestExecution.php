@@ -25,11 +25,12 @@ namespace oat\taoDelivery\controller;
 use oat\taoDelivery\model\execution\DeliveryExecution;
 use oat\taoDelivery\model\execution\ServiceProxy;
 use oat\taoDelivery\model\execution\StateServiceInterface;
+use oat\tao\controller\RestController;
 
 /**
  * Manipulate with executions over REST
  */
-class RestExecution extends \tao_actions_RestController
+class RestExecution extends RestController
 {
 
     /**

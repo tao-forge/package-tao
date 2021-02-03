@@ -22,17 +22,17 @@ declare(strict_types=1);
 
 namespace oat\taoDeliveryRdf\controller;
 
+use Request;
 use common_exception_BadRequest as BadRequestException;
 use common_exception_Error as Error;
 use common_exception_MissingParameter as MissingParameterException;
 use common_exception_NotFound as NotFoundException;
 use common_exception_NotImplemented as NotImplementedException;
 use common_report_Report as Report;
+use oat\taoDeliveryRdf\model\tasks\ImportAndCompile;
+use oat\tao\controller\RestController;
 use oat\tao\model\import\ImporterNotFound;
 use oat\tao\model\taskQueue\TaskLogInterface;
-use oat\taoDeliveryRdf\model\tasks\ImportAndCompile;
-use Request;
-use tao_actions_RestController as RestController;
 use tao_helpers_Http as HttpHelper;
 
 /**

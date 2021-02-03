@@ -21,13 +21,14 @@
 declare(strict_types=1);
 
 use oat\generis\model\OntologyAwareTrait;
-use oat\tao\model\resources\ResourceAccessDeniedException;
 use oat\taoQtiTest\models\forms\XmlEditForm;
 use oat\taoQtiTest\models\xmlEditor\XmlEditorInterface;
+use oat\tao\controller\ServiceModule;
+use oat\tao\model\resources\ResourceAccessDeniedException;
 use qtism\data\storage\xml\XmlStorageException;
 use tao_helpers_form_FormContainer as FormContainer;
 
-class taoQtiTest_actions_XmlEditor extends tao_actions_ServiceModule
+class taoQtiTest_actions_XmlEditor extends ServiceModule
 {
     use OntologyAwareTrait;
 

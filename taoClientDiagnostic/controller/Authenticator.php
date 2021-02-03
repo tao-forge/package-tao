@@ -25,12 +25,13 @@ use oat\taoClientDiagnostic\exception\InvalidCallException;
 use oat\taoClientDiagnostic\exception\InvalidLoginException;
 use oat\taoClientDiagnostic\model\authorization\Authorization;
 use oat\taoClientDiagnostic\model\authorization\RequireUsername;
+use oat\tao\controller\CommonModule;
 
 /**
  * Class Authenticator
  * @package oat\taoClientDiagnostic\controller
  */
-class Authenticator extends \tao_actions_CommonModule
+class Authenticator extends CommonModule
 {
     /**
      * Login process

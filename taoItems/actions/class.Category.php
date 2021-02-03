@@ -19,8 +19,9 @@
  *
  */
 
-use oat\taoItems\model\CategoryService;
 use oat\generis\model\OntologyAwareTrait;
+use oat\taoItems\model\CategoryService;
+use oat\tao\controller\CommonModule;
 
 /**
  * Category controller
@@ -28,7 +29,7 @@ use oat\generis\model\OntologyAwareTrait;
  *
  * @author Bertrand Chevrier <bertrand@taotesting.com>
  */
-class taoItems_actions_Category extends tao_actions_CommonModule
+class taoItems_actions_Category extends CommonModule
 {
     use OntologyAwareTrait;
 

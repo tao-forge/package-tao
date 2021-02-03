@@ -40,7 +40,7 @@ class ActionTest extends GenerisPhpUnitTestRunner
     public function testGetClassNameByUrl()
     {
         $url = ROOT_URL . 'tao/Main/index';
-        $expectedClassName = 'tao_actions_Main';
+        $expectedClassName = 'oat\\tao\\controller\\Main';
 
         $className = FuncHelper::getClassNameByUrl($url);
 
@@ -64,7 +64,7 @@ class ActionTest extends GenerisPhpUnitTestRunner
     public function getClassNameProvider()
     {
         return [
-            ['tao', 'Main', 'tao_actions_Main']
+            ['tao', 'Main', 'oat\\tao\\controller\\Main']
         ];
     }
 

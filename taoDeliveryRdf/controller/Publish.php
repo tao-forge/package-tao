@@ -21,24 +21,25 @@
 
 namespace oat\taoDeliveryRdf\controller;
 
-use common_exception_UserReadableException as UserReadableException;
 use Exception;
+use RuntimeException;
+use common_exception_UserReadableException as UserReadableException;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\event\EventManager;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDeliveryRdf\model\DeliveryFactory;
 use oat\taoDeliveryRdf\model\tasks\CompileDelivery;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
-use RuntimeException;
-use \tao_helpers_Uri;
+use oat\tao\controller\SaSModule;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
 use taoTests_models_classes_TestsService as TestsService;
+use tao_helpers_Uri;
 
 /**
  * Controller to publish delivery by test
  *
  * @package taoDeliveryRdf
  */
-class Publish extends \tao_actions_SaSModule
+class Publish extends SaSModule
 {
     use TaskLogActionTrait;
 

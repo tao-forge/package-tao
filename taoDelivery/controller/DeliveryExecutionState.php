@@ -28,10 +28,10 @@ use common_exception_MissingParameter;
 use common_exception_NotFound as NotFoundException;
 use common_exception_NotImplemented as NotImplementedException;
 use common_exception_RestApi as ApiException;
+use oat\taoDelivery\model\execution\DeliveryExecutionService;
 use oat\taoDelivery\model\execution\ServiceProxy;
 use oat\taoDelivery\model\execution\StateServiceInterface;
-use tao_actions_RestController as RestController;
-use oat\taoDelivery\model\execution\DeliveryExecutionService;
+use oat\tao\controller\RestController;
 
 /** Kindly use `funcAcl` in order to assign the roles, having access to the controller */
 class DeliveryExecutionState extends RestController

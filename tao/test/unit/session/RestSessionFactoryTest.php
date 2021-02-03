@@ -21,12 +21,13 @@
 
 namespace oat\tao\test\unit\session;
 
-use common_Exception;
 use LogicException;
+use common_Exception;
+use oat\generis\test\TestCase;
+use oat\tao\controller\RestController;
 use oat\tao\model\routing\Resolver;
 use oat\tao\model\session\restSessionFactory\RestSessionFactory;
 use oat\tao\model\session\restSessionFactory\SessionBuilder;
-use oat\generis\test\TestCase;
 
 class RestSessionFactoryTest extends TestCase
 {
@@ -167,7 +168,7 @@ class RestSessionFactoryTest extends TestCase
     }
 }
 
-class TestRest extends \tao_actions_RestController
+class TestRest extends RestController
 {
 }
 class SubTestRest extends TestRest

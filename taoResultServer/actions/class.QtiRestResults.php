@@ -22,8 +22,9 @@
 //http://tao.dev/taoResultServer/QtiRestResults?testtaker=http%3A%2F%2Ftao.local%2Fmytao.rdf%23i1460560178726251&delivery=http%3A%2F%2Ftao.local%2Fmytao.rdf%23i14607116346750186
 
 use oat\taoResultServer\models\classes\ResultService;
+use oat\tao\controller\RestController;
 
-class taoResultServer_actions_QtiRestResults extends tao_actions_RestController
+class taoResultServer_actions_QtiRestResults extends RestController
 {
     const TESTTAKER = 'testtaker';
     const DELIVERY = 'delivery';

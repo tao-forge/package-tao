@@ -23,29 +23,30 @@
 
 namespace oat\taoDelivery\controller;
 
-use common_exception_NotFound;
-use common_exception_Unauthorized;
 use common_Logger;
 use common_exception_Error;
+use common_exception_NotFound;
+use common_exception_Unauthorized;
 use common_session_SessionManager;
 use oat\generis\model\GenerisRdf;
 use oat\oatbox\event\EventManager;
 use oat\oatbox\service\ServiceManager;
-use oat\tao\model\event\LogoutSucceedEvent;
-use oat\tao\model\mvc\DefaultUrlService;
-use oat\tao\model\routing\AnnotationReader\security;
 use oat\taoDelivery\helper\Delivery as DeliveryHelper;
 use oat\taoDelivery\model\AssignmentService;
-use oat\taoDelivery\model\authorization\AuthorizationService;
 use oat\taoDelivery\model\authorization\AuthorizationProvider;
+use oat\taoDelivery\model\authorization\AuthorizationService;
+use oat\taoDelivery\model\authorization\UnAuthorizedException;
 use oat\taoDelivery\model\execution\DeliveryExecution;
 use oat\taoDelivery\model\execution\DeliveryServerService;
 use oat\taoDelivery\model\execution\ServiceProxy;
+use oat\taoDelivery\model\execution\StateServiceInterface;
 use oat\taoDelivery\model\fields\DeliveryFieldsService;
 use oat\taoDelivery\models\classes\ReturnUrlService;
-use oat\taoDelivery\model\authorization\UnAuthorizedException;
+use oat\tao\controller\CommonModule;
 use oat\tao\helpers\Template;
-use oat\taoDelivery\model\execution\StateServiceInterface;
+use oat\tao\model\event\LogoutSucceedEvent;
+use oat\tao\model\mvc\DefaultUrlService;
+use oat\tao\model\routing\AnnotationReader\security;
 
 /**
  * DeliveryServer Controller
@@ -54,7 +55,7 @@ use oat\taoDelivery\model\execution\StateServiceInterface;
  * @package taoDelivery
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class DeliveryServer extends \tao_actions_CommonModule
+class DeliveryServer extends CommonModule
 {
 
     /**

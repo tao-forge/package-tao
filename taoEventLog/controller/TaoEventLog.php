@@ -24,7 +24,7 @@ namespace oat\taoEventLog\controller;
 use oat\taoEventLog\model\datatable\EventLogDatatable;
 use oat\taoEventLog\model\export\implementation\LogEntryCsvStdOutExporter;
 use oat\taoEventLog\model\export\implementation\LogEntryRepository;
-use tao_actions_CommonModule;
+use oat\tao\controller\CommonModule;
 
 /**
  * Sample controller
@@ -34,7 +34,7 @@ use tao_actions_CommonModule;
  * @license GPL-2.0
  *
  */
-class TaoEventLog extends tao_actions_CommonModule
+class TaoEventLog extends CommonModule
 {
     /**
      * A possible entry point to tao

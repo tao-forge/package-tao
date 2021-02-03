@@ -21,11 +21,11 @@
 
 namespace oat\taoOpenId\controller;
 
-
 use common_Logger;
 use oat\taoOpenId\model\RelyingPartyService;
+use oat\tao\controller\CommonModule;
 
-class Connect extends \tao_actions_CommonModule
+class Connect extends CommonModule
 {
 
     /**

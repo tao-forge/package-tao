@@ -22,9 +22,10 @@ namespace oat\ltiProctoring\controller;
 use oat\generis\model\OntologyAwareTrait;
 use oat\ltiDeliveryProvider\model\LtiLaunchDataService;
 use oat\ltiProctoring\model\delivery\ProctorService;
-use oat\tao\model\theme\ThemeServiceInterface;
 use oat\taoLti\models\classes\LtiService;
 use oat\taoLti\models\classes\theme\LtiHeadless;
+use oat\tao\controller\SinglePageModule;
+use oat\tao\model\theme\ThemeServiceInterface;
 
 /**
  * Base LTI proctoring interface controller
@@ -34,7 +35,7 @@ use oat\taoLti\models\classes\theme\LtiHeadless;
  * @license GPL-2.0
  *
  */
-abstract class SimplePageModule extends \tao_actions_SinglePageModule
+abstract class SimplePageModule extends SinglePageModule
 {
     use OntologyAwareTrait;
 

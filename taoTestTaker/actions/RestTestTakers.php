@@ -25,15 +25,16 @@ namespace oat\taoTestTaker\actions;
 
 use Exception;
 use common_exception_RestApi;
-use tao_models_classes_UserService;
 use common_exception_ValidationFailed;
-use oat\generis\model\OntologyRdf;
 use oat\generis\Helper\UserHashForEncryption;
+use oat\generis\model\OntologyRdf;
 use oat\generis\model\user\PasswordConstraintsException;
 use oat\generis\model\user\UserRdf;
-use oat\tao\model\routing\AnnotationReader\security;
-use oat\tao\model\TaoOntology;
 use oat\taoTestTaker\models\CrudService;
+use oat\tao\controller\CommonRestModule;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\routing\AnnotationReader\security;
+use tao_models_classes_UserService;
 
 /**
  * @OA\Info(title="TAO Test Taker API", version="2.0")
@@ -78,7 +79,7 @@ use oat\taoTestTaker\models\CrudService;
  * )
  *
  */
-class RestTestTakers extends \tao_actions_CommonRestModule
+class RestTestTakers extends CommonRestModule
 {
     /** @var array */
     protected $parameters;

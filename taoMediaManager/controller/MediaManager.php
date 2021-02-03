@@ -22,13 +22,14 @@ declare(strict_types=1);
 
 namespace oat\taoMediaManager\controller;
 
-use oat\taoMediaManager\model\editInstanceForm;
 use oat\taoMediaManager\model\MediaService;
 use oat\taoMediaManager\model\MediaSource;
+use oat\taoMediaManager\model\editInstanceForm;
 use oat\taoMediaManager\model\fileManagement\FileManagement;
+use oat\tao\controller\SaSModule;
 use tao_helpers_form_FormContainer as FormContainer;
 
-class MediaManager extends \tao_actions_SaSModule
+class MediaManager extends SaSModule
 {
     /**
      * Show the form to edit an instance, show also a preview of the media

@@ -17,13 +17,14 @@
  *
  */
 
-use \oat\tao\model\routing\AnnotationReader\security;
+use oat\tao\controller\CommonRestModule;
+use oat\tao\model\routing\AnnotationReader\security;
 
 /**
  *
  * @author plichart
  */
-class taoItems_actions_RestItems extends tao_actions_CommonRestModule
+class taoItems_actions_RestItems extends CommonRestModule
 {
 
     /**

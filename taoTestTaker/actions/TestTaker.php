@@ -33,17 +33,17 @@ use oat\generis\Helper\UserHashForEncryption;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\event\EventManager;
-use oat\tao\model\resources\ResourceWatcher;
-use oat\tao\model\routing\AnnotationReader\security;
+use oat\taoGroups\helpers\TestTakerForm as GroupForm;
 use oat\taoTestTaker\actions\form\Search;
 use oat\taoTestTaker\actions\form\TestTaker as TestTakerForm;
-use oat\taoGroups\helpers\TestTakerForm as GroupForm;
-use oat\taoTestTaker\models\events\TestTakerUpdatedEvent;
 use oat\taoTestTaker\models\TestTakerService;
-use tao_actions_SaSModule;
+use oat\taoTestTaker\models\events\TestTakerUpdatedEvent;
+use oat\tao\controller\SaSModule;
+use oat\tao\model\resources\ResourceWatcher;
+use oat\tao\model\routing\AnnotationReader\security;
 use tao_helpers_Uri;
-use tao_models_classes_UserService;
 use tao_helpers_form_FormContainer as FormContainer;
+use tao_models_classes_UserService;
 
 /**
  * Subjects Controller provide actions performed from url resolution
@@ -52,7 +52,7 @@ use tao_helpers_form_FormContainer as FormContainer;
  * @package taoTestTaker
  * @license GPLv2 http://www.opensource.org/licenses/gpl-2.0.php
  */
-class TestTaker extends tao_actions_SaSModule
+class TestTaker extends SaSModule
 {
     use OntologyAwareTrait;
 
@@ -87,7 +87,7 @@ class TestTaker extends tao_actions_SaSModule
 
     /**
      * (non-PHPdoc)
-     * @see tao_actions_RdfController::getClassService()
+     * @see oat\tao\controller\RdfController::getClassService()
      * @return TestTakerService
      */
     protected function getClassService()

@@ -22,21 +22,23 @@
 namespace oat\taoPublishing\controller;
 
 use Exception;
-use common_exception_ClientException;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
-use oat\taoPublishing\model\entity\Platform;
-use oat\taoPublishing\model\publishing\exception\PublishingInvalidArgumentException;
-use tao_helpers_Uri;
-use core_kernel_classes_Resource;
 use GuzzleHttp\Psr7\ServerRequest;
-use oat\tao\helpers\UrlHelper;
-use oat\taoPublishing\model\publishing\delivery\RemotePublishingService;
-use oat\taoPublishing\model\publishing\PublishingService;
-use oat\taoDeliveryRdf\model\NoTestsException;
-use oat\taoPublishing\view\form\WizardForm;
+use common_exception_ClientException;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyAwareTrait;
-use oat\taoPublishing\model\DeployTest;
 use oat\oatbox\task\Queue;
+use oat\taoDeliveryRdf\model\NoTestsException;
+use oat\taoPublishing\model\DeployTest;
+use oat\taoPublishing\model\entity\Platform;
+use oat\taoPublishing\model\publishing\PublishingService;
+use oat\taoPublishing\model\publishing\delivery\RemotePublishingService;
+use oat\taoPublishing\model\publishing\exception\PublishingInvalidArgumentException;
+use oat\taoPublishing\view\form\WizardForm;
+use oat\tao\controller\CommonModule;
+use oat\tao\helpers\UrlHelper;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
+use tao_helpers_Uri;
+
 /**
  * Sample controller
  *
@@ -45,7 +47,7 @@ use oat\oatbox\task\Queue;
  * @license GPL-2.0
  *
  */
-class Publish extends \tao_actions_CommonModule {
+class Publish extends CommonModule {
 
     use OntologyAwareTrait;
     use TaskLogActionTrait;

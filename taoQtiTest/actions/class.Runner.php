@@ -26,14 +26,11 @@
 
 use oat\libCat\exception\CatEngineConnectivityException;
 use oat\oatbox\event\EventManager;
-use oat\tao\model\routing\AnnotationReader\security;
-use oat\taoDelivery\model\execution\DeliveryExecutionService;
 use oat\taoDelivery\model\RuntimeService;
+use oat\taoDelivery\model\execution\DeliveryExecutionService;
 use oat\taoQtiTest\models\cat\CatEngineNotFoundException;
 use oat\taoQtiTest\models\container\QtiTestDeliveryContainer;
 use oat\taoQtiTest\models\event\TraceVariableStored;
-use oat\taoQtiTest\models\runner\communicator\CommunicationService;
-use oat\taoQtiTest\models\runner\communicator\QtiCommunicationService;
 use oat\taoQtiTest\models\runner\QtiRunnerClosedException;
 use oat\taoQtiTest\models\runner\QtiRunnerEmptyResponsesException;
 use oat\taoQtiTest\models\runner\QtiRunnerItemResponseException;
@@ -43,6 +40,10 @@ use oat\taoQtiTest\models\runner\QtiRunnerService;
 use oat\taoQtiTest\models\runner\QtiRunnerServiceContext;
 use oat\taoQtiTest\models\runner\RunnerToolStates;
 use oat\taoQtiTest\models\runner\StorageManager;
+use oat\taoQtiTest\models\runner\communicator\CommunicationService;
+use oat\taoQtiTest\models\runner\communicator\QtiCommunicationService;
+use oat\tao\controller\ServiceModule;
+use oat\tao\model\routing\AnnotationReader\security;
 use taoQtiTest_helpers_TestRunnerUtils as TestRunnerUtils;
 
 /**
@@ -50,7 +51,7 @@ use taoQtiTest_helpers_TestRunnerUtils as TestRunnerUtils;
  *
  * Serves QTI implementation of the test runner
  */
-class taoQtiTest_actions_Runner extends tao_actions_ServiceModule
+class taoQtiTest_actions_Runner extends ServiceModule
 {
     use RunnerToolStates;
 

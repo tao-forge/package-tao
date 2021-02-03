@@ -23,13 +23,14 @@
 namespace oat\taoOutcomeUi\controller;
 
 use oat\taoOutcomeUi\model\table\ResultsMonitoringDatatable;
+use oat\tao\controller\CommonModule;
 use oat\tao\model\datatable\implementation\DatatableRequest;
 
 /**
  * Class ResultsMonitoring
  * @package oat\taoOutcomeUi\controller
  */
-class ResultsMonitoring extends \tao_actions_CommonModule
+class ResultsMonitoring extends CommonModule
 {
     public function index()
     {

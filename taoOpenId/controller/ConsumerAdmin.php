@@ -21,16 +21,15 @@
 
 namespace oat\taoOpenId\controller;
 
-
 use Exception;
 use oat\taoOpenId\controller\form\AddConsumer;
 use oat\taoOpenId\controller\form\EditConsumer;
 use oat\taoOpenId\model\ConsumerService;
-use tao_actions_SaSModule;
+use oat\tao\controller\SaSModule;
 use tao_helpers_Request;
 use tao_models_classes_dataBinding_GenerisFormDataBinder;
 
-class ConsumerAdmin extends tao_actions_SaSModule
+class ConsumerAdmin extends SaSModule
 {
     public function __construct()
     {

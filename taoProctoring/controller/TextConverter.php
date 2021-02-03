@@ -21,8 +21,9 @@
 namespace oat\taoProctoring\controller;
 
 use oat\taoProctoring\model\textConverter\ProctoringTextConverterTrait;
+use oat\tao\controller\CommonModule;
 
-class TextConverter extends \tao_actions_CommonModule
+class TextConverter extends CommonModule
 {
     use ProctoringTextConverterTrait;
 

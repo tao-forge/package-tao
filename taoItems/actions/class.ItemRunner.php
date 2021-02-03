@@ -19,6 +19,7 @@
  *
  */
 
+use oat\tao\controller\ServiceModule;
 use oat\tao\model\state\StateStorage;
 
 /**
@@ -28,7 +29,7 @@ use oat\tao\model\state\StateStorage;
  * @package taoItems
 
  */
-class taoItems_actions_ItemRunner extends tao_actions_ServiceModule
+class taoItems_actions_ItemRunner extends ServiceModule
 {
     public function index()
     {

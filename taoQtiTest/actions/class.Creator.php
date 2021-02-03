@@ -19,11 +19,11 @@
 */
 
 use function GuzzleHttp\Psr7\stream_for;
-
-use oat\taoQtiTest\models\TestCategoryPresetProvider;
-use oat\taoQtiTest\models\TestModelService;
 use oat\generis\model\data\event\ResourceUpdated;
 use oat\oatbox\event\EventManager;
+use oat\taoQtiTest\models\TestCategoryPresetProvider;
+use oat\taoQtiTest\models\TestModelService;
+use oat\tao\controller\CommonModule;
 
 /**
  *  QTI test Creator Controller.
@@ -33,7 +33,7 @@ use oat\oatbox\event\EventManager;
 
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class taoQtiTest_actions_Creator extends tao_actions_CommonModule
+class taoQtiTest_actions_Creator extends CommonModule
 {
 
         /**

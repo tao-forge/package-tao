@@ -20,9 +20,10 @@
  */
 
 use oat\taoResultServer\models\classes\CrudResultsService;
+use oat\tao\controller\CommonRestModule;
 use oat\tao\model\routing\AnnotationReader\security;
 
-class taoResultServer_actions_RestResults extends \tao_actions_CommonRestModule
+class taoResultServer_actions_RestResults extends CommonRestModule
 {
 
     /**

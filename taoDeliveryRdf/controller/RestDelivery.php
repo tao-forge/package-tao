@@ -21,23 +21,24 @@ namespace oat\taoDeliveryRdf\controller;
 
 use common_exception_RestApi;
 use core_kernel_classes_Class;
+use oat\generis\model\OntologyRdfs;
 use oat\generis\model\kernel\persistence\smoothsql\search\ComplexSearchService;
 use oat\oatbox\event\EventManager;
 use oat\search\base\exception\SearchGateWayExeption;
-use oat\tao\model\taskQueue\QueueDispatcher;
-use oat\tao\model\taskQueue\TaskLog\Broker\TaskLogBrokerInterface;
-use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
-use oat\tao\model\taskQueue\TaskLog\TaskLogFilter;
-use oat\tao\model\taskQueue\TaskLogActionTrait;
-use oat\tao\model\taskQueue\TaskLogInterface;
 use oat\taoDeliveryRdf\model\Delete\DeliveryDeleteTask;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
-use oat\generis\model\OntologyRdfs;
 use oat\taoDeliveryRdf\model\DeliveryFactory;
 use oat\taoDeliveryRdf\model\tasks\CompileDelivery;
 use oat\taoDeliveryRdf\model\tasks\UpdateDelivery;
+use oat\tao\controller\RestController;
+use oat\tao\model\taskQueue\QueueDispatcher;
+use oat\tao\model\taskQueue\TaskLogActionTrait;
+use oat\tao\model\taskQueue\TaskLogInterface;
+use oat\tao\model\taskQueue\TaskLog\Broker\TaskLogBrokerInterface;
+use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
+use oat\tao\model\taskQueue\TaskLog\TaskLogFilter;
 
-class RestDelivery extends \tao_actions_RestController
+class RestDelivery extends RestController
 {
     use TaskLogActionTrait;
 

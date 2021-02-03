@@ -21,17 +21,18 @@
 
 namespace oat\taoTaskQueue\controller;
 
-use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
+use oat\tao\controller\RestController;
 use oat\tao\model\taskQueue\TaskLogInterface;
+use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
 
 /**
  * RestAPI controller to get data from task queue
  *
- * @deprecated Use \tao_actions_TaskQueue
+ * @deprecated Use \oat\tao\controller\TaskQueue
  *
  * @author Gyula Szucs <gyula@taotesting.com>
  */
-class TaskQueueRestApi extends \tao_actions_RestController
+class TaskQueueRestApi extends RestController
 {
     const PARAMETER_TASK_ID = 'id';
 

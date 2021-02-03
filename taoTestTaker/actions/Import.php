@@ -27,7 +27,7 @@ namespace oat\taoTestTaker\actions;
 
 use oat\taoTestTaker\models\CsvImporter;
 use oat\taoTestTaker\models\RdfImporter;
-use tao_actions_Import;
+use oat\tao\controller\Import as Import_2;
 use tao_models_classes_import_CsvImporter;
 use tao_models_classes_import_RdfImporter;
 
@@ -37,7 +37,7 @@ use tao_models_classes_import_RdfImporter;
  *
  * @author  Bertrand Chevrier, <taosupport@tudor.lu>
  */
-class Import extends tao_actions_Import
+class Import extends Import_2
 {
     /**
      * @inheritDoc
