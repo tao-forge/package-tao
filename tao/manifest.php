@@ -229,6 +229,6 @@ return [
         'TPL_PATH' => $extpath . 'views' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR,
     ],
     'extra' => [
-        'structures' => $extpath . 'actions' . DIRECTORY_SEPARATOR . 'structures.xml',
+        'structures' => $extpath . 'controller' . DIRECTORY_SEPARATOR . 'structures.xml',
     ]
 ];

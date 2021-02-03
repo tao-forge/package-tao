@@ -28,6 +28,7 @@ use oat\tao\model\asset\AssetService;
 use oat\tao\model\migrations\MigrationsService;
 use common_ext_ExtensionsManager as ExtensionManager;
 use common_ext_Extension as Extension;
+use oat\oatbox\cache\SimpleCache;
 
 /**
  * Extends the generis updater to take into account
@@ -57,17 +58,10 @@ class UpdateExtensions extends \common_ext_UpdateExtensions
         $this->logInfo(\helpers_Report::renderToCommandline($migrationsReport, false));
         $report->add($migrationsReport);
 
-        // regenerate locales
-        $files = \tao_models_classes_LanguageService::singleton()->generateAll();
-        if (count($files) > 0) {
-            $report->add(new common_report_Report(common_report_Report::TYPE_SUCCESS, __('Successfully updated %s client translation bundles', count($files))));
-        } else {
-            $report->add(new common_report_Report(common_report_Report::TYPE_ERROR, __('No client translation bundles updated')));
-        }
-
         $updateId = $this->generateUpdateId();
         $this->updateCacheBuster($report, $updateId);
 
+        $this->getServiceLocator()->get(SimpleCache::SERVICE_ID)->clear();
         $report->add(new common_report_Report(common_report_Report::TYPE_INFO, __('Update ID : %s', $updateId)));
 
         return $report;
