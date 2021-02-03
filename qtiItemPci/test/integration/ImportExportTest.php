@@ -21,21 +21,21 @@
 
 namespace oat\qtiItemPci\test\integration;
 
-use oat\oatbox\service\ServiceManager;
-use oat\tao\test\TaoPhpUnitTestRunner;
-use oat\taoQtiItem\model\portableElement\exception\PortableElementNotFoundException;
-use oat\taoQtiItem\model\portableElement\PortableElementService;
-use oat\taoQtiItem\model\qti\ImportService;
-use oat\taoQtiItem\model\Export\QTIPackedItemExporter;
-use oat\taoQtiItem\model\QtiItemCompiler;
-use \RecursiveDirectoryIterator;
-use \RecursiveIteratorIterator;
-use \taoItems_models_classes_ItemsService;
-use \tao_models_classes_service_FileStorage;
-use \ZipArchive;
-use oat\taoQtiItem\model\ItemModel;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use ZipArchive;
 use common_report_Report as Report;
+use oat\oatbox\service\ServiceManager;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\Export\QTIPackedItemExporter;
+use oat\taoQtiItem\model\ItemModel;
+use oat\taoQtiItem\model\QtiItemCompiler;
+use oat\taoQtiItem\model\portableElement\PortableElementService;
+use oat\taoQtiItem\model\portableElement\exception\PortableElementNotFoundException;
+use oat\taoQtiItem\model\qti\ImportService;
 use oat\taoQtiItem\model\qti\Service as QtiService;
+use oat\tao\test\TaoPhpUnitTestRunner;
+use tao_models_classes_service_FileStorage;
 
 class ImportExportTest extends TaoPhpUnitTestRunner
 {
@@ -44,7 +44,7 @@ class ImportExportTest extends TaoPhpUnitTestRunner
      */
     protected $importService;
     /**
-     * @var taoItems_models_classes_ItemsService
+     * @var oat\taoItems\model\ItemsService
      */
     protected $itemService;
     /**
@@ -66,7 +66,7 @@ class ImportExportTest extends TaoPhpUnitTestRunner
     {
         TaoPhpUnitTestRunner::initTest();
         $this->importService = ImportService::singleton();
-        $this->itemService = taoItems_models_classes_ItemsService::singleton();
+        $this->itemService = ItemsService::singleton();
         $this->portableElementService = new PortableElementService();
     }
 

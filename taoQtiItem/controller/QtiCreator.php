@@ -27,6 +27,7 @@ use common_exception_Error;
 use core_kernel_classes_Resource;
 use oat\generis\model\data\event\ResourceUpdated;
 use oat\oatbox\event\EventManager;
+use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\event\ItemCreatedEvent;
 use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoQtiItem\helpers\Authoring;
@@ -41,7 +42,6 @@ use oat\taoQtiItem\model\qti\parser\XmlToItemParser;
 use oat\tao\controller\CommonModule;
 use oat\tao\model\TaoOntology;
 use oat\tao\model\media\MediaService;
-use taoItems_models_classes_ItemsService;
 use tao_helpers_File;
 use tao_helpers_Uri;
 
@@ -92,7 +92,7 @@ class QtiCreator extends CommonModule
                 break;
             }
         }
-        $service = \taoItems_models_classes_ItemsService::singleton();
+        $service = ItemsService::singleton();
 
         $label = $service->createUniqueLabel($clazz);
         $item = $service->createInstance($clazz, $label);
@@ -157,7 +157,7 @@ class QtiCreator extends CommonModule
         ];
 
         if ($this->hasRequestParameter('uri')) {
-            $lang = taoItems_models_classes_ItemsService::singleton()->getSessionLg();
+            $lang = ItemsService::singleton()->getSessionLg();
             $itemUri = tao_helpers_Uri::decode($this->getRequestParameter('uri'));
             $itemResource = new core_kernel_classes_Resource($itemUri);
 

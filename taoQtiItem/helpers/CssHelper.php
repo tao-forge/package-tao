@@ -22,6 +22,8 @@
 
 namespace oat\taoQtiItem\helpers;
 
+use oat\taoItems\model\ItemsService;
+
 class CssHelper
 {
 
@@ -41,7 +43,7 @@ class CssHelper
      */
     public static function saveCssFile(\core_kernel_classes_resource $item, $lang, $styleSheetPath, $cssArr)
     {
-        $directory = \taoItems_models_classes_ItemsService::singleton()->getItemDirectory($item, $lang);
+        $directory = ItemsService::singleton()->getItemDirectory($item, $lang);
 
         $file = $directory->getFile($styleSheetPath);
 
@@ -65,7 +67,7 @@ class CssHelper
     public static function downloadCssFile(\core_kernel_classes_resource $item, $lang, $styleSheetPath)
     {
 
-        $directory = \taoItems_models_classes_ItemsService::singleton()->getItemDirectory($item, $lang);
+        $directory = ItemsService::singleton()->getItemDirectory($item, $lang);
         $file = $directory->getFile($styleSheetPath);
         if ($file->exists()) {
             return $file->read();
@@ -162,7 +164,7 @@ class CssHelper
     public static function loadCssFile(\core_kernel_classes_resource $item, $lang, $styleSheet)
     {
 
-        $directory = \taoItems_models_classes_ItemsService::singleton()->getItemDirectory($item, $lang);
+        $directory = ItemsService::singleton()->getItemDirectory($item, $lang);
 
         // no user style sheet has been created yet
         $file = $directory->getFile($styleSheet);

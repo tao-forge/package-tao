@@ -22,9 +22,9 @@
 
 namespace oat\taoItems\test\unit;
 
-use oat\generis\test\TestCase;
 use DOMDocument;
-use taoItems_models_classes_search_XmlItemContentTokenizer as XmlItemContentTokenizer;
+use oat\generis\test\TestCase;
+use oat\taoItems\model\search\XmlItemContentTokenizer;
 
 /**
  * This class aims at testing tao_helpers_Xhtml.

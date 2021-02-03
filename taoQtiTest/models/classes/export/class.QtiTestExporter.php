@@ -19,12 +19,13 @@
  *
  */
 
-use qtism\data\storage\xml\XmlDocument;
 use oat\oatbox\filesystem\Directory;
-use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
-use oat\taoQtiItem\model\qti\metadata\MetadataService;
 use oat\oatbox\service\ServiceManager;
+use oat\taoItems\model\ItemExporter;
+use oat\taoQtiItem\model\qti\metadata\MetadataService;
+use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
 use oat\taoQtiTest\models\export\preprocessor\AssessmentItemRefPreProcessor;
+use qtism\data\storage\xml\XmlDocument;
 
 /**
  * A specialization of QTI ItemExporter aiming at exporting IMS QTI Test definitions from the TAO
@@ -33,7 +34,7 @@ use oat\taoQtiTest\models\export\preprocessor\AssessmentItemRefPreProcessor;
  * @author Jérôme Bogaerts <jerome@taotesting.com>
  *
  */
-class taoQtiTest_models_classes_export_QtiTestExporter extends taoItems_models_classes_ItemExporter
+class taoQtiTest_models_classes_export_QtiTestExporter extends ItemExporter
 {
 
     /**

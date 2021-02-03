@@ -23,16 +23,16 @@
 
 namespace oat\taoQtiItem\model\Export;
 
+use DOMDocument;
+use ZipArchive;
+use common_Exception;
+use core_kernel_classes_Resource;
+use oat\taoItems\model\TemplateRenderer;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementException;
-use oat\taoQtiItem\model\qti\exception\ExportException;
 use oat\taoQtiItem\model\qti\Service;
-use \core_kernel_classes_Resource;
-use \ZipArchive;
-use \DOMDocument;
-use \tao_helpers_Uri;
-use \taoItems_models_classes_TemplateRenderer;
-use \tao_helpers_Display;
-use \common_Exception;
+use oat\taoQtiItem\model\qti\exception\ExportException;
+use tao_helpers_Display;
+use tao_helpers_Uri;
 
 class QTIPackedItemExporter extends AbstractQTIItemExporter
 {
@@ -223,7 +223,7 @@ class QTIPackedItemExporter extends AbstractQTIItemExporter
         $dir = \common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiItem')->getDir();
         $tpl = ($asApip === false) ? $dir . 'model/qti/templates/imsmanifest.tpl.php' : $dir . 'model/qti/templates/imsmanifestApip.tpl.php';
 
-        $templateRenderer = new taoItems_models_classes_TemplateRenderer($tpl, [
+        $templateRenderer = new TemplateRenderer($tpl, [
             'qtiItems' => [$qtiItemData],
             'manifestIdentifier' => 'MANIFEST-' . tao_helpers_Display::textCleaner(uniqid('tao', true), '-')
         ]);

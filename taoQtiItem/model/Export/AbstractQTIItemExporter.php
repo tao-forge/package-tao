@@ -23,29 +23,30 @@
 
 namespace oat\taoQtiItem\model\Export;
 
-use oat\tao\helpers\Base64;
-use core_kernel_classes_Property;
 use DOMDocument;
 use League\Flysystem\FileNotFoundException;
+use Psr\Http\Message\StreamInterface;
+use core_kernel_classes_Property;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\service\ServiceManager;
-use oat\tao\model\media\ProcessedFileStreamAware;
-use oat\tao\model\media\sourceStrategy\HttpSource;
+use oat\taoItems\model\ItemExporter;
+use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoItems\model\media\LocalItemSource;
+use oat\taoQtiItem\model\portableElement\PortableElementService;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementException;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementInvalidAssetException;
-use oat\taoQtiItem\model\portableElement\PortableElementService;
 use oat\taoQtiItem\model\qti\AssetParser;
 use oat\taoQtiItem\model\qti\Element;
-use oat\taoQtiItem\model\qti\exception\ExportException;
-use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
-use oat\taoQtiItem\model\qti\metadata\MetadataService;
 use oat\taoQtiItem\model\qti\Service;
-use Psr\Http\Message\StreamInterface;
-use taoItems_models_classes_ItemExporter;
+use oat\taoQtiItem\model\qti\exception\ExportException;
+use oat\taoQtiItem\model\qti\metadata\MetadataService;
+use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
+use oat\tao\helpers\Base64;
+use oat\tao\model\media\ProcessedFileStreamAware;
+use oat\tao\model\media\sourceStrategy\HttpSource;
 
-abstract class AbstractQTIItemExporter extends taoItems_models_classes_ItemExporter
+abstract class AbstractQTIItemExporter extends ItemExporter
 {
 
     /**
@@ -69,7 +70,7 @@ abstract class AbstractQTIItemExporter extends taoItems_models_classes_ItemExpor
     /**
      * Overriden export from QTI items.
      *
-     * @see taoItems_models_classes_ItemExporter::export()
+     * @see oat\taoItems\model\ItemExporter::export()
      * @param array $options An array of options.
      * @return \common_report_Report
      * @throws ExportException
@@ -91,7 +92,7 @@ abstract class AbstractQTIItemExporter extends taoItems_models_classes_ItemExpor
             $report->setType(\common_report_Report::TYPE_ERROR);
             return $report;
         }
-        $dataFile = (string) $this->getItemModel()->getOnePropertyValue(new core_kernel_classes_Property(\taoItems_models_classes_ItemsService::TAO_ITEM_MODEL_DATAFILE_PROPERTY));
+        $dataFile = (string) $this->getItemModel()->getOnePropertyValue(new core_kernel_classes_Property(ItemsService::TAO_ITEM_MODEL_DATAFILE_PROPERTY));
         $resolver = new ItemMediaResolver($this->getItem(), $lang);
         $replacementList = [];
         $portableElements = $this->getPortableElementAssets($this->getItem(), $lang);
@@ -291,7 +292,7 @@ abstract class AbstractQTIItemExporter extends taoItems_models_classes_ItemExpor
      */
     protected function getStorageDirectory(\core_kernel_classes_Resource $item, $lang)
     {
-        $itemService = \taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         $directory = $itemService->getItemDirectory($item, $lang);
 
         //we should use be language unaware for storage manipulation

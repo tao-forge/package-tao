@@ -20,10 +20,10 @@
 
 namespace oat\taoQtiItem\test\integration;
 
-use \common_report_Report;
-use oat\tao\test\TaoPhpUnitTestRunner;
+use common_report_Report;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\ImportService;
-use \taoItems_models_classes_ItemsService;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 include_once dirname(__FILE__) . '/../../includes/raw_start.php';
 
@@ -38,7 +38,7 @@ class ImportConsistencyTest extends TaoPhpUnitTestRunner
      */
     protected $importService;
     /**
-     * @var taoItems_models_classes_ItemsService
+     * @var oat\taoItems\model\ItemsService
      */
     protected $itemService;
 
@@ -50,7 +50,7 @@ class ImportConsistencyTest extends TaoPhpUnitTestRunner
     {
         TaoPhpUnitTestRunner::initTest();
         $this->importService = ImportService::singleton();
-        $this->itemService = taoItems_models_classes_ItemsService::singleton();
+        $this->itemService = ItemsService::singleton();
         $this->qtiService = \oat\taoQtiItem\model\qti\Service::singleton();
     }
 

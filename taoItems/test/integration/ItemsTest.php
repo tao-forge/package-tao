@@ -22,16 +22,16 @@
 
 namespace oat\taoItems\test\integration;
 
-use oat\generis\test\GenerisTestCase;
-use oat\tao\model\TaoOntology;
-use oat\generis\model\OntologyRdfs;
-use oat\tao\test\TaoPhpUnitTestRunner;
 use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
+use oat\generis\model\OntologyRdfs;
+use oat\generis\test\GenerisTestCase;
 use oat\taoItems\model\ItemModelStatus;
+use oat\taoItems\model\ItemsService;
+use oat\taoItems\model\ItemModel as ItemModelInterface;
 use oat\taoQtiItem\model\ItemModel;
-use taoItems_models_classes_itemModel;
-use taoItems_models_classes_ItemsService;
+use oat\tao\model\TaoOntology;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 /**
  * @author Bertrand Chevrier, <taosupport@tudor.lu>
@@ -40,7 +40,7 @@ use taoItems_models_classes_ItemsService;
 class ItemsTest extends GenerisTestCase
 {
     /**
-     * @var \taoItems_models_classes_ItemsService
+     * @var \oat\taoItems\model\ItemsService
      */
     private $itemsService;
 
@@ -59,19 +59,18 @@ class ItemsTest extends GenerisTestCase
 
         $this->ontologyMock = $this->getOntologyMock();
 
-        $this->itemsService = \taoItems_models_classes_ItemsService::singleton();
+        $this->itemsService = ItemsService::singleton();
         $this->itemsService->setModel($this->ontologyMock);
     }
 
     /**
      * Test the user service implementation
-     * @see tao_models_classes_ServiceFactory::get
-     * @see taoItems_models_classes_ItemsService::__construct
+     * @see ItemsService
      */
     public function testService()
     {
         $this->assertInstanceOf(\tao_models_classes_Service::class, $this->itemsService);
-        $this->assertInstanceOf(taoItems_models_classes_ItemsService::class, $this->itemsService);
+        $this->assertInstanceOf(ItemsService::class, $this->itemsService);
     }
 
     /**
@@ -157,7 +156,7 @@ class ItemsTest extends GenerisTestCase
         $this->assertFalse($this->itemsService->hasItemContent($instance));
 
         $instance->setPropertyValue(
-            $this->createTestProperty(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL),
+            $this->createTestProperty(ItemsService::PROPERTY_ITEM_MODEL),
             ItemModel::MODEL_URI
         );
 
@@ -200,14 +199,14 @@ class ItemsTest extends GenerisTestCase
     {
 
         $item = $this->ontologyMock->getResource('resource');
-        $itemModel = $this->ontologyMock->getResource(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL);
+        $itemModel = $this->ontologyMock->getResource(ItemsService::PROPERTY_ITEM_MODEL);
 
         $itemModel->setPropertyValue(
-            $this->createTestProperty(taoItems_models_classes_itemModel::CLASS_URI_RUNTIME),
+            $this->createTestProperty(ItemModelInterface::CLASS_URI_RUNTIME),
             'returnValue'
         );
         $item->setPropertyValue(
-            $this->createTestProperty(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL),
+            $this->createTestProperty(ItemsService::PROPERTY_ITEM_MODEL),
             $itemModel
         );
 
@@ -219,9 +218,9 @@ class ItemsTest extends GenerisTestCase
         $item = $this->ontologyMock->getResource('item');
         $this->assertNull($this->itemsService->getItemModel($item));
 
-        $model = $this->ontologyMock->getResource(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL);
+        $model = $this->ontologyMock->getResource(ItemsService::PROPERTY_ITEM_MODEL);
         $item->setPropertyValue(
-            $this->createTestProperty(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL),
+            $this->createTestProperty(ItemsService::PROPERTY_ITEM_MODEL),
             $model
         );
         $this->assertEquals($model->getUri(), $this->itemsService->getItemModel($item)->getUri());
@@ -232,7 +231,7 @@ class ItemsTest extends GenerisTestCase
         $item = $this->prophesize('core_kernel_classes_Resource');
         $itemModelProphecy = $this->prophesize('core_kernel_classes_Resource');
 
-        $itemModelProphecy->getPropertyValues($this->createTestProperty(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL_SERVICE))
+        $itemModelProphecy->getPropertyValues($this->createTestProperty(ItemsService::PROPERTY_ITEM_MODEL_SERVICE))
             ->willReturn([]);
 
         $this->assertNull($this->itemsService->getPreviewUrl($item->reveal()));
@@ -241,7 +240,7 @@ class ItemsTest extends GenerisTestCase
     public function testGetItemModelImplementation()
     {
         $item = $this->ontologyMock->getResource('item');
-        $property = $this->createTestProperty(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL_SERVICE);
+        $property = $this->createTestProperty(ItemsService::PROPERTY_ITEM_MODEL_SERVICE);
 
         $item->setPropertyValue($property, 'fakeUri');
 
@@ -260,7 +259,7 @@ class ItemsTest extends GenerisTestCase
 
         $this->assertFalse($this->itemsService->isItemModelDefined($item));
 
-        $property = $this->createTestProperty(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL);
+        $property = $this->createTestProperty(ItemsService::PROPERTY_ITEM_MODEL);
 
         $item->setPropertyValue($property, 'notnull');
         $this->assertTrue($this->itemsService->isItemModelDefined($item));

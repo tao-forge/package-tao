@@ -21,13 +21,13 @@
 
 namespace oat\taoQtiItem\model\search;
 
-use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\generis\model\OntologyAwareTrait;
+use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\service\ServiceManager;
-use oat\tao\model\search\tokenizer\ResourceTokenizer;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\Service;
-use taoItems_models_classes_ItemsService;
+use oat\tao\model\search\tokenizer\ResourceTokenizer;
 
 class QtiItemContentTokenizer implements ResourceTokenizer
 {
@@ -43,7 +43,7 @@ class QtiItemContentTokenizer implements ResourceTokenizer
     public function getStrings(\core_kernel_classes_Resource $resource)
     {
         try {
-            $ontologyFiles = $resource->getPropertyValues($this->getProperty(taoItems_models_classes_ItemsService::PROPERTY_ITEM_CONTENT));
+            $ontologyFiles = $resource->getPropertyValues($this->getProperty(ItemsService::PROPERTY_ITEM_CONTENT));
             if (empty($ontologyFiles)) {
                 return [];
             }

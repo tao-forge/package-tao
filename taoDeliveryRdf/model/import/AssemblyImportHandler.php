@@ -22,8 +22,9 @@
 
 namespace oat\taoDeliveryRdf\model\import;
 
-use oat\taoDeliveryRdf\view\form\import\ImportForm;
 use common_report_Report;
+use oat\taoDeliveryRdf\view\form\import\ImportForm;
+use oat\taoItems\model\ItemsService;
 
 /**
  * Delivery Assembly importer
@@ -67,7 +68,7 @@ class AssemblyImportHandler implements \tao_models_classes_import_ImportHandler
             \helpers_TimeOutHelper::setTimeOutLimit(\helpers_TimeOutHelper::MEDIUM);
             
             //get the services instances we will need
-            $itemService    = \taoItems_models_classes_ItemsService::singleton();
+            $itemService    = ItemsService::singleton();
             
             $uploadedFile = $fileInfo['uploaded_file'];
             $uploadedFileBaseName = basename($uploadedFile);

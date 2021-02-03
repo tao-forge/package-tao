@@ -19,32 +19,33 @@
  *
  */
 
-use oat\taoQtiTest\models\runner\RunnerService;
-use qtism\runtime\rendering\markup\xhtml\XhtmlRenderingEngine;
-use qtism\data\storage\xml\XmlStorageException;
-use qtism\runtime\rendering\markup\MarkupPostRenderer;
-use qtism\runtime\rendering\css\CssScoper;
-use qtism\data\QtiComponentIterator;
-use qtism\data\storage\xml\XmlDocument;
-use qtism\data\storage\xml\XmlCompactDocument;
-use qtism\data\AssessmentTest;
-use qtism\data\ExtendedAssessmentSection;
-use qtism\data\ExtendedAssessmentItemRef;
-use qtism\data\AssessmentItemRef;
-use qtism\data\content\RubricBlock;
-use qtism\data\content\StylesheetCollection;
-use qtism\common\utils\Url;
-use oat\taoQtiItem\model\qti\Service;
 use League\Flysystem\FileExistsException;
 use oat\oatbox\filesystem\Directory;
-use oat\taoQtiTest\models\TestCategoryRulesService;
-use oat\taoQtiTest\models\QtiTestCompilerIndex;
-use oat\taoQtiTest\models\cat\CatService;
-use oat\taoQtiTest\models\CompilationDataService;
-use oat\taoQtiItem\model\QtiJsonItemCompiler;
-use oat\taoDelivery\model\container\delivery\DeliveryContainerRegistry;
 use oat\taoDelivery\model\container\delivery\ContainerProvider;
+use oat\taoDelivery\model\container\delivery\DeliveryContainerRegistry;
+use oat\taoItems\helpers\Deployment;
+use oat\taoQtiItem\model\QtiJsonItemCompiler;
+use oat\taoQtiItem\model\qti\Service;
+use oat\taoQtiTest\models\CompilationDataService;
+use oat\taoQtiTest\models\QtiTestCompilerIndex;
+use oat\taoQtiTest\models\TestCategoryRulesService;
+use oat\taoQtiTest\models\cat\CatService;
+use oat\taoQtiTest\models\runner\RunnerService;
 use oat\tao\model\metadata\compiler\ResourceJsonMetadataCompiler;
+use qtism\common\utils\Url;
+use qtism\data\AssessmentItemRef;
+use qtism\data\AssessmentTest;
+use qtism\data\ExtendedAssessmentItemRef;
+use qtism\data\ExtendedAssessmentSection;
+use qtism\data\QtiComponentIterator;
+use qtism\data\content\RubricBlock;
+use qtism\data\content\StylesheetCollection;
+use qtism\data\storage\xml\XmlCompactDocument;
+use qtism\data\storage\xml\XmlDocument;
+use qtism\data\storage\xml\XmlStorageException;
+use qtism\runtime\rendering\css\CssScoper;
+use qtism\runtime\rendering\markup\MarkupPostRenderer;
+use qtism\runtime\rendering\markup\xhtml\XhtmlRenderingEngine;
 
 /**
  * A Test Compiler implementation that compiles a QTI Test and related QTI Items.
@@ -803,7 +804,7 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
             }
 
             if (isset($url) && !preg_match('@^' . ROOT_URL . '@', $url) && !Url::isRelative($url)) {
-                $tmpFile = taoItems_helpers_Deployment::retrieveFile($url, $tmpDir);
+                $tmpFile = Deployment::retrieveFile($url, $tmpDir);
                 if ($tmpFile !== false) {
                     $pathinfo = pathinfo($tmpFile);
                     $handle = fopen($tmpFile, 'r');

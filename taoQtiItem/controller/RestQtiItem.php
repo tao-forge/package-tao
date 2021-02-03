@@ -19,17 +19,18 @@
 
 namespace oat\taoQtiItem\controller;
 
-use oat\tao\model\TaoOntology;
-use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
-use oat\tao\model\taskQueue\TaskLogInterface;
-use \Request;
-use oat\taoQtiItem\model\qti\ImportService;
-use oat\taoQtiItem\model\ItemModel;
+use Request;
 use oat\generis\model\OntologyAwareTrait;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\Export\QTIPackedItemExporter;
+use oat\taoQtiItem\model\ItemModel;
+use oat\taoQtiItem\model\qti\ImportService;
 use oat\taoQtiItem\model\qti\exception\ExtractException;
 use oat\taoQtiItem\model\qti\exception\ParsingException;
-use oat\taoQtiItem\model\Export\QTIPackedItemExporter;
 use oat\taoQtiItem\model\tasks\ImportQtiItem;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\taskQueue\TaskLogInterface;
+use oat\tao\model\taskQueue\TaskLog\Entity\EntityInterface;
 
 /**
  * End point of Rest item API
@@ -245,7 +246,7 @@ class RestQtiItem extends AbstractRestQti
             $item = $this->getDestinationClass()->createInstance($label);
             
             //set the QTI type
-            $itemService = \taoItems_models_classes_ItemsService::singleton();
+            $itemService = ItemsService::singleton();
             $itemService->setItemModel($item, $this->getResource(ItemModel::MODEL_URI));
 
             $this->returnSuccess($item->getUri());
@@ -274,7 +275,7 @@ class RestQtiItem extends AbstractRestQti
             
             $item = new \core_kernel_classes_Resource($id);
 
-            $itemService = \taoItems_models_classes_ItemsService::singleton();
+            $itemService = ItemsService::singleton();
 
             if ($itemService->hasItemModel($item, [ItemModel::MODEL_URI])) {
                 $path = \tao_helpers_Export::getExportFile();

@@ -22,26 +22,26 @@
 
 namespace oat\taoQtiItem\model\Export;
 
+use DomDocument;
+use Exception;
+use League\Flysystem\FileNotFoundException;
+use ZipArchive;
 use common_exception_Error;
 use common_report_Report as Report;
 use core_kernel_classes_Class;
 use core_kernel_classes_Resource;
-use DomDocument;
-use Exception;
-use League\Flysystem\FileNotFoundException;
-use oat\oatbox\event\EventManagerAwareTrait;
 use oat\oatbox\PhpSerializable;
 use oat\oatbox\PhpSerializeStateless;
+use oat\oatbox\event\EventManagerAwareTrait;
 use oat\oatbox\service\ServiceManager;
-use oat\tao\model\resources\SecureResourceServiceInterface;
-use oat\taoQtiItem\model\event\QtiItemExportEvent;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\ItemModel;
-use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
+use oat\taoQtiItem\model\event\QtiItemExportEvent;
 use oat\taoQtiItem\model\qti\metadata\MetadataService;
+use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
+use oat\tao\model\resources\SecureResourceServiceInterface;
 use tao_helpers_File;
 use tao_models_classes_export_ExportHandler;
-use taoItems_models_classes_ItemsService;
-use ZipArchive;
 
 /**
  * Short description of class oat\taoQtiItem\model\ItemModel
@@ -98,7 +98,7 @@ class QtiPackageExportHandler implements tao_models_classes_export_ExportHandler
         $report = Report::createSuccess();
 
         if (count($formValues['instances']) > 0) {
-            $itemService = taoItems_models_classes_ItemsService::singleton();
+            $itemService = ItemsService::singleton();
 
             $fileName = $formValues['filename'] . '_' . time() . '.zip';
             $path = tao_helpers_File::concat([$destination, $fileName]);

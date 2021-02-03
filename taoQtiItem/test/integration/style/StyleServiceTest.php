@@ -22,10 +22,11 @@
 
 namespace oat\taoQtiItem\test\integration\style;
 
-use oat\tao\test\TaoPhpUnitTestRunner;
-use oat\taoQtiItem\model\style\StyleService;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\qti\Service;
+use oat\taoQtiItem\model\style\StyleService;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 class StyleServiceTest extends TaoPhpUnitTestRunner
 {
@@ -45,7 +46,7 @@ class StyleServiceTest extends TaoPhpUnitTestRunner
         $itemTopClass = new \core_kernel_classes_Class('http://www.tao.lu/Ontologies/TAOItem.rdf#Item');
         $this->itemClass = $itemTopClass->createSubClass('style service unit test', 'create for unit test ' . time());
 
-        $itemService = \taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         $qtiItemModel = new \core_kernel_classes_Resource(ItemModel::MODEL_URI);
 
         $itemA = $this->itemClass->createInstance('itemA');

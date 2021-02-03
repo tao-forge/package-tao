@@ -6,17 +6,17 @@
 
 namespace oat\taoQtiItem\model\qti;
 
-use oat\taoQtiItem\model\qti\container\FlowContainer;
+use DOMDocument;
+use common_Logger;
+use common_Serializable;
+use common_ext_ExtensionsManager;
+use oat\taoItems\model\TemplateRenderer;
 use oat\taoQtiItem\model\qti\container\ContainerItemBody;
-use oat\taoQtiItem\model\qti\interaction\Interaction;
-use oat\taoQtiItem\model\qti\feedback\ModalFeedback;
-use oat\taoQtiItem\model\qti\response\TemplatesDriven;
+use oat\taoQtiItem\model\qti\container\FlowContainer;
 use oat\taoQtiItem\model\qti\exception\QtiModelException;
-use \common_Serializable;
-use \common_Logger;
-use \common_ext_ExtensionsManager;
-use \taoItems_models_classes_TemplateRenderer;
-use \DOMDocument;
+use oat\taoQtiItem\model\qti\feedback\ModalFeedback;
+use oat\taoQtiItem\model\qti\interaction\Interaction;
+use oat\taoQtiItem\model\qti\response\TemplatesDriven;
 use oat\tao\helpers\Template;
 
 /**
@@ -524,7 +524,7 @@ class Item extends IdentifiedElement implements FlowContainer, IdentifiedElement
         $variables['taoQtiItem_lib_path'] = isset($options['path']) && isset($options['path']['taoQtiItem']) ? $options['path']['taoQtiItem'] : '';
         $variables['client_config_url'] = isset($options['client_config_url']) ? $options['client_config_url'] : '';
 
-        $tplRenderer = new taoItems_models_classes_TemplateRenderer($template, $variables);
+        $tplRenderer = new TemplateRenderer($template, $variables);
 
         $returnValue = $tplRenderer->render();
 

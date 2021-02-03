@@ -23,30 +23,31 @@
 namespace oat\taoQtiItem\controller;
 
 //use oat\taoQtiItem\controller\QtiPreview;
-use oat\oatbox\service\ServiceManager;
-use oat\tao\model\asset\AssetService;
-use oat\taoQtiItem\helpers\QtiFile;
-use oat\taoQtiItem\model\qti\Service;
-use oat\taoQtiItem\model\qti\Item;
+
 use OutOfBoundsException;
 use OutOfRangeException;
-use \taoItems_actions_ItemPreview;
-use \tao_helpers_Uri;
-use \core_kernel_classes_Resource;
-use \common_Exception;
-use \taoQtiCommon_helpers_PciVariableFiller;
-use \common_Logger;
-use \taoQtiCommon_helpers_ResultTransmissionException;
-use \taoQtiCommon_helpers_PciStateOutput;
-use \taoQtiCommon_helpers_Utils;
-use \common_ext_ExtensionsManager;
+use common_Exception;
+use common_Logger;
+use common_ext_ExtensionsManager;
+use core_kernel_classes_Resource;
+use oat\oatbox\service\ServiceManager;
+use oat\taoItems\controller\ItemPreview;
+use oat\taoQtiItem\helpers\QtiFile;
+use oat\taoQtiItem\model\qti\Item;
+use oat\taoQtiItem\model\qti\Service;
+use oat\tao\model\asset\AssetService;
 use qtism\common\datatypes\files\FileSystemFileManager;
+use qtism\data\storage\StorageException;
+use qtism\data\storage\xml\XmlDocument;
 use qtism\runtime\common\State;
-use qtism\runtime\tests\SessionManager;
 use qtism\runtime\tests\AssessmentItemSession;
 use qtism\runtime\tests\AssessmentItemSessionException;
-use qtism\data\storage\xml\XmlDocument;
-use qtism\data\storage\StorageException;
+use qtism\runtime\tests\SessionManager;
+use taoQtiCommon_helpers_PciStateOutput;
+use taoQtiCommon_helpers_PciVariableFiller;
+use taoQtiCommon_helpers_ResultTransmissionException;
+use taoQtiCommon_helpers_Utils;
+use tao_helpers_Uri;
 
 /**
  * Qti Item Runner Controller
@@ -56,7 +57,7 @@ use qtism\data\storage\StorageException;
 
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
-class QtiPreview extends taoItems_actions_ItemPreview
+class QtiPreview extends ItemPreview
 {
 
     public function getPreviewUrl($item, $options = [])
@@ -178,7 +179,7 @@ class QtiPreview extends taoItems_actions_ItemPreview
 
     /**
      * (non-PHPdoc)
-     * @see taoItems_actions_ItemPreview::getRenderedItem()
+     * @see oat\taoItems\controller\ItemPreview::getRenderedItem()
      */
     protected function getRenderedItem($item)
     {

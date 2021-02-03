@@ -7,13 +7,13 @@
 namespace oat\taoQtiItem\model\qti;
 
 use InvalidArgumentException;
-use oat\taoQtiItem\model\qti\exception\QtiModelException;
-use oat\taoQtiItem\model\qti\attribute\Generic;
-use oat\taoQtiItem\model\qti\container\FlowContainer;
-use oat\taoQtiItem\model\qti\attribute\ResponseIdentifier;
-use common_Logger;
-use taoItems_models_classes_TemplateRenderer;
 use ReflectionClass;
+use common_Logger;
+use oat\taoItems\model\TemplateRenderer;
+use oat\taoQtiItem\model\qti\attribute\Generic;
+use oat\taoQtiItem\model\qti\attribute\ResponseIdentifier;
+use oat\taoQtiItem\model\qti\container\FlowContainer;
+use oat\taoQtiItem\model\qti\exception\QtiModelException;
 use stdClass;
 
 /**
@@ -438,7 +438,7 @@ abstract class Element implements Exportable
         if (isset($variables['attributes'])) {
             $variables['attributes'] = $this->xmlizeOptions($variables['attributes'], true);
         }
-        $tplRenderer = new taoItems_models_classes_TemplateRenderer($template, $variables);
+        $tplRenderer = new TemplateRenderer($template, $variables);
         $returnValue = $tplRenderer->render();
 
         return (string) $returnValue;

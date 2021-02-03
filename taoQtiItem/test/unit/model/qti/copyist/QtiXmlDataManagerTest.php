@@ -20,22 +20,21 @@ declare(strict_types=1);
 
 namespace oat\taoQtiItem\test\unit\model\listener;
 
-
+use League\Flysystem\FileExistsException;
 use common_Exception;
 use core_kernel_classes_ContainerCollection;
 use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
 use core_kernel_persistence_Exception;
-use League\Flysystem\FileExistsException;
 use oat\generis\model\data\Ontology;
 use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
-use oat\taoQtiItem\model\qti\copyist\QtiXmlDataManager;
-use tao_models_classes_FileNotFoundException;
-use taoItems_models_classes_ItemsService;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\qti\copyist\QtiXmlDataManager;
+use tao_models_classes_FileNotFoundException;
 
 class QtiXmlDataManagerTest extends TestCase
 {
@@ -65,7 +64,7 @@ class QtiXmlDataManagerTest extends TestCase
             ->method('unserializeDirectory')
             ->willReturn($directoryMock);
 
-        $itemsServiceMock = $this->createMock(taoItems_models_classes_ItemsService::class);
+        $itemsServiceMock = $this->createMock(ItemsService::class);
         $itemsServiceMock
             ->expects(self::exactly(3))
             ->method('getItemContentProperty')
@@ -98,7 +97,7 @@ class QtiXmlDataManagerTest extends TestCase
 
         $serviceLocatorMock = $this->getServiceLocatorMock([
             FileReferenceSerializer::SERVICE_ID => $fileReferenceSerializerMock,
-            taoItems_models_classes_ItemsService::class => $itemsServiceMock,
+            ItemsService::class => $itemsServiceMock,
         ]);
 
         $self = $this;

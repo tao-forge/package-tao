@@ -20,6 +20,7 @@
  *
  */
 
+use oat\taoItems\model\Import\ImportException;
 use oat\taoQtiItem\model\qti\ManifestParser;
 
 /**
@@ -178,7 +179,7 @@ class taoQtiTest_models_classes_ManifestParser extends ManifestParser
                 break;
             
             default:
-                throw new taoItems_models_classes_Import_ImportException('Invalid sourceType');
+                throw new ImportException('Invalid sourceType');
         }
         
         if ($xml === false) {

@@ -22,6 +22,7 @@ declare(strict_types=1);
 namespace oat\taoQtiItem\test\unit\model;
 
 use Exception;
+use Psr\Log\LoggerInterface;
 use common_Exception;
 use core_kernel_classes_ContainerCollection;
 use core_kernel_classes_Literal;
@@ -29,10 +30,9 @@ use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
 use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\generis\test\MockObject;
-use oat\oatbox\filesystem\Directory;
-use Psr\Log\LoggerInterface;
-use taoItems_models_classes_ItemsService;
 use oat\generis\test\TestCase;
+use oat\oatbox\filesystem\Directory;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\Service;
 
 class QtiItemServiceTest extends TestCase
@@ -43,7 +43,7 @@ class QtiItemServiceTest extends TestCase
     private $qtiService;
 
     /**
-     * @var taoItems_models_classes_ItemsService|MockObject
+     * @var oat\taoItems\model\ItemsService|MockObject
      */
     private $itemServiceMock;
 
@@ -55,11 +55,11 @@ class QtiItemServiceTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->itemServiceMock = $this->createMock(taoItems_models_classes_ItemsService::class);
+        $this->itemServiceMock = $this->createMock(ItemsService::class);
         $this->fileSerializerMock = $this->createMock(FileReferenceSerializer::class);
 
         $slMock = $this->getServiceLocatorMock([
-            taoItems_models_classes_ItemsService::class => $this->itemServiceMock,
+            ItemsService::class => $this->itemServiceMock,
             FileReferenceSerializer::SERVICE_ID => $this->fileSerializerMock
         ]);
 

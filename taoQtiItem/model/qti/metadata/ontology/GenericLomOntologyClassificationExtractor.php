@@ -24,12 +24,12 @@ namespace oat\taoQtiItem\model\qti\metadata\ontology;
 use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdf;
 use oat\generis\model\OntologyRdfs;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\qti\metadata\MetadataExtractionException;
+use oat\taoQtiItem\model\qti\metadata\MetadataExtractor;
 use oat\taoQtiItem\model\qti\metadata\imsManifest\classificationMetadata\ClassificationEntryMetadataValue;
 use oat\taoQtiItem\model\qti\metadata\imsManifest\classificationMetadata\ClassificationMetadataValue;
 use oat\taoQtiItem\model\qti\metadata\imsManifest\classificationMetadata\ClassificationSourceMetadataValue;
-use oat\taoQtiItem\model\qti\metadata\MetadataExtractionException;
-use oat\taoQtiItem\model\qti\metadata\MetadataExtractor;
-use taoItems_models_classes_ItemsService;
 use taoTests_models_classes_TestsService;
 
 class GenericLomOntologyClassificationExtractor implements MetadataExtractor
@@ -38,8 +38,8 @@ class GenericLomOntologyClassificationExtractor implements MetadataExtractor
 
     static $excludedProperties = [
         OntologyRdf::RDF_TYPE,
-        taoItems_models_classes_ItemsService::PROPERTY_ITEM_CONTENT,
-        taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL,
+        ItemsService::PROPERTY_ITEM_CONTENT,
+        ItemsService::PROPERTY_ITEM_MODEL,
         taoTests_models_classes_TestsService::PROPERTY_TEST_TESTMODEL,
         taoTests_models_classes_TestsService::PROPERTY_TEST_CONTENT,
     ];

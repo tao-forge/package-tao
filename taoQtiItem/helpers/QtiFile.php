@@ -21,8 +21,8 @@
 
 namespace oat\taoQtiItem\helpers;
 
-use \core_kernel_classes_Resource;
-use \taoItems_models_classes_ItemsService;
+use core_kernel_classes_Resource;
+use oat\taoItems\model\ItemsService;
 
 /**
  * @access public
@@ -42,7 +42,7 @@ class QtiFile
      */
     public static function getQtiFileContent(core_kernel_classes_Resource $item, $language = '')
     {
-        $itemDirectory = taoItems_models_classes_ItemsService::singleton()->getItemDirectory($item, $language);
+        $itemDirectory = ItemsService::singleton()->getItemDirectory($item, $language);
         return $itemDirectory->getFile(self::FILE)->read();
     }
 }

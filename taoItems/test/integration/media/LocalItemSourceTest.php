@@ -21,9 +21,10 @@
 
 namespace oat\taoItems\test\media;
 
-use oat\tao\test\TaoPhpUnitTestRunner;
+use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\media\LocalItemSource;
 use oat\tao\model\media\MediaAsset;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 /**
  * This class aims at testing LocalItemSource.
@@ -97,7 +98,7 @@ class LocalItemSourceTest extends TaoPhpUnitTestRunner
 
     protected function getLocalItemSource()
     {
-        $itemService = \taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         $this->item = $itemService->createInstance($itemService->getRootClass(), 'testItem');
         $source = new LocalItemSource([
             'item' => $this->item,
@@ -110,7 +111,7 @@ class LocalItemSourceTest extends TaoPhpUnitTestRunner
 
     protected function getItemServiceMock()
     {
-        $itemServiceMock = $this->getMockBuilder(\taoItems_models_classes_ItemsService::class)
+        $itemServiceMock = $this->getMockBuilder(ItemsService::class)
             ->disableOriginalConstructor()
             ->getMock();
         $itemServiceMock->expects($this->any())

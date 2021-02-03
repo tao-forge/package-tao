@@ -23,12 +23,13 @@
 namespace oat\taoQtiTest\models;
 
 use oat\generis\Helper\SystemHelper;
-use oat\taoQtiItem\model\qti\Resource;
-use qtism\data\storage\xml\XmlDocument;
-use oat\oatbox\filesystem\FileSystemService;
 use oat\oatbox\filesystem\Directory;
-use qtism\data\AssessmentTest;
+use oat\oatbox\filesystem\FileSystemService;
 use oat\oatbox\service\ConfigurableService;
+use oat\taoItems\model\TemplateRenderer;
+use oat\taoQtiItem\model\qti\Resource;
+use qtism\data\AssessmentTest;
+use qtism\data\storage\xml\XmlDocument;
 
 /**
  * Miscellaneous utility methods for the QtiTest extension.
@@ -120,7 +121,7 @@ class QtiTestUtils extends ConfigurableService
     public function emptyImsManifest($version = '2.1')
     {
         $manifestFileName = ($version === '2.1') ? 'imsmanifest' : 'imsmanifestQti22';
-        $templateRenderer = new \taoItems_models_classes_TemplateRenderer(ROOT_PATH . 'taoQtiItem/model/qti/templates/' . $manifestFileName . '.tpl.php', [
+        $templateRenderer = new TemplateRenderer(ROOT_PATH . 'taoQtiItem/model/qti/templates/' . $manifestFileName . '.tpl.php', [
             'qtiItems' => [],
             'manifestIdentifier' => 'QTI-TEST-MANIFEST-' . \tao_helpers_Display::textCleaner(uniqid('tao', true), '-')
         ]);

@@ -23,15 +23,16 @@
 namespace oat\taoQtiItem\helpers;
 
 //use oat\taoQtiItem\helpers\Authoring;
-use common_Logger;
+
 use DOMDocument;
+use common_Logger;
+use common_exception_Error;
+use core_kernel_classes_Resource;
 use oat\oatbox\filesystem\File;
-use oat\taoQtiItem\model\qti\exception\QtiModelException;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\Parser;
-use \core_kernel_classes_Resource;
-use \taoItems_models_classes_ItemsService;
-use \tao_helpers_File;
-use \common_exception_Error;
+use oat\taoQtiItem\model\qti\exception\QtiModelException;
+use tao_helpers_File;
 
 /**
  * Helper to provide methods for QTI authoring
@@ -112,7 +113,7 @@ class Authoring
 
         $returnValue = [];
 
-        $directory = taoItems_models_classes_ItemsService::singleton()->getItemDirectory($item, $lang);
+        $directory = ItemsService::singleton()->getItemDirectory($item, $lang);
         
         foreach ($relativeSourceFiles as $relPath) {
             if (! tao_helpers_File::securityCheck($relPath, true)) {

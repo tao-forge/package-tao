@@ -23,12 +23,14 @@ declare(strict_types=1);
 
 namespace oat\taoQtiItem\model;
 
+use DOMDocument;
+use Exception;
+use Throwable;
 use common_exception_Error;
 use common_report_Report;
 use core_kernel_classes_Resource;
-use DOMDocument;
-use Exception;
 use oat\oatbox\filesystem\Directory;
+use oat\taoItems\model\CompilationFailedException;
 use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoQtiItem\model\compile\QtiAssetCompiler\QtiItemAssetCompiler;
 use oat\taoQtiItem\model\compile\QtiAssetCompiler\QtiItemAssetXmlReplacer;
@@ -36,14 +38,12 @@ use oat\taoQtiItem\model\compile\QtiAssetCompiler\XIncludeXmlInjector;
 use oat\taoQtiItem\model\pack\QtiItemPacker;
 use oat\taoQtiItem\model\portableElement\PortableElementService;
 use oat\taoQtiItem\model\qti\Element;
-use oat\taoQtiItem\model\qti\exception\XIncludeException;
 use oat\taoQtiItem\model\qti\Item;
 use oat\taoQtiItem\model\qti\Parser;
 use oat\taoQtiItem\model\qti\Service;
+use oat\taoQtiItem\model\qti\exception\XIncludeException;
 use tao_helpers_Xml;
 use tao_models_classes_service_StorageDirectory;
-use taoItems_models_classes_CompilationFailedException;
-use Throwable;
 
 /**
  * The QTI Json Item Compiler
@@ -68,7 +68,7 @@ class QtiJsonItemCompiler extends QtiItemCompiler
     /**
      * Generate JSON version of item
      * @return common_report_Report
-     * @throws taoItems_models_classes_CompilationFailedException
+     * @throws oat\taoItems\model\CompilationFailedException
      */
     public function compileJson()
     {
@@ -154,7 +154,7 @@ class QtiJsonItemCompiler extends QtiItemCompiler
         $qtiItem = $this->getServiceLocator()->get(Service::class)->getDataItemByRdfItem($item, $lang);
 
         if (is_null($qtiItem)) {
-            throw new taoItems_models_classes_CompilationFailedException(
+            throw new CompilationFailedException(
                 __('Unable to retrieve item : "%s"', $item->getLabel())
             );
         }
@@ -173,7 +173,7 @@ class QtiJsonItemCompiler extends QtiItemCompiler
                 throw new \InvalidArgumentException();
             }
         } catch (Throwable $e) {
-            throw new taoItems_models_classes_CompilationFailedException(
+            throw new CompilationFailedException(
                 sprintf('Unable to load XML for item %s', $qtiItem->getIdentifier())
             );
         }

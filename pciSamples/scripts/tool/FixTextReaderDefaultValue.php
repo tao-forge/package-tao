@@ -5,6 +5,7 @@ namespace oat\pciSamples\scripts\tool;
 use League\Flysystem\Adapter\Local;
 use oat\oatbox\action\Action;
 use oat\pciSamples\model\update\ItemFixTextReaderDefaultValue;
+use oat\taoItems\model\ItemsService;
 
 /**
  * Class FixTextReaderDefaultValue
@@ -23,7 +24,7 @@ class FixTextReaderDefaultValue implements Action
 
         \common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiItem');
 
-        $dir = \taoItems_models_classes_ItemsService::singleton()->getDefaultItemDirectory();
+        $dir = ItemsService::singleton()->getDefaultItemDirectory();
 
         // maybe it's a dirty way but it's quicker. too much modification would have been required in ItemUpdater
         $adapter = $dir->getFileSystem()->getAdapter();

@@ -79,7 +79,7 @@ class DefaultTheme implements Theme
                 $template = Template::getTemplate('blocks/login.tpl', 'tao');
                 break;
             default:
-                $template = Template::getTemplate($id, 'tao');
+                return null;
         }
         return $template;
     }

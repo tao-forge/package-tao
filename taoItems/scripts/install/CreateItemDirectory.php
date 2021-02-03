@@ -25,6 +25,7 @@ namespace oat\taoItems\scripts\install;
 
 use oat\oatbox\extension\InstallAction;
 use oat\oatbox\filesystem\FileSystemService;
+use oat\taoItems\model\ItemsService;
 
 /**
  * Register the category service
@@ -43,6 +44,6 @@ class CreateItemDirectory extends InstallAction
             $source = $fsService->createFileSystem('itemDirectory', 'taoItems/itemData');
             $this->registerService(FileSystemService::SERVICE_ID, $fsService);
         }
-        \taoItems_models_classes_ItemsService::singleton()->setDefaultFilesourceId('itemDirectory');
+        ItemsService::singleton()->setDefaultFilesourceId('itemDirectory');
     }
 }

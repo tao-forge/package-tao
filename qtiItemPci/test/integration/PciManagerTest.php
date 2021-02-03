@@ -2,18 +2,19 @@
 
 namespace oat\qtiItemPci\test\integration;
 
+use oat\generis\test\GenerisTestCase;
+use oat\generis\test\MockObject;
 use oat\qtiItemPci\controller\PciManager;
 use oat\qtiItemPci\model\IMSPciModel;
 use oat\qtiItemPci\model\ItemsScannerService;
 use oat\qtiItemPci\model\PciModel;
 use oat\qtiItemPci\model\portableElement\dataObject\PciDataObject;
 use oat\qtiItemPci\model\portableElement\storage\PciRegistry;
-use oat\generis\test\GenerisTestCase;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\portableElement\PortableElementService;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementException;
 use oat\taoQtiItem\model\portableElement\model\PortableElementModel;
-use oat\taoQtiItem\model\portableElement\PortableElementService;
 use oat\taoQtiItem\model\portableElement\storage\PortableElementRegistry;
-use oat\generis\test\MockObject;
 use oat\taoQtiItem\model\qti\ImportService;
 
 class PciManagerTest extends GenerisTestCase
@@ -26,7 +27,7 @@ class PciManagerTest extends GenerisTestCase
     private $requestMock;
     private $ontologyMock;
     /**
-     * @var \taoItems_models_classes_ItemsService
+     * @var \oat\taoItems\model\ItemsService
      */
     private $itemsService;
 
@@ -52,7 +53,7 @@ class PciManagerTest extends GenerisTestCase
     {
         $this->ontologyMock = $this->getOntologyMock();
         $this->requestMock = $this->createMock(\Request::class);
-        $this->itemsService = \taoItems_models_classes_ItemsService::singleton();
+        $this->itemsService = ItemsService::singleton();
         $this->itemsService->setModel($this->ontologyMock);
         $this->portableElementService = new PortableElementService();
         $this->testService = \taoTests_models_classes_TestsService::singleton();

@@ -22,10 +22,10 @@
 
 namespace oat\taoQtiItem\model\qti\response;
 
+use oat\taoItems\model\TemplateRenderer;
+use oat\taoQtiItem\helpers\QtiSerializer;
 use oat\taoQtiItem\model\qti\exception\QtiModelException;
 use oat\taoQtiItem\model\qti\exception\TemplateException;
-use oat\taoQtiItem\helpers\QtiSerializer;
-use \taoItems_models_classes_TemplateRenderer;
 
 /**
  * Short description of class oat\taoQtiItem\model\qti\response\Template
@@ -229,7 +229,7 @@ class Template extends ResponseProcessing implements Rule
 
         if ($this->uri != self::NONE) {
             //if there is actually a real response template involved, render the template
-            $tplRenderer = new taoItems_models_classes_TemplateRenderer(static::getTemplatePath() . '/qti.rptemplate.tpl.php', ['uri' => $this->uri]);
+            $tplRenderer = new TemplateRenderer(static::getTemplatePath() . '/qti.rptemplate.tpl.php', ['uri' => $this->uri]);
             $returnValue = $tplRenderer->render();
         }
 

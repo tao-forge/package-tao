@@ -21,21 +21,22 @@
 
 namespace oat\taoOutcomeUi\test\integration\model;
 
+use common_exception_Error;
+use common_ext_ExtensionsManager;
+use core_kernel_classes_Property;
+use core_kernel_classes_Resource;
 use oat\generis\test\GenerisPhpUnitTestRunner;
 use oat\oatbox\service\ServiceManager;
 use oat\oatbox\user\User;
-use oat\tao\test\TaoPhpUnitTestRunner;
-use common_ext_ExtensionsManager;
 use oat\taoDeliveryRdf\model\DeliveryContainerService;
-use oat\taoResultServer\models\classes\ResultManagement;
+use oat\taoItems\model\ItemsService;
 use oat\taoOutcomeUi\model\ResultsService;
+use oat\taoResultServer\models\classes\ResultManagement;
 use oat\taoResultServer\models\classes\ResultServerService;
+use oat\tao\test\TaoPhpUnitTestRunner;
 use taoResultServer_models_classes_OutcomeVariable;
 use taoResultServer_models_classes_ResponseVariable;
 use taoResultServer_models_classes_TraceVariable;
-use core_kernel_classes_Resource;
-use core_kernel_classes_Property;
-use common_exception_Error;
 
 /**
  * @TODO:: Because of usage of tao/models/classes/ClassServiceTrait.php in ResultService we can not mock storage and fix this test.
@@ -562,7 +563,7 @@ class ResultsServiceTest extends GenerisPhpUnitTestRunner
         $relatedItem1Prophecy = $this->prophesize(core_kernel_classes_Resource::class);
         $relatedItem1Prophecy->getLabel()->willReturn('MyRelatedItem1');
         $relatedItem1Prophecy->getUri()->willReturn('MyRelatedItemUri1');
-        $relatedItem1Prophecy->getUniquePropertyValue(new core_kernel_classes_Property(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL))->willReturn($itemModel1Prophecy->reveal());
+        $relatedItem1Prophecy->getUniquePropertyValue(new core_kernel_classes_Property(ItemsService::PROPERTY_ITEM_MODEL))->willReturn($itemModel1Prophecy->reveal());
 
         $itemModel2Prophecy = $this->prophesize(core_kernel_classes_Resource::class);
         $itemModel2Prophecy->getLabel()->willReturn('MySecondItemModel');
@@ -570,7 +571,7 @@ class ResultsServiceTest extends GenerisPhpUnitTestRunner
         $relatedItem2Prophecy = $this->prophesize(core_kernel_classes_Resource::class);
         $relatedItem2Prophecy->getLabel()->willReturn('MyRelatedItem2');
         $relatedItem2Prophecy->getUri()->willReturn('MyRelatedItemUri2');
-        $relatedItem2Prophecy->getUniquePropertyValue(new core_kernel_classes_Property(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL))->willReturn($itemModel2Prophecy->reveal());
+        $relatedItem2Prophecy->getUniquePropertyValue(new core_kernel_classes_Property(ItemsService::PROPERTY_ITEM_MODEL))->willReturn($itemModel2Prophecy->reveal());
 
         $itemModel3Prophecy = $this->prophesize(core_kernel_classes_Resource::class);
         $itemModel3Prophecy->getLabel()->willReturn('MyThirdItemModel');
@@ -578,7 +579,7 @@ class ResultsServiceTest extends GenerisPhpUnitTestRunner
         $relatedItem3Prophecy = $this->prophesize(core_kernel_classes_Resource::class);
         $relatedItem3Prophecy->getLabel()->willReturn('MyRelatedItem3');
         $relatedItem3Prophecy->getUri()->willReturn('MyRelatedItemUri3');
-        $relatedItem3Prophecy->getUniquePropertyValue(new core_kernel_classes_Property(taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL))->willReturn($itemModel3Prophecy->reveal());
+        $relatedItem3Prophecy->getUniquePropertyValue(new core_kernel_classes_Property(ItemsService::PROPERTY_ITEM_MODEL))->willReturn($itemModel3Prophecy->reveal());
 
 
         //Variables for Item 1

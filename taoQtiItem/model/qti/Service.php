@@ -21,31 +21,31 @@
 
 namespace oat\taoQtiItem\model\qti;
 
+use Exception;
+use League\Flysystem\FileNotFoundException;
+use common_Exception;
+use common_Logger;
 use common_exception_Error;
-use common_exception_NotFound;
-use oat\oatbox\filesystem\File;
-use oat\taoQtiItem\model\qti\parser\XmlToItemParser;
-use tao_helpers_Uri;
 use common_exception_FileSystemError;
-use oat\generis\model\fileReference\FileReferenceSerializer;
+use common_exception_NotFound;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyAwareTrait;
+use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\oatbox\event\EventManagerAwareTrait;
+use oat\oatbox\filesystem\File;
 use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\service\ServiceManager;
+use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\event\ItemCreatedEvent;
 use oat\taoItems\model\event\ItemUpdatedEvent;
+use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoQtiItem\helpers\Authoring;
 use oat\taoQtiItem\model\ItemModel;
+use oat\taoQtiItem\model\qti\exception\ParsingException;
 use oat\taoQtiItem\model\qti\exception\XIncludeException;
 use oat\taoQtiItem\model\qti\metadata\MetadataRegistry;
-use oat\taoQtiItem\model\qti\exception\ParsingException;
-use \core_kernel_classes_Resource;
-use \taoItems_models_classes_ItemsService;
-use \common_Logger;
-use \common_Exception;
-use \Exception;
-use oat\taoItems\model\media\ItemMediaResolver;
-use League\Flysystem\FileNotFoundException;
+use oat\taoQtiItem\model\qti\parser\XmlToItemParser;
+use tao_helpers_Uri;
 
 /**
  * The QTI_Service gives you a central access to the managment methods of the
@@ -153,7 +153,7 @@ class Service extends ConfigurableService
         $qtiItem->setAttribute('xml:lang', $lang);
         $qtiItem->setAttribute('label', $label);
 
-        $directory = taoItems_models_classes_ItemsService::singleton()->getItemDirectory($rdfItem);
+        $directory = ItemsService::singleton()->getItemDirectory($rdfItem);
         $success = $directory->getFile(self::QTI_ITEM_FILE)->put($qtiItem->toXML());
 
         if ($success) {
@@ -258,7 +258,7 @@ class Service extends ConfigurableService
 
     public function hasItemModel(core_kernel_classes_Resource $item, $models)
     {
-        return taoItems_models_classes_ItemsService::singleton()->hasItemModel($item, $models);
+        return ItemsService::singleton()->hasItemModel($item, $models);
     }
 
     /**
@@ -269,7 +269,7 @@ class Service extends ConfigurableService
      */
     public function deleteContentByRdfItem(core_kernel_classes_Resource $item)
     {
-        return taoItems_models_classes_ItemsService::singleton()->deleteItemContent($item);
+        return ItemsService::singleton()->deleteItemContent($item);
     }
 
     /**
@@ -326,9 +326,9 @@ class Service extends ConfigurableService
         return ServiceManager::getServiceManager()->get(self::class);
     }
 
-    private function getItemService(): taoItems_models_classes_ItemsService
+    private function getItemService(): ItemsService
     {
-        return $this->getServiceLocator()->get(taoItems_models_classes_ItemsService::class);
+        return $this->getServiceLocator()->get(ItemsService::class);
     }
 
     /**

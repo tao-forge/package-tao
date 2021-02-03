@@ -25,6 +25,7 @@ use oat\tao\model\user\TaoRoles;
 use oat\taoItems\scripts\install\CreateItemDirectory;
 use oat\taoItems\scripts\install\RegisterCategoryService;
 use oat\taoItems\scripts\install\RegisterNpmPaths;
+use oat\taoItems\controller\ItemContent;
 
 /*
  * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
@@ -47,10 +48,10 @@ return [
     ],
     'install' => [
         'rdf' => [
-            __DIR__ . '/models/ontology/taoitem.rdf',
-            __DIR__ . '/models/ontology/taoItemRunner.rdf',
-            __DIR__ . '/models/ontology/indexation.rdf',
-            __DIR__ . '/models/ontology/category.rdf',
+            __DIR__ . '/scripts/install/ontology/taoitem.rdf',
+            __DIR__ . '/scripts/install/ontology/taoItemRunner.rdf',
+            __DIR__ . '/scripts/install/ontology/indexation.rdf',
+            __DIR__ . '/scripts/install/ontology/category.rdf',
         ],
         'php'   => [
             CreateItemDirectory::class,
@@ -61,10 +62,13 @@ return [
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOItem.rdf#ItemsManagerRole',
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOItem.rdf#ItemsManagerRole', ['ext' => 'taoItems']],
-        ['grant', 'http://www.tao.lu/Ontologies/TAOItem.rdf#AbstractItemAuthor', 'taoItems_actions_ItemContent'],
+        ['grant', 'http://www.tao.lu/Ontologies/TAOItem.rdf#AbstractItemAuthor', ItemContent::class],
         ['grant', 'http://www.tao.lu/Ontologies/TAO.rdf#DeliveryRole', ['ext' => 'taoItems', 'mod' => 'ItemRunner']],
         ['grant', TaoRoles::REST_PUBLISHER, ['ext' => 'taoItems', 'mod' => 'RestItems']],
         ['grant', TaoRoles::REST_PUBLISHER, ['ext' => 'taoItems', 'mod' => 'RestFormItem']],
+    ],
+    'routes' => [
+        '/taoItems'      => 'oat\\taoItems\\controller',
     ],
     'constants' => [
         # actions directory
@@ -84,5 +88,8 @@ return [
 
         #BASE URL (usually the domain root)
         'BASE_URL'              => ROOT_URL . 'taoItems/',
+    ],
+    'extra' => [
+        'structures' => $extpath . 'controller' . DIRECTORY_SEPARATOR . 'structures.xml',
     ]
 ];

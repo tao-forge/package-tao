@@ -23,6 +23,8 @@
 
 namespace oat\taoQtiItem\model\Export;
 
+use oat\taoItems\model\TemplateRenderer;
+
 class QTIPackedItem22Exporter extends QTIPackedItemExporter
 {
     
@@ -31,7 +33,7 @@ class QTIPackedItem22Exporter extends QTIPackedItemExporter
         $dir = \common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiItem')->getDir();
         $tpl = $dir . 'model/qti/templates/imsmanifestQti22.tpl.php';
         
-        $templateRenderer = new \taoItems_models_classes_TemplateRenderer($tpl, [
+        $templateRenderer = new TemplateRenderer($tpl, [
             'qtiItems'              => [$qtiItemData],
             'manifestIdentifier'    => 'MANIFEST-' . \tao_helpers_Display::textCleaner(uniqid('tao', true), '-')
         ]);

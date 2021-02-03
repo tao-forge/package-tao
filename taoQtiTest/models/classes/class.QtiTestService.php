@@ -23,15 +23,13 @@ use League\Flysystem\FileExistsException;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
 use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\model\resources\ResourceAccessDeniedException;
-use oat\tao\model\resources\SecureResourceServiceInterface;
-use oat\tao\model\TaoOntology;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\ImportService;
-use oat\taoQtiItem\model\qti\metadata\importer\MetadataImporter;
-use oat\taoQtiItem\model\qti\metadata\MetadataGuardianResource;
-use oat\taoQtiItem\model\qti\metadata\MetadataService;
 use oat\taoQtiItem\model\qti\Resource;
 use oat\taoQtiItem\model\qti\Service;
+use oat\taoQtiItem\model\qti\metadata\MetadataGuardianResource;
+use oat\taoQtiItem\model\qti\metadata\MetadataService;
+use oat\taoQtiItem\model\qti\metadata\importer\MetadataImporter;
 use oat\taoQtiTest\models\cat\AdaptiveSectionInjectionException;
 use oat\taoQtiTest\models\cat\CatEngineNotFoundException;
 use oat\taoQtiTest\models\cat\CatService;
@@ -39,14 +37,17 @@ use oat\taoQtiTest\models\metadata\MetadataTestContextAware;
 use oat\taoQtiTest\models\render\QtiPackageImportPreprocessing;
 use oat\taoQtiTest\models\test\AssessmentTestXmlFactory;
 use oat\taoTests\models\event\TestUpdatedEvent;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\resources\ResourceAccessDeniedException;
+use oat\tao\model\resources\SecureResourceServiceInterface;
 use qtism\common\utils\Format;
 use qtism\data\AssessmentItemRef;
 use qtism\data\QtiComponentCollection;
 use qtism\data\SectionPartCollection;
 use qtism\data\storage\StorageException;
-use qtism\data\storage\xml\marshalling\UnmarshallingException;
 use qtism\data\storage\xml\XmlDocument;
 use qtism\data\storage\xml\XmlStorageException;
+use qtism\data\storage\xml\marshalling\UnmarshallingException;
 use taoTests_models_classes_TestsService as TestService;
 
 /**
@@ -425,7 +426,7 @@ class taoQtiTest_models_classes_QtiTestService extends TestService
 
         if ($report->containsError() === true && $validPackage === true && $validManifest === true && $testsFound === true) {
             // We consider a test package as an atomic component, we then rollback it.
-            $itemService = $this->getServiceLocator()->get(taoItems_models_classes_ItemsService::class);
+            $itemService = $this->getServiceLocator()->get(ItemsService::class);
 
             foreach ($report as $r) {
                 $data = $r->getData();

@@ -19,24 +19,25 @@
 *
 */
 
+use oat\oatbox\service\ServiceManager;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiTest\models\ExtendedStateService;
+use oat\taoQtiTest\models\QtiTestCompilerIndex;
 use oat\taoQtiTest\models\runner\RunnerService;
+use oat\taoQtiTest\models\runner\RunnerServiceContext;
+use oat\taoQtiTest\models\runner\rubric\QtiRunnerRubric;
 use oat\taoQtiTest\models\runner\time\TimerLabelFormatterService;
+use qtism\common\datatypes\QtiString;
 use qtism\data\NavigationMode;
 use qtism\data\SubmissionMode;
 use qtism\runtime\common\Container;
-use qtism\runtime\tests\AssessmentTestSession;
-use qtism\runtime\tests\AssessmentTestSessionException;
 use qtism\runtime\tests\AssessmentItemSession;
 use qtism\runtime\tests\AssessmentItemSessionState;
+use qtism\runtime\tests\AssessmentTestSession;
+use qtism\runtime\tests\AssessmentTestSessionException;
 use qtism\runtime\tests\AssessmentTestSessionState;
 use qtism\runtime\tests\Jump;
 use qtism\runtime\tests\RouteItem;
-use oat\taoQtiTest\models\ExtendedStateService;
-use oat\taoQtiTest\models\QtiTestCompilerIndex;
-use oat\taoQtiTest\models\runner\rubric\QtiRunnerRubric;
-use qtism\common\datatypes\QtiString;
-use oat\oatbox\service\ServiceManager;
-use oat\taoQtiTest\models\runner\RunnerServiceContext;
 
 /**
 * Utility methods for the QtiTest Test Runner.
@@ -85,15 +86,15 @@ class taoQtiTest_helpers_TestRunnerUtils
         $definition =  new core_kernel_classes_Resource(RunnerService::INSTANCE_TEST_ITEM_RUNNER_SERVICE);
         $serviceCall = new tao_models_classes_service_ServiceCall($definition);
 
-        $uriResource = new core_kernel_classes_Resource(taoItems_models_classes_ItemsService::INSTANCE_FORMAL_PARAM_ITEM_URI);
+        $uriResource = new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_URI);
         $uriParam = new tao_models_classes_service_ConstantParameter($uriResource, $parts[0]);
         $serviceCall->addInParameter($uriParam);
 
-        $pathResource = new core_kernel_classes_Resource(taoItems_models_classes_ItemsService::INSTANCE_FORMAL_PARAM_ITEM_PATH);
+        $pathResource = new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_PATH);
         $pathParam = new tao_models_classes_service_ConstantParameter($pathResource, $parts[1]);
         $serviceCall->addInParameter($pathParam);
 
-        $dataPathResource = new core_kernel_classes_Resource(taoItems_models_classes_ItemsService::INSTANCE_FORMAL_PARAM_ITEM_DATA_PATH);
+        $dataPathResource = new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_DATA_PATH);
         $dataPathParam = new tao_models_classes_service_ConstantParameter($dataPathResource, $parts[2]);
         $serviceCall->addInParameter($dataPathParam);
 

@@ -22,21 +22,21 @@
 
 namespace oat\taoQtiItem\model\Export;
 
+use League\Flysystem\FileNotFoundException;
 use common_Exception;
 use common_exception_UserReadableException;
 use core_kernel_classes_Class;
 use core_kernel_classes_Resource;
-use League\Flysystem\FileNotFoundException;
-use oat\tao\model\export\ExportElementException;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\qti\Service;
+use oat\tao\model\export\ExportElementException;
 use tao_helpers_Display;
+use tao_helpers_Uri;
 use tao_helpers_form_FormContainer;
 use tao_helpers_form_FormFactory;
 use tao_helpers_form_xhtml_Form;
 use tao_helpers_form_xhtml_TagWrapper;
-use tao_helpers_Uri;
-use taoItems_models_classes_ItemsService;
 
 /**
  * Export form for QTI packages
@@ -154,11 +154,11 @@ abstract class ExportForm extends tao_helpers_form_FormContainer
     }
 
     /**
-     * @return taoItems_models_classes_ItemsService
+     * @return oat\taoItems\model\ItemsService
      */
     protected function getItemsService()
     {
-        return taoItems_models_classes_ItemsService::singleton();
+        return ItemsService::singleton();
     }
 
     protected function getFileName(string $name): string
@@ -168,7 +168,7 @@ abstract class ExportForm extends tao_helpers_form_FormContainer
 
     protected function getOptions(core_kernel_classes_Resource ...$resource): array
     {
-        $itemService = taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         $options = [];
         $disabledOptions = [];
         foreach ($resource as $instance) {

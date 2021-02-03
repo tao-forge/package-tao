@@ -22,14 +22,14 @@
 
 namespace oat\taoQtiItem\model\qti\response;
 
+use InvalidArgumentException;
+use oat\taoItems\model\TemplateRenderer;
 use oat\taoQtiItem\model\qti\Element;
 use oat\taoQtiItem\model\qti\OutcomeDeclaration;
-use oat\taoQtiItem\model\qti\feedback\Feedback;
-use oat\taoQtiItem\model\qti\VariableDeclaration;
 use oat\taoQtiItem\model\qti\ResponseDeclaration;
+use oat\taoQtiItem\model\qti\VariableDeclaration;
+use oat\taoQtiItem\model\qti\feedback\Feedback;
 use oat\taoQtiItem\model\qti\response\Template;
-use \taoItems_models_classes_TemplateRenderer;
-use \InvalidArgumentException;
 
 class SimpleFeedbackRule extends Element
 {
@@ -221,7 +221,7 @@ class SimpleFeedbackRule extends Element
             $variables['value'] = $this->comparedValue;
         }
 
-        $tplRenderer = new taoItems_models_classes_TemplateRenderer($tplPath . $tpl, $variables);
+        $tplRenderer = new TemplateRenderer($tplPath . $tpl, $variables);
 
         $returnValue = $tplRenderer->render();
 

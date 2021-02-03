@@ -21,10 +21,11 @@
 namespace oat\taoQtiItem\test\integration\metadata;
 
 use oat\oatbox\service\ServiceManager;
-use oat\tao\test\TaoPhpUnitTestRunner;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\ImportService;
-use oat\taoQtiItem\model\qti\metadata\importer\MetadataImporter;
 use oat\taoQtiItem\model\qti\metadata\MetadataService;
+use oat\taoQtiItem\model\qti\metadata\importer\MetadataImporter;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 include_once dirname(__FILE__) . '/../../../includes/raw_start.php';
 
@@ -36,7 +37,7 @@ class LabelClassLookupTest extends TaoPhpUnitTestRunner
 {
     public function testLabelClassLookupTest()
     {
-        $itemClass = \taoItems_models_classes_ItemsService::singleton()->getRootClass();
+        $itemClass = ItemsService::singleton()->getRootClass();
 
         /** @var MetadataService $test */
         $serviceLocator = ServiceManager::getServiceManager();
@@ -79,7 +80,7 @@ class LabelClassLookupTest extends TaoPhpUnitTestRunner
         $class = new \core_kernel_classes_Class('http://www.test.com#mytestclass');
         $this->assertEquals(1, $class->countInstances());
 
-        \taoItems_models_classes_ItemsService::singleton()->deleteItem($itemResource);
+        ItemsService::singleton()->deleteItem($itemResource);
 
         // Delete fake class
         $class = new \core_kernel_classes_Class('http://www.test.com#mytestclass');

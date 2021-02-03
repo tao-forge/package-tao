@@ -21,22 +21,26 @@
 
 namespace oat\taoQtiItem\model\qti;
 
+use DOMDocument;
+use Exception;
+use common_Logger;
 use common_exception_Error;
 use common_exception_UserReadableException;
-use common_Logger;
 use common_report_Report;
 use core_kernel_classes_Class;
 use core_kernel_classes_Resource;
-use DOMDocument;
-use Exception;
 use helpers_File;
 use oat\generis\model\OntologyAwareTrait;
-use oat\tao\model\TaoOntology;
+use oat\oatbox\event\EventManager;
 use oat\oatbox\mutex\LockTrait;
+use oat\oatbox\service\ConfigurableService;
+use oat\oatbox\service\ServiceManager;
+use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoItems\model\media\LocalItemSource;
 use oat\taoQtiItem\helpers\Authoring;
 use oat\taoQtiItem\model\ItemModel;
+use oat\taoQtiItem\model\event\ItemImported;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementException;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementInvalidModelException;
 use oat\taoQtiItem\model\qti\asset\AssetManager;
@@ -48,11 +52,11 @@ use oat\taoQtiItem\model\qti\event\UpdatedItemEventDispatcher;
 use oat\taoQtiItem\model\qti\exception\ExtractException;
 use oat\taoQtiItem\model\qti\exception\ParsingException;
 use oat\taoQtiItem\model\qti\exception\TemplateException;
-use oat\taoQtiItem\model\qti\metadata\importer\MetadataImporter;
 use oat\taoQtiItem\model\qti\metadata\MetadataGuardianResource;
 use oat\taoQtiItem\model\qti\metadata\MetadataService;
+use oat\taoQtiItem\model\qti\metadata\importer\MetadataImporter;
 use oat\taoQtiItem\model\qti\parser\ValidationException;
-use oat\taoQtiItem\model\event\ItemImported;
+use oat\tao\model\TaoOntology;
 use qtism\data\QtiComponentCollection;
 use qtism\data\rules\SetOutcomeValue;
 use qtism\data\storage\xml\XmlDocument;
@@ -61,10 +65,6 @@ use qtism\runtime\processing\ResponseProcessingEngine;
 use qtism\runtime\tests\AssessmentItemSession;
 use qtism\runtime\tests\SessionManager;
 use tao_helpers_File;
-use taoItems_models_classes_ItemsService;
-use oat\oatbox\event\EventManager;
-use oat\oatbox\service\ServiceManager;
-use oat\oatbox\service\ConfigurableService;
 
 /**
  * Short description of class oat\taoQtiItem\model\qti\ImportService
@@ -148,7 +148,7 @@ class ImportService extends ConfigurableService
      */
     protected function createRdfItem(core_kernel_classes_Class $itemClass, Item $qtiModel)
     {
-        $itemService = taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         $qtiService = Service::singleton();
 
         if (!$itemService->isItemClass($itemClass)) {
@@ -859,7 +859,7 @@ class ImportService extends ConfigurableService
         foreach ($items as $id => $item) {
             if (!$item instanceof MetadataGuardianResource && !in_array($item->getUri(), $overwrittenItemsIds)) {
                 \common_Logger::d("Deleting item '${id}'...");
-                @taoItems_models_classes_ItemsService::singleton()->deleteResource($item);
+                @ItemsService::singleton()->deleteResource($item);
 
                 $report->add(
                     new common_report_Report(

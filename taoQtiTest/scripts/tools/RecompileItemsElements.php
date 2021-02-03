@@ -20,13 +20,14 @@
  
 namespace oat\taoQtiTest\scripts\tools;
 
+use common_report_Report as Report;
 use oat\generis\model\OntologyAwareTrait;
-use \common_report_Report as Report;
-use oat\taoDelivery\model\AssignmentAggregator\UnionAssignmentService;
+use oat\oatbox\extension\script\ScriptAction;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoDelivery\model\AssignmentAggregator\UnionAssignmentService;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\QtiJsonItemCompiler;
 use qtism\data\AssessmentItemRef;
-use oat\oatbox\extension\script\ScriptAction;
 
 /**
  * Class RecompileItemsElements
@@ -175,7 +176,7 @@ class RecompileItemsElements extends ScriptAction
             if ($properties) {
                 $directory = \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryIds[2]);
                 $languages = $item->getUsedLanguages(
-                    $this->getProperty(\taoItems_models_classes_ItemsService::PROPERTY_ITEM_CONTENT)
+                    $this->getProperty(ItemsService::PROPERTY_ITEM_CONTENT)
                 );
                 foreach ($languages as $lang) {
                     $path = $lang . DIRECTORY_SEPARATOR . QtiJsonItemCompiler::METADATA_FILE_NAME;

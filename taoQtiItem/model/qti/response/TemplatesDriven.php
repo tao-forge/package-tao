@@ -21,18 +21,18 @@
 
 namespace oat\taoQtiItem\model\qti\response;
 
-use oat\taoQtiItem\model\qti\response\ResponseProcessing;
-use oat\taoQtiItem\model\qti\response\Rule;
-use oat\taoQtiItem\model\qti\response\Template;
-use oat\taoQtiItem\model\qti\Item;
-use oat\taoQtiItem\model\qti\OutcomeDeclaration;
-use oat\taoQtiItem\model\qti\response\TakeoverFailedException;
-use oat\taoQtiItem\model\qti\ResponseDeclaration;
-use oat\taoQtiItem\model\qti\interaction\Interaction;
+use common_exception_Error;
+use oat\taoItems\model\TemplateRenderer;
 use oat\taoQtiItem\controller\QTIform\TemplatesDrivenResponseOptions;
 use oat\taoQtiItem\helpers\QtiSerializer;
-use \common_exception_Error;
-use \taoItems_models_classes_TemplateRenderer;
+use oat\taoQtiItem\model\qti\Item;
+use oat\taoQtiItem\model\qti\OutcomeDeclaration;
+use oat\taoQtiItem\model\qti\ResponseDeclaration;
+use oat\taoQtiItem\model\qti\interaction\Interaction;
+use oat\taoQtiItem\model\qti\response\ResponseProcessing;
+use oat\taoQtiItem\model\qti\response\Rule;
+use oat\taoQtiItem\model\qti\response\TakeoverFailedException;
+use oat\taoQtiItem\model\qti\response\Template;
 
 /**
  * Response processing similar to the QTI templates, but with
@@ -245,7 +245,7 @@ class TemplatesDriven extends ResponseProcessing implements Rule
             $response = $interaction->getResponse();
             $uri = $response->getHowMatch();
             $matchingTemplate = $this->getResponseProcessingTemplate($uri);
-            $tplRenderer = new taoItems_models_classes_TemplateRenderer($matchingTemplate, [
+            $tplRenderer = new TemplateRenderer($matchingTemplate, [
                 'responseIdentifier' => $response->getIdentifier(),
                 'outcomeIdentifier' => 'SCORE'
             ]);

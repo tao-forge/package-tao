@@ -20,6 +20,8 @@
 
 use oat\generis\model\OntologyRdfs;
 use oat\taoItems\model\CategoryService;
+use oat\taoItems\model\ItemsService;
+use oat\taoItems\model\itemModel;
 use oat\taoQtiTest\models\creator\CreatorItems;
 use oat\tao\controller\CommonModule;
 use qtism\common\utils\Format;
@@ -46,7 +48,7 @@ class taoQtiTest_actions_Items extends CommonModule
     public function get()
     {
         $items = [];
-        $propertyFilters = [taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL => taoItems_models_classes_itemModel::CLASS_URI_QTI];
+        $propertyFilters = [ItemsService::PROPERTY_ITEM_MODEL => ItemModel::CLASS_URI_QTI];
         $options = ['recursive' => true, 'like' => true, 'limit' => 50];
         $notEmpty = filter_var($this->getRequestParameter('notempty'), FILTER_VALIDATE_BOOLEAN);
 
@@ -54,7 +56,7 @@ class taoQtiTest_actions_Items extends CommonModule
             $propertyFilters[OntologyRdfs::RDFS_LABEL] = $pattern;
         }
 
-        $itemsService = taoItems_models_classes_ItemsService::singleton();
+        $itemsService = ItemsService::singleton();
         $itemClass = $itemsService->getRootClass();
 
         $result = $itemClass->searchInstances($propertyFilters, $options);
@@ -185,11 +187,11 @@ class taoQtiTest_actions_Items extends CommonModule
 
     /**
      * Get the ItemService
-     * @return \taoItems_models_classes_ItemsService the service
+     * @return \oat\taoItems\model\ItemsService the service
      */
     private function getItemService()
     {
-        return \taoItems_models_classes_ItemsService::singleton();
+        return ItemsService::singleton();
     }
 
     /**

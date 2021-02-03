@@ -57,10 +57,7 @@
     },
 	"autoload" : {
 		"psr-4" : {
-			"oat\\taoItems\\model\\" : "models/classes/",
-			"oat\\taoItems\\helpers\\" : "helpers",
-			"oat\\taoItems\\test\\" : "test",
-			"oat\\taoItems\\scripts\\" : "scripts"
+			"oat\\taoItems" : "/"
         }
 	}
 }

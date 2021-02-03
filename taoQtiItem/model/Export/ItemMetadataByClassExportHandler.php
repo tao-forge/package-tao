@@ -24,15 +24,16 @@ namespace oat\taoQtiItem\model\Export;
 use common_report_Report as Report;
 use core_kernel_classes_Resource;
 use oat\generis\model\OntologyAwareTrait;
+use oat\oatbox\PhpSerializable;
+use oat\oatbox\PhpSerializeStateless;
 use oat\oatbox\event\EventManagerAwareTrait;
 use oat\oatbox\service\ServiceManager;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\event\QtiItemMetadataExportEvent;
 use oat\taoQtiItem\model\flyExporter\extractor\ExtractorException;
 use oat\taoQtiItem\model\flyExporter\simpleExporter\ItemExporter;
 use oat\taoQtiItem\model\flyExporter\simpleExporter\SimpleExporter;
-use oat\taoQtiItem\model\ItemModel;
-use oat\oatbox\PhpSerializable;
-use oat\oatbox\PhpSerializeStateless;
 
 class ItemMetadataByClassExportHandler implements \tao_models_classes_export_ExportHandler, PhpSerializable
 {
@@ -111,7 +112,7 @@ class ItemMetadataByClassExportHandler implements \tao_models_classes_export_Exp
     protected function getInstances($classToExport)
     {
         $instances = [];
-        $itemService = \taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         foreach ($classToExport->getInstances(true) as $item) {
             if ($itemService->hasItemModel($item, [ItemModel::MODEL_URI])) {
                 $instances[] = $item;

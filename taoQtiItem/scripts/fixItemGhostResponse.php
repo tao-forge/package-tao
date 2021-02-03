@@ -1,3 +1,7 @@
+
+
+use oat\taoItems\model\ItemsService;
+
 <?php
 
 /**
@@ -26,7 +30,7 @@ require_once dirname(__FILE__) . '/../../tao/includes/raw_start.php';
 
 common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiItem');
 
-$dir = \taoItems_models_classes_ItemsService::singleton()->getDefaultItemDirectory();
+$dir = ItemsService::singleton()->getDefaultItemDirectory();
 
 // maybe it's a dirty way but it's quicker. too much modification would have been required in ItemUpdater
 $adapter = $dir->getFileSystem()->getAdapter();

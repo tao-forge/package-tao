@@ -21,14 +21,14 @@ declare(strict_types=1);
 
 namespace oat\taoItems\test\unit\models\classes;
 
-use taoItems_models_classes_ItemsService;
 use oat\generis\test\TestCase;
+use oat\taoItems\model\ItemsService;
 
 class ItemsServiceTest extends TestCase
 {
     public function testComposeItemDirectoryPathReturnsStringPath()
     {
-        $itemsService = new taoItems_models_classes_ItemsService();
+        $itemsService = new ItemsService();
 
         $itemDirectoryName = 'FAKE_DIRECTORY_NAME';
         $language = 'FAKE_LANGUAGE';

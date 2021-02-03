@@ -32,6 +32,7 @@ use common_exception_NotImplemented as NotImplementedException;
 use common_exception_Unauthorized as UnauthorizedException;
 use common_exception_UserReadableException as UserReadableException;
 use oat\generis\model\OntologyAwareTrait;
+use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoItems\model\pack\Packer;
 use oat\taoQtiTestPreviewer\models\ItemPreviewer;
@@ -40,7 +41,6 @@ use oat\tao\controller\ServiceModule;
 use oat\tao\helpers\Base64;
 use oat\tao\model\media\sourceStrategy\HttpSource;
 use oat\tao\model\routing\AnnotationReader\security;
-use taoItems_models_classes_ItemsService;
 use taoQtiTest_helpers_TestRunnerUtils as TestRunnerUtils;
 use tao_helpers_Http as HttpHelper;
 use tao_models_classes_FileNotFoundException as FileNotFoundException;
@@ -94,9 +94,9 @@ class Previewer extends ServiceModule
     /**
      * Provides the definition data and the state for a particular item
      *
-     * @param taoItems_models_classes_ItemsService $itemsService
+     * @param oat\taoItems\model\ItemsService $itemsService
      */
-    public function getItem(taoItems_models_classes_ItemsService $itemsService): void
+    public function getItem(ItemsService $itemsService): void
     {
         $code = 200;
 

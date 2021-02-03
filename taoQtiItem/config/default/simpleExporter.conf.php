@@ -21,8 +21,9 @@
  */
 
 use oat\generis\model\OntologyRdfs;
-use oat\tao\model\TaoOntology;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\Export\Extractor\MetaDataOntologyExtractor;
+use oat\tao\model\TaoOntology;
 
 return new oat\taoQtiItem\model\flyExporter\simpleExporter\ItemExporter([
     'fileSystem' => 'taoQtiItem',
@@ -79,9 +80,9 @@ return new oat\taoQtiItem\model\flyExporter\simpleExporter\ItemExporter([
             'parameters' => [
                 'valuesAsColumns' => true,
                 'excludedProperties' => [
-                    taoItems_models_classes_ItemsService::PROPERTY_ITEM_CONTENT,
-                    taoItems_models_classes_ItemsService::PROPERTY_ITEM_MODEL,
-                    taoItems_models_classes_ItemsService::PROPERTY_ITEM_CONTENT_SRC,
+                    ItemsService::PROPERTY_ITEM_CONTENT,
+                    ItemsService::PROPERTY_ITEM_MODEL,
+                    ItemsService::PROPERTY_ITEM_CONTENT_SRC,
                     TaoOntology::PROPERTY_LOCK,
                 ],
             ]

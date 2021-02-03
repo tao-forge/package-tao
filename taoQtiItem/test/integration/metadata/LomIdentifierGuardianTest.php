@@ -21,11 +21,12 @@
 namespace oat\taoQtiItem\test\integration\metadata;
 
 use oat\oatbox\service\ServiceManager;
-use oat\tao\test\TaoPhpUnitTestRunner;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\ImportService;
+use oat\taoQtiItem\model\qti\metadata\MetadataService;
 use oat\taoQtiItem\model\qti\metadata\guardians\LomIdentifierGuardian;
 use oat\taoQtiItem\model\qti\metadata\importer\MetadataImporter;
-use oat\taoQtiItem\model\qti\metadata\MetadataService;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 include_once dirname(__FILE__) . '/../../../includes/raw_start.php';
 
@@ -34,7 +35,7 @@ class LomIdentifierGuardianTest extends TaoPhpUnitTestRunner
     public function testLomIdentifierGuardian()
     {
         // Import LomIdentifier sample.
-        $itemClass = \taoItems_models_classes_ItemsService::singleton()->getRootClass();
+        $itemClass = ItemsService::singleton()->getRootClass();
 
         /** @var MetadataService $test */
         $serviceLocator = ServiceManager::getServiceManager();
@@ -71,7 +72,7 @@ class LomIdentifierGuardianTest extends TaoPhpUnitTestRunner
 
         $itemResource = $successes[0]->getData();
 
-        $itemClass = \taoItems_models_classes_ItemsService::singleton()->getRootClass();
+        $itemClass = ItemsService::singleton()->getRootClass();
 
         $samplePath = dirname(__FILE__) . '/../samples/metadata/metadataGuardians/lomidentifieritem.zip';
         $report = $importService->importQTIPACKFile($samplePath, $itemClass, true);
@@ -80,6 +81,6 @@ class LomIdentifierGuardianTest extends TaoPhpUnitTestRunner
         $this->assertTrue($report->contains(\common_report_Report::TYPE_INFO));
         $this->assertEquals(1, count($report->getInfos()));
 
-        \taoItems_models_classes_ItemsService::singleton()->deleteItem($itemResource);
+        ItemsService::singleton()->deleteItem($itemResource);
     }
 }

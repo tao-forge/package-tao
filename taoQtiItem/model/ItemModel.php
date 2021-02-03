@@ -22,16 +22,16 @@
 
 namespace oat\taoQtiItem\model;
 
+use common_Logger;
+use common_ext_ExtensionsManager;
+use core_kernel_classes_Resource;
 use oat\oatbox\service\ConfigurableService;
+use oat\taoItems\model\ItemModel as ItemModelInterface;
 use oat\taoItems\model\search\IndexableItemModel;
 use oat\taoQtiItem\model\qti\Service;
 use oat\taoQtiItem\model\search\QtiItemContentTokenizer;
-use \tao_models_classes_export_ExportProvider;
-use \tao_models_classes_import_ImportProvider;
-use \common_ext_ExtensionsManager;
-use \core_kernel_classes_Resource;
-use \common_Logger;
-use taoItems_models_classes_itemModel;
+use tao_models_classes_export_ExportProvider;
+use tao_models_classes_import_ImportProvider;
 
 /**
  * Short description of class oat\taoQtiItem\model\ItemModel
@@ -42,7 +42,7 @@ use taoItems_models_classes_itemModel;
 
  */
 class ItemModel extends ConfigurableService implements
-    taoItems_models_classes_itemModel,
+    ItemModelInterface,
     tao_models_classes_export_ExportProvider,
     tao_models_classes_import_ImportProvider,
     IndexableItemModel
@@ -98,7 +98,7 @@ class ItemModel extends ConfigurableService implements
 
     /**
      * (non-PHPdoc)
-     * @see taoItems_models_classes_itemModel::getPreviewUrl()
+     * @see oat\taoItems\model\itemModel::getPreviewUrl()
      */
     public function getPreviewUrl(core_kernel_classes_Resource $item, $languageCode)
     {
@@ -106,7 +106,7 @@ class ItemModel extends ConfigurableService implements
     }
     
     /**
-     * @see taoItems_models_classes_itemModel::getPreviewUrl()
+     * @see oat\taoItems\model\itemModel::getPreviewUrl()
      */
     public function getAuthoringUrl(core_kernel_classes_Resource $item)
     {

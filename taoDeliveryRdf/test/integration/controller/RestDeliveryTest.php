@@ -4,8 +4,9 @@ namespace oat\taoDeliveryRdf\test\integration\controller;
 
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
-use oat\tao\test\integration\RestTestRunner;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoItems\model\ItemsService;
+use oat\tao\test\integration\RestTestRunner;
 
 class RestDeliveryTest extends RestTestRunner
 {
@@ -15,7 +16,7 @@ class RestDeliveryTest extends RestTestRunner
     protected $deliveryService;
     /** @var \taoQtiTest_models_classes_QtiTestService */
     protected $testService;
-    /** @var \taoItems_models_classes_ItemsService */
+    /** @var \oat\taoItems\model\ItemsService */
     protected $itemService;
 
     /**
@@ -32,7 +33,7 @@ class RestDeliveryTest extends RestTestRunner
 
         $this->deliveryService = DeliveryAssemblyService::singleton();
         $this->testService     = \taoQtiTest_models_classes_QtiTestService::singleton();
-        $this->itemService     = \taoItems_models_classes_ItemsService::singleton();
+        $this->itemService     = ItemsService::singleton();
     }
 
     /**

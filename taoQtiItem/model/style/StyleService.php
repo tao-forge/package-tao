@@ -21,13 +21,13 @@
 
 namespace oat\taoQtiItem\model\style;
 
-use \tao_models_classes_Service;
-use \core_kernel_classes_Class;
-use \core_kernel_classes_Resource;
-use oat\taoQtiItem\model\ItemModel;
-use \taoItems_models_classes_ItemsService;
 use SimpleXMLElement;
+use core_kernel_classes_Class;
+use core_kernel_classes_Resource;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\qti\Service;
+use tao_models_classes_Service;
 
 class StyleService extends tao_models_classes_Service
 {
@@ -44,7 +44,7 @@ class StyleService extends tao_models_classes_Service
      */
     private function isQtiItem(core_kernel_classes_Resource $itemResource)
     {
-        $itemService = taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         return $itemService->hasItemModel($itemResource, [ItemModel::MODEL_URI]);
     }
 

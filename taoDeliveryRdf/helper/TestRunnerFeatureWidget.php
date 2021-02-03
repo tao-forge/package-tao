@@ -24,9 +24,9 @@ namespace oat\taoDeliveryRdf\helper;
 
 use common_ext_ExtensionsManager;
 use oat\oatbox\service\ServiceManager;
+use oat\taoItems\model\TemplateRenderer;
 use oat\taoTests\models\runner\features\TestRunnerFeatureService;
 use tao_helpers_form_FormElement;
-use taoItems_models_classes_TemplateRenderer;
 
 /**
  * Allow the selection of the Test Runner Features wanted for a specific delivery
@@ -85,7 +85,7 @@ class TestRunnerFeatureWidget extends tao_helpers_form_FormElement
         }
 
         $tpl = common_ext_ExtensionsManager::singleton()->getExtensionById('taoDeliveryRdf')->getDir() . self::WIDGET_TPL ;
-        $templateRenderer = new taoItems_models_classes_TemplateRenderer($tpl, [
+        $templateRenderer = new TemplateRenderer($tpl, [
             'propLabel'   => _dh($this->getDescription()),
             'choicesList' => $choicesList
         ]);

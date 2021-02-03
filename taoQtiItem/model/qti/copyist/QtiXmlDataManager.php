@@ -20,23 +20,22 @@ declare(strict_types=1);
 
 namespace oat\taoQtiItem\model\qti\copyist;
 
-
+use DOMDocument;
+use DOMElement;
 use common_Exception;
 use common_ext_Namespace;
 use core_kernel_classes_Resource;
 use core_kernel_persistence_Exception;
 use core_kernel_persistence_smoothsql_SmoothModel;
-use DOMDocument;
-use DOMElement;
-use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\generis\model\OntologyAwareTrait;
+use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\oatbox\filesystem\Directory;
+use oat\oatbox\filesystem\File;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ConfigurableService;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\helpers\QtiFile;
-use oat\oatbox\filesystem\File;
 use tao_models_classes_FileNotFoundException;
-use taoItems_models_classes_ItemsService;
 
 class QtiXmlDataManager extends ConfigurableService
 {
@@ -65,8 +64,8 @@ class QtiXmlDataManager extends ConfigurableService
     {
         $destinationItem = $this->getResource($destinationItemId);
 
-        /** @var taoItems_models_classes_ItemsService $itemService */
-        $itemService = $this->getServiceLocator()->get(taoItems_models_classes_ItemsService::class);
+        /** @var oat\taoItems\model\ItemsService $itemService */
+        $itemService = $this->getServiceLocator()->get(ItemsService::class);
         $serializer = $this->getFileReferenceSerializer();
 
         foreach ($destinationItem->getUsedLanguages($itemService->getItemContentProperty()) as $lang) {

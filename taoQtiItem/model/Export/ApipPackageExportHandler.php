@@ -22,25 +22,25 @@
 
 namespace oat\taoQtiItem\model\Export;
 
+use Exception;
+use ZipArchive;
 use common_Exception;
+use common_Logger;
 use common_exception_Error;
 use common_report_Report as Report;
-use oat\oatbox\event\EventManagerAwareTrait;
+use core_kernel_classes_Class;
+use core_kernel_classes_Resource;
 use oat\oatbox\PhpSerializable;
 use oat\oatbox\PhpSerializeStateless;
+use oat\oatbox\event\EventManagerAwareTrait;
 use oat\oatbox\service\ServiceManager;
-use oat\tao\model\resources\SecureResourceServiceInterface;
-use oat\taoQtiItem\model\event\QtiItemExportEvent;
+use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\ItemModel;
+use oat\taoQtiItem\model\event\QtiItemExportEvent;
+use oat\tao\model\resources\SecureResourceServiceInterface;
+use tao_helpers_File;
 use tao_helpers_form_Form;
-use \tao_models_classes_export_ExportHandler;
-use \core_kernel_classes_Resource;
-use \core_kernel_classes_Class;
-use \taoItems_models_classes_ItemsService;
-use \tao_helpers_File;
-use \Exception;
-use \ZipArchive;
-use \common_Logger;
+use tao_models_classes_export_ExportHandler;
 
 /**
  * Apip Package Export Handler.
@@ -93,7 +93,7 @@ class ApipPackageExportHandler implements tao_models_classes_export_ExportHandle
             $instances = $formValues['instances'];
 
             if (count($instances) > 0) {
-                $itemService = taoItems_models_classes_ItemsService::singleton();
+                $itemService = ItemsService::singleton();
 
                 $fileName = $formValues['filename'] . '_' . time() . '.zip';
                 $path = tao_helpers_File::concat([$destination, $fileName]);

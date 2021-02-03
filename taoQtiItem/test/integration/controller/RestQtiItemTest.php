@@ -19,9 +19,10 @@
 
 namespace oat\taoQtiItem\test\integration\controller;
 
-use oat\tao\test\integration\RestTestRunner;
-use oat\taoQtiItem\model\ItemModel;
 use oat\generis\model\OntologyAwareTrait;
+use oat\taoItems\model\ItemsService;
+use oat\taoQtiItem\model\ItemModel;
+use oat\tao\test\integration\RestTestRunner;
 
 /**
  * End point of Rest item API
@@ -54,7 +55,7 @@ class RestQtiItemTest extends RestTestRunner
         $item = $this->getResource($itemUri);
         $this->assertTrue($item->exists());
 
-        $itemService = \taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         $model = $itemService->getItemModel($item);
         $this->assertNotNull($model);
         $this->assertEquals(ItemModel::MODEL_URI, $itemService->getItemModel($item)->getUri());
@@ -78,7 +79,7 @@ class RestQtiItemTest extends RestTestRunner
         $item = $this->getResource($itemUri);
         $this->assertTrue($item->exists());
 
-        $itemService = \taoItems_models_classes_ItemsService::singleton();
+        $itemService = ItemsService::singleton();
         $model = $itemService->getItemModel($item);
         $this->assertNotNull($model);
         $this->assertEquals(ItemModel::MODEL_URI, $itemService->getItemModel($item)->getUri());
