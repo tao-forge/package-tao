@@ -20,6 +20,8 @@
  */
 
 use oat\oatbox\service\ServiceManager;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\ServiceCallHelper;
 
 /**
  * @access public
@@ -47,12 +49,12 @@ class tao_helpers_ServiceJavascripts
         return 'new UserInfoService(' . tao_helpers_Javascript::buildObject($requestUrl) . ',' . tao_helpers_Javascript::buildObject($preloaded) . ')';
     }
     
-    public static function getServiceApi(tao_models_classes_service_ServiceCall $serviceCall, $serviceCallId, $customParams = [])
+    public static function getServiceApi(ServiceCall $serviceCall, $serviceCallId, $customParams = [])
     {
-        $inputParameters = tao_models_classes_service_ServiceCallHelper::getInputValues($serviceCall, $customParams);
+        $inputParameters = ServiceCallHelper::getInputValues($serviceCall, $customParams);
         $inputParameters['standalone'] = true;
         return 'new ServiceApi(' .
-            tao_helpers_Javascript::buildObject(tao_models_classes_service_ServiceCallHelper::getBaseUrl($serviceCall->getServiceDefinitionId())) . ',' .
+            tao_helpers_Javascript::buildObject(ServiceCallHelper::getBaseUrl($serviceCall->getServiceDefinitionId())) . ',' .
             tao_helpers_Javascript::buildObject($inputParameters) . ',' .
             tao_helpers_Javascript::buildObject($serviceCallId) . ',' .
             self::getServiceStorage($serviceCallId) . ',' .

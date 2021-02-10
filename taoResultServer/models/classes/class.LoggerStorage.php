@@ -21,7 +21,10 @@
  * @author "Patrick Plichart, <patrick@taotesting.com>"
  * @package taoResultServer
  */
-class taoResultServer_models_classes_LoggerStorage extends tao_models_classes_GenerisService implements taoResultServer_models_classes_WritableResultStorage
+
+use oat\tao\model\GenerisService;
+
+class taoResultServer_models_classes_LoggerStorage extends GenerisService implements taoResultServer_models_classes_WritableResultStorage
 {
     
     /*

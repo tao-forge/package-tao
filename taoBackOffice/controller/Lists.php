@@ -34,6 +34,7 @@ use oat\generis\model\OntologyAwareTrait;
 use oat\taoBackOffice\model\lists\ListService;
 use oat\tao\controller\CommonModule;
 use oat\tao\helpers\Template;
+use oat\tao\model\LanguageService;
 use oat\tao\model\Lists\Business\Domain\CollectionType;
 use oat\tao\model\Lists\Business\Domain\Value;
 use oat\tao\model\Lists\Business\Domain\ValueCollection;
@@ -48,7 +49,6 @@ use oat\tao\model\form\ListForm;
 use oat\tao\model\form\RemoteListForm;
 use tao_helpers_Scriptloader;
 use tao_helpers_Uri;
-use tao_models_classes_LanguageService;
 
 /**
  * This controller provide the actions to manage the lists of data
@@ -284,7 +284,7 @@ class Lists extends CommonModule
                 'label'     => $listClass->getLabel(),
                 // The Language list should not be editable.
                 // @todo Make two different kind of lists: system list that are not editable and usual list.
-                'editable'  => $listClass->isSubClassOf($this->getClass(TaoOntology::CLASS_URI_LIST)) && $listClass->getUri() !== tao_models_classes_LanguageService::CLASS_URI_LANGUAGES,
+                'editable'  => $listClass->isSubClassOf($this->getClass(TaoOntology::CLASS_URI_LIST)) && $listClass->getUri() !== LanguageService::CLASS_URI_LANGUAGES,
                 'elements'  => $elements
             ];
         }

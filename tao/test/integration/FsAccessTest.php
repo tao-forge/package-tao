@@ -22,24 +22,24 @@
 
 namespace oat\tao\test\integration;
 
-use oat\oatbox\filesystem\FileSystem;
-use oat\tao\model\asset\AssetService;
-use oat\tao\model\websource\Websource;
-use oat\tao\test\TaoPhpUnitTestRunner;
-use oat\tao\model\websource\WebsourceManager;
-use oat\tao\model\websource\ActionWebSource;
-use oat\tao\model\websource\TokenWebSource;
-use oat\tao\model\websource\DirectWebSource;
-use oat\oatbox\service\ServiceManager;
-use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\model\user\TaoRoles;
-use oat\tao\model\websource\BaseWebsource;
+use common_Exception;
+use common_ext_ExtensionsManager;
 use core_kernel_classes_Resource;
 use core_kernel_uri_UriService;
-use tao_models_classes_UserService;
-use common_ext_ExtensionsManager;
-use common_Exception;
 use oat\generis\model\GenerisRdf;
+use oat\oatbox\filesystem\FileSystem;
+use oat\oatbox\filesystem\FileSystemService;
+use oat\oatbox\service\ServiceManager;
+use oat\tao\model\UserService;
+use oat\tao\model\asset\AssetService;
+use oat\tao\model\user\TaoRoles;
+use oat\tao\model\websource\ActionWebSource;
+use oat\tao\model\websource\BaseWebsource;
+use oat\tao\model\websource\DirectWebSource;
+use oat\tao\model\websource\TokenWebSource;
+use oat\tao\model\websource\Websource;
+use oat\tao\model\websource\WebsourceManager;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 /**
  * @author Cédric Alfonsi, <taosupport@tudor.lu>
@@ -67,14 +67,14 @@ class tao_test_FsAccessTest extends TaoPhpUnitTestRunner
         // @TODO: Required to remove test users from previous test execution.
         //        Eliminate usage of singletors and use MYSQLite db mock instead of real db.
         $filters = [GenerisRdf::PROPERTY_USER_LOGIN => self::TEST_USER_LOGIN];
-        $formerTestUsers = tao_models_classes_UserService::singleton()->getAllUsers([], $filters);
+        $formerTestUsers = UserService::singleton()->getAllUsers([], $filters);
         foreach ($formerTestUsers as $testUser) {
             if ($testUser instanceof core_kernel_classes_Resource) {
                 $testUser->delete();
             }
         }
         if (!$this->testUser) {
-            $this->testUser = tao_models_classes_UserService::singleton()->addUser(self::TEST_USER_LOGIN, $pass, $taoManagerRole);
+            $this->testUser = UserService::singleton()->addUser(self::TEST_USER_LOGIN, $pass, $taoManagerRole);
         }
         $this->credentials = [
             'loginForm_sent' => 1,

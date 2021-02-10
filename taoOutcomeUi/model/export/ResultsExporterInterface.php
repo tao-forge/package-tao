@@ -42,7 +42,7 @@ interface ResultsExporterInterface extends ServiceLocatorAwareInterface
     public function setColumnsToExport($columnsToExport);
 
     /**
-     * @return \tao_models_classes_table_Column[]
+     * @return \oat\tao\model\table\Column[]
      */
     public function getColumnsToExport();
 

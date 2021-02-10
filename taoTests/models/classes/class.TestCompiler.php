@@ -19,6 +19,7 @@
  */
 
 use oat\taoItems\model\ItemsService;
+use oat\tao\model\Compiler;
 
 /**
  * Abstract Test Compiler
@@ -28,7 +29,7 @@ use oat\taoItems\model\ItemsService;
  * @package taoTests
 
  */
-abstract class taoTests_models_classes_TestCompiler extends tao_models_classes_Compiler
+abstract class taoTests_models_classes_TestCompiler extends Compiler
 {
     protected function getSubCompilerClass(core_kernel_classes_Resource $resource)
     {

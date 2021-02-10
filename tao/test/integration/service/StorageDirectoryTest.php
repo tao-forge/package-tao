@@ -21,12 +21,13 @@
 
 namespace oat\tao\test\integration\service;
 
-use common_Exception;
 use League\Flysystem\Adapter\AbstractAdapter;
+use common_Exception;
+use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\FileSystemService;
 use oat\oatbox\service\ServiceManager;
-use oat\generis\test\TestCase;
+use oat\tao\model\service\StorageDirectory;
 
 class StorageDirectoryTest extends TestCase
 {
@@ -36,7 +37,7 @@ class StorageDirectoryTest extends TestCase
     protected $pathFixture;
     protected $accessProvider;
 
-    /** @var  \tao_models_classes_service_StorageDirectory */
+    /** @var  \oat\tao\model\service\StorageDirectory */
     protected $instance;
 
     public function setUp(): void
@@ -49,7 +50,7 @@ class StorageDirectoryTest extends TestCase
         $this->pathFixture = 'fixture';
         $this->accessProvider = $this->getAccessProvider($this->pathFixture);
 
-        $this->instance = new \tao_models_classes_service_StorageDirectory($this->idFixture, $this->fileSystemTmpId, $this->pathFixture, $this->accessProvider);
+        $this->instance = new StorageDirectory($this->idFixture, $this->fileSystemTmpId, $this->pathFixture, $this->accessProvider);
         $this->instance->setServiceLocator(ServiceManager::getServiceManager());
     }
 
@@ -103,7 +104,7 @@ class StorageDirectoryTest extends TestCase
 
     public function testIsNotPublic()
     {
-        $this->instance = new \tao_models_classes_service_StorageDirectory($this->idFixture, $this->fileSystem, $this->pathFixture, null);
+        $this->instance = new StorageDirectory($this->idFixture, $this->fileSystem, $this->pathFixture, null);
         $this->instance->setServiceLocator(ServiceManager::getServiceManager());
 
         $this->assertFalse($this->instance->isPublic());

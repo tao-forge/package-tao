@@ -22,7 +22,7 @@
 
 namespace oat\taoOutcomeUi\model\table;
 
-use \tao_models_classes_table_Column;
+use oat\tao\model\table\Column;
 
 /**
  * Short description of class oat\taoOutcomeUi\model\table\VariableColumn
@@ -32,7 +32,7 @@ use \tao_models_classes_table_Column;
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package taoOutcomeUi
  */
-abstract class VariableColumn extends tao_models_classes_table_Column
+abstract class VariableColumn extends Column
 {
     // --- ATTRIBUTES ---
     /**
@@ -119,7 +119,7 @@ abstract class VariableColumn extends tao_models_classes_table_Column
      *
      * @access public
      * @author Joel Bout, <joel.bout@tudor.lu>
-     * @return tao_models_classes_table_DataProvider
+     * @return oat\tao\model\table\DataProvider
      */
     public function getDataProvider()
     {

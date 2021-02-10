@@ -21,16 +21,16 @@
 
 namespace oat\taoItems\model\pack;
 
-use oat\taoItems\model\pack\encoders\Encoding;
 use ReflectionClass;
-use tao_models_classes_Service;
+use oat\taoItems\model\pack\encoders\Encoding;
+use oat\tao\model\Service;
 
 /**
  * Class EncoderService
  * Factory retrieve encoder by his name
  * @package oat\taoItems\model\pack
  */
-class EncoderService extends tao_models_classes_Service
+class EncoderService extends Service
 {
     /**
      * @param $type

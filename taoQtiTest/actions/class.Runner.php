@@ -43,6 +43,7 @@ use oat\taoQtiTest\models\runner\StorageManager;
 use oat\taoQtiTest\models\runner\communicator\CommunicationService;
 use oat\taoQtiTest\models\runner\communicator\QtiCommunicationService;
 use oat\tao\controller\ServiceModule;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\routing\AnnotationReader\security;
 use taoQtiTest_helpers_TestRunnerUtils as TestRunnerUtils;
 
@@ -206,7 +207,7 @@ class taoQtiTest_actions_Runner extends ServiceModule
                     $response['type'] = 'TestState';
                     break;
 
-                case $e instanceof tao_models_classes_FileNotFoundException:
+                case $e instanceof FileNotFoundException:
                     $response['type'] = 'FileNotFound';
                     $response['message'] = __('File not found');
                     break;
@@ -246,7 +247,7 @@ class taoQtiTest_actions_Runner extends ServiceModule
                     $code = 403;
                     break;
 
-                case $e instanceof tao_models_classes_FileNotFoundException:
+                case $e instanceof FileNotFoundException:
                     $code = 404;
                     break;
             }

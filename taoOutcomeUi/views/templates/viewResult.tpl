@@ -2,7 +2,7 @@
 use oat\tao\helpers\Template;
 use oat\taoOutcomeUi\model\ResultsService;
 ?>
-<link rel="stylesheet" type="text/css" href="<?= ROOT_URL ?>taoOutcomeUi/views/css/result.css" />
+<link rel="stylesheet" type="text/css" href="<?= Template::css('result.css','taoOutcomeUi') ?>" />
 
 <header class="section-header flex-container-full">
 </header>

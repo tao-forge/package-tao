@@ -30,8 +30,8 @@ use common_http_Request;
 use common_session_SessionManager;
 use oat\taoLti\models\classes\LtiUtils;
 use oat\tao\controller\ServiceModule;
-use tao_models_classes_oauth_Credentials;
-use tao_models_classes_oauth_Service;
+use oat\tao\model\oauth\Credentials;
+use oat\tao\model\oauth\Service;
 
 class LtiConsumer extends ServiceModule
 {
@@ -48,7 +48,7 @@ class LtiConsumer extends ServiceModule
         if (!$this->hasRequestParameter('ltiLaunchUrl')) {
             throw new common_exception_MissingParameter('ltiLaunchUrl', get_class($this));
         }
-        $ltiConsumer = new tao_models_classes_oauth_Credentials($this->getRequestParameter('ltiConsumerUri'));
+        $ltiConsumer = new Credentials($this->getRequestParameter('ltiConsumerUri'));
         $launchUrl =  $this->getRequestParameter('ltiLaunchUrl');
         
         $serviceCallId = $this->getServiceCallId() . '_c';
@@ -99,7 +99,7 @@ class LtiConsumer extends ServiceModule
         tool_consumer_instance_description:
         */
         $request = new common_http_Request($launchUrl, common_http_Request::METHOD_POST, $ltiData);
-        $service = new tao_models_classes_oauth_Service();
+        $service = new Service();
         $signedRequest = $service->sign($request, $ltiConsumer);
         
         $this->setData('launchUrl', $launchUrl);

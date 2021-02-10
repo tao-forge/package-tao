@@ -21,13 +21,12 @@
 
 namespace oat\taoOpenId\model;
 
-
-use common_Logger;
 use Lcobucci\JWT\Token as JWTToken;
+use common_Logger;
+use oat\tao\model\ClassService;
 use oat\tao\model\mvc\DefaultUrlService;
-use tao_models_classes_ClassService;
 
-class ConsumerService extends tao_models_classes_ClassService
+class ConsumerService extends ClassService
 {
     const CLASS_URI = 'http://www.tao.lu/Ontologies/TAOOpenId.rdf#OpenIdConsumer';
     const PROPERTY_ISS = 'http://www.tao.lu/Ontologies/TAOOpenId.rdf#OpenIdIss';

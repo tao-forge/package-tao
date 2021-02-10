@@ -21,14 +21,14 @@
 
 namespace oat\taoItems\model;
 
-use \tao_models_classes_import_ImportProvider;
+use oat\tao\model\import\ImportProvider;
 
 /**
- * please use tao_models_classes_import_ImportProvider
+ * please use oat\tao\model\import\ImportProvider
  *
  * @author Joel Bout, <joel@taotesting.com>
  * @deprecated
  */
-interface ImportableItemModel extends tao_models_classes_import_ImportProvider
+interface ImportableItemModel extends ImportProvider
 {
 }

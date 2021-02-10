@@ -28,7 +28,7 @@ class LegacyServiceContainer extends DeliveryServiceContainer
     /**
      * Return the service call to run the delivery
      * @param DeliveryExecution $execution
-     * @return \tao_models_classes_service_ServiceCall
+     * @return \oat\tao\model\service\ServiceCall
      */
     public function getRuntime(DeliveryExecution $execution)
     {

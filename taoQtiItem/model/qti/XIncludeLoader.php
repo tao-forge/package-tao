@@ -24,12 +24,13 @@ namespace oat\taoQtiItem\model\qti;
 use DOMDocument;
 use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoQtiItem\model\qti\Item;
-use oat\taoQtiItem\model\qti\XInclude;
-use oat\taoQtiItem\model\qti\interaction\PortableCustomInteraction;
-use oat\taoQtiItem\model\qti\interaction\CustomInteraction;
 use oat\taoQtiItem\model\qti\ParserFactory;
-use oat\taoQtiItem\model\qti\exception\XIncludeException;
+use oat\taoQtiItem\model\qti\XInclude;
 use oat\taoQtiItem\model\qti\exception\ParsingException;
+use oat\taoQtiItem\model\qti\exception\XIncludeException;
+use oat\taoQtiItem\model\qti\interaction\CustomInteraction;
+use oat\taoQtiItem\model\qti\interaction\PortableCustomInteraction;
+use oat\tao\model\FileNotFoundException;
 
 /**
  *
@@ -71,7 +72,7 @@ class XIncludeLoader
                     $asset = $this->resolver->resolve($href);
                     $filePath = $asset->getMediaSource()->download($asset->getMediaIdentifier());
                     $this->loadXInclude($xinclude, $filePath);
-                } catch (\tao_models_classes_FileNotFoundException $exception) {
+                } catch (FileNotFoundException $exception) {
                     if ($removeUnfoundHref) {
                         $xinclude->attr('href', '');
                     } else {

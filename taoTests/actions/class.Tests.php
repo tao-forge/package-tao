@@ -25,6 +25,7 @@ use oat\oatbox\event\EventManager;
 use oat\taoTests\models\event\TestUpdatedEvent;
 use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\lock\LockManager;
 use oat\tao\model\resources\ResourceWatcher;
 use oat\tao\model\routing\AnnotationReader\security;
@@ -114,7 +115,7 @@ class taoTests_actions_Tests extends SaSModule
                 }
 
                 //then save the property values as usual
-                $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($test);
+                $binder = new GenerisFormDataBinder($test);
                 $test = $binder->bind($propertyValues);
                 $this->getEventManager()->trigger(new TestUpdatedEvent($test->getUri(), $propertyValues));
 

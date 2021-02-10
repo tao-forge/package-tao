@@ -42,8 +42,9 @@ use oat\taoQtiItem\model\qti\Item;
 use oat\taoQtiItem\model\qti\Parser;
 use oat\taoQtiItem\model\qti\Service;
 use oat\taoQtiItem\model\qti\exception\XIncludeException;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\service\StorageDirectory;
 use tao_helpers_Xml;
-use tao_models_classes_service_StorageDirectory;
 
 /**
  * The QTI Json Item Compiler
@@ -86,15 +87,15 @@ class QtiJsonItemCompiler extends QtiItemCompiler
      *
      * @param core_kernel_classes_Resource $item
      * @param string $language
-     * @param tao_models_classes_service_StorageDirectory $publicDirectory
-     * @param tao_models_classes_service_StorageDirectory $privateDirectory
+     * @param oat\tao\model\service\StorageDirectory $publicDirectory
+     * @param oat\tao\model\service\StorageDirectory $privateDirectory
      * @return common_report_Report
      */
     protected function deployQtiItem(
         core_kernel_classes_Resource $item,
         $language,
-        tao_models_classes_service_StorageDirectory $publicDirectory,
-        tao_models_classes_service_StorageDirectory $privateDirectory
+        StorageDirectory $publicDirectory,
+        StorageDirectory $privateDirectory
     ) {
         $qtiService = Service::singleton();
 
@@ -131,7 +132,7 @@ class QtiJsonItemCompiler extends QtiItemCompiler
                 common_report_Report::TYPE_SUCCESS,
                 __('Successfully compiled "%s"', $language)
             );
-        } catch (\tao_models_classes_FileNotFoundException $e) {
+        } catch (FileNotFoundException $e) {
             return new common_report_Report(
                 common_report_Report::TYPE_ERROR,
                 __('Unable to retrieve asset "%s"', $e->getFilePath())

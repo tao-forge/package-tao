@@ -25,6 +25,8 @@ namespace oat\taoBackOffice\model\lists;
 use core_kernel_classes_Class as RdfClass;
 use core_kernel_persistence_Exception;
 use oat\generis\model\kernel\uri\UriProvider;
+use oat\tao\model\LanguageService;
+use oat\tao\model\ListService as ListService_2;
 use oat\tao\model\Lists\Business\Domain\Value;
 use oat\tao\model\Lists\Business\Domain\ValueCollection;
 use oat\tao\model\Lists\Business\Domain\ValueCollectionSearchRequest;
@@ -33,13 +35,11 @@ use oat\tao\model\Lists\Business\Input\ValueCollectionSearchInput;
 use oat\tao\model\Lists\Business\Service\RemoteSourcedListOntology;
 use oat\tao\model\Lists\Business\Service\ValueCollectionService;
 use oat\tao\model\TaoOntology;
-use tao_models_classes_LanguageService;
-use tao_models_classes_ListService;
 
 /**
  * Class ListService
  */
-class ListService extends tao_models_classes_ListService
+class ListService extends ListService_2
 {
     /**
      * Whenever or not a list is editable
@@ -53,7 +53,7 @@ class ListService extends tao_models_classes_ListService
     public function isEditable(RdfClass $listClass)
     {
         return $listClass->isSubClassOf($this->getClass(TaoOntology::CLASS_URI_LIST))
-            && $listClass->getUri() !== tao_models_classes_LanguageService::CLASS_URI_LANGUAGES;
+            && $listClass->getUri() !== LanguageService::CLASS_URI_LANGUAGES;
     }
 
     public function getListElement(RdfClass $listClass, $uri)

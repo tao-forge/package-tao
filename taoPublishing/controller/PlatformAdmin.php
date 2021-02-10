@@ -29,6 +29,7 @@ use oat\taoPublishing\model\publishing\PublishingService;
 use oat\tao\controller\SaSModule;
 use oat\tao\model\auth\AbstractAuthType;
 use oat\tao\model\auth\BasicAuth;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\form\InstanceForm;
 use oat\tao\model\oauth\DataStore;
 
@@ -54,7 +55,7 @@ class PlatformAdmin extends SaSModule
     /**
      * @param $instance
      * @throws \Exception
-     * @throws \tao_models_classes_dataBinding_GenerisFormDataBindingException
+     * @throws \oat\tao\model\dataBinding\GenerisFormDataBindingException
      */
     public function saveInstance($instance = null)
     {
@@ -94,7 +95,7 @@ class PlatformAdmin extends SaSModule
                     $message = __('Instance created');
                 } elseif ($instance instanceof \core_kernel_classes_Resource) {
                     // save properties
-                    $binder = new \tao_models_classes_dataBinding_GenerisFormDataBinder($instance);
+                    $binder = new GenerisFormDataBinder($instance);
                     $binder->bind($values);
                     $message = __('Instance saved');
                 }
@@ -123,7 +124,7 @@ class PlatformAdmin extends SaSModule
     /**
      * @throws \common_Exception
      * @throws \core_kernel_persistence_Exception
-     * @throws \tao_models_classes_MissingRequestParameterException
+     * @throws \oat\tao\model\MissingRequestParameterException
      */
     public function authTpl()
     {

@@ -21,17 +21,17 @@
 
 namespace oat\taoDeliveryRdf\model;
 
+use core_kernel_classes_Class;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
+use oat\oatbox\event\EventManager;
 use oat\oatbox\log\LoggerService;
 use oat\oatbox\service\ConfigurableService;
-use core_kernel_classes_Resource;
-use core_kernel_classes_Class;
-use oat\tao\helpers\form\ValidationRuleRegistry;
-use oat\oatbox\event\EventManager;
 use oat\taoDeliveryRdf\model\event\DeliveryCreatedEvent;
 use oat\taoDelivery\model\container\delivery\ContainerProvider;
-use tao_models_classes_service_ServiceCall;
+use oat\tao\helpers\form\ValidationRuleRegistry;
+use oat\tao\model\service\ServiceCall;
 
 /**
  * Services to manage Deliveries
@@ -203,14 +203,14 @@ class DeliveryFactory extends ConfigurableService
      * Create a delivery resource based on a successfull compilation
      *
      * @param core_kernel_classes_Class $deliveryClass
-     * @param \tao_models_classes_service_ServiceCall $serviceCall
+     * @param \oat\tao\model\service\ServiceCall $serviceCall
      * @param string $containerId
      * @param string $containerParam
      * @param array $properties
      */
     protected function createDeliveryResource(
         core_kernel_classes_Class $deliveryClass,
-        \tao_models_classes_service_ServiceCall $serviceCall,
+        ServiceCall $serviceCall,
         $container,
         $properties = []
     ) {

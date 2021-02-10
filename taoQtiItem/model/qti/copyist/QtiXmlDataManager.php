@@ -35,7 +35,7 @@ use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ConfigurableService;
 use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\helpers\QtiFile;
-use tao_models_classes_FileNotFoundException;
+use oat\tao\model\FileNotFoundException;
 
 class QtiXmlDataManager extends ConfigurableService
 {
@@ -55,7 +55,7 @@ class QtiXmlDataManager extends ConfigurableService
      * @param string $destinationItemId
      * @throws common_Exception
      * @throws core_kernel_persistence_Exception
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public function replaceItemIdentifier(
         string $sourceItemId,

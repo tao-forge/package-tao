@@ -21,13 +21,14 @@
 namespace oat\taoItems\test\pack;
 
 use common_Exception;
-use \core_kernel_classes_Resource;
+use core_kernel_classes_Resource;
+use oat\generis\test\MockObject;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\FileSystemService;
 use oat\oatbox\service\ServiceManager;
 use oat\taoQtiItem\model\pack\QtiItemPacker;
+use oat\tao\model\service\StorageDirectory;
 use oat\tao\test\TaoPhpUnitTestRunner;
-use oat\generis\test\MockObject;
 
 /**
  * Test the class {@link ItemPack}
@@ -106,7 +107,7 @@ class QtiItemPackerTest extends TaoPhpUnitTestRunner
             ->method('getXmlByItem')
             ->will($this->returnValue(file_get_contents($samplePath . $sample)));
 
-        $directoryStorage = $this->getMockBuilder(\tao_models_classes_service_StorageDirectory::class)
+        $directoryStorage = $this->getMockBuilder(StorageDirectory::class)
             ->disableOriginalConstructor()
             ->getMock();
 

@@ -24,20 +24,19 @@
 
 namespace oat\tao\controller;
 
-use \ResolverException;
-use \common_AjaxResponse;
-use \common_exception_IsAjaxAction;
-use \common_ext_ExtensionsManager;
-use \common_session_SessionManager;
-use \core_kernel_users_Exception;
-use \tao_helpers_Date;
-use \tao_models_classes_UserService;
-use \tao_models_classes_accessControl_AclProxy;
+use ResolverException;
+use common_AjaxResponse;
+use common_exception_IsAjaxAction;
+use common_ext_ExtensionsManager;
+use common_session_SessionManager;
+use core_kernel_users_Exception;
 use oat\generis\model\user\UserRdf;
 use oat\oatbox\event\EventManager;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\user\LoginService;
 use oat\tao\helpers\TaoCe;
+use oat\tao\model\UserService;
+use oat\tao\model\accessControl\AclService;
 use oat\tao\model\accessControl\ActionResolver;
 use oat\tao\model\accessControl\func\AclProxy as FuncProxy;
 use oat\tao\model\entryPoint\EntryPointService;
@@ -51,6 +50,7 @@ use oat\tao\model\mvc\DefaultUrlService;
 use oat\tao\model\notification\Notification;
 use oat\tao\model\notification\NotificationServiceInterface;
 use oat\tao\model\user\UserLocks;
+use tao_helpers_Date;
 
 /**
  * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
@@ -71,7 +71,7 @@ class Main extends CommonModule
         $this->defaultData();
         $entries = [];
         foreach (EntryPointService::getRegistry()->getEntryPoints() as $entry) {
-            if (tao_models_classes_accessControl_AclProxy::hasAccessUrl($entry->getUrl())) {
+            if ($this->getAclService()->hasAccessUrl($entry->getUrl())) {
                 $entries[] = $entry;
             }
         }
@@ -203,7 +203,7 @@ class Main extends CommonModule
 
                             $this->logInfo("Successful login of user '" . $form->getValue('login') . "'.");
 
-                            if ($this->hasRequestParameter('redirect') && tao_models_classes_accessControl_AclProxy::hasAccessUrl($_REQUEST['redirect'])) {
+                            if ($this->hasRequestParameter('redirect') && $this->getAclService()->hasAccessUrl($_REQUEST['redirect'])) {
                                 $this->redirect($_REQUEST['redirect']);
                             } else {
                                 $this->forward('entry');
@@ -479,10 +479,15 @@ class Main extends CommonModule
     }
 
     /**
-     * @return tao_models_classes_UserService
+     * @return oat\tao\model\UserService
      */
     protected function getUserService()
     {
-        return $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+        return $this->getServiceLocator()->get(UserService::SERVICE_ID);
+    }
+
+    protected function getAclService(): AclService
+    {
+        return $this->getServiceLocator()->get(AclService::class);
     }
 }

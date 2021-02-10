@@ -39,11 +39,11 @@ use oat\taoQtiTestPreviewer\models\ItemPreviewer;
 use oat\taoQtiTestPreviewer\models\PreviewLanguageService;
 use oat\tao\controller\ServiceModule;
 use oat\tao\helpers\Base64;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\media\sourceStrategy\HttpSource;
 use oat\tao\model\routing\AnnotationReader\security;
 use taoQtiTest_helpers_TestRunnerUtils as TestRunnerUtils;
 use tao_helpers_Http as HttpHelper;
-use tao_models_classes_FileNotFoundException as FileNotFoundException;
 
 /**
  * Class Previewer

@@ -3,6 +3,7 @@
 namespace oat\tao\test\model\websource;
 
 use oat\generis\test\GenerisTestCase;
+use oat\tao\model\CrudService;
 use oat\tao\model\OntologyClassService;
 
 class CrudServiceTest extends GenerisTestCase
@@ -33,7 +34,7 @@ class CrudServiceTest extends GenerisTestCase
     }
 }
 
-class CrudServiceTestClass extends \tao_models_classes_CrudService
+class CrudServiceTestClass extends CrudService
 {
     private $root;
     

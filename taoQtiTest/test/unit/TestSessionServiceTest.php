@@ -20,26 +20,28 @@
 
 namespace oat\taoQtiTest\test\unit;
 
+use Symfony\Component\Lock\Factory;
+use Symfony\Component\Lock\LockInterface;
+use common_ext_Extension;
+use common_ext_ExtensionsManager;
 use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
 use oat\oatbox\mutex\LockService;
-use oat\taoQtiTest\models\TestSessionService;
-use oat\taoDelivery\model\execution\DeliveryExecution;
+use oat\oatbox\service\ServiceManager;
 use oat\taoDelivery\model\RuntimeService;
+use oat\taoDelivery\model\execution\DeliveryExecution;
 use oat\taoDelivery\model\execution\DeliveryServerService;
+use oat\taoQtiTest\models\QtiTestUtils;
+use oat\taoQtiTest\models\TestSessionService;
+use oat\taoQtiTest\models\files\QtiFlysystemFileManager;
 use oat\taoResultServer\models\classes\ResultStorageWrapper;
-use common_ext_ExtensionsManager;
-use common_ext_Extension;
+use oat\tao\model\service\ConstantParameter;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\StateStorage;
 use qtism\data\storage\php\PhpDocument;
 use qtism\runtime\tests\AssessmentTestSession;
 use qtism\runtime\tests\AssessmentTestSessionState;
-use Symfony\Component\Lock\Factory;
-use Symfony\Component\Lock\LockInterface;
-use tao_models_classes_service_StateStorage;
-use oat\taoQtiTest\models\files\QtiFlysystemFileManager;
-use tao_models_classes_service_FileStorage;
-use oat\taoQtiTest\models\QtiTestUtils;
-use oat\oatbox\service\ServiceManager;
 
 /**
  * Class TestSessionServiceTest
@@ -80,15 +82,15 @@ class TestSessionServiceTest extends TestCase
         $runtimeServiceMock = $this->getMockBuilder(RuntimeService::class)
             ->getMock();
 
-        $serviceCallMock = $this->getMockBuilder(\tao_models_classes_service_ServiceCall::class)
+        $serviceCallMock = $this->getMockBuilder(ServiceCall::class)
             ->disableOriginalConstructor()
             ->getMock();
         $serviceCallMock->method('getInParameters')->willReturn([
-            new \tao_models_classes_service_ConstantParameter(
+            new ConstantParameter(
                 new \core_kernel_classes_Resource('http://www.tao.lu/Ontologies/TAOTest.rdf#FormalParamQtiTestCompilation'),
                 'http://tao.local/tao.rdf#i5e283280659c811408c92e7adfa5708a14-|http://tao.local/tao.rdf#i5e283280660c611408413648d4f380e160+'
             ),
-            new \tao_models_classes_service_ConstantParameter(
+            new ConstantParameter(
                 new \core_kernel_classes_Resource('http://www.tao.lu/Ontologies/TAOTest.rdf#FormalParamQtiTestDefinition'),
                 'http://tao.local/tao.rdf#i5e28322a9c33611408e8f67f51196156cd'
             ),
@@ -117,7 +119,7 @@ class TestSessionServiceTest extends TestCase
             ['taoQtiTest', $qtiTestExtensionMock]
         ]));
 
-        $stateStorageMock = $this->getMockBuilder(tao_models_classes_service_StateStorage::class)
+        $stateStorageMock = $this->getMockBuilder(StateStorage::class)
             ->getMock();
 
         $stateStorageMock->method('has')->will($this->returnValueMap([
@@ -140,7 +142,7 @@ class TestSessionServiceTest extends TestCase
 
         $qtiFlysystemFileManagerService = $this->getMockBuilder(QtiFlysystemFileManager::class)->getMock();
 
-        $fileStorageService = $this->getMockBuilder(tao_models_classes_service_FileStorage::class)->getMock();
+        $fileStorageService = $this->getMockBuilder(FileStorage::class)->getMock();
         $fileStorageService->method('getDirectoryById')->will($this->returnValueMap([
             ['http://tao.local/tao.rdf#i5e283280659c811408c92e7adfa5708a14-', 'dir_foo'],
             ['http://tao.local/tao.rdf#i5e283280660c611408413648d4f380e160+', 'dir_bar'],
@@ -158,10 +160,10 @@ class TestSessionServiceTest extends TestCase
             RuntimeService::SERVICE_ID => $runtimeServiceMock,
             DeliveryServerService::SERVICE_ID => $deliveryServerServiceMock,
             common_ext_ExtensionsManager::SERVICE_ID => $extensionsManagerMock,
-            tao_models_classes_service_StateStorage::SERVICE_ID => $stateStorageMock,
+            StateStorage::SERVICE_ID => $stateStorageMock,
             LockService::SERVICE_ID => $lockService,
             QtiFlysystemFileManager::SERVICE_ID => $qtiFlysystemFileManagerService,
-            tao_models_classes_service_FileStorage::SERVICE_ID => $fileStorageService,
+            FileStorage::SERVICE_ID => $fileStorageService,
             QtiTestUtils::SERVICE_ID => $qtiTestUtilsService
         ]);
 

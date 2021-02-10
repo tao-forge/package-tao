@@ -21,6 +21,7 @@
 
 use oat\generis\model\OntologyRdf;
 use oat\generis\model\OntologyRdfs;
+use oat\tao\model\CrudService;
 
 /**
  * Crud services implements basic CRUD services, orginally intended for
@@ -31,11 +32,11 @@ use oat\generis\model\OntologyRdfs;
  * @author Patrick Plichart, patrick@taotesting.com
  *
  */
-class taoTests_models_classes_CrudTestsService extends tao_models_classes_CrudService
+class taoTests_models_classes_CrudTestsService extends CrudService
 {
 
     /** (non-PHPdoc)
-     * @see tao_models_classes_CrudService::getClassService()
+     * @see oat\tao\model\CrudService::getClassService()
      */
     protected function getClassService()
     {
@@ -44,7 +45,7 @@ class taoTests_models_classes_CrudTestsService extends tao_models_classes_CrudSe
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_CrudService::delete()
+     * @see oat\tao\model\CrudService::delete()
      */
     public function delete($resource)
     {

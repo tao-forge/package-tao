@@ -27,6 +27,8 @@ use oat\taoMediaManager\model\MediaSource;
 use oat\taoMediaManager\model\editInstanceForm;
 use oat\taoMediaManager\model\fileManagement\FileManagement;
 use oat\tao\controller\SaSModule;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use tao_helpers_form_FormContainer as FormContainer;
 
 class MediaManager extends SaSModule
@@ -46,7 +48,7 @@ class MediaManager extends SaSModule
         if ($myForm->isSubmited() && $myForm->isValid()) {
             $values = $myForm->getValues();
             // save properties
-            $binder = new \tao_models_classes_dataBinding_GenerisFormDataBinder($instance);
+            $binder = new GenerisFormDataBinder($instance);
             $instance = $binder->bind($values);
             $message = __('Instance saved');
 
@@ -75,7 +77,7 @@ class MediaManager extends SaSModule
             $this->setData('xml', $xml);
             $this->setData('fileurl', $url);
             $this->setData('mimeType', $mimeType);
-        } catch (\tao_models_classes_FileNotFoundException $e) {
+        } catch (FileNotFoundException $e) {
             $this->setData('error', __('No file found for this media'));
         }
         $this->setView('form.tpl');
@@ -85,7 +87,7 @@ class MediaManager extends SaSModule
      * Get the file stream associated to given uri GET parameter
      *
      * @throws \common_exception_Error
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function getFile()
     {

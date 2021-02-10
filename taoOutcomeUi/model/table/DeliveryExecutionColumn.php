@@ -22,12 +22,14 @@
 
 namespace oat\taoOutcomeUi\model\table;
 
+use oat\tao\model\table\Column;
+
 /**
  * Represents a delivery executions columns
  *
  * @access public
  */
-class DeliveryExecutionColumn extends \tao_models_classes_table_Column
+class DeliveryExecutionColumn extends Column
 {
     private static $dataProvider;
     private $identifier;
@@ -40,7 +42,7 @@ class DeliveryExecutionColumn extends \tao_models_classes_table_Column
 
     /**
      * @param $array
-     * @return DeliveryExecutionColumn|\tao_models_classes_table_Column
+     * @return DeliveryExecutionColumn|\oat\tao\model\table\Column
      * @throws \common_exception_Error
      */
     protected static function fromArray($array)

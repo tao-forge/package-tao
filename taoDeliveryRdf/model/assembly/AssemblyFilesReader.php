@@ -20,12 +20,14 @@
 
 namespace oat\taoDeliveryRdf\model\assembly;
 
+
 use Generator;
-use taoQtiTest_models_classes_QtiTestService;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
 use oat\oatbox\service\ConfigurableService;
-use tao_models_classes_service_StorageDirectory;
+use oat\tao\model\service\StorageDirectory;
+use taoQtiTest_models_classes_QtiTestService;
+
 
 class AssemblyFilesReader extends ConfigurableService implements AssemblyFilesReaderInterface
 {
@@ -42,11 +44,11 @@ class AssemblyFilesReader extends ConfigurableService implements AssemblyFilesRe
     }
 
     /**
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      * @return Generator In format $filePath => StreamInterface
      * @throws \common_Exception
      */
-    public function getFiles(tao_models_classes_service_StorageDirectory $directory)
+    public function getFiles(StorageDirectory $directory)
     {
         $iterator = $directory->getFlyIterator(Directory::ITERATOR_FILE | Directory::ITERATOR_RECURSIVE);
         /* @var $file File */

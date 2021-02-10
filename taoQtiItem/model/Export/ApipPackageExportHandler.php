@@ -37,17 +37,17 @@ use oat\oatbox\service\ServiceManager;
 use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\event\QtiItemExportEvent;
+use oat\tao\model\export\ExportHandler;
 use oat\tao\model\resources\SecureResourceServiceInterface;
 use tao_helpers_File;
 use tao_helpers_form_Form;
-use tao_models_classes_export_ExportHandler;
 
 /**
  * Apip Package Export Handler.
  *
  * @author Jérôme Bogaerts <jerome@taotesting.com>
  */
-class ApipPackageExportHandler implements tao_models_classes_export_ExportHandler, PhpSerializable
+class ApipPackageExportHandler implements ExportHandler, PhpSerializable
 {
     use PhpSerializeStateless;
     use EventManagerAwareTrait;

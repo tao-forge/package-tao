@@ -34,7 +34,7 @@ use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
 use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\qti\copyist\QtiXmlDataManager;
-use tao_models_classes_FileNotFoundException;
+use oat\tao\model\FileNotFoundException;
 
 class QtiXmlDataManagerTest extends TestCase
 {
@@ -135,7 +135,7 @@ class QtiXmlDataManagerTest extends TestCase
      * @throws FileExistsException
      * @throws common_Exception
      * @throws core_kernel_persistence_Exception
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public function testLocalNamespaceItemSource(): void
     {
@@ -146,7 +146,7 @@ class QtiXmlDataManagerTest extends TestCase
      * @throws FileExistsException
      * @throws common_Exception
      * @throws core_kernel_persistence_Exception
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public function testRemoteTaoNamespaceItemSource(): void
     {
@@ -157,7 +157,7 @@ class QtiXmlDataManagerTest extends TestCase
      * @throws FileExistsException
      * @throws common_Exception
      * @throws core_kernel_persistence_Exception
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public function testAnotherNamespaceItemSource(): void
     {

@@ -108,7 +108,7 @@ class Directory extends FileSystemHandler implements \IteratorAggregate
      * @param Directory|File $content
      * @return mixed
      * @throws \common_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function getRelPath($content)
     {

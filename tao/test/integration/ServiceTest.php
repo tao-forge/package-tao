@@ -22,18 +22,18 @@
 
 namespace oat\tao\test\integration;
 
-use oat\generis\model\GenerisRdf;
-use oat\tao\model\menu\MenuService;
-use oat\tao\model\TaoOntology;
-use oat\tao\test\TaoPhpUnitTestRunner;
-use tao_models_classes_GenerisService;
-use \tao_models_classes_TaoService;
-use \tao_models_classes_UserService;
-use \core_kernel_classes_Class;
-use \common_ext_NamespaceManager;
-use \common_cache_FileCache;
-use \common_ext_ExtensionsManager;
 use Prophecy\Prophet;
+use common_cache_FileCache;
+use common_ext_ExtensionsManager;
+use common_ext_NamespaceManager;
+use core_kernel_classes_Class;
+use oat\generis\model\GenerisRdf;
+use oat\tao\model\GenerisService;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\TaoService;
+use oat\tao\model\UserService;
+use oat\tao\model\menu\MenuService;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 /**
  * This class enable you to test the models managment of the tao extension
@@ -46,7 +46,7 @@ class ServiceTest extends TaoPhpUnitTestRunner
 {
 
     /**
-     * @var tao_models_classes_TaoService we share the service instance between the tests
+     * @var oat\tao\model\TaoService we share the service instance between the tests
      */
     protected $taoService = null;
 
@@ -57,14 +57,14 @@ class ServiceTest extends TaoPhpUnitTestRunner
     {
         TaoPhpUnitTestRunner::initTest();
         $this->assertNull($this->taoService);
-        $this->taoService = tao_models_classes_TaoService::singleton();
+        $this->taoService = TaoService::singleton();
     }
 
 
 
     /**
      * Test the service factory: dynamical instantiation and single instance serving
-     * @see tao_models_classes_ServiceFactory::get
+     * @see oat\tao\model\ServiceFactory::get
      */
     public function testServiceFactory()
     {
@@ -73,13 +73,13 @@ class ServiceTest extends TaoPhpUnitTestRunner
 
         //test factory instantiation
 
-        $this->assertIsA($this->taoService, 'tao_models_classes_TaoService');
+        $this->assertIsA($this->taoService, 'oat\\tao\\model\\TaoService');
 
-        $userService = tao_models_classes_UserService::singleton();
-        $this->assertIsA($userService, 'tao_models_classes_UserService');
+        $userService = UserService::singleton();
+        $this->assertIsA($userService, 'oat\\tao\\model\\UserService');
 
-        $taoService2 = tao_models_classes_TaoService::singleton();
-        $this->assertIsA($taoService2, 'tao_models_classes_TaoService');
+        $taoService2 = TaoService::singleton();
+        $this->assertIsA($taoService2, 'oat\\tao\\model\\TaoService');
 
         //test factory singleton
         $this->assertSame($this->taoService, $taoService2);
@@ -88,7 +88,7 @@ class ServiceTest extends TaoPhpUnitTestRunner
 
     /**
      * Test the taoService methods, the extensions loading
-     * @see tao_models_classes_TaoService::getLoadedExtensions
+     * @see oat\tao\model\TaoService::getLoadedExtensions
      */
     public function testTaoServiceExtention()
     {
@@ -108,8 +108,8 @@ class ServiceTest extends TaoPhpUnitTestRunner
 
     /**
      * Test the Service methods from the abtract Service class,
-     * but using the tao_models_classes_TaoService as a common child to access the methods of the abtract class
-     * @see tao_models_classes_Service
+     * but using the oat\tao\model\TaoService as a common child to access the methods of the abtract class
+     * @see oat\tao\model\Service
      */
     public function testAbstractService()
     {
@@ -187,15 +187,15 @@ class ServiceTest extends TaoPhpUnitTestRunner
 
         //backup previous config
         $ext = common_ext_ExtensionsManager::singleton()->getExtensionById('tao');
-        $previous = $ext->getConfig(tao_models_classes_TaoService::CONFIG_UPLOAD_FILESOURCE);
+        $previous = $ext->getConfig(TaoService::CONFIG_UPLOAD_FILESOURCE);
 
         $this->taoService->setUploadFileSourceId('#fakeUri');
 
-        $new = $ext->getConfig(tao_models_classes_TaoService::CONFIG_UPLOAD_FILESOURCE);
+        $new = $ext->getConfig(TaoService::CONFIG_UPLOAD_FILESOURCE);
         $this->assertEquals('#fakeUri', $new);
 
         //restore config
-        $this->assertTrue($ext->setConfig(tao_models_classes_TaoService::CONFIG_UPLOAD_FILESOURCE, $previous));
+        $this->assertTrue($ext->setConfig(TaoService::CONFIG_UPLOAD_FILESOURCE, $previous));
     }
 
     /**

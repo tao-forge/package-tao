@@ -23,15 +23,15 @@ declare(strict_types=1);
 
 namespace oat\taoItems\model\pack;
 
+use InvalidArgumentException;
+use JsonSerializable;
 use LogicException;
-use \JsonSerializable;
-use oat\tao\helpers\Base64;
-use \InvalidArgumentException;
-use oat\tao\model\media\MediaAsset;
 use oat\taoMediaManager\model\MediaSource;
+use oat\tao\helpers\Base64;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\media\MediaAsset;
 use oat\tao\model\media\sourceStrategy\HttpSource;
-use tao_models_classes_service_StorageDirectory as StorageDirectory;
-use tao_models_classes_FileNotFoundException as FileNotFoundException;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * The Item Pack represents the item package data produced by the compilation.

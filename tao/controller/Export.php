@@ -24,18 +24,18 @@
 
 namespace oat\tao\controller;
 
-use \Context;
-use \common_Exception;
-use \common_exception_MissingParameter;
-use \tao_helpers_Uri;
-use \tao_models_classes_export_RdfExporter;
+use Context;
+use common_Exception;
+use common_exception_MissingParameter;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\log\LoggerAwareTrait;
+use oat\tao\model\export\RdfExporter;
 use oat\tao\model\form\ExportForm;
 use oat\tao\model\resources\SecureResourceServiceInterface;
 use oat\tao\model\taskQueue\QueueDispatcher;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
 use oat\tao\model\task\ExportByHandler;
+use tao_helpers_Uri;
 
 /**
  * This controller provide the actions to export and manage exported data
@@ -194,7 +194,7 @@ class Export extends CommonModule
     /**
      * Returns the selected ExportHandler
      *
-     * @return tao_models_classes_export_ExportHandler
+     * @return oat\tao\model\export\ExportHandler
      * @throws common_Exception
      */
     private function getCurrentExporter()
@@ -203,7 +203,7 @@ class Export extends CommonModule
             $exportHandler = $_REQUEST['exportHandler'];//allow method "GET"
             if (
                 class_exists($exportHandler)
-                && in_array('tao_models_classes_export_ExportHandler', class_implements($exportHandler))
+                && in_array('oat\\tao\\model\\export\\ExportHandler', class_implements($exportHandler))
             ) {
                 return new $exportHandler();
             } else {
@@ -217,12 +217,12 @@ class Export extends CommonModule
     /**
      * Override this function to add your own custom ExportHandlers
      *
-     * @return \tao_models_classes_export_ExportHandler[]
+     * @return \oat\tao\model\export\ExportHandler[]
      */
     protected function getAvailableExportHandlers()
     {
         return [
-            new tao_models_classes_export_RdfExporter()
+            new RdfExporter()
         ];
     }
 }

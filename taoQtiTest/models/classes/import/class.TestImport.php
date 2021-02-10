@@ -19,13 +19,14 @@
  *
  */
 
-use oat\oatbox\event\EventManagerAwareTrait;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use oat\oatbox\PhpSerializable;
 use oat\oatbox\PhpSerializeStateless;
+use oat\oatbox\event\EventManagerAwareTrait;
+use oat\taoQtiTest\models\event\QtiTestImportEvent;
+use oat\tao\model\import\ImportHandler;
 use oat\tao\model\import\ImportHandlerHelperTrait;
 use oat\tao\model\import\TaskParameterProviderInterface;
-use oat\taoQtiTest\models\event\QtiTestImportEvent;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
 
 /**
  * Import handler for QTI packages
@@ -34,7 +35,7 @@ use Zend\ServiceManager\ServiceLocatorAwareInterface;
  * @author  Joel Bout, <joel@taotesting.com>
  * @package taoQTI
  */
-class taoQtiTest_models_classes_import_TestImport implements tao_models_classes_import_ImportHandler, PhpSerializable, ServiceLocatorAwareInterface, TaskParameterProviderInterface
+class taoQtiTest_models_classes_import_TestImport implements ImportHandler, PhpSerializable, ServiceLocatorAwareInterface, TaskParameterProviderInterface
 {
     use PhpSerializeStateless;
     use EventManagerAwareTrait;
@@ -42,7 +43,7 @@ class taoQtiTest_models_classes_import_TestImport implements tao_models_classes_
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_ImportHandler::getLabel()
+     * @see oat\tao\model\import\ImportHandler::getLabel()
      */
     public function getLabel()
     {
@@ -51,7 +52,7 @@ class taoQtiTest_models_classes_import_TestImport implements tao_models_classes_
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_ImportHandler::getForm()
+     * @see oat\tao\model\import\ImportHandler::getForm()
      */
     public function getForm()
     {

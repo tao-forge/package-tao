@@ -21,14 +21,15 @@
 
 namespace oat\taoDeliveryRdf\model;
 
+use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
-use \core_kernel_classes_Property;
 use oat\generis\model\kernel\persistence\smoothsql\search\filter\Filter;
 use oat\generis\model\kernel\persistence\smoothsql\search\filter\FilterOperator;
 use oat\taoDeliveryRdf\model\event\DeliveryRemovedEvent;
-use tao_models_classes_service_ServiceCall;
 use oat\taoDelivery\model\RuntimeService;
 use oat\tao\model\OntologyClassService;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceCall;
 
 /**
  * Service to manage the authoring of deliveries
@@ -58,14 +59,14 @@ class DeliveryAssemblyService extends OntologyClassService
     const PROPERTY_END = 'http://www.tao.lu/Ontologies/TAODelivery.rdf#PeriodEnd';
 
     /**
-     * @var \tao_models_classes_service_FileStorage
+     * @var \oat\tao\model\service\FileStorage
      */
     protected $storageService;
 
     /**
      * (non-PHPdoc)
      *
-     * @see \tao_models_classes_ClassService::getRootClass()
+     * @see \oat\tao\model\ClassService::getRootClass()
      */
     public function getRootClass()
     {
@@ -75,12 +76,12 @@ class DeliveryAssemblyService extends OntologyClassService
     /**
      * Return the file storage
      *
-     * @return \tao_models_classes_service_FileStorage
+     * @return \oat\tao\model\service\FileStorage
      */
     protected function getFileStorage()
     {
         if (!$this->storageService) {
-            $this->storageService = $this->getServiceManager()->get(\tao_models_classes_service_FileStorage::SERVICE_ID);
+            $this->storageService = $this->getServiceManager()->get(FileStorage::SERVICE_ID);
         }
         return $this->storageService;
     }
@@ -89,11 +90,11 @@ class DeliveryAssemblyService extends OntologyClassService
      * @deprecated please use DeliveryFactory
      *
      * @param core_kernel_classes_Class $deliveryClass
-     * @param tao_models_classes_service_ServiceCall $serviceCall
+     * @param oat\tao\model\service\ServiceCall $serviceCall
      * @param array $properties
      * @return \core_kernel_classes_Resource
      */
-    public function createAssemblyFromServiceCall(core_kernel_classes_Class $deliveryClass, tao_models_classes_service_ServiceCall $serviceCall, $properties = [])
+    public function createAssemblyFromServiceCall(core_kernel_classes_Class $deliveryClass, ServiceCall $serviceCall, $properties = [])
     {
         throw new \common_exception_Error("Call to deprecated " . __FUNCTION__);
     }
@@ -185,7 +186,7 @@ class DeliveryAssemblyService extends OntologyClassService
      * Gets the service call to run this assembly
      *
      * @param core_kernel_classes_Resource $assembly
-     * @return tao_models_classes_service_ServiceCall
+     * @return oat\tao\model\service\ServiceCall
      */
     public function getRuntime(core_kernel_classes_Resource $assembly)
     {

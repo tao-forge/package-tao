@@ -22,7 +22,7 @@
 
 namespace oat\taoLti\models\classes;
 
-use tao_models_classes_Service;
+use oat\tao\model\Service;
 
 /**
  * Abstract service to be implemented by LTI tools
@@ -31,7 +31,7 @@ use tao_models_classes_Service;
  * @package taoLti
  * @package models_classes
  */
-abstract class LtiTool extends tao_models_classes_Service
+abstract class LtiTool extends Service
 {
     const PROPERTY_SERVICE = 'http://www.tao.lu/Ontologies/TAOLTI.rdf#ToolService';
 

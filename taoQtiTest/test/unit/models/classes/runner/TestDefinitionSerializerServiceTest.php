@@ -21,12 +21,13 @@
 
 namespace oat\taoQtiTest\test\unit\models\classes\runner;
 
+use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\File;
 use oat\taoQtiTest\models\runner\QtiRunnerServiceContext;
 use oat\taoQtiTest\models\runner\TestDefinitionSerializerService;
-use tao_models_classes_service_StorageDirectory;
-use oat\generis\test\MockObject;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\StorageDirectory;
 
 class TestDefinitionSerializerServiceTest extends TestCase
 {
@@ -94,10 +95,10 @@ class TestDefinitionSerializerServiceTest extends TestCase
     /** @var TestDefinitionSerializerService */
     private $testDefinitionSerializerService;
 
-    /** @var \tao_models_classes_service_FileStorage|MockObject */
+    /** @var \oat\tao\model\service\FileStorage|MockObject */
     private $fileStorageServiceMock;
 
-    /** @var tao_models_classes_service_StorageDirectory|MockObject */
+    /** @var oat\tao\model\service\StorageDirectory|MockObject */
     private $directoryMock;
 
     /** @var File|MockObject */
@@ -114,7 +115,7 @@ class TestDefinitionSerializerServiceTest extends TestCase
         $this->testDefinitionSerializerService = new TestDefinitionSerializerService();
 
         $this->fileStorageServiceMock = $this
-            ->getMockBuilder(\tao_models_classes_service_FileStorage::class)
+            ->getMockBuilder(FileStorage::class)
             ->getMock();
 
         $this->qtiRunnerServiceContext = $this
@@ -127,7 +128,7 @@ class TestDefinitionSerializerServiceTest extends TestCase
             ->willReturn('test|test');
 
         $this->directoryMock = $this
-            ->getMockBuilder(tao_models_classes_service_StorageDirectory::class)
+            ->getMockBuilder(StorageDirectory::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -152,7 +153,7 @@ class TestDefinitionSerializerServiceTest extends TestCase
             ->willReturn($this->directoryMock);
 
         $serviceLocatorMock = $this->getServiceLocatorMock([
-            \tao_models_classes_service_FileStorage::SERVICE_ID => $this->fileStorageServiceMock,
+            FileStorage::SERVICE_ID => $this->fileStorageServiceMock,
         ]);
 
         $this->testDefinitionSerializerService->setServiceLocator($serviceLocatorMock);

@@ -23,9 +23,9 @@ declare(strict_types=1);
 namespace oat\taoMediaManager\model\sharedStimulus\parser;
 
 use oat\generis\model\OntologyAwareTrait;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\media\MediaAsset;
 use tao_helpers_Uri;
-use tao_models_classes_FileNotFoundException as FileNotFoundException;
 
 class SharedStimulusMediaExtractor extends SharedStimulusMediaParser
 {

@@ -30,8 +30,8 @@ use oat\taoItems\model\ItemModel as ItemModelInterface;
 use oat\taoItems\model\search\IndexableItemModel;
 use oat\taoQtiItem\model\qti\Service;
 use oat\taoQtiItem\model\search\QtiItemContentTokenizer;
-use tao_models_classes_export_ExportProvider;
-use tao_models_classes_import_ImportProvider;
+use oat\tao\model\export\ExportProvider;
+use oat\tao\model\import\ImportProvider;
 
 /**
  * Short description of class oat\taoQtiItem\model\ItemModel
@@ -43,8 +43,8 @@ use tao_models_classes_import_ImportProvider;
  */
 class ItemModel extends ConfigurableService implements
     ItemModelInterface,
-    tao_models_classes_export_ExportProvider,
-    tao_models_classes_import_ImportProvider,
+    ExportProvider,
+    ImportProvider,
     IndexableItemModel
 {
 

@@ -23,6 +23,7 @@
 namespace oat\taoMediaManager\model;
 
 use oat\generis\Helper\SystemHelper;
+use oat\tao\model\LanguageService;
 use oat\tao\model\TaoOntology;
 
 /**
@@ -74,7 +75,7 @@ class FileImportForm extends \tao_helpers_form_FormContainer
 
         $this->form->addElement($fileElt);
 
-        $langService = \tao_models_classes_LanguageService::singleton();
+        $langService = LanguageService::singleton();
         $dataUsage = new \core_kernel_classes_Resource(TaoOntology::PROPERTY_STANCE_LANGUAGE_USAGE_DATA);
         $dataLang = \common_session_SessionManager::getSession()->getDataLanguage();
         $dataLang = 'http://www.tao.lu/Ontologies/TAO.rdf#Lang' . $dataLang;

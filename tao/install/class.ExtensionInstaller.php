@@ -21,14 +21,15 @@
  *               2013-2014 (update and modification) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  */
 
+use oat\generis\model\data\ModelManager;
 use oat\tao\helpers\Template;
+use oat\tao\helpers\translation\rdf\RdfPack;
+use oat\tao\model\ClientLibRegistry;
+use oat\tao\model\RoleService;
+use oat\tao\model\TaoOntology;
 use oat\tao\model\accessControl\func\AccessRule;
 use oat\tao\model\accessControl\func\AclProxy;
-use oat\tao\model\ClientLibRegistry;
-use oat\tao\helpers\translation\rdf\RdfPack;
-use oat\generis\model\data\ModelManager;
 use oat\tao\model\extension\ExtensionModel;
-use oat\tao\model\TaoOntology;
 use oat\tao\model\user\TaoRoles;
 
 /**
@@ -92,7 +93,7 @@ class tao_install_ExtensionInstaller extends common_ext_ExtensionInstaller
         $roleUri = $this->extension->getManifest()->getManagementRoleUri();
         if (! empty($roleUri)) {
             $role = new core_kernel_classes_Resource($roleUri);
-            $roleService = tao_models_classes_RoleService::singleton();
+            $roleService = RoleService::singleton();
             if (! $role->exists()) {
                 // Management role does not exist yet, so we create it
                 $roleClass = new core_kernel_classes_Class(TaoOntology::CLASS_URI_MANAGEMENT_ROLE);

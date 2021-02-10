@@ -25,10 +25,10 @@ use common_report_Report;
 use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
 use oat\taoItems\helpers\Deployment;
-use tao_models_classes_Compiler;
-use tao_models_classes_service_ConstantParameter;
-use tao_models_classes_service_ServiceCall;
-use tao_models_classes_service_StorageDirectory;
+use oat\tao\model\Compiler;
+use oat\tao\model\service\ConstantParameter;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * Generic item compiler.
@@ -39,7 +39,7 @@ use tao_models_classes_service_StorageDirectory;
  * @package taoItems
 
  */
-abstract class ItemCompiler extends tao_models_classes_Compiler
+abstract class ItemCompiler extends Compiler
 {
     /**
      * Get the languages in use for the item content.
@@ -93,17 +93,17 @@ abstract class ItemCompiler extends tao_models_classes_Compiler
      * Create the item's ServiceCall.
      *
      * @param core_kernel_classes_Resource $item
-     * @param tao_models_classes_service_StorageDirectory $destinationDirectory
-     * @return tao_models_classes_service_ServiceCall
+     * @param oat\tao\model\service\StorageDirectory $destinationDirectory
+     * @return oat\tao\model\service\ServiceCall
      */
-    protected function createService(core_kernel_classes_Resource $item, tao_models_classes_service_StorageDirectory $destinationDirectory)
+    protected function createService(core_kernel_classes_Resource $item, StorageDirectory $destinationDirectory)
     {
-        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(ItemsService::INSTANCE_SERVICE_ITEM_RUNNER));
-        $service->addInParameter(new tao_models_classes_service_ConstantParameter(
+        $service = new ServiceCall(new core_kernel_classes_Resource(ItemsService::INSTANCE_SERVICE_ITEM_RUNNER));
+        $service->addInParameter(new ConstantParameter(
             new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_PATH),
             $destinationDirectory->getId()
         ));
-        $service->addInParameter(new tao_models_classes_service_ConstantParameter(
+        $service->addInParameter(new ConstantParameter(
             new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_URI),
             $item
         ));

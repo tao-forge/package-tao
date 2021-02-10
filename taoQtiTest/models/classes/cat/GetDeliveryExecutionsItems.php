@@ -21,13 +21,13 @@
 namespace oat\taoQtiTest\models\cat;
 
 use core_kernel_classes_Resource;
-use oat\taoDelivery\model\execution\DeliveryExecutionInterface;
 use oat\taoDelivery\model\RuntimeService;
+use oat\taoDelivery\model\execution\DeliveryExecutionInterface;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceCallHelper;
 use qtism\data\ExtendedAssessmentItemRef;
 use qtism\data\ExtendedAssessmentSection;
 use qtism\runtime\tests\AssessmentTestSession;
-use tao_models_classes_service_FileStorage;
-use tao_models_classes_service_ServiceCallHelper;
 
 class GetDeliveryExecutionsItems
 {
@@ -37,7 +37,7 @@ class GetDeliveryExecutionsItems
     /** @var CatService */
     private $catService;
 
-    /** @var \tao_models_classes_service_StorageDirectory */
+    /** @var \oat\tao\model\service\StorageDirectory */
     private $directoryStorage;
 
     /** @var DeliveryExecutionInterface  */
@@ -49,7 +49,7 @@ class GetDeliveryExecutionsItems
     /**
      * @param RuntimeService $runTimeService
      * @param CatService $catService
-     * @param tao_models_classes_service_FileStorage $fileStorage
+     * @param oat\tao\model\service\FileStorage $fileStorage
      * @param DeliveryExecutionInterface $deliveryExecution
      * @param AssessmentTestSession $assessmentTestSession
      * @throws \Exception
@@ -57,7 +57,7 @@ class GetDeliveryExecutionsItems
     public function __construct(
         RuntimeService $runTimeService,
         CatService $catService,
-        tao_models_classes_service_FileStorage $fileStorage,
+        FileStorage $fileStorage,
         DeliveryExecutionInterface $deliveryExecution,
         AssessmentTestSession $assessmentTestSession
     ) {
@@ -102,7 +102,7 @@ class GetDeliveryExecutionsItems
      */
     protected function setDirectoryStorage($delivery)
     {
-        $fileStorage = \tao_models_classes_service_FileStorage::singleton();
+        $fileStorage = FileStorage::singleton();
         $directoryIds = explode('|', $this->getTestFile($delivery));
         $this->directoryStorage = $fileStorage->getDirectoryById($directoryIds[0]);
     }
@@ -114,7 +114,7 @@ class GetDeliveryExecutionsItems
      */
     protected function getTestFile(\core_kernel_classes_Resource $delivery)
     {
-        $parameters = tao_models_classes_service_ServiceCallHelper::getInputValues(
+        $parameters = ServiceCallHelper::getInputValues(
             $this->runTimeService->getRuntime($delivery->getUri()),
             []
         );

@@ -23,6 +23,7 @@ namespace oat\taoItems\test\media;
 
 use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\media\LocalItemSource;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\media\MediaAsset;
 use oat\tao\test\TaoPhpUnitTestRunner;
 
@@ -77,7 +78,7 @@ class LocalItemSourceTest extends TaoPhpUnitTestRunner
         try {
             $source->getFileInfo($asset->getMediaIdentifier());
             $this->fail('GetFileInfo on a deleted file should throw error');
-        } catch (\tao_models_classes_FileNotFoundException $e) {
+        } catch (FileNotFoundException $e) {
             // should not be found
         }
     }

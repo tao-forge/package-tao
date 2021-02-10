@@ -344,7 +344,7 @@ class ItemsService extends OntologyClassService
     /**
      * Woraround for item content
      * (non-PHPdoc)
-     * @see tao_models_classes_GenerisService::cloneInstanceProperty()
+     * @see oat\tao\model\GenerisService::cloneInstanceProperty()
      */
     protected function cloneInstanceProperty(core_kernel_classes_Resource $source, core_kernel_classes_Resource $destination, core_kernel_classes_Property $property)
     {

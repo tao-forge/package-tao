@@ -22,6 +22,7 @@ namespace oat\taoClientDiagnostic\model;
 
 use Sinergi\BrowserDetector\Browser;
 use Sinergi\BrowserDetector\Os;
+use oat\tao\model\FileNotFoundException;
 
 class CompatibilityChecker
 {
@@ -31,14 +32,14 @@ class CompatibilityChecker
      * CompatibilityChecker constructor
      * Check parameter required
      * Extract compatibility file
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     function __construct()
     {
         $compatibilityFile = __DIR__ . '/../include/compatibility.json';
 
         if (!file_exists($compatibilityFile)) {
-            throw new \tao_models_classes_FileNotFoundException("Unable to find the compatibility file");
+            throw new FileNotFoundException("Unable to find the compatibility file");
         }
         $this->compatibility = json_decode(file_get_contents($compatibilityFile));
     }

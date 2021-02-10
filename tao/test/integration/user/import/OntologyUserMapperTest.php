@@ -20,13 +20,13 @@
 
 namespace oat\tao\test\integration\user\import;
 
-use core_kernel_classes_Resource;
 use Exception;
+use core_kernel_classes_Resource;
 use helpers_PasswordHash;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\tao\model\LanguageService;
 use oat\tao\model\import\service\MandatoryFieldException;
 use oat\tao\model\user\import\OntologyUserMapper;
-use tao_models_classes_LanguageService;
 
 class OntologyUserMapperTest extends GenerisPhpUnitTestRunner
 {
@@ -100,7 +100,7 @@ class OntologyUserMapperTest extends GenerisPhpUnitTestRunner
         $langResource = $this->getMockBuilder(core_kernel_classes_Resource::class)->disableOriginalConstructor()->getMock();
         $langResource->method('getUri')->willReturn('http://www.tao.lu/Ontologies/TAO.rdf#Langda-EN');
 
-        $languageService = $this->getMockBuilder(tao_models_classes_LanguageService::class)->disableOriginalConstructor()->getMock();
+        $languageService = $this->getMockBuilder(LanguageService::class)->disableOriginalConstructor()->getMock();
         $languageService->method('getLanguageByCode')->willReturn($langResource);
 
         $mapper->method('getPasswordHashService')

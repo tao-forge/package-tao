@@ -1,5 +1,6 @@
 <?php
 
+use oat\tao\model\UserService;
 use oat\tao\model\import\ImportRdf;
 
 /**
@@ -79,7 +80,7 @@ class tao_scripts_TaoRDFImport extends tao_scripts_Runner
     public function run()
     {
         
-        $userService = tao_models_classes_UserService::singleton();
+        $userService = UserService::singleton();
         $this->outVerbose("Connecting to TAO as '" . $this->options['user'] . "' ...");
         if ($userService->loginUser($this->options['user'], $this->options['password'])) {
             $this->outVerbose("Connected to TAO as '" . $this->options['user'] . "'.");

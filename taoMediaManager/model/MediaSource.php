@@ -20,20 +20,20 @@
 
 namespace oat\taoMediaManager\model;
 
+use GuzzleHttp\Psr7\stream_for;
+use Psr\Http\Message\StreamInterface;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\Configurable;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\service\ServiceManager;
-use oat\tao\model\media\MediaManagement;
-use oat\tao\model\media\ProcessedFileStreamAware;
 use oat\taoMediaManager\model\export\service\MediaResourcePreparer;
 use oat\taoMediaManager\model\fileManagement\FileManagement;
 use oat\taoMediaManager\model\fileManagement\FileSourceUnserializer;
-use Psr\Http\Message\StreamInterface;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\media\MediaManagement;
+use oat\tao\model\media\ProcessedFileStreamAware;
 use tao_helpers_Uri;
-
-use function GuzzleHttp\Psr7\stream_for;
 
 class MediaSource extends Configurable implements MediaManagement, ProcessedFileStreamAware
 {
@@ -73,7 +73,7 @@ class MediaSource extends Configurable implements MediaManagement, ProcessedFile
     public function add($source, $fileName, $parent, $mimetype = null)
     {
         if (!file_exists($source)) {
-            throw new \tao_models_classes_FileNotFoundException($source);
+            throw new FileNotFoundException($source);
         }
 
         $clazz = $this->getOrCreatePath($parent);
@@ -127,7 +127,7 @@ class MediaSource extends Configurable implements MediaManagement, ProcessedFile
                     if (count($acceptableMime) == 0 || in_array($file['mime'], $acceptableMime)) {
                         $children[] = $file;
                     }
-                } catch (\tao_models_classes_FileNotFoundException $e) {
+                } catch (FileNotFoundException $e) {
                     \common_Logger::e($e->getMessage());
                 }
             }
@@ -148,7 +148,7 @@ class MediaSource extends Configurable implements MediaManagement, ProcessedFile
         // get the media link from the resource
         $resource = $this->getResource(tao_helpers_Uri::decode($this->removeSchemaFromUriOrLink($link)));
         if (!$resource->exists()) {
-            throw new \tao_models_classes_FileNotFoundException($link);
+            throw new FileNotFoundException($link);
         }
 
         $fileLink = $resource->getUniquePropertyValue($this->getProperty(MediaService::PROPERTY_LINK));
@@ -179,14 +179,14 @@ class MediaSource extends Configurable implements MediaManagement, ProcessedFile
      * @param string $link
      * @return \Psr\Http\Message\StreamInterface
      * @throws \core_kernel_persistence_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function getFileStream($link)
     {
         $resource = $this->getResource(tao_helpers_Uri::decode($link));
         $fileLink = $resource->getOnePropertyValue($this->getProperty(MediaService::PROPERTY_LINK));
         if (is_null($fileLink)) {
-            throw new \tao_models_classes_FileNotFoundException($link);
+            throw new FileNotFoundException($link);
         }
         $fileLink = $fileLink instanceof \core_kernel_classes_Resource ? $fileLink->getUri() : (string)$fileLink;
         $fileLink = $this->getFileSourceUnserializer()->unserialize($fileLink);
@@ -217,7 +217,7 @@ class MediaSource extends Configurable implements MediaManagement, ProcessedFile
      * @param string $link
      * @return string
      * @throws \core_kernel_persistence_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function getBaseName($link)
     {

@@ -20,8 +20,9 @@
 
 namespace oat\taoDelivery\model\container\delivery;
 
-use oat\taoDelivery\model\execution\DeliveryExecution;
 use oat\taoDelivery\model\container\execution\ExecutionServiceContainer;
+use oat\taoDelivery\model\execution\DeliveryExecution;
+use oat\tao\model\service\ServiceCall;
 
 class DeliveryServiceContainer extends AbstractContainer
 {
@@ -29,7 +30,7 @@ class DeliveryServiceContainer extends AbstractContainer
 
     public function getRuntime(DeliveryExecution $execution)
     {
-        return \tao_models_classes_service_ServiceCall::fromJSON($this->getRuntimeParams());
+        return ServiceCall::fromJSON($this->getRuntimeParams());
     }
 
     public function getExecutionContainer(DeliveryExecution $execution)

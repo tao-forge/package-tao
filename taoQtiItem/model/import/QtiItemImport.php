@@ -22,21 +22,21 @@
 
 namespace oat\taoQtiItem\model\import;
 
-use oat\oatbox\event\EventManagerAwareTrait;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use common_Exception;
+use common_report_Report as Report;
 use oat\oatbox\PhpSerializable;
 use oat\oatbox\PhpSerializeStateless;
-use oat\tao\model\import\ImportHandlerHelperTrait;
-use oat\tao\model\import\TaskParameterProviderInterface;
+use oat\oatbox\event\EventManagerAwareTrait;
 use oat\taoQtiItem\model\event\QtiItemImportEvent;
 use oat\taoQtiItem\model\qti\ImportService;
-use oat\taoQtiItem\model\qti\exception\UnsupportedQtiElement;
 use oat\taoQtiItem\model\qti\exception\ParsingException;
 use oat\taoQtiItem\model\qti\exception\QtiModelException;
+use oat\taoQtiItem\model\qti\exception\UnsupportedQtiElement;
 use oat\taoQtiItem\model\qti\parser\ValidationException;
-use \tao_models_classes_import_ImportHandler;
-use \common_report_Report as Report;
-use \common_Exception;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use oat\tao\model\import\ImportHandler;
+use oat\tao\model\import\ImportHandlerHelperTrait;
+use oat\tao\model\import\TaskParameterProviderInterface;
 
 /**
  * Import handler for QTI XML files
@@ -45,14 +45,14 @@ use Zend\ServiceManager\ServiceLocatorAwareInterface;
  * @author  Joel Bout, <joel@taotesting.com>
  * @package taoQTIItem
  */
-class QtiItemImport implements tao_models_classes_import_ImportHandler, PhpSerializable, ServiceLocatorAwareInterface, TaskParameterProviderInterface
+class QtiItemImport implements ImportHandler, PhpSerializable, ServiceLocatorAwareInterface, TaskParameterProviderInterface
 {
     use PhpSerializeStateless;
     use EventManagerAwareTrait;
     use ImportHandlerHelperTrait;
 
     /**
-     * @see tao_models_classes_import_ImportHandler::getLabel()
+     * @see oat\tao\model\import\ImportHandler::getLabel()
      */
     public function getLabel()
     {
@@ -60,7 +60,7 @@ class QtiItemImport implements tao_models_classes_import_ImportHandler, PhpSeria
     }
 
     /**
-     * @see tao_models_classes_import_ImportHandler::getForm()
+     * @see oat\tao\model\import\ImportHandler::getForm()
      */
     public function getForm()
     {
@@ -70,7 +70,7 @@ class QtiItemImport implements tao_models_classes_import_ImportHandler, PhpSeria
     }
 
     /**
-     * @see tao_models_classes_import_ImportHandler::import()
+     * @see oat\tao\model\import\ImportHandler::import()
      * @param \core_kernel_classes_Class $class
      * @param \tao_helpers_form_Form|array $form
      * @param string|null $userId owner of the resource

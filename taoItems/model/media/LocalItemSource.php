@@ -27,6 +27,7 @@ use common_exception_Error;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
 use oat\taoItems\model\ItemsService;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\media\MediaManagement;
 use tao_helpers_File;
 
@@ -66,7 +67,7 @@ class LocalItemSource implements MediaManagement
      * @param int $depth
      * @return array
      * @throws \FileNotFoundException
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      * @throws common_exception_Error
      */
     public function getDirectory($parentLink = '', $acceptableMime = [], $depth = 1)
@@ -128,7 +129,7 @@ class LocalItemSource implements MediaManagement
      * @see \oat\tao\model\media\MediaBrowser::getFileInfo
      * @param string $link
      * @return array
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      * @throws common_exception_Error
      */
     public function getFileInfo($link)
@@ -146,7 +147,7 @@ class LocalItemSource implements MediaManagement
      * @param string $sourceFile
      * @return array
      * @throws \common_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     protected function getInfoFromSource(File $file, string $sourceFile): array
     {
@@ -183,7 +184,7 @@ class LocalItemSource implements MediaManagement
      * @param string $link
      * @return string
      * @throws \common_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      * @throws common_exception_Error
      */
     public function download($link)
@@ -228,7 +229,7 @@ class LocalItemSource implements MediaManagement
      * @param string $parent
      * @return array
      * @throws \common_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function add($source, $fileName, $parent)
     {
@@ -257,7 +258,7 @@ class LocalItemSource implements MediaManagement
      * @see \oat\tao\model\media\MediaManagement::delete
      * @param $link
      * @return bool
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      * @throws common_exception_Error
      */
     public function delete($link)
@@ -271,7 +272,7 @@ class LocalItemSource implements MediaManagement
      * @see tao/models/classes/media/MediaBrowser.php:getFileStream
      * @param string $link
      * @return StreamInterface
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      * @throws common_exception_Error
      */
     public function getFileStream($link)
@@ -285,7 +286,7 @@ class LocalItemSource implements MediaManagement
      * @param $link
      * @return File
      * @throws \common_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      * @throws common_exception_Error
      */
     private function getFile($link)
@@ -298,7 +299,7 @@ class LocalItemSource implements MediaManagement
         if ($file->exists()) {
             return $file;
         }
-        throw new \tao_models_classes_FileNotFoundException($link);
+        throw new FileNotFoundException($link);
     }
 
     /**

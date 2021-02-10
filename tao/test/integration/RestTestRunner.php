@@ -4,6 +4,7 @@ namespace oat\tao\test\integration;
 
 use oat\generis\model\GenerisRdf;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\tao\model\LanguageService;
 use oat\tao\model\TaoOntology;
 use oat\tao\model\user\TaoRoles;
 
@@ -25,7 +26,7 @@ abstract class RestTestRunner extends GenerisPhpUnitTestRunner
             GenerisRdf::PROPERTY_USER_LASTNAME => 'Doe',
             GenerisRdf::PROPERTY_USER_FIRSTNAME => 'John',
             GenerisRdf::PROPERTY_USER_MAIL => 'jdoe@tao.lu',
-            GenerisRdf::PROPERTY_USER_UILG => \tao_models_classes_LanguageService::singleton()->getLanguageByCode(DEFAULT_LANG)->getUri(),
+            GenerisRdf::PROPERTY_USER_UILG => LanguageService::singleton()->getLanguageByCode(DEFAULT_LANG)->getUri(),
             GenerisRdf::PROPERTY_USER_PASSWORD => 'test' . rand(),
             GenerisRdf::PROPERTY_USER_ROLES => [
                 TaoRoles::GLOBAL_MANAGER

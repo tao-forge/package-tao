@@ -21,10 +21,10 @@
 
 namespace oat\taoGroups\models;
 
-use \core_kernel_classes_Resource;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdf;
 use oat\generis\model\OntologyRdfs;
-use \tao_models_classes_CrudService;
+use oat\tao\model\CrudService;
 
 /**
  * Crud services implements basic CRUD services, orginally intended for
@@ -34,12 +34,12 @@ use \tao_models_classes_CrudService;
  * @author Patrick Plichart, patrick@taotesting.com
  *
  */
-class CrudGroupsService extends tao_models_classes_CrudService
+class CrudGroupsService extends CrudService
 {
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_CrudService::getClassService()
+     * @see oat\tao\model\CrudService::getClassService()
      */
     protected function getClassService()
     {
@@ -48,7 +48,7 @@ class CrudGroupsService extends tao_models_classes_CrudService
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_CrudService::delete()
+     * @see oat\tao\model\CrudService::delete()
      */
     public function delete($resource)
     {

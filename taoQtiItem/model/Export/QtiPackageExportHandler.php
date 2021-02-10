@@ -39,9 +39,9 @@ use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\event\QtiItemExportEvent;
 use oat\taoQtiItem\model\qti\metadata\MetadataService;
 use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
+use oat\tao\model\export\ExportHandler;
 use oat\tao\model\resources\SecureResourceServiceInterface;
 use tao_helpers_File;
-use tao_models_classes_export_ExportHandler;
 
 /**
  * Short description of class oat\taoQtiItem\model\ItemModel
@@ -50,7 +50,7 @@ use tao_models_classes_export_ExportHandler;
  * @author  Joel Bout, <joel@taotesting.com>
  * @package taoQTI
  */
-class QtiPackageExportHandler implements tao_models_classes_export_ExportHandler, PhpSerializable
+class QtiPackageExportHandler implements ExportHandler, PhpSerializable
 {
     use PhpSerializeStateless;
     use EventManagerAwareTrait;

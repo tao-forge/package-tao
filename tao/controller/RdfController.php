@@ -24,31 +24,27 @@
 
 namespace oat\tao\controller;
 
-use \Context;
-use \Exception;
-use \common_Exception;
-use \common_Logger;
-use \common_Utils;
-use \common_exception_BadRequest;
-use \common_exception_Error;
-use \common_exception_IsAjaxAction;
-use \common_exception_MethodNotAllowed;
-use \common_exception_MissingParameter;
-use \common_exception_Unauthorized;
-use \core_kernel_classes_Class;
-use \core_kernel_classes_Resource;
-use \tao_helpers_Display;
-use \tao_helpers_I18n;
-use \tao_helpers_Uri;
-use \tao_helpers_form_FormContainer;
-use \tao_models_classes_LanguageService;
-use \tao_models_classes_MissingRequestParameterException;
-use \tao_models_classes_dataBinding_GenerisFormDataBinder;
+use Context;
+use Exception;
+use common_Exception;
+use common_Logger;
+use common_Utils;
+use common_exception_BadRequest;
+use common_exception_Error;
+use common_exception_IsAjaxAction;
+use common_exception_MethodNotAllowed;
+use common_exception_MissingParameter;
+use common_exception_Unauthorized;
+use core_kernel_classes_Class;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\user\User;
+use oat\tao\model\LanguageService;
+use oat\tao\model\MissingRequestParameterException;
 use oat\tao\model\accessControl\data\DataAccessControl;
 use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\form\CreateInstanceForm;
 use oat\tao\model\form\EditClassLabelForm;
 use oat\tao\model\form\TranslateForm;
@@ -60,6 +56,10 @@ use oat\tao\model\resources\ResourceService;
 use oat\tao\model\security\SecurityException;
 use oat\tao\model\security\SignatureGenerator;
 use oat\tao\model\security\SignatureValidator;
+use tao_helpers_Display;
+use tao_helpers_I18n;
+use tao_helpers_Uri;
+use tao_helpers_form_FormContainer;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -90,12 +90,12 @@ abstract class RdfController extends CommonModule
     /**
      * The Modules access the models throught the service instance
      *
-     * @var tao_models_classes_Service
+     * @var oat\tao\model\Service
      */
     protected $service = null;
 
     /**
-     * @return tao_models_classes_ClassService
+     * @return oat\tao\model\ClassService
      */
     protected function getClassService()
     {
@@ -199,7 +199,7 @@ abstract class RdfController extends CommonModule
             $returnValue = $class;
         } else {
             if (!common_Utils::isUri($classUri)) {
-                throw new tao_models_classes_MissingRequestParameterException('classUri - expected to be valid URI');
+                throw new MissingRequestParameterException('classUri - expected to be valid URI');
             }
             $returnValue = $this->getClass($classUri);
         }
@@ -213,7 +213,7 @@ abstract class RdfController extends CommonModule
      * @param string $parameterName
      *
      * @return core_kernel_classes_Resource
-     * @throws tao_models_classes_MissingRequestParameterException
+     * @throws oat\tao\model\MissingRequestParameterException
      */
     protected function getCurrentInstance($parameterName = 'uri')
     {
@@ -227,7 +227,7 @@ abstract class RdfController extends CommonModule
     protected function validateUri($uri)
     {
         if (!common_Utils::isUri($uri)) {
-            throw new tao_models_classes_MissingRequestParameterException('uri');
+            throw new MissingRequestParameterException('uri');
         }
     }
 
@@ -613,7 +613,7 @@ abstract class RdfController extends CommonModule
         if ($myForm->isSubmited() && $myForm->isValid()) {
             $values = $myForm->getValues();
             // save properties
-            $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($instance);
+            $binder = new GenerisFormDataBinder($instance);
             $binder->bind($values);
             $message = __('Instance saved');
 
@@ -634,7 +634,7 @@ abstract class RdfController extends CommonModule
      * @throws common_Exception
      * @throws common_exception_BadRequest
      * @throws common_exception_Error
-     * @throws tao_models_classes_MissingRequestParameterException
+     * @throws oat\tao\model\MissingRequestParameterException
      *
      * @return void
      * @requiresRight uri READ
@@ -864,7 +864,7 @@ abstract class RdfController extends CommonModule
      * Render the form to translate a Resource instance
      * @return void
      * @throws common_exception_Error
-     * @throws tao_models_classes_MissingRequestParameterException
+     * @throws oat\tao\model\MissingRequestParameterException
      * @requiresRight id WRITE
      */
     public function translateInstance()
@@ -881,7 +881,7 @@ abstract class RdfController extends CommonModule
         if ($this->hasRequestParameter('target_lang')) {
             $targetLang = $this->getRequestParameter('target_lang');
             $availableLanguages = tao_helpers_I18n::getAvailableLangsByUsage(
-                $this->getResource(tao_models_classes_LanguageService::INSTANCE_LANGUAGE_USAGE_DATA)
+                $this->getResource(LanguageService::INSTANCE_LANGUAGE_USAGE_DATA)
             );
 
             if (in_array($targetLang, $availableLanguages)) {
@@ -935,7 +935,7 @@ abstract class RdfController extends CommonModule
      *
      * @throws common_exception_BadRequest
      * @throws common_exception_Error
-     * @throws tao_models_classes_MissingRequestParameterException
+     * @throws oat\tao\model\MissingRequestParameterException
      *
      * @return void
      */

@@ -47,7 +47,7 @@ class ValidatorTest extends TaoPhpUnitTestRunner
 
     /**
      * Test the service factory: dynamical instantiation and single instance serving
-     * @see tao_models_classes_ServiceFactory::get
+     * @see oat\tao\model\ServiceFactory::get
      */
     public function testAlphaNum()
     {

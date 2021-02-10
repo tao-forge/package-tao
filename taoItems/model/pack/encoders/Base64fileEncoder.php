@@ -22,14 +22,14 @@
 
 namespace oat\taoItems\model\pack\encoders;
 
-use oat\tao\helpers\Base64;
-use oat\tao\model\media\MediaAsset;
 use core_kernel_persistence_Exception;
-use oat\taoMediaManager\model\MediaSource;
-use tao_models_classes_FileNotFoundException;
-use tao_models_classes_service_StorageDirectory;
 use oat\taoItems\model\pack\ExceptionMissingAsset;
+use oat\taoMediaManager\model\MediaSource;
+use oat\tao\helpers\Base64;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\media\MediaAsset;
 use oat\tao\model\media\sourceStrategy\HttpSource;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * Class Base64fileEncoder
@@ -39,7 +39,7 @@ use oat\tao\model\media\sourceStrategy\HttpSource;
  */
 class Base64fileEncoder implements Encoding
 {
-    /** @var tao_models_classes_service_StorageDirectory */
+    /** @var oat\tao\model\service\StorageDirectory */
     private $directory;
 
     /** Applied data-uri format placeholder */
@@ -48,9 +48,9 @@ class Base64fileEncoder implements Encoding
     /**
      * Base64fileEncoder constructor.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      */
-    public function __construct(tao_models_classes_service_StorageDirectory $directory)
+    public function __construct(StorageDirectory $directory)
     {
         $this->directory = $directory;
     }
@@ -60,7 +60,7 @@ class Base64fileEncoder implements Encoding
      *
      * @throws ExceptionMissingAsset
      * @throws core_kernel_persistence_Exception
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      *
      * @return mixed|string
      */

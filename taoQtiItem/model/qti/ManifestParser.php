@@ -22,11 +22,11 @@
 
 namespace oat\taoQtiItem\model\qti;
 
+use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ServiceManager;
 use oat\taoQtiItem\model\ValidationService;
-use \tao_models_classes_Parser;
-use \tao_helpers_Request;
-use oat\oatbox\log\LoggerAwareTrait;
+use oat\tao\model\Parser as Parser_2;
+use tao_helpers_Request;
 
 /**
  * Enables you to parse and validate an imsmanifest.xml file.
@@ -40,7 +40,7 @@ use oat\oatbox\log\LoggerAwareTrait;
  * @see http://www.imsglobal.org/question/qti_v2p0/imsqti_intgv2p0.html#section10003
 
  */
-class ManifestParser extends tao_models_classes_Parser
+class ManifestParser extends Parser_2
 {
     use LoggerAwareTrait;
 

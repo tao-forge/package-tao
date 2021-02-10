@@ -20,17 +20,11 @@
 
 namespace oat\tao\controller;
 
-use \Exception;
-use \common_exception_BadRequest;
-use \common_exception_MissingParameter;
-use \core_kernel_classes_Class;
-use \core_kernel_classes_Resource;
-use \tao_helpers_Uri;
-use \tao_helpers_form_GenerisFormFactory;
-use \tao_helpers_form_validators_IndexIdentifier;
-use \tao_helpers_form_validators_NotEmpty;
-use \tao_models_classes_MissingRequestParameterException;
-use \tao_models_classes_dataBinding_GenerisInstanceDataBinder;
+use Exception;
+use common_exception_BadRequest;
+use common_exception_MissingParameter;
+use core_kernel_classes_Class;
+use core_kernel_classes_Resource;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
 use oat\generis\model\OntologyRdfs;
@@ -38,12 +32,18 @@ use oat\generis\model\WidgetRdf;
 use oat\oatbox\event\EventManager;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\tao\helpers\form\ValidationRuleRegistry;
+use oat\tao\model\MissingRequestParameterException;
+use oat\tao\model\dataBinding\GenerisInstanceDataBinder;
 use oat\tao\model\event\ClassFormUpdatedEvent;
 use oat\tao\model\form\ClazzForm;
 use oat\tao\model\form\IndexPropertyForm;
 use oat\tao\model\form\SimplePropertyForm;
 use oat\tao\model\search\index\OntologyIndex;
 use oat\tao\model\search\index\OntologyIndexService;
+use tao_helpers_Uri;
+use tao_helpers_form_GenerisFormFactory;
+use tao_helpers_form_validators_IndexIdentifier;
+use tao_helpers_form_validators_NotEmpty;
 
 /**
  * Regrouping all actions related to authoring
@@ -293,7 +293,7 @@ class PropertiesAuthoring extends CommonModule
     {
         $uri = tao_helpers_Uri::decode($this->getRequestParameter('uri'));
         if (is_null($uri) || empty($uri)) {
-            throw new tao_models_classes_MissingRequestParameterException("uri");
+            throw new MissingRequestParameterException("uri");
         }
         return $this->getResource($uri);
     }
@@ -438,7 +438,7 @@ class PropertiesAuthoring extends CommonModule
      */
     protected function bindProperties(core_kernel_classes_Resource $resource, $values)
     {
-        $binder = new tao_models_classes_dataBinding_GenerisInstanceDataBinder($resource);
+        $binder = new GenerisInstanceDataBinder($resource);
         $binder->bind($values);
     }
 

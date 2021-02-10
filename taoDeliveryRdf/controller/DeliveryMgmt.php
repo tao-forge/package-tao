@@ -40,6 +40,7 @@ use oat\taoDelivery\model\execution\ServiceProxy;
 use oat\tao\controller\SaSModule;
 use oat\tao\helpers\Template;
 use oat\tao\model\TaoOntology;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\resources\ResourceWatcher;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
 use tao_helpers_form_FormContainer as FormContainer;
@@ -104,7 +105,7 @@ class DeliveryMgmt extends SaSModule
             $propertyValues = $myForm->getValues();
 
             // then save the property values as usual
-            $binder = new \tao_models_classes_dataBinding_GenerisFormDataBinder($delivery);
+            $binder = new GenerisFormDataBinder($delivery);
             $delivery = $binder->bind($propertyValues);
 
             $this->getEventManager()->trigger(new DeliveryUpdatedEvent($deliveryUri, $propertyValues));

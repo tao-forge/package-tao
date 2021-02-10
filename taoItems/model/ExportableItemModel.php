@@ -21,15 +21,15 @@
 
 namespace oat\taoItems\model;
 
-use \tao_models_classes_export_ExportProvider;
+use oat\tao\model\export\ExportProvider;
 
 /**
- * please use tao_models_classes_export_ExportProvider
+ * please use oat\tao\model\export\ExportProvider
  *
  * @author Joel Bout, <joel@taotesting.com>
  * @deprecated
  */
-interface ExportableItemModel extends tao_models_classes_export_ExportProvider
+interface ExportableItemModel extends ExportProvider
 {
     
 }

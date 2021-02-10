@@ -21,10 +21,11 @@
 
 namespace oat\taoDeliveryRdf\test\integration\model;
 
-use oat\tao\test\integration\FileStorageTestCase;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use Prophecy\Argument;
 use oat\generis\test\MockObject;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\tao\model\service\FileStorage;
+use oat\tao\test\integration\FileStorageTestCase;
 
 require_once dirname(__FILE__) . '/../../../../tao/includes/raw_start.php';
 
@@ -88,7 +89,7 @@ class DeliveryAssemblyServiceTest extends FileStorageTestCase
     }
 
     /**
-     * Test if file storage is instance of \tao_models_classes_service_FileStorage
+     * Test if file storage is instance of \oat\tao\model\service\FileStorage
      */
     public function testGetFileStorage()
     {
@@ -98,7 +99,7 @@ class DeliveryAssemblyServiceTest extends FileStorageTestCase
         $method = $class->getMethod('getFileStorage');
         $method->setAccessible(true);
 
-        $this->assertInstanceOf(\tao_models_classes_service_FileStorage::class, $method->invokeArgs($assemblyService, []));
+        $this->assertInstanceOf(FileStorage::class, $method->invokeArgs($assemblyService, []));
     }
 
     /**

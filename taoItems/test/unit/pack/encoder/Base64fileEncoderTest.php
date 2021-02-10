@@ -20,14 +20,15 @@
  */
 namespace oat\taoItems\test\unit\pack\encoder;
 
+use Psr\Http\Message\StreamInterface;
 use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\File;
+use oat\taoItems\model\pack\ExceptionMissingAsset;
+use oat\taoItems\model\pack\encoders\Base64fileEncoder;
+use oat\taoMediaManager\model\MediaSource;
 use oat\tao\model\media\MediaAsset;
 use oat\tao\model\media\sourceStrategy\HttpSource;
-use oat\taoItems\model\pack\encoders\Base64fileEncoder;
-use oat\taoItems\model\pack\ExceptionMissingAsset;
-use oat\taoMediaManager\model\MediaSource;
-use Psr\Http\Message\StreamInterface;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * @package taoItems
@@ -79,7 +80,7 @@ class Base64fileEncoderTest extends TestCase
     public function testEncode($data, $expected)
     {
 
-        $directoryStorage = $this->getMockBuilder(\tao_models_classes_service_StorageDirectory::class)
+        $directoryStorage = $this->getMockBuilder(StorageDirectory::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -100,7 +101,7 @@ class Base64fileEncoderTest extends TestCase
     public function testEncodeException()
     {
         $this->expectException(ExceptionMissingAsset::class);
-        $directoryStorage = $this->getMockBuilder(\tao_models_classes_service_StorageDirectory::class)
+        $directoryStorage = $this->getMockBuilder(StorageDirectory::class)
             ->disableOriginalConstructor()
             ->getMock();
 

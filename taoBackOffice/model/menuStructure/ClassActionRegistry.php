@@ -25,11 +25,11 @@ namespace oat\taoBackOffice\model\menuStructure;
 use core_kernel_classes_Class;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdfs;
-use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\AbstractRegistry;
-use oat\tao\model\menu\MenuService;
+use oat\oatbox\service\ConfigurableService;
+use oat\tao\model\GenerisService;
 use oat\tao\model\TaoOntology;
-use tao_models_classes_GenerisService;
+use oat\tao\model\menu\MenuService;
 
 /**
  * Class TreeService

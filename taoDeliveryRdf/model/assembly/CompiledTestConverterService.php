@@ -20,10 +20,12 @@
 
 namespace oat\taoDeliveryRdf\model\assembly;
 
+
 use common_Exception;
-use tao_models_classes_service_StorageDirectory;
 use oat\oatbox\filesystem\File;
 use oat\taoQtiTest\models\CompilationDataService;
+use oat\tao\model\service\StorageDirectory;
+
 
 class CompiledTestConverterService
 {
@@ -48,11 +50,11 @@ class CompiledTestConverterService
 
     /**
      * @param File                                          $file
-     * @param tao_models_classes_service_StorageDirectory   $directory
+     * @param oat\tao\model\service\StorageDirectory   $directory
      * @return File
      * @throws common_Exception
      */
-    public function convert(File $file, tao_models_classes_service_StorageDirectory $directory)
+    public function convert(File $file, StorageDirectory $directory)
     {
         $fileName = pathinfo($file->getBasename(), PATHINFO_FILENAME);
         $resultFile = $this->getNewFile($directory, $fileName);
@@ -62,11 +64,11 @@ class CompiledTestConverterService
     }
 
     /**
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      * @param string $outputFileName
      * @return File
      */
-    private function getNewFile(tao_models_classes_service_StorageDirectory $directory, $outputFileName)
+    private function getNewFile(StorageDirectory $directory, $outputFileName)
     {
         $outputFileName .= '.' . $this->compilationDataWriter->getOutputFileType();
         $resultFile = $directory->getFile($outputFileName);

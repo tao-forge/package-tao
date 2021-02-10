@@ -37,10 +37,7 @@ use oat\taoLti\models\classes\user\LtiUserInterface;
  */
 class TaoLtiSession extends common_session_DefaultSession
 {
-    /**
-     * @var core_kernel_classes_Resource
-     */
-    private $ltiLink = null;
+    private ?String $ltiLink = null;
 
     public function __construct(LtiUserInterface $user)
     {
@@ -93,8 +90,8 @@ class TaoLtiSession extends common_session_DefaultSession
             $service = $this->getServiceLocator()->get(LinkService::SERVICE_ID);
             $consumer = $this->getLaunchData()->getLtiConsumer();
             $linkId = $service->getLinkId($consumer->getUri(), $this->getLaunchData()->getResourceLinkID());
-            $this->ltiLink = new core_kernel_classes_Resource($linkId);
+            $this->ltiLink = $linkId;
         }
-        return $this->ltiLink;
+        return new core_kernel_classes_Resource($this->ltiLink);
     }
 }

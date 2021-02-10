@@ -20,9 +20,10 @@
  
 namespace oat\taoQtiTest\scripts\tools;
 
+use common_report_Report as Report;
 use oat\oatbox\extension\AbstractAction;
-use \common_report_Report as Report;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\tao\model\service\FileStorage;
 use qtism\data\storage\php\PhpDocument;
 
 /**
@@ -54,7 +55,7 @@ class RecompileHrefIndexes extends AbstractAction
                     $directories = $compiledDelivery->getPropertyValues($compiledDirectoryProperty);
                     
                     foreach ($directories as $directoryId) {
-                        $directory = \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryId);
+                        $directory = FileStorage::singleton()->getDirectoryById($directoryId);
                         
                         foreach ($directory->getIterator() as $filePrefix) {
                             $file = $directory->getFile($filePrefix);

@@ -19,6 +19,8 @@
  *
  */
 
+use oat\tao\model\CompilationFailedException;
+
 /**
  * The User Readable exception to be used when an error occurs
  * at QTI Test compilation-time.
@@ -27,7 +29,7 @@
  * @package taoQtiTest
 
  */
-class taoQtiTest_models_classes_QtiTestCompilationFailedException extends tao_models_classes_CompilationFailedException implements common_exception_UserReadableException
+class taoQtiTest_models_classes_QtiTestCompilationFailedException extends CompilationFailedException implements common_exception_UserReadableException
 {
     
     /**

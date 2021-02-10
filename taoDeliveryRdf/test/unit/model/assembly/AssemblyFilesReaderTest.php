@@ -20,15 +20,15 @@
 
 namespace oat\taoDeliveryRdf\test\unit\model\assembly;
 
-use Generator;
 use ArrayIterator;
-use oat\oatbox\filesystem\File;
+use Generator;
 use Psr\Http\Message\StreamInterface;
-use tao_models_classes_service_StorageDirectory;
 use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
+use oat\oatbox\filesystem\File;
 use oat\taoDeliveryRdf\model\assembly\AssemblyFilesReader;
 use oat\taoDeliveryRdf\model\assembly\CompiledTestConverterService;
+use oat\tao\model\service\StorageDirectory;
 
 class AssemblyFilesReaderTest extends TestCase
 {
@@ -46,7 +46,7 @@ class AssemblyFilesReaderTest extends TestCase
     {
         $expectedFilesCount = 0;
         $iterator = $this->getFilesIterator([]);
-        $directoryMock = $this->createMock(tao_models_classes_service_StorageDirectory::class);
+        $directoryMock = $this->createMock(StorageDirectory::class);
         $directoryMock->method('getFlyIterator')
             ->willReturn($iterator);
         $result = $this->object->getFiles($directoryMock);
@@ -59,7 +59,7 @@ class AssemblyFilesReaderTest extends TestCase
         $expectedFilePath1 = 'file/prefix1';
         $expectedFilePath2 = 'file/prefix2';
         $iterator = $this->getFilesIterator([$expectedFilePath1, $expectedFilePath2]);
-        $directoryMock = $this->createMock(tao_models_classes_service_StorageDirectory::class);
+        $directoryMock = $this->createMock(StorageDirectory::class);
         $directoryMock->method('getFlyIterator')
             ->willReturn($iterator);
         $result = $this->object->getFiles($directoryMock);
@@ -86,7 +86,7 @@ class AssemblyFilesReaderTest extends TestCase
         $testConverterMock->method('convert')
             ->willReturn($convertedTestFileMock);
         $this->object->setCompiledTestConverter($testConverterMock);
-        $directoryMock = $this->createMock(tao_models_classes_service_StorageDirectory::class);
+        $directoryMock = $this->createMock(StorageDirectory::class);
         $directoryMock->method('getFlyIterator')
             ->willReturn(new ArrayIterator([$originalTestFileMock]));
         $result = $this->object->getFiles($directoryMock);

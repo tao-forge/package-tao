@@ -33,8 +33,8 @@ use oat\generis\model\user\UserRdf;
 use oat\taoTestTaker\models\CrudService;
 use oat\tao\controller\CommonRestModule;
 use oat\tao\model\TaoOntology;
+use oat\tao\model\UserService;
 use oat\tao\model\routing\AnnotationReader\security;
-use tao_models_classes_UserService;
 
 /**
  * @OA\Info(title="TAO Test Taker API", version="2.0")
@@ -219,8 +219,8 @@ class RestTestTakers extends CommonRestModule
                 ? UserHashForEncryption::hash($parameters[UserRdf::PROPERTY_PASSWORD])
                 : null;
 
-            /** @var tao_models_classes_UserService $userService */
-            $userService = $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+            /** @var oat\tao\model\UserService $userService */
+            $userService = $this->getServiceLocator()->get(UserService::SERVICE_ID);
             $userService->triggerUpdatedEvent(
                 $testTakerResource,
                 [UserRdf::PROPERTY_PASSWORD => $testTakerResource->getProperty(UserRdf::PROPERTY_PASSWORD)],

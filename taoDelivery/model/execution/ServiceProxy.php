@@ -21,17 +21,17 @@
 
 namespace oat\taoDelivery\model\execution;
 
+use common_Logger;
 use common_exception_NoImplementation;
 use common_exception_NotFound;
-use common_Logger;
 use common_session_SessionManager;
 use core_kernel_classes_Resource;
 use core_kernel_users_GenerisUser;
-use oat\taoDelivery\models\classes\execution\event\DeliveryExecutionCreated;
-use oat\oatbox\service\ServiceManager;
 use oat\oatbox\event\EventManager;
+use oat\oatbox\service\ServiceManager;
 use oat\taoDelivery\model\execution\Delete\DeliveryExecutionDeleteRequest;
-use tao_models_classes_Service;
+use oat\taoDelivery\models\classes\execution\event\DeliveryExecutionCreated;
+use oat\tao\model\Service as Service_2;
 
 /**
  * Service to manage the execution of deliveries
@@ -41,7 +41,7 @@ use tao_models_classes_Service;
  * @package taoDelivery
 
  */
-class ServiceProxy extends tao_models_classes_Service implements DeliveryExecutionService
+class ServiceProxy extends Service_2 implements DeliveryExecutionService
 {
     const CONFIG_KEY = 'execution_service';
 

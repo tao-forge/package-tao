@@ -21,12 +21,12 @@
 
 namespace oat\taoDeliveryRdf\model;
 
-use oat\taoDelivery\model\container\LegacyRuntime;
-use oat\generis\model\OntologyAwareTrait;
-use oat\taoDelivery\model\container\delivery\DeliveryContainerRegistry;
-use tao_models_classes_service_ServiceCall;
-use oat\oatbox\cache\SimpleCache;
 use Psr\SimpleCache\CacheInterface;
+use oat\generis\model\OntologyAwareTrait;
+use oat\oatbox\cache\SimpleCache;
+use oat\taoDelivery\model\container\LegacyRuntime;
+use oat\taoDelivery\model\container\delivery\DeliveryContainerRegistry;
+use oat\tao\model\service\ServiceCall;
 
 /**
  * Service to select the correct container based on delivery
@@ -75,8 +75,8 @@ class ContainerRuntime extends LegacyRuntime
                 ' Delivery probably deleted.');
         }
         return ($runtimeResource instanceof \core_kernel_classes_Resource)
-            ? tao_models_classes_service_ServiceCall::fromResource($runtimeResource)
-            : tao_models_classes_service_ServiceCall::fromString((string)$runtimeResource);
+            ? ServiceCall::fromResource($runtimeResource)
+            : ServiceCall::fromString((string)$runtimeResource);
     }
 
     private function getCache(): CacheInterface

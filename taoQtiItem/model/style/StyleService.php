@@ -27,9 +27,9 @@ use core_kernel_classes_Resource;
 use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\qti\Service;
-use tao_models_classes_Service;
+use oat\tao\model\Service as Service_2;
 
-class StyleService extends tao_models_classes_Service
+class StyleService extends Service_2
 {
     
     /**

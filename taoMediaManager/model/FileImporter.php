@@ -22,13 +22,14 @@
 
 namespace oat\taoMediaManager\model;
 
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use common_report_Report as Report;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\log\TaoLoggerAwareInterface;
-use tao_helpers_form_Form as Form;
+use oat\tao\model\import\ImportHandler;
 use oat\tao\model\import\ImportHandlerHelperTrait;
 use oat\tao\model\import\TaskParameterProviderInterface;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use tao_helpers_form_Form as Form;
 
 /**
  * Service methods to manage the Media
@@ -38,7 +39,7 @@ use Zend\ServiceManager\ServiceLocatorAwareInterface;
  * @package taoMediaManager
  */
 class FileImporter implements
-    \tao_models_classes_import_ImportHandler,
+    ImportHandler,
     ServiceLocatorAwareInterface,
     TaskParameterProviderInterface,
     TaoLoggerAwareInterface

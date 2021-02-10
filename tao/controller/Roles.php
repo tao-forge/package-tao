@@ -24,20 +24,20 @@
 
 namespace oat\tao\controller;
 
-use \common_exception_BadRequest;
-use \core_kernel_users_Cache;
-use \tao_helpers_Uri;
-use \tao_helpers_form_FormContainer;
-use \tao_helpers_form_GenerisTreeForm;
-use \tao_models_classes_RoleService;
-use \tao_models_classes_UserService;
-use \tao_models_classes_dataBinding_GenerisFormDataBinder;
+use common_exception_BadRequest;
+use core_kernel_users_Cache;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
+use oat\tao\model\RoleService;
 use oat\tao\model\TaoOntology;
+use oat\tao\model\UserService;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\exceptions\UserErrorException;
 use oat\tao\model\form\RoleForm;
+use tao_helpers_Uri;
+use tao_helpers_form_FormContainer;
 use tao_helpers_form_FormContainer as FormContainer;
+use tao_helpers_form_GenerisTreeForm;
 
 /**
  * Role Controller provide actions performed from url resolution
@@ -82,7 +82,7 @@ class Roles extends RdfController
         $myForm = $formContainer->getForm();
         if ($myForm->isSubmited() && $myForm->isValid()) {
             $formValues = $myForm->getValues();
-            $roleService = tao_models_classes_RoleService::singleton();
+            $roleService = RoleService::singleton();
             $includedRolesProperty = $this->getProperty(GenerisRdf::PROPERTY_ROLE_INCLUDESROLE);
 
             // We have to make the difference between the old list
@@ -106,7 +106,7 @@ class Roles extends RdfController
             // Let's deal with other properties the usual way.
             unset($formValues[$includedRolesProperty->getUri()]);
 
-            $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($role);
+            $binder = new GenerisFormDataBinder($role);
             $role = $binder->bind($myForm->getValues());
 
             core_kernel_users_Cache::removeIncludedRoles($role); // flush cache for this role.
@@ -209,21 +209,21 @@ class Roles extends RdfController
     }
 
     /**
-     * @return tao_models_classes_RoleService
+     * @return oat\tao\model\RoleService
      */
     protected function getClassService()
     {
         if (!$this->service) {
-            $this->service = tao_models_classes_RoleService::singleton();
+            $this->service = RoleService::singleton();
         }
         return $this->service;
     }
 
     /**
-     * @return tao_models_classes_UserService
+     * @return oat\tao\model\UserService
      */
     protected function getUserService()
     {
-        return $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+        return $this->getServiceLocator()->get(UserService::SERVICE_ID);
     }
 }

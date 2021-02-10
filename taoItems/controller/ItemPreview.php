@@ -136,7 +136,7 @@ class ItemPreview extends CommonModule
      *
      * @throws common_Exception
      * @throws common_exception_Error
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     private function renderResource($item, $path)
     {

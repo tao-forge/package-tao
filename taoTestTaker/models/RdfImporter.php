@@ -24,9 +24,9 @@ namespace oat\taoTestTaker\models;
 
 use core_kernel_classes_Resource;
 use oat\taoTestTaker\models\events\dispatcher\TestTakerImportEventDispatcher;
-use tao_models_classes_import_RdfImporter;
+use oat\tao\model\import\RdfImporter as RdfImporter_2;
 
-class RdfImporter extends tao_models_classes_import_RdfImporter
+class RdfImporter extends RdfImporter_2
 {
     public function import($class, $form, $userId = null)
     {

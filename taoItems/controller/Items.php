@@ -38,12 +38,12 @@ use oat\taoItems\model\event\ItemRdfUpdatedEvent;
 use oat\taoItems\model\event\ItemUpdatedEvent;
 use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\lock\LockManager;
 use oat\tao\model\resources\ResourceWatcher;
 use tao_helpers_Uri;
 use tao_helpers_form_FormContainer;
 use tao_helpers_form_FormContainer as FormContainer;
-use tao_models_classes_dataBinding_GenerisFormDataBinder;
 
 /**
  * Items Controller provide actions performed from url resolution
@@ -199,7 +199,7 @@ class Items extends SaSModule
                     }
 
                     //bind item properties and set default content:
-                    $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($item);
+                    $binder = new GenerisFormDataBinder($item);
                     $item = $binder->bind($properties);
 
                     $this->getEventManager()->trigger(new ItemUpdatedEvent($item->getUri(), $properties));

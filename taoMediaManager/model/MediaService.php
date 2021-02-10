@@ -75,7 +75,7 @@ class MediaService extends ConfigurableService
 
     /**
      * (non-PHPdoc)
-     * @see \tao_models_classes_ClassService::getRootClass()
+     * @see \oat\tao\model\ClassService::getRootClass()
      */
     public function getRootClass()
     {

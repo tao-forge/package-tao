@@ -22,6 +22,7 @@
 namespace oat\tao\test\integration\service;
 
 use oat\tao\test\integration\FileStorageTestCase;
+use oat\tao\model\service\FileStorage;
 
 class FileStorageTest extends FileStorageTestCase
 {
@@ -48,7 +49,7 @@ class FileStorageTest extends FileStorageTestCase
         $this->assertFalse($directoryStorage->has($file));
         $this->assertFalse(\tao_helpers_File::containsFileType($this->privateDir, 'txt', true));
         
-        $reflectionClass = new \ReflectionClass('\tao_models_classes_service_FileStorage');
+        $reflectionClass = new \ReflectionClass(FileStorage::class);
         $reflectionMethod = $reflectionClass->getMethod('id2path');
         $reflectionMethod->setAccessible(true);
         $path = $reflectionMethod->invokeArgs($fileStorage, [$id]);

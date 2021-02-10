@@ -32,6 +32,10 @@ use oat\taoQtiTest\models\TestCategoryRulesService;
 use oat\taoQtiTest\models\cat\CatService;
 use oat\taoQtiTest\models\runner\RunnerService;
 use oat\tao\model\metadata\compiler\ResourceJsonMetadataCompiler;
+use oat\tao\model\service\ConstantParameter;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\ServiceCallHelper;
+use oat\tao\model\service\StorageDirectory;
 use qtism\common\utils\Url;
 use qtism\data\AssessmentItemRef;
 use qtism\data\AssessmentTest;
@@ -91,14 +95,14 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
     /**
      * The public compilation directory.
      *
-     * @var tao_models_classes_service_StorageDirectory
+     * @var oat\tao\model\service\StorageDirectory
      */
     private $publicDirectory = null;
 
     /**
      * The private compilation directory.
      *
-     * @var tao_models_classes_service_StorageDirectory
+     * @var oat\tao\model\service\StorageDirectory
      */
     private $privateDirectory = null;
 
@@ -147,7 +151,7 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
     /**
      * Get the public compilation directory.
      *
-     * @return tao_models_classes_service_StorageDirectory
+     * @return oat\tao\model\service\StorageDirectory
      */
     protected function getPublicDirectory()
     {
@@ -157,9 +161,9 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
     /**
      * Set the public compilation directory.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      */
-    protected function setPublicDirectory(tao_models_classes_service_StorageDirectory $directory)
+    protected function setPublicDirectory(StorageDirectory $directory)
     {
         $this->publicDirectory = $directory;
     }
@@ -167,7 +171,7 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
     /**
      * Get the private compilation directory.
      *
-     * @return tao_models_classes_service_StorageDirectory
+     * @return oat\tao\model\service\StorageDirectory
      */
     protected function getPrivateDirectory()
     {
@@ -177,9 +181,9 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
     /**
      * Set the private compilation directory.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      */
-    protected function setPrivateDirectory(tao_models_classes_service_StorageDirectory $directory)
+    protected function setPrivateDirectory(StorageDirectory $directory)
     {
         $this->privateDirectory = $directory;
     }
@@ -321,7 +325,7 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
      * * 6. The resources composing the test that have to be accessed at delivery time are compied into the public compilation directory.
      * * 7. The Service Call definition enabling TAO to run the compiled test is built.
      *
-     * @return tao_models_classes_service_ServiceCall A ServiceCall object that represent the way to call the newly compiled test.
+     * @return oat\tao\model\service\ServiceCall A ServiceCall object that represent the way to call the newly compiled test.
      * @throws taoQtiTest_models_classes_QtiTestCompilationFailedException If an error occurs during the compilation.
      */
     public function compile()
@@ -528,7 +532,7 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
         $report = $this->subCompile($item);
         if ($report->getType() == common_report_Report::TYPE_SUCCESS) {
             $itemService = $report->getdata();
-            $inputValues = tao_models_classes_service_ServiceCallHelper::getInputValues($itemService, []);
+            $inputValues = ServiceCallHelper::getInputValues($itemService, []);
             $assessmentItemRef->setHref($inputValues['itemUri'] . '|' . $inputValues['itemPath'] . '|' . $inputValues['itemDataPath']);
 
             // Ask for item ref information compilation for fast later usage.
@@ -619,19 +623,19 @@ class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_
      * Build the Service Call definition that makes TAO able to run the compiled test
      * later on at delivery time.
      *
-     * @return tao_models_classes_service_ServiceCall
+     * @return oat\tao\model\service\ServiceCall
      */
     protected function buildServiceCall()
     {
-        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(RunnerService::INSTANCE_TEST_RUNNER_SERVICE));
-        $param = new tao_models_classes_service_ConstantParameter(
+        $service = new ServiceCall(new core_kernel_classes_Resource(RunnerService::INSTANCE_TEST_RUNNER_SERVICE));
+        $param = new ConstantParameter(
                         // Test Definition URI passed to the QtiTestRunner service.
             new core_kernel_classes_Resource(taoQtiTest_models_classes_QtiTestService::INSTANCE_FORMAL_PARAM_TEST_DEFINITION),
             $this->getResource()
         );
         $service->addInParameter($param);
 
-        $param = new tao_models_classes_service_ConstantParameter(
+        $param = new ConstantParameter(
                         // Test Compilation URI passed to the QtiTestRunner service.
             new core_kernel_classes_Resource(taoQtiTest_models_classes_QtiTestService::INSTANCE_FORMAL_PARAM_TEST_COMPILATION),
             $this->getPrivateDirectory()->getId() . '|' . $this->getPublicDirectory()->getId()

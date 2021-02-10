@@ -18,6 +18,7 @@ use oat\taoQtiItem\model\qti\feedback\ModalFeedback;
 use oat\taoQtiItem\model\qti\interaction\Interaction;
 use oat\taoQtiItem\model\qti\response\TemplatesDriven;
 use oat\tao\helpers\Template;
+use oat\tao\model\TaoService;
 
 /**
  * The QTI_Item object represent the assessmentItem.
@@ -123,7 +124,7 @@ class Item extends IdentifiedElement implements FlowContainer, IdentifiedElement
     {
         // override the tool options !
         $attributes['toolName'] = PRODUCT_NAME;
-        $attributes['toolVersion'] = \tao_models_classes_TaoService::singleton()->getPlatformVersion();
+        $attributes['toolVersion'] = TaoService::singleton()->getPlatformVersion();
 
         // create container
         $this->body = new ContainerItemBody('', $this);

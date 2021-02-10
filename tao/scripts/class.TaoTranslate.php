@@ -2,6 +2,7 @@
 
 use oat\generis\model\OntologyRdfs;
 use oat\tao\helpers\ApplicationHelper;
+use oat\tao\model\UserService;
 use oat\tao\model\menu\MenuService;
 
 /**
@@ -1156,7 +1157,7 @@ class tao_scripts_TaoTranslate extends tao_scripts_Runner
     public function actionEnable()
     {
         
-        $userService = tao_models_classes_UserService::singleton();
+        $userService = UserService::singleton();
         $this->outVerbose("Connecting to TAO as '" . $this->options['user'] . "' ...");
         if ($userService->loginUser($this->options['user'], $this->options['password'])) {
             $this->outVerbose("Connected to TAO as '" . $this->options['user'] . "'.");
@@ -1183,7 +1184,7 @@ class tao_scripts_TaoTranslate extends tao_scripts_Runner
     public function actionDisable()
     {
         
-        $userService = tao_models_classes_UserService::singleton();
+        $userService = UserService::singleton();
         $this->outVerbose("Connecting to TAO as '" . $this->options['user'] . "' ...");
         if ($userService->loginUser($this->options['user'], $this->options['password'])) {
             $this->outVerbose("Connected to TAO as '" . $this->options['user'] . "'.");

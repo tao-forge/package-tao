@@ -20,10 +20,12 @@
 
 namespace oat\taoDeliveryRdf\test\unit\model\export;
 
-use oat\taoDeliveryRdf\model\assembly\AssemblyFilesReader;
-use tao_models_classes_export_RdfExporter;
+
 use oat\generis\test\TestCase;
+use oat\taoDeliveryRdf\model\assembly\AssemblyFilesReader;
 use oat\taoDeliveryRdf\model\export\AssemblyExporterService;
+use oat\tao\model\export\RdfExporter;
+
 
 class AssemblyExporterServiceTest extends TestCase
 {
@@ -45,7 +47,7 @@ class AssemblyExporterServiceTest extends TestCase
         return [
             'Without file reader' => [
                 'options' => [
-                    'rdf_exporter' => new tao_models_classes_export_RdfExporter(),
+                    'rdf_exporter' => new RdfExporter(),
                 ]
             ],
             'Without RDF exporter' => [
@@ -56,7 +58,7 @@ class AssemblyExporterServiceTest extends TestCase
             'Invalid file reader' => [
                 'options' => [
                     'assembly_files_reader' => new \stdClass(),
-                    'rdf_exporter' => new tao_models_classes_export_RdfExporter(),
+                    'rdf_exporter' => new RdfExporter(),
                 ]
             ],
             'Invalid RDF exporter' => [

@@ -27,12 +27,12 @@ use common_exception_BadRequest;
 use core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdfs;
 use oat\taoItems\model\ItemsService;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\form\InstanceForm;
 use tao_helpers_Context;
 use tao_helpers_Uri;
 use tao_helpers_form_FormContainer;
 use tao_helpers_form_FormContainer as FormContainer;
-use tao_models_classes_dataBinding_GenerisFormDataBinder;
 
 /**
  * SaSItems Controller provide process services for in the Items
@@ -74,7 +74,7 @@ class SaSItems extends Items
         $myForm = $formContainer->getForm();
 
         if ($myForm->isSubmited() && $myForm->isValid()) {
-            $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($instance);
+            $binder = new GenerisFormDataBinder($instance);
             $instance = $binder->bind($myForm->getValues());
             $instance = $this->getClassService()->setDefaultItemContent($instance);
             $this->setData('message', __('Item saved'));
@@ -91,7 +91,7 @@ class SaSItems extends Items
      * view and item
      * @throws common_exception_BadRequest
      * @throws common_exception_Error
-     * @throws tao_models_classes_MissingRequestParameterException
+     * @throws oat\tao\model\MissingRequestParameterException
      * @return void
      */
     public function viewItem()

@@ -23,18 +23,18 @@
 
 namespace oat\tao\controller;
 
-use \common_Exception;
-use \common_exception_BadRequest;
-use \common_exception_Error;
-use \common_exception_MissingParameter;
-use \common_exception_UserReadableException;
-use \common_ext_ExtensionException;
-use \common_ext_ExtensionsManager;
-use \tao_install_ExtensionInstaller;
-use \tao_install_ExtensionUninstaller;
-use \tao_models_classes_LanguageService;
+use common_Exception;
+use common_exception_BadRequest;
+use common_exception_Error;
+use common_exception_MissingParameter;
+use common_exception_UserReadableException;
+use common_ext_ExtensionException;
+use common_ext_ExtensionsManager;
+use oat\tao\model\LanguageService;
 use oat\tao\model\menu\MenuService;
 use oat\tao\model\service\ApplicationService;
+use tao_install_ExtensionInstaller;
+use tao_install_ExtensionUninstaller;
 
 /**
  * Controller to manage extensions
@@ -133,7 +133,7 @@ class ExtensionsManager extends CommonModule
         $message = '';
         // try to regenerate languages bundles
         try {
-            tao_models_classes_LanguageService::singleton()->generateAll(true);
+            LanguageService::singleton()->generateAll(true);
         } catch (common_exception_Error $e) {
             $message = $e->getMessage();
             $success = false;

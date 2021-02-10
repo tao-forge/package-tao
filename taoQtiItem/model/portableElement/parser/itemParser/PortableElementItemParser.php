@@ -22,15 +22,16 @@
 namespace oat\taoQtiItem\model\portableElement\parser\itemParser;
 
 use League\Flysystem\FileNotFoundException;
-use oat\taoQtiItem\model\portableElement\exception\PortableElementInconsistencyModelException;
-use oat\taoQtiItem\model\portableElement\element\PortableElementObject;
-use oat\taoQtiItem\model\portableElement\model\PortableModelRegistry;
-use oat\taoQtiItem\model\portableElement\model\PortableElementModel;
-use oat\taoQtiItem\model\portableElement\PortableElementService;
-use oat\taoQtiItem\model\qti\Item;
-use oat\taoQtiItem\model\qti\Element;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use oat\taoQtiItem\model\portableElement\PortableElementService;
+use oat\taoQtiItem\model\portableElement\element\PortableElementObject;
+use oat\taoQtiItem\model\portableElement\exception\PortableElementInconsistencyModelException;
+use oat\taoQtiItem\model\portableElement\model\PortableElementModel;
+use oat\taoQtiItem\model\portableElement\model\PortableModelRegistry;
+use oat\taoQtiItem\model\qti\Element;
+use oat\taoQtiItem\model\qti\Item;
+use oat\tao\model\FileNotFoundException as FileNotFoundException_2;
 
 class PortableElementItemParser implements ServiceLocatorAwareInterface
 {
@@ -81,7 +82,7 @@ class PortableElementItemParser implements ServiceLocatorAwareInterface
      * @param $relativePath
      * @return array
      * @throws \common_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function importPortableElementFile($absolutePath, $relativePath)
     {
@@ -124,7 +125,7 @@ class PortableElementItemParser implements ServiceLocatorAwareInterface
      * @param $path
      * @param $relPath
      * @return array
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function getFileInfo($path, $relPath)
     {
@@ -139,7 +140,7 @@ class PortableElementItemParser implements ServiceLocatorAwareInterface
             ];
         }
 
-        throw new \tao_models_classes_FileNotFoundException($path);
+        throw new FileNotFoundException_2($path);
     }
 
     /**

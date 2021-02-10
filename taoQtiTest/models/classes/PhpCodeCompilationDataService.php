@@ -2,9 +2,10 @@
 
 namespace oat\taoQtiTest\models;
 
+use oat\tao\model\service\StorageDirectory;
+use qtism\data\QtiComponent;
 use qtism\data\storage\php\PhpDocument;
 use qtism\data\storage\php\PhpStorageException;
-use qtism\data\QtiComponent;
 
 /**
  * PHP Code Compilation Data Service.
@@ -35,7 +36,7 @@ class PhpCodeCompilationDataService extends CompilationDataService
         return self::OUTPUT_FILE_TYPE;
     }
 
-    public function writeCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, QtiComponent $object)
+    public function writeCompilationData(StorageDirectory $compilationDirectory, $path, QtiComponent $object)
     {
         $path .= '.' . self::OUTPUT_FILE_TYPE;
         $doc = new PhpDocument();
@@ -47,7 +48,7 @@ class PhpCodeCompilationDataService extends CompilationDataService
         );
     }
     
-    public function readCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, $cacheInfo = '')
+    public function readCompilationData(StorageDirectory $compilationDirectory, $path, $cacheInfo = '')
     {
         $path .= '.' . self::OUTPUT_FILE_TYPE;
         $dir = $this->ensureCacheDirectory($compilationDirectory);
@@ -83,7 +84,7 @@ class PhpCodeCompilationDataService extends CompilationDataService
         return is_null($value) ? true : $value;
     }
 
-    protected function ensureCacheDirectory(\tao_models_classes_service_StorageDirectory $compilationDirectory)
+    protected function ensureCacheDirectory(StorageDirectory $compilationDirectory)
     {
         $dirId = md5($compilationDirectory->getId());
         

@@ -77,7 +77,7 @@ abstract class CommonModule extends LegacyController implements ServiceManagerAw
     /**
      * The Modules access the models through the service instance
      *
-     * @var tao_models_classes_Service
+     * @var oat\tao\model\Service
      * @deprecated
      */
     protected $service;

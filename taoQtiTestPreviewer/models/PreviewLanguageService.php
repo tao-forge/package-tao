@@ -25,7 +25,7 @@ use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\user\User;
 use oat\oatbox\user\UserLanguageService;
 use oat\taoResultServer\models\classes\implementation\ResultServerService;
-use tao_models_classes_UserService;
+use oat\tao\model\UserService;
 
 class PreviewLanguageService extends ConfigurableService
 {
@@ -60,8 +60,8 @@ class PreviewLanguageService extends ConfigurableService
 
         $userId = $resultStorage->getTestTaker($resultId);
 
-        /** @var tao_models_classes_UserService $userService */
-        $userService = $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+        /** @var oat\tao\model\UserService $userService */
+        $userService = $this->getServiceLocator()->get(UserService::SERVICE_ID);
 
         return $userService->getUserById($userId);
     }

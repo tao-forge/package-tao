@@ -22,13 +22,13 @@
 namespace oat\taoMediaManager\test\integration\model;
 
 use GuzzleHttp\Psr7\Stream;
-use oat\taoMediaManager\model\MediaService;
-use oat\taoMediaManager\model\MediaSource;
-use oat\taoMediaManager\model\fileManagement\FileManagement;
 use Prophecy\Argument;
 use Psr\Http\Message\StreamInterface;
 use oat\generis\test\TestCase;
-use tao_models_classes_FileNotFoundException;
+use oat\taoMediaManager\model\MediaService;
+use oat\taoMediaManager\model\MediaSource;
+use oat\taoMediaManager\model\fileManagement\FileManagement;
+use oat\tao\model\FileNotFoundException;
 
 include __DIR__ . '/../../../includes/raw_start.php';
 
@@ -188,7 +188,7 @@ class MediaSourceTest extends TestCase
 
     public function testUploadFail()
     {
-        $this->expectException(tao_models_classes_FileNotFoundException::class);
+        $this->expectException(FileNotFoundException::class);
         $this->expectExceptionMessageMatches('/File [^\s]+ not found/');
         $filePath = dirname(__DIR__) . '/sample/Unknown.png';
         $mediaSource = new MediaSource();

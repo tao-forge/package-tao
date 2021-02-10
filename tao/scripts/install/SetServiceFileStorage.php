@@ -21,12 +21,12 @@
 
 namespace oat\tao\scripts\install;
 
-use oat\tao\model\websource\TokenWebSource;
-use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\model\websource\TokenWebSourceService;
-use tao_models_classes_service_FileStorage;
 use League\Flysystem\Adapter\Local;
+use oat\oatbox\filesystem\FileSystemService;
+use oat\tao\model\service\FileStorage;
 use oat\tao\model\websource\FlyTokenWebSource;
+use oat\tao\model\websource\TokenWebSource;
+use oat\tao\model\websource\TokenWebSourceService;
 
 /**
  * This post-installation script creates a new local file source for services
@@ -64,11 +64,11 @@ class SetServiceFileStorage extends \common_ext_action_InstallAction
 
         $websource = TokenWebSourceService::spawnTokenWebsource('public');
 
-        $service = new tao_models_classes_service_FileStorage([
-            tao_models_classes_service_FileStorage::OPTION_PUBLIC_FS => 'public',
-            tao_models_classes_service_FileStorage::OPTION_PRIVATE_FS => 'private',
-            tao_models_classes_service_FileStorage::OPTION_ACCESS_PROVIDER => $websource->getId()
+        $service = new FileStorage([
+            FileStorage::OPTION_PUBLIC_FS => 'public',
+            FileStorage::OPTION_PRIVATE_FS => 'private',
+            FileStorage::OPTION_ACCESS_PROVIDER => $websource->getId()
         ]);
-        $this->registerService(tao_models_classes_service_FileStorage::SERVICE_ID, $service, false);
+        $this->registerService(FileStorage::SERVICE_ID, $service, false);
     }
 }

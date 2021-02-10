@@ -21,7 +21,7 @@
 namespace oat\taoDacSimple\controller;
 
 use Exception;
-use function GuzzleHttp\Psr7\stream_for;
+use GuzzleHttp\Psr7\stream_for;
 use common_exception_Error;
 use common_exception_Unauthorized;
 use core_kernel_classes_Class;
@@ -36,9 +36,9 @@ use oat\taoDacSimple\model\PermissionsServiceException;
 use oat\taoDacSimple\model\PermissionsServiceFactory;
 use oat\taoDacSimple\model\tasks\ChangePermissionsTask;
 use oat\tao\controller\CommonModule;
+use oat\tao\model\RoleService;
 use oat\tao\model\taskQueue\QueueDispatcher;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
-use tao_models_classes_RoleService;
 
 /**
  * This controller is used to manage permission administration
@@ -71,7 +71,7 @@ class AdminAccessController extends CommonModule
         $roles = [];
         foreach ($accessRights as $uri => $privileges) {
             $identity = new core_kernel_classes_Resource($uri);
-            if ($identity->isInstanceOf(tao_models_classes_RoleService::singleton()->getRoleClass())) {
+            if ($identity->isInstanceOf(RoleService::singleton()->getRoleClass())) {
                 $roles[$uri] = [
                     'label'      => $identity->getLabel(),
                     'privileges' => $privileges,

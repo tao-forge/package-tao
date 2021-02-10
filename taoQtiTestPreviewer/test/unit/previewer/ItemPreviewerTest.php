@@ -24,10 +24,11 @@ use core_kernel_classes_Resource;
 use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\File;
-use oat\taoQtiTest\models\container\QtiTestDeliveryContainer;
-use tao_models_classes_service_FileStorage as FileStorage;
 use oat\taoDelivery\model\RuntimeService;
 use oat\taoQtiTestPreviewer\models\ItemPreviewer;
+use oat\taoQtiTest\models\container\QtiTestDeliveryContainer;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\StorageDirectory;
 
 class ItemPreviewerTest extends TestCase
 {
@@ -96,7 +97,7 @@ class ItemPreviewerTest extends TestCase
 
         $this->fileMockXML = $this->createMock(File::class);
 
-        $this->storageDirectoryMock = $this->createMock(\tao_models_classes_service_StorageDirectory::class);
+        $this->storageDirectoryMock = $this->createMock(StorageDirectory::class);
         $this->storageDirectoryMock->method('getFile')->willReturnCallback(function ($parameter) {
             if ($parameter === 'assessment-item-ref-href-index-b7e1554ee4ffb6074f1e756e9284fda5.idx') {
                 return $this->fileMock;

@@ -22,17 +22,17 @@
 
 namespace oat\tao\model\form;
 
-use \core_kernel_classes_Resource;
-use \tao_helpers_I18n;
-use \tao_helpers_form_FormFactory;
-use \tao_helpers_form_GenerisFormFactory;
-use \tao_helpers_form_elements_Authoring;
-use \tao_helpers_form_elements_Hidden;
-use \tao_helpers_form_elements_Hiddenbox;
-use \tao_helpers_form_elements_Htmlarea;
-use \tao_helpers_form_elements_MultipleElement;
-use \tao_models_classes_LanguageService;
+use core_kernel_classes_Resource;
+use oat\tao\model\LanguageService;
 use oat\tao\model\TaoOntology;
+use tao_helpers_I18n;
+use tao_helpers_form_FormFactory;
+use tao_helpers_form_GenerisFormFactory;
+use tao_helpers_form_elements_Authoring;
+use tao_helpers_form_elements_Hidden;
+use tao_helpers_form_elements_Hiddenbox;
+use tao_helpers_form_elements_Htmlarea;
+use tao_helpers_form_elements_MultipleElement;
 
 /**
  * Create a form to search the resources of the ontology
@@ -103,7 +103,7 @@ class SearchForm extends InstanceForm
         $langElt = tao_helpers_form_FormFactory::getElement('lang', 'Combobox');
         $langElt->setDescription(__('Language'));
         
-        $languages = array_merge(['  '], tao_helpers_I18n::getAvailableLangsByUsage(new core_kernel_classes_Resource(tao_models_classes_LanguageService::INSTANCE_LANGUAGE_USAGE_DATA)));
+        $languages = array_merge(['  '], tao_helpers_I18n::getAvailableLangsByUsage(new core_kernel_classes_Resource(LanguageService::INSTANCE_LANGUAGE_USAGE_DATA)));
         $langElt->setOptions($languages);
         $langElt->setValue(0);
         $this->form->addElement($langElt);

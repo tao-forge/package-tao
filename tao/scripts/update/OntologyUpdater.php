@@ -23,13 +23,14 @@
 namespace oat\tao\scripts\update;
 
 use AppendIterator;
-use oat\generis\model\kernel\persistence\file\FileModel;
-use oat\generis\model\data\ModelManager;
-use helpers_RdfDiff;
-use core_kernel_persistence_smoothsql_SmoothModel;
-use common_persistence_SqlPersistence;
 use common_ext_ExtensionsManager;
+use common_persistence_SqlPersistence;
 use core_kernel_persistence_smoothsql_SmoothIterator;
+use core_kernel_persistence_smoothsql_SmoothModel;
+use helpers_RdfDiff;
+use oat\generis\model\data\ModelManager;
+use oat\generis\model\kernel\persistence\file\FileModel;
+use oat\tao\model\LanguageService;
 use oat\tao\model\extension\ExtensionModel;
 
 class OntologyUpdater
@@ -48,7 +49,7 @@ class OntologyUpdater
         foreach (common_ext_ExtensionsManager::singleton()->getInstalledExtensions() as $ext) {
             $nominalModel->append(new ExtensionModel($ext));
         }
-        $langModel = \tao_models_classes_LanguageService::singleton()->getLanguageDefinition();
+        $langModel = LanguageService::singleton()->getLanguageDefinition();
         $nominalModel->append($langModel);
         
         $diff = helpers_RdfDiff::create($smoothIterator, $nominalModel);

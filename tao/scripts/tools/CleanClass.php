@@ -36,7 +36,7 @@ class CleanClass extends AbstractAction
     protected $class = null;
 
     /**
-     * @var \tao_models_classes_ClassService
+     * @var \oat\tao\model\ClassService
      */
     protected $service = null;
 

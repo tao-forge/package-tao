@@ -23,18 +23,18 @@
 
 namespace oat\taoTests\test\integration;
 
-use tao_models_classes_Service;
+use Prophecy\Prediction\CallTimesPrediction;
+use core_kernel_classes_Class;
+use core_kernel_classes_Property;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdfs;
 use oat\generis\test\GenerisPhpUnitTestRunner;
-use oat\tao\model\TaoOntology;
-use Prophecy\Prediction\CallTimesPrediction;
-use taoTests_models_classes_TestsService;
-use taoTests_models_classes_TestCompiler;
-use core_kernel_classes_Class;
-use core_kernel_classes_Resource;
-use core_kernel_classes_Property;
-use taoTests_models_classes_TestsService as TestService;
 use oat\tao\model\OntologyClassService;
+use oat\tao\model\Service;
+use oat\tao\model\TaoOntology;
+use taoTests_models_classes_TestCompiler;
+use taoTests_models_classes_TestsService;
+use taoTests_models_classes_TestsService as TestService;
 
 /**
  *
@@ -62,7 +62,7 @@ class TestsTest extends GenerisPhpUnitTestRunner
 
     /**
      * Test the user service implementation
-     * @see \tao_models_classes_ServiceFactory::get
+     * @see \oat\tao\model\ServiceFactory::get
      * @see \taoTests_models_classes_TestsService::__construct
      */
     public function testService()

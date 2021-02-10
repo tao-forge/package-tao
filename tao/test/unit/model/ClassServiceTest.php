@@ -9,6 +9,7 @@
 namespace oat\test\unitmodel;
 
 use oat\generis\test\TestCase;
+use oat\tao\model\ClassService;
 
 /**
  * Description of ClassServiceTest
@@ -21,7 +22,7 @@ class ClassServiceTest extends TestCase
     {
         
         $instance = $this->getMockForAbstractClass(
-            \tao_models_classes_ClassService::class,
+            ClassService::class,
             [],
             '',
             false,
@@ -41,7 +42,7 @@ class ClassServiceTest extends TestCase
     {
         
         $instance = $this->getMockForAbstractClass(
-            \tao_models_classes_ClassService::class,
+            ClassService::class,
             [],
             '',
             false,
@@ -68,7 +69,7 @@ class ClassServiceTest extends TestCase
         $fixtureRootClass = $this->prophesize(\core_kernel_classes_Class::class)->reveal();
 
         $instance = $this->getMockForAbstractClass(
-            \tao_models_classes_ClassService::class,
+            ClassService::class,
             [],
             '',
             false,

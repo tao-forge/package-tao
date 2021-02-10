@@ -22,22 +22,22 @@ declare(strict_types=1);
 
 namespace oat\taoMediaManager\model\sharedStimulus\service;
 
+use InvalidArgumentException;
 use core_kernel_classes_Resource as Resource;
 use core_kernel_persistence_Exception;
-use InvalidArgumentException;
-use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\generis\model\OntologyAwareTrait;
+use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\oatbox\filesystem\File;
 use oat\oatbox\service\ConfigurableService;
-use oat\tao\model\media\TaoMediaException;
-use oat\tao\model\media\TaoMediaResolver;
 use oat\taoMediaManager\model\MediaService;
-use oat\taoMediaManager\model\sharedStimulus\parser\SharedStimulusMediaExtractor;
+use oat\taoMediaManager\model\SharedStimulusImporter;
 use oat\taoMediaManager\model\sharedStimulus\PatchCommand;
 use oat\taoMediaManager\model\sharedStimulus\SharedStimulus;
-use oat\taoMediaManager\model\SharedStimulusImporter;
+use oat\taoMediaManager\model\sharedStimulus\parser\SharedStimulusMediaExtractor;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\media\TaoMediaException;
+use oat\tao\model\media\TaoMediaResolver;
 use qtism\data\storage\xml\XmlStorageException;
-use tao_models_classes_FileNotFoundException as FileNotFoundException;
 
 class PatchService extends ConfigurableService
 {

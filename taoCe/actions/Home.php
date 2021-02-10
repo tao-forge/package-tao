@@ -26,7 +26,7 @@ use oat\tao\controller\CommonModule;
 use oat\tao\helpers\TaoCe;
 use oat\tao\model\menu\MenuService;
 use oat\tao\model\menu\Perspective;
-use tao_models_classes_accessControl_AclProxy;
+use oat\tao\model\accessControl\AclService;
 
 /**
  * The Home controller provides actions for the Home screen of the Community Edition
@@ -73,7 +73,7 @@ class Home extends CommonModule
             //Test if access
             $access = false;
             foreach ($perspective->getChildren() as $section) {
-                if (tao_models_classes_accessControl_AclProxy::hasAccess($section->getAction(), $section->getController(), $section->getExtensionId())) {
+                if ($this->getAclService()->hasAccess($section->getAction(), $section->getController(), $section->getExtensionId())) {
                     $access = true;
                     break;
                 }
@@ -90,5 +90,10 @@ class Home extends CommonModule
         $this->setData('additionalExtensions', $additionalExtensions);
 
         $this->setView('splash.tpl');
+    }
+
+    protected function getAclService(): AclService
+    {
+        return $this->getServiceLocator()->get(AclService::class);
     }
 }

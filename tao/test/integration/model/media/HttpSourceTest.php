@@ -19,9 +19,10 @@
  *
  */
 
-use oat\tao\test\TaoPhpUnitTestRunner;
-use oat\tao\model\media\sourceStrategy\HttpSource;
 use oat\tao\helpers\Template;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\media\sourceStrategy\HttpSource;
+use oat\tao\test\TaoPhpUnitTestRunner;
 
 /**
  * This class tests the state of the ontology
@@ -39,7 +40,7 @@ class HttpSourceTest extends TaoPhpUnitTestRunner
         $this->assertEquals('tao.png', $mediaSource->getBaseName(Template::img('tao.png', 'tao')));
         $this->assertEquals('tao.png', $mediaSource->getBaseName(Template::img('tao.png?a=b', 'tao')));
 
-        $this->expectException(tao_models_classes_FileNotFoundException::class);
+        $this->expectException(FileNotFoundException::class);
         $mediaSource->getBaseName('http://notevenavaliddomain');
     }
 }

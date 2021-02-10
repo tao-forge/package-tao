@@ -22,12 +22,12 @@ namespace oat\tao\test\unit\model\mvc\error;
 
 use ActionEnforcingException;
 use Exception;
-use oat\oatbox\user\LoginFailedException;
-use oat\tao\model\mvc\error\ExceptionInterpretor;
-use oat\generis\test\TestCase;
 use ResolverException;
-use tao_models_classes_FileNotFoundException;
-use tao_models_classes_UserException;
+use oat\generis\test\TestCase;
+use oat\oatbox\user\LoginFailedException;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\UserException;
+use oat\tao\model\mvc\error\ExceptionInterpretor;
 
 /**
  * test for ExceptionInterpretor
@@ -46,9 +46,9 @@ class ExceptionInterpreterTest extends TestCase
             [
                 [new Exception('test message'), 500, 'test message', 'MainResponse'],
                 [new ResolverException('test message'), 403, 'test message', 'RedirectResponse'],
-                [new tao_models_classes_UserException('test message'), 403, 'test message', 'MainResponse'],
+                [new UserException('test message'), 403, 'test message', 'MainResponse'],
                 [new ActionEnforcingException('test message', $module, $action), 404, 'test message', 'MainResponse'],
-                [new tao_models_classes_FileNotFoundException('test message'), 404, 'File test message not found', 'MainResponse'],
+                [new FileNotFoundException('test message'), 404, 'File test message not found', 'MainResponse'],
                 [new LoginFailedException([new Exception('test message')]), 500, '', 'MainResponse'],
             ];
     }

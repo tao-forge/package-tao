@@ -22,6 +22,7 @@
 namespace oat\xmlEditRp\controller;
 
 use oat\tao\controller\CommonModule;
+use oat\tao\model\Parser;
 
 /**
  * Simple controller for customRpEditor services
@@ -54,7 +55,7 @@ class CustomRpEditor extends CommonModule
             $xml           = '<?xml version="1.0" encoding="UTF-8"?><responseProcessing xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1">'.$xml.'</responseProcessing>';
             $taoQtiItemDir = \common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiItem')->getDir();
             $xsd           = $taoQtiItemDir.'model/qti/data/qtiv2p1/imsqti_v2p1.xsd';
-            $parser        = new \tao_models_classes_Parser($xml);
+            $parser        = new Parser($xml);
             if ($parser->validate($xsd)) {
                 $success = true;
             } else {

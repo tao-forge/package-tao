@@ -39,7 +39,7 @@ use oat\generis\model\OntologyRdfs;
  */
 abstract class CommonRestModule extends RestController
 {
-    /** @var tao_models_classes_CrudService */
+    /** @var oat\tao\model\CrudService */
     protected $service;
 
     /**
@@ -90,7 +90,7 @@ abstract class CommonRestModule extends RestController
      *
      * @throws common_Exception
      *
-     * @return tao_models_classes_CrudService
+     * @return oat\tao\model\CrudService
      */
     protected function getCrudService()
     {

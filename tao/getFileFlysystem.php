@@ -23,9 +23,10 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use oat\tao\model\websource\FlyTokenWebSource;
 use oat\oatbox\filesystem\FileSystemService;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\mvc\Bootstrap;
+use oat\tao\model\websource\FlyTokenWebSource;
 
 $acceptHeader = $_SERVER['HTTP_ACCEPT'];
 $url = $_SERVER['REQUEST_URI'];
@@ -68,7 +69,7 @@ try {
     header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + $ttl));
     tao_helpers_Http::returnStream($stream, $source->getMimetype($path, $acceptHeader));
     $stream->detach();
-} catch (\tao_models_classes_FileNotFoundException $e) {
+} catch (FileNotFoundException $e) {
     header("HTTP/1.0 404 Not Found");
 }
 exit();

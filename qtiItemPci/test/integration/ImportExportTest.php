@@ -34,8 +34,9 @@ use oat\taoQtiItem\model\portableElement\PortableElementService;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementNotFoundException;
 use oat\taoQtiItem\model\qti\ImportService;
 use oat\taoQtiItem\model\qti\Service as QtiService;
+use oat\tao\model\service\FileStorage;
 use oat\tao\test\TaoPhpUnitTestRunner;
-use tao_models_classes_service_FileStorage;
+use oat\tao\model\service\ServiceCall;
 
 class ImportExportTest extends TaoPhpUnitTestRunner
 {
@@ -197,14 +198,14 @@ class ImportExportTest extends TaoPhpUnitTestRunner
      */
     public function testCompile($item)
     {
-        $storage = tao_models_classes_service_FileStorage::singleton();
+        $storage = FileStorage::singleton();
         $compiler = new QtiItemCompiler($item, $storage);
         $compiler->setServiceLocator(ServiceManager::getServiceManager());
         $report = $compiler->compile();
         $this->assertEquals($report->getType(), Report::TYPE_SUCCESS);
         $serviceCall = $report->getData();
         $this->assertNotNull($serviceCall);
-        $this->assertInstanceOf('\tao_models_classes_service_ServiceCall', $serviceCall);
+        $this->assertInstanceOf(ServiceCall::class, $serviceCall);
     }
 
     /**

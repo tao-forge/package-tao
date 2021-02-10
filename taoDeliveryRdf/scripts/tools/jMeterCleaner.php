@@ -8,13 +8,14 @@
 
 namespace oat\taoDeliveryRdf\scripts\tools;
 
-use oat\oatbox\extension\AbstractAction;
 use oat\generis\model\OntologyAwareTrait;
+use oat\oatbox\extension\AbstractAction;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDelivery\model\execution\OntologyDeliveryExecution;
 use oat\taoDelivery\model\execution\ServiceProxy;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDelivery\model\execution\implementation\KeyValueService;
 use oat\taoResultServer\models\classes\implementation\ResultServerService;
+use oat\tao\model\service\StateStorage;
 
 /**
  * Start your way from this
@@ -504,7 +505,7 @@ class jMeterCleaner extends AbstractAction
     {
         $report = new \common_report_Report(\common_report_Report::TYPE_SUCCESS);
         // service states
-        $persistence = \common_persistence_KeyValuePersistence::getPersistence(\tao_models_classes_service_StateStorage::PERSISTENCE_ID);
+        $persistence = \common_persistence_KeyValuePersistence::getPersistence(StateStorage::PERSISTENCE_ID);
         if ($persistence instanceof \common_persistence_AdvKeyValuePersistence) {
             $count = 0;
             foreach ($persistence->keys('tao:state:' . $userUri . '*') as $key) {

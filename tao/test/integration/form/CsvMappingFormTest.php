@@ -3,6 +3,7 @@
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdfs;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\tao\model\import\CSVMappingForm;
 use oat\tao\model\passwordRecovery\PasswordRecoveryService;
 
 class CsvMappingFormTest extends GenerisPhpUnitTestRunner
@@ -31,7 +32,7 @@ class CsvMappingFormTest extends GenerisPhpUnitTestRunner
             tao_helpers_data_CsvFile::FIRST_ROW_COLUMN_NAMES => true,
         ];
 
-        $formContainer = new tao_models_classes_import_CSVMappingForm($data, $options);
+        $formContainer = new CSVMappingForm($data, $options);
         $form = $formContainer->getForm();
 
         $this->assertEquals('csv_select', $form->getElement('http_2_www_0_w3_0_org_1_2000_1_01_1_rdf-schema_3_label')->getEvaluatedValue());

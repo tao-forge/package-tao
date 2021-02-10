@@ -123,7 +123,7 @@ class File extends CommonModule
     /**
      * @throws ResolverException
      * @throws \oat\tao\model\websource\WebsourceNotFound
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public function accessFile()
     {

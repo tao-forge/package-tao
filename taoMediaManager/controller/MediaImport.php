@@ -22,14 +22,14 @@ namespace oat\taoMediaManager\controller;
 
 use oat\taoMediaManager\model\ImportHandlerFactory;
 use oat\tao\controller\Import;
-use tao_models_classes_import_ImportHandler;
+use oat\tao\model\import\ImportHandler;
 
 /**
  * This controller provide the actions to import medias
  */
 class MediaImport extends Import
 {
-    /** @var tao_models_classes_import_ImportHandler[] */
+    /** @var oat\tao\model\import\ImportHandler[] */
     private $importHandlers;
 
     /**

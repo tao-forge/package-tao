@@ -22,11 +22,11 @@
 
 namespace oat\taoOutcomeUi\model\table;
 
-use \core_kernel_classes_Resource;
+use core_kernel_classes_Resource;
 use oat\oatbox\service\ServiceManager;
 use oat\taoDelivery\model\execution\ServiceProxy;
-use \tao_models_classes_table_Column;
-use \tao_models_classes_table_DataProvider;
+use oat\tao\model\table\Column;
+use oat\tao\model\table\DataProvider;
 
 /**
  * Short description of class
@@ -34,7 +34,7 @@ use \tao_models_classes_table_DataProvider;
  * @access public
  * @package taoOutcomeUi
  */
-class DeliveryExecutionDataProvider implements tao_models_classes_table_DataProvider
+class DeliveryExecutionDataProvider implements DataProvider
 {
 
     const PROP_STARTED_AT = 'started_at';
@@ -89,10 +89,10 @@ class DeliveryExecutionDataProvider implements tao_models_classes_table_DataProv
 
     /**
      * @param core_kernel_classes_Resource $resource
-     * @param tao_models_classes_table_Column $column
+     * @param oat\tao\model\table\Column $column
      * @return array|string
      */
-    public function getValue(core_kernel_classes_Resource $resource, tao_models_classes_table_Column $column)
+    public function getValue(core_kernel_classes_Resource $resource, Column $column)
     {
         $return = [];
         if (

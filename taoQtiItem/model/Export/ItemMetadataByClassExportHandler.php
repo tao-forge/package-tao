@@ -34,8 +34,9 @@ use oat\taoQtiItem\model\event\QtiItemMetadataExportEvent;
 use oat\taoQtiItem\model\flyExporter\extractor\ExtractorException;
 use oat\taoQtiItem\model\flyExporter\simpleExporter\ItemExporter;
 use oat\taoQtiItem\model\flyExporter\simpleExporter\SimpleExporter;
+use oat\tao\model\export\ExportHandler;
 
-class ItemMetadataByClassExportHandler implements \tao_models_classes_export_ExportHandler, PhpSerializable
+class ItemMetadataByClassExportHandler implements ExportHandler, PhpSerializable
 {
     use OntologyAwareTrait;
     use PhpSerializeStateless;

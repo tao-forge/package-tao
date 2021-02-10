@@ -20,6 +20,9 @@
 
 namespace oat\test\integration\model\service;
 
+use oat\tao\model\service\ConstantParameter;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\VariableParameter;
 use oat\tao\test\TaoPhpUnitTestRunner;
 
 /**
@@ -38,57 +41,57 @@ class ServiceCallTest extends TaoPhpUnitTestRunner
     public function testJson()
     {
 
-        $serviceCall = new \tao_models_classes_service_ServiceCall('http://testcase/test#123');
+        $serviceCall = new ServiceCall('http://testcase/test#123');
         $json = json_encode($serviceCall);
-        $serviceCall2 = \tao_models_classes_service_ServiceCall::fromJson(json_decode($json, true));
-        $this->assertIsA($serviceCall2, \tao_models_classes_service_ServiceCall::class);
+        $serviceCall2 = ServiceCall::fromJson(json_decode($json, true));
+        $this->assertIsA($serviceCall2, ServiceCall::class);
         $this->assertEquals($serviceCall, $serviceCall2);
 
-        $serviceCall3 = new \tao_models_classes_service_ServiceCall('http://testcase/test#123');
-        $serviceCall3->addInParameter(new \tao_models_classes_service_ConstantParameter(
+        $serviceCall3 = new ServiceCall('http://testcase/test#123');
+        $serviceCall3->addInParameter(new ConstantParameter(
             new \core_kernel_classes_Resource('http://testcase/test#123'),
             "v1"
         ));
-        $serviceCall3->addInParameter(new \tao_models_classes_service_ConstantParameter(
+        $serviceCall3->addInParameter(new ConstantParameter(
             new \core_kernel_classes_Resource('http://testcase/test#123'),
             "v2"
         ));
-        $serviceCall3->setOutParameter(new \tao_models_classes_service_VariableParameter(
+        $serviceCall3->setOutParameter(new VariableParameter(
             new \core_kernel_classes_Resource('http://testcase/test#123'),
             new \core_kernel_classes_Resource('http://testcase/test#123')
         ));
 
         $json = json_encode($serviceCall3);
-        $serviceCall4 = \tao_models_classes_service_ServiceCall::fromJson(json_decode($json, true));
-        $this->assertIsA($serviceCall4, \tao_models_classes_service_ServiceCall::class);
+        $serviceCall4 = ServiceCall::fromJson(json_decode($json, true));
+        $this->assertIsA($serviceCall4, ServiceCall::class);
         $this->assertEquals($serviceCall3, $serviceCall4);
     }
 
     public function testOntology()
     {
-        $serviceCall = new \tao_models_classes_service_ServiceCall('http://testcase/test#123');
+        $serviceCall = new ServiceCall('http://testcase/test#123');
         $resource = $serviceCall->toOntology();
-        $serviceCall2 = \tao_models_classes_service_ServiceCall::fromResource($resource);
-        $this->assertInstanceOf(\tao_models_classes_service_ServiceCall::class, $serviceCall2);
+        $serviceCall2 = ServiceCall::fromResource($resource);
+        $this->assertInstanceOf(ServiceCall::class, $serviceCall2);
         $this->assertEquals($serviceCall, $serviceCall2);
 
-        $serviceCall3 = new \tao_models_classes_service_ServiceCall('http://testcase/test#123');
-        $serviceCall3->addInParameter(new \tao_models_classes_service_ConstantParameter(
+        $serviceCall3 = new ServiceCall('http://testcase/test#123');
+        $serviceCall3->addInParameter(new ConstantParameter(
             new \core_kernel_classes_Resource('http://testcase/test#123'),
             "v1"
         ));
-        $serviceCall3->addInParameter(new \tao_models_classes_service_ConstantParameter(
+        $serviceCall3->addInParameter(new ConstantParameter(
             new \core_kernel_classes_Resource('http://testcase/test#123'),
             "v2"
         ));
-        $serviceCall3->setOutParameter(new \tao_models_classes_service_VariableParameter(
+        $serviceCall3->setOutParameter(new VariableParameter(
             new \core_kernel_classes_Resource('http://testcase/test#123'),
             new \core_kernel_classes_Resource('http://testcase/test#123')
         ));
 
         $resource = $serviceCall3->toOntology();
-        $serviceCall4 = \tao_models_classes_service_ServiceCall::fromResource($resource);
-        $this->assertInstanceOf(\tao_models_classes_service_ServiceCall::class, $serviceCall4);
+        $serviceCall4 = ServiceCall::fromResource($resource);
+        $this->assertInstanceOf(ServiceCall::class, $serviceCall4);
         $serviceCall4Array = $serviceCall4->jsonSerialize();
         usort($serviceCall4Array['in'], function ($inParamA, $inParamB) {
             return strcasecmp($inParamA->getValue(), $inParamB->getValue());

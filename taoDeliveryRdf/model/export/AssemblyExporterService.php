@@ -20,26 +20,28 @@
 
 namespace oat\taoDeliveryRdf\model\export;
 
-use oat\taoDeliveryRdf\model\assembly\CompiledTestConverterFactory;
-use ZipArchive;
+
 use Exception;
 use InvalidArgumentException;
+use ZipArchive;
 use common_Exception;
-use core_kernel_classes_EmptyProperty;
-use tao_helpers_Display;
-use tao_helpers_Export;
-use tao_helpers_File;
-use core_kernel_classes_Resource;
 use common_ext_ExtensionsManager;
-use tao_models_classes_service_ServiceCall;
-use tao_models_classes_export_RdfExporter;
+use core_kernel_classes_EmptyProperty;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ConfigurableService;
-use oat\tao\model\service\ServiceFileStorage;
-use oat\taoDeliveryRdf\model\assembly\AssemblyFilesReaderInterface;
-use oat\taoDeliveryRdf\model\assembly\UnsupportedCompiledTestFormatException;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoDeliveryRdf\model\assembly\AssemblyFilesReaderInterface;
+use oat\taoDeliveryRdf\model\assembly\CompiledTestConverterFactory;
+use oat\taoDeliveryRdf\model\assembly\UnsupportedCompiledTestFormatException;
+use oat\tao\model\export\RdfExporter;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\ServiceFileStorage;
+use tao_helpers_Display;
+use tao_helpers_Export;
+use tao_helpers_File;
+
 
 class AssemblyExporterService extends ConfigurableService
 {
@@ -57,7 +59,7 @@ class AssemblyExporterService extends ConfigurableService
          */
     private $assemblyFilesReader;
     /**
-         * @var tao_models_classes_export_RdfExporter
+         * @var oat\tao\model\export\RdfExporter
          */
     private $rdfExporter;
     /**
@@ -72,8 +74,8 @@ class AssemblyExporterService extends ConfigurableService
         }
 
         $this->rdfExporter = $this->getOption(self::OPTION_RDF_EXPORTER);
-        if (!$this->rdfExporter instanceof tao_models_classes_export_RdfExporter) {
-            throw new InvalidArgumentException('%s option value must be an instance of %s', self::OPTION_RDF_EXPORTER, tao_models_classes_export_RdfExporter::class);
+        if (!$this->rdfExporter instanceof RdfExporter) {
+            throw new InvalidArgumentException('%s option value must be an instance of %s', self::OPTION_RDF_EXPORTER, RdfExporter::class);
         }
     }
 
@@ -151,7 +153,7 @@ class AssemblyExporterService extends ConfigurableService
         }
 
         $runtime = $compiledDelivery->getUniquePropertyValue($this->getProperty(DeliveryAssemblyService::PROPERTY_DELIVERY_RUNTIME));
-        $serviceCall = tao_models_classes_service_ServiceCall::fromResource($runtime);
+        $serviceCall = ServiceCall::fromResource($runtime);
         $data['runtime'] = base64_encode($serviceCall->serializeToString());
         $rdfData = $this->rdfExporter->getRdfString([$compiledDelivery]);
         if (!$zipArchive->addFromString(self::DELIVERY_RDF_FILENAME, $rdfData)) {

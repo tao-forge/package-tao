@@ -20,9 +20,11 @@
  *
  */
 
+use oat\tao\model\service\StateStorage;
+
 /**
  * Default state storage config
  */
-return new tao_models_classes_service_StateStorage([
+return new StateStorage([
     'persistence' => 'serviceState'
 ]);

@@ -22,20 +22,21 @@
 
 namespace oat\taoQtiItem\model\pack;
 
+use InvalidArgumentException;
+use Throwable;
+use common_Exception;
+use core_kernel_classes_Resource;
 use oat\oatbox\filesystem\Directory;
+use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoItems\model\pack\ItemPack;
 use oat\taoItems\model\pack\ItemPacker;
 use oat\taoQtiItem\model\pack\QtiAssetPacker\PackedAsset;
+use oat\taoQtiItem\model\qti\AssetParser;
 use oat\taoQtiItem\model\qti\Item;
 use oat\taoQtiItem\model\qti\Parser as QtiParser;
-use oat\taoQtiItem\model\qti\AssetParser;
-use \core_kernel_classes_Resource;
-use \InvalidArgumentException;
-use \common_Exception;
-use oat\taoQtiItem\model\qti\XIncludeLoader;
-use oat\taoItems\model\media\ItemMediaResolver;
 use oat\taoQtiItem\model\qti\Service;
-use Throwable;
+use oat\taoQtiItem\model\qti\XIncludeLoader;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * This class pack a QTI Item. Packing instead of compiling, aims
@@ -112,7 +113,7 @@ class QtiItemPacker extends ItemPacker
             $assetParser->setDeepParsing($this->isNestedResourcesInclusion());
             $assetParser->setGetXinclude(!$this->replaceXinclude);
 
-            $storageDirectory = new \tao_models_classes_service_StorageDirectory(
+            $storageDirectory = new StorageDirectory(
                 $item->getUri(),
                 $directory->getFileSystemId(),
                 $directory->getPrefix() . '/' . $lang

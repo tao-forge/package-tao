@@ -2,21 +2,22 @@
 
 namespace oat\tao\test\integration\accessControl;
 
-use oat\generis\model\data\permission\PermissionInterface;
-use oat\generis\model\GenerisRdf;
-use oat\generis\test\GenerisPhpUnitTestRunner;
-use oat\oatbox\user\User;
-use oat\tao\model\accessControl\data\DataAccessControl;
-use oat\tao\model\TaoOntology;
 use PHPUnit\Framework\Assert;
+use oat\generis\model\GenerisRdf;
+use oat\generis\model\data\permission\PermissionInterface;
+use oat\generis\test\GenerisPhpUnitTestRunner;
 use oat\generis\test\MockObject;
+use oat\oatbox\user\User;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\UserService;
+use oat\tao\model\accessControl\data\DataAccessControl;
 
 class DataAccessControlTest extends GenerisPhpUnitTestRunner
 {
     const SAMPLE_ITEMS_LABEL = 'SampleTestItem_';
 
     /**
-     * @var \tao_models_classes_UserService
+     * @var \oat\tao\model\UserService
      */
     protected $userService;
 
@@ -58,7 +59,7 @@ class DataAccessControlTest extends GenerisPhpUnitTestRunner
 
     public function setUp(): void
     {
-        $this->userService = \tao_models_classes_UserService::singleton();
+        $this->userService = UserService::singleton();
         $this->testAdminData[GenerisRdf::PROPERTY_USER_PASSWORD] = \core_kernel_users_Service::getPasswordHash()->encrypt($this->testAdminData[GenerisRdf::PROPERTY_USER_PASSWORD]);
         $this->testAnonymousData[GenerisRdf::PROPERTY_USER_PASSWORD] = \core_kernel_users_Service::getPasswordHash()->encrypt($this->testAnonymousData[GenerisRdf::PROPERTY_USER_PASSWORD]);
     }

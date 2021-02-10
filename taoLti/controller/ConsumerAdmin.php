@@ -28,14 +28,16 @@ use oat\taoLti\models\classes\Security\Business\Contract\SecretKeyServiceInterfa
 use oat\taoLti\models\classes\Security\Business\Domain\Exception\SecretKeyGenerationException;
 use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\dataBinding\GenerisFormDataBinder as FormDataBinder;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
+use oat\tao\model\dataBinding\GenerisFormDataBindingException as FormDataBindingException;
+use oat\tao\model\dataBinding\GenerisFormDataBindingException;
 use oat\tao\model\form\CreateInstanceForm as CreateInstanceContainer;
 use oat\tao\model\form\CreateInstanceForm;
 use oat\tao\model\oauth\DataStore;
 use tao_helpers_Uri as UriHelper;
 use tao_helpers_form_Form as Form;
 use tao_helpers_form_FormFactory as FormFactory;
-use tao_models_classes_dataBinding_GenerisFormDataBinder as FormDataBinder;
-use tao_models_classes_dataBinding_GenerisFormDataBindingException as FormDataBindingException;
 
 /**
  * This controller allows the additon and deletion

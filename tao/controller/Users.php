@@ -24,14 +24,11 @@
 
 namespace oat\tao\controller;
 
-use \Exception;
-use \common_exception_BadRequest;
-use \common_exception_MissingParameter;
-use \common_exception_Unauthorized;
-use \core_kernel_users_Service;
-use \tao_helpers_Uri;
-use \tao_helpers_form_FormContainer;
-use \tao_models_classes_UserService;
+use Exception;
+use common_exception_BadRequest;
+use common_exception_MissingParameter;
+use common_exception_Unauthorized;
+use core_kernel_users_Service;
 use oat\generis\Helper\UserHashForEncryption;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
@@ -42,9 +39,12 @@ use oat\oatbox\user\UserLanguageServiceInterface;
 use oat\tao\helpers\ApplicationHelper;
 use oat\tao\helpers\UserHelper;
 use oat\tao\model\TaoOntology;
+use oat\tao\model\UserService;
 use oat\tao\model\form\CreateInstanceForm;
 use oat\tao\model\form\UsersForm;
 use oat\tao\model\user\UserLocks;
+use tao_helpers_Uri;
+use tao_helpers_form_FormContainer;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -88,7 +88,7 @@ class Users extends CommonModule
      */
     public function data()
     {
-        $userService = $this->getServiceLocator()->get(tao_models_classes_UserService::class);
+        $userService = $this->getServiceLocator()->get(UserService::class);
         $userLangService = $this->getServiceLocator()->get(UserLanguageServiceInterface::class);
         $page = $this->getRequestParameter('page');
         $limit = $this->getRequestParameter('rows');
@@ -217,7 +217,7 @@ class Users extends CommonModule
             return;
         }
 
-        $userService = $this->getServiceLocator()->get(tao_models_classes_UserService::class);
+        $userService = $this->getServiceLocator()->get(UserService::class);
 
         $deleted = false;
         $message = __('An error occurred during user deletion');
@@ -243,7 +243,7 @@ class Users extends CommonModule
      * @return void
      * @throws Exception
      * @throws \oat\generis\model\user\PasswordConstraintsException
-     * @throws tao_models_classes_dataBinding_GenerisFormDataBindingException
+     * @throws oat\tao\model\dataBinding\GenerisFormDataBindingException
      */
     public function add()
     {
@@ -265,8 +265,8 @@ class Users extends CommonModule
                 ->encrypt($plainPassword);
             $hashForKey = UserHashForEncryption::hash($plainPassword);
 
-            /** @var tao_models_classes_UserService $userService */
-            $userService = $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+            /** @var oat\tao\model\UserService $userService */
+            $userService = $this->getServiceLocator()->get(UserService::SERVICE_ID);
 
             if ($userService->triggerUpdatedEvent($container->getUser(), $values, $hashForKey)) {
                 $this->setData('message', __('User added'));
@@ -318,7 +318,7 @@ class Users extends CommonModule
     public function checkLogin()
     {
         $this->defaultData();
-        $userService = $this->getServiceLocator()->get(tao_models_classes_UserService::class);
+        $userService = $this->getServiceLocator()->get(UserService::class);
         if (!$this->isXmlHttpRequest()) {
             throw new common_exception_BadRequest('wrong request mode');
         }
@@ -338,7 +338,7 @@ class Users extends CommonModule
      * @throws Exception
      * @throws \oat\generis\model\user\PasswordConstraintsException
      * @throws common_exception_Error
-     * @throws tao_models_classes_dataBinding_GenerisFormDataBindingException
+     * @throws oat\tao\model\dataBinding\GenerisFormDataBindingException
      */
     public function edit()
     {
@@ -374,8 +374,8 @@ class Users extends CommonModule
                 unset($values[GenerisRdf::PROPERTY_USER_DEFLG]);
             }
 
-            /** @var tao_models_classes_UserService $userService */
-            $userService = $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+            /** @var oat\tao\model\UserService $userService */
+            $userService = $this->getServiceLocator()->get(UserService::SERVICE_ID);
             $userService->checkCurrentUserAccess($values[GenerisRdf::PROPERTY_USER_ROLES]);
 
             // leave roles which are not in the allowed list for current user

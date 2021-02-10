@@ -28,11 +28,11 @@ use oat\taoDeliveryRdf\helper\DeliveryWidget;
 use oat\taoGroups\models\GroupsService;
 use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\resources\ResourceWatcher;
 use tao_helpers_Uri;
 use tao_helpers_form_FormContainer as FormContainer;
 use tao_helpers_form_GenerisTreeForm;
-use tao_models_classes_dataBinding_GenerisFormDataBinder;
 
 /**
  * This Module aims at managing the Group class and its instances.
@@ -60,8 +60,8 @@ class Groups extends SaSModule
      * @throws \common_exception_Error
      * @throws \common_ext_ExtensionException
      * @throws \oat\tao\model\security\SecurityException
-     * @throws \tao_models_classes_MissingRequestParameterException
-     * @throws \tao_models_classes_dataBinding_GenerisFormDataBindingException
+     * @throws \oat\tao\model\MissingRequestParameterException
+     * @throws \oat\tao\model\dataBinding\GenerisFormDataBindingException
      */
     public function editGroup()
     {
@@ -75,7 +75,7 @@ class Groups extends SaSModule
         if ($myForm->isSubmited() && $myForm->isValid()) {
             $this->validateInstanceRoot($group->getUri());
 
-            $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($group);
+            $binder = new GenerisFormDataBinder($group);
             $group = $binder->bind($myForm->getValues());
 
             $this->setData('selectNode', tao_helpers_Uri::encode($group->getUri()));

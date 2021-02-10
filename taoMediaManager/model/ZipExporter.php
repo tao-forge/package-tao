@@ -22,6 +22,7 @@ declare(strict_types=1);
 
 namespace oat\taoMediaManager\model;
 
+use ZipArchive;
 use common_Exception;
 use common_report_Report as Report;
 use core_kernel_classes_Class;
@@ -33,9 +34,8 @@ use core_kernel_classes_Resource;
 use oat\oatbox\service\ServiceManager;
 use oat\taoMediaManager\model\export\service\MediaResourcePreparer;
 use oat\taoMediaManager\model\fileManagement\FileManagement;
+use oat\tao\model\export\ExportHandler;
 use tao_helpers_Export;
-use tao_models_classes_export_ExportHandler;
-use ZipArchive;
 
 /**
  * Service methods to manage the Media
@@ -44,7 +44,7 @@ use ZipArchive;
  * @author  Antoine Robin, <antoine.robin@vesperiagroup.com>
  * @package taoMediaManager
  */
-class ZipExporter implements tao_models_classes_export_ExportHandler
+class ZipExporter implements ExportHandler
 {
     /**
      * @inheritDoc

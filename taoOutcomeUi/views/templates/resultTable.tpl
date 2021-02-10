@@ -2,8 +2,8 @@
 use oat\tao\helpers\Template;
 use oat\taoOutcomeUi\model\ResultsService;
 ?>
-<link rel="stylesheet" type="text/css" href="<?= ROOT_URL ?>taoOutcomeUi/views/css/result.css" />
-<link rel="stylesheet" type="text/css" href="<?= ROOT_URL ?>taoOutcomeUi/views/css/resultTable.css" />
+<link rel="stylesheet" type="text/css" href="<?= Template::css('result.css','taoOutcomeUi') ?>" />
+<link rel="stylesheet" type="text/css" href="<?= Template::css('resultTable.css','taoOutcomeUi') ?>" />
 
 <div class="result-table">
     <div class="grid-row clearfix">

@@ -21,16 +21,16 @@
 
 namespace oat\taoOutcomeUi\model\export;
 
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\model\export\implementation\CsvExporter;
-use oat\tao\model\taskQueue\Task\FilesystemAwareTrait;
 use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoOutcomeUi\model\table\ContextTypePropertyColumn;
 use oat\taoOutcomeUi\model\table\VariableColumn;
 use oat\taoOutcomeUi\model\table\VariableDataProvider;
-use tao_models_classes_table_Column;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use oat\tao\model\export\implementation\CsvExporter;
+use oat\tao\model\table\Column;
+use oat\tao\model\taskQueue\Task\FilesystemAwareTrait;
 
 /**
  * SingleDeliveryResultsExporter
@@ -63,7 +63,7 @@ class SingleDeliveryResultsExporter implements ResultsExporterInterface
     private $columnsToExport = [];
 
     /**
-     * @var tao_models_classes_table_Column[]
+     * @var oat\tao\model\table\Column[]
      */
     private $builtColumns = [];
 
@@ -419,7 +419,7 @@ class SingleDeliveryResultsExporter implements ResultsExporterInterface
      * ]
      *
      * @param array $columnsData
-     * @return tao_models_classes_table_Column[]
+     * @return oat\tao\model\table\Column[]
      */
     private function buildColumns($columnsData)
     {
@@ -427,11 +427,11 @@ class SingleDeliveryResultsExporter implements ResultsExporterInterface
         $dataProvider = new VariableDataProvider();
 
         foreach ($columnsData as $column) {
-            if (!isset($column['type']) || !is_subclass_of($column['type'], tao_models_classes_table_Column::class)) {
+            if (!isset($column['type']) || !is_subclass_of($column['type'], Column::class)) {
                 throw new \RuntimeException('Column type not specified or wrong type provided');
             }
 
-            $column = tao_models_classes_table_Column::buildColumnFromArray($column);
+            $column = Column::buildColumnFromArray($column);
             if (!is_null($column)) {
                 if ($column instanceof VariableColumn) {
                     $column->setDataProvider($dataProvider);

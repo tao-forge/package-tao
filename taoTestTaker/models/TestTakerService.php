@@ -27,12 +27,13 @@ use core_kernel_classes_Class;
 use core_kernel_classes_Resource;
 use oat\generis\model\GenerisRdf;
 use oat\oatbox\event\EventManagerAwareTrait;
-use oat\tao\model\TaoOntology;
 use oat\taoTestTaker\models\events\TestTakerClassCreatedEvent;
 use oat\taoTestTaker\models\events\TestTakerClassRemovedEvent;
 use oat\taoTestTaker\models\events\TestTakerCreatedEvent;
 use oat\taoTestTaker\models\events\TestTakerRemovedEvent;
 use oat\tao\model\OntologyClassService;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\UserService;
 
 /**
  * Service methods to manage the Subjects business models using the RDF API.
@@ -182,7 +183,7 @@ class TestTakerService extends OntologyClassService
         $login = $instance->getUniquePropertyValue($loginProperty);
         
         $returnValue = parent::cloneInstance($instance, $clazz);
-        $userService = \tao_models_classes_UserService::singleton();
+        $userService = UserService::singleton();
         try {
             while ($userService->loginExists($login)) {
                 $login .= (string) rand(0, 9);

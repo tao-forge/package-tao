@@ -20,10 +20,12 @@
  
 namespace oat\taoQtiTest\scripts\tools;
 
+use common_report_Report as Report;
 use oat\oatbox\extension\AbstractAction;
-use \common_report_Report as Report;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDelivery\model\RuntimeService;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceCallHelper;
 
 /**
  *
@@ -49,9 +51,9 @@ abstract class CompileDeliveriesPhpData extends AbstractAction
                 $deliveryUri = $delivery->getUri();
                 
                 $runtime = $runtimeService->getRuntime($deliveryUri);
-                $inputParameters = \tao_models_classes_service_ServiceCallHelper::getInputValues($runtime, []);
+                $inputParameters = ServiceCallHelper::getInputValues($runtime, []);
                 list($privateId, $publicId) = explode('|', $inputParameters['QtiTestCompilation'], 2);
-                $directory = \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($privateId);
+                $directory = FileStorage::singleton()->getDirectoryById($privateId);
 
                 foreach ($directory->getIterator() as $filePrefix) {
                     if ($filePrefix === '/compact-test.php' || preg_match('/\/adaptive-assessment-section-.+?\.php/', $filePrefix) === 1 || preg_match('/\/adaptive-assessment-item-ref-.+?\.php/', $filePrefix) === 1) {

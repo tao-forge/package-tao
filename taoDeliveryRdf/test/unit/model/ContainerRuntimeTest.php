@@ -20,19 +20,19 @@
 
 namespace oat\taoDeliveryRdf\test\unit\model;
 
-use oat\generis\test\TestCase;
-use oat\taoDeliveryRdf\model\ContainerRuntime;
-use oat\generis\test\OntologyMockTrait;
-use oat\generis\model\data\Ontology;
-use common_exception_NoContent;
-use tao_models_classes_service_ServiceCall;
-use tao_models_classes_service_ConstantParameter;
-use tao_models_classes_service_VariableParameter;
-use oat\oatbox\cache\SimpleCache;
-use oat\taoDelivery\model\container\delivery\DeliveryContainerRegistry;
-use oat\taoDelivery\model\container\DeliveryContainer;
-use oat\oatbox\log\LoggerService;
 use Prophecy\Argument;
+use common_exception_NoContent;
+use oat\generis\model\data\Ontology;
+use oat\generis\test\OntologyMockTrait;
+use oat\generis\test\TestCase;
+use oat\oatbox\cache\SimpleCache;
+use oat\oatbox\log\LoggerService;
+use oat\taoDeliveryRdf\model\ContainerRuntime;
+use oat\taoDelivery\model\container\DeliveryContainer;
+use oat\taoDelivery\model\container\delivery\DeliveryContainerRegistry;
+use oat\tao\model\service\ConstantParameter;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\VariableParameter;
 
 class ContainerRuntimeTest extends TestCase
 {
@@ -121,7 +121,7 @@ class ContainerRuntimeTest extends TestCase
         $this->assertEquals($deliveryContainer, $container);
     }
 
-    protected function injectOntology(tao_models_classes_service_ServiceCall $serviceCall, Ontology $ontology)
+    protected function injectOntology(ServiceCall $serviceCall, Ontology $ontology)
     {
         $serviceCall->setModel($ontology);
         foreach ($serviceCall->getInParameters() as $param) {
@@ -134,17 +134,17 @@ class ContainerRuntimeTest extends TestCase
 
     protected function getServiceCall(Ontology $ontology)
     {
-        $serviceCall = new tao_models_classes_service_ServiceCall('http://fakeService/test#123');
+        $serviceCall = new ServiceCall('http://fakeService/test#123');
         $serviceCall->setModel($ontology);
-        $serviceCall->addInParameter(new tao_models_classes_service_ConstantParameter(
+        $serviceCall->addInParameter(new ConstantParameter(
             $ontology->getResource('http://testcase/test#123'),
             "v1"
         ));
-        $serviceCall->addInParameter(new tao_models_classes_service_ConstantParameter(
+        $serviceCall->addInParameter(new ConstantParameter(
             $ontology->getResource('http://testcase/test#123'),
             "v2"
         ));
-        $serviceCall->setOutParameter(new tao_models_classes_service_VariableParameter(
+        $serviceCall->setOutParameter(new VariableParameter(
             $ontology->getResource('http://testcase/test#123'),
             $ontology->getResource('http://testcase/test#123')
         ));

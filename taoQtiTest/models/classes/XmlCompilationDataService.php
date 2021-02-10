@@ -20,6 +20,7 @@
 
 namespace oat\taoQtiTest\models;
 
+use oat\tao\model\service\StorageDirectory;
 use qtism\data\QtiComponent;
 use qtism\data\storage\xml\XmlCompactDocument;
 
@@ -33,7 +34,7 @@ class XmlCompilationDataService extends CompilationDataService
 {
     const OUTPUT_FILE_TYPE = 'xml';
 
-    public function writeCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, QtiComponent $object)
+    public function writeCompilationData(StorageDirectory $compilationDirectory, $path, QtiComponent $object)
     {
         $path .= '.' . self::OUTPUT_FILE_TYPE;
         $compactDoc = new XmlCompactDocument();
@@ -45,7 +46,7 @@ class XmlCompilationDataService extends CompilationDataService
         );
     }
     
-    public function readCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, $cacheInfo = '')
+    public function readCompilationData(StorageDirectory $compilationDirectory, $path, $cacheInfo = '')
     {
         $path .= '.' . self::OUTPUT_FILE_TYPE;
         $compactDoc = new XmlCompactDocument();

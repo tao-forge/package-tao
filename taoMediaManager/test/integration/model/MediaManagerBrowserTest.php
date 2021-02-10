@@ -21,11 +21,11 @@
 
 namespace oat\taoMediaManager\test\integration\model;
 
-use oat\taoMediaManager\model\fileManagement\FlySystemManagement;
-use oat\taoMediaManager\model\MediaSource;
-use oat\taoMediaManager\model\MediaService;
 use oat\generis\test\TestCase;
-use tao_models_classes_FileNotFoundException;
+use oat\taoMediaManager\model\MediaService;
+use oat\taoMediaManager\model\MediaSource;
+use oat\taoMediaManager\model\fileManagement\FlySystemManagement;
+use oat\tao\model\FileNotFoundException;
 
 class MediaManagerBrowserTest extends TestCase
 {
@@ -110,7 +110,7 @@ class MediaManagerBrowserTest extends TestCase
 
     public function testGetFileInfoFail()
     {
-        $this->expectException(tao_models_classes_FileNotFoundException::class);
+        $this->expectException(FileNotFoundException::class);
         $this->expectExceptionMessage('File A Fake link not found');
         $link = 'A Fake link';
         $this->initializeMediaSource()->getFileInfo($link);

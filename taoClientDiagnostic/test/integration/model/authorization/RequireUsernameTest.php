@@ -24,6 +24,7 @@ namespace oat\taoClientDiagnostic\test\integration\model\authorization;
 use oat\generis\test\TestCase;
 use oat\taoClientDiagnostic\exception\InvalidLoginException;
 use oat\taoClientDiagnostic\model\authorization\RequireUsername;
+use oat\tao\model\UserService;
 
 class RequireUsernameTest extends TestCase
 {
@@ -33,13 +34,13 @@ class RequireUsernameTest extends TestCase
     public function setUp(): void
     {
         $this->instance = new RequireUsername();
-        $aclMock = $this->getMockBuilder('\tao_models_classes_UserService')
+        $aclMock = $this->getMockBuilder(\oat\oatbox\user\UserService::class)
             ->disableOriginalConstructor()
             ->getMock();
         $aclMock->method('loginExists')
             ->willReturn(false);
         $this->instance->setServiceLocator($this->getServiceLocatorMock([
-            \tao_models_classes_UserService::SERVICE_ID => $aclMock
+            UserService::SERVICE_ID => $aclMock
         ]));
 
     }
@@ -81,14 +82,14 @@ class RequireUsernameTest extends TestCase
     public function testValidateLogin($loginFixture, $hasException, $exception, $useACLService = false, $returnACL = false)
     {
         if ($useACLService) {
-            $aclFixture = $this->getMockBuilder('\tao_models_classes_UserService')
+            $aclFixture = $this->getMockBuilder(\oat\oatbox\user\UserService::class)
                 ->disableOriginalConstructor()
                 ->getMock();
             $aclFixture->method('loginExists')
                 ->willReturn($returnACL);
 
             $this->instance->setServiceLocator($this->getServiceLocatorMock([
-                \tao_models_classes_UserService::SERVICE_ID => $aclFixture
+                UserService::SERVICE_ID => $aclFixture
             ]));
         }
 

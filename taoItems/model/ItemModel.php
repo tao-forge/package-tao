@@ -77,7 +77,7 @@ interface ItemModel
     /**
      * Returns a compiler class for the item
      *
-     * @return tao_models_classes_Compiler
+     * @return oat\tao\model\Compiler
      */
     public function getCompilerClass();
 

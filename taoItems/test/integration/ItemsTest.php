@@ -26,10 +26,11 @@ use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdfs;
 use oat\generis\test\GenerisTestCase;
+use oat\taoItems\model\ItemModel as ItemModelInterface;
 use oat\taoItems\model\ItemModelStatus;
 use oat\taoItems\model\ItemsService;
-use oat\taoItems\model\ItemModel as ItemModelInterface;
 use oat\taoQtiItem\model\ItemModel;
+use oat\tao\model\Service;
 use oat\tao\model\TaoOntology;
 use oat\tao\test\TaoPhpUnitTestRunner;
 
@@ -69,7 +70,7 @@ class ItemsTest extends GenerisTestCase
      */
     public function testService()
     {
-        $this->assertInstanceOf(\tao_models_classes_Service::class, $this->itemsService);
+        $this->assertInstanceOf(Service::class, $this->itemsService);
         $this->assertInstanceOf(ItemsService::class, $this->itemsService);
     }
 

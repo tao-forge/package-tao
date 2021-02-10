@@ -24,11 +24,12 @@ namespace oat\taoProctoring\model;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\service\ServiceManager;
-use oat\taoDelivery\model\execution\DeliveryExecution as DeliveryExecutionInterface;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoDelivery\model\execution\DeliveryExecution as DeliveryExecutionInterface;
 use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoOutcomeUi\model\Wrapper\ResultServiceWrapper;
 use oat\taoProctoring\model\implementation\TestSessionService;
+use oat\tao\model\service\FileStorage;
 use qtism\data\View;
 use taoQtiTest_models_classes_QtiTestService;
 
@@ -152,8 +153,8 @@ class AssessmentResultsService extends ConfigurableService
 
         $directoryIds = explode('|', $inputParameters['QtiTestCompilation']);
         $compilationDirs = array(
-            'private' => \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryIds[0]),
-            'public' => \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryIds[1]),
+            'private' => FileStorage::singleton()->getDirectoryById($directoryIds[0]),
+            'public' => FileStorage::singleton()->getDirectoryById($directoryIds[1]),
         );
 
         $rubrics = [];

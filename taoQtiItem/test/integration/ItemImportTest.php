@@ -30,8 +30,9 @@ use oat\taoQtiItem\model\ItemModel;
 use oat\taoQtiItem\model\QtiItemCompiler;
 use oat\taoQtiItem\model\qti\ImportService;
 use oat\taoQtiItem\model\qti\exception\ParsingException;
+use oat\tao\model\service\FileStorage;
 use oat\tao\test\TaoPhpUnitTestRunner;
-use tao_models_classes_service_FileStorage;
+use oat\tao\model\service\ServiceCall;
 
 include_once dirname(__FILE__) . '/../../includes/raw_start.php';
 /**
@@ -295,14 +296,14 @@ class ItemImportTest extends TaoPhpUnitTestRunner
      */
     public function testCompile($item)
     {
-        $storage = tao_models_classes_service_FileStorage::singleton();
+        $storage = FileStorage::singleton();
         $compiler = new QtiItemCompiler($item, $storage);
         $compiler->setServiceLocator($this->getServiceManagerProphecy());
         $report = $compiler->compile();
         $this->assertEquals($report->getType(), common_report_Report::TYPE_SUCCESS);
         $serviceCall = $report->getData();
         $this->assertNotNull($serviceCall);
-        $this->assertInstanceOf('\tao_models_classes_service_ServiceCall', $serviceCall);
+        $this->assertInstanceOf(ServiceCall::class, $serviceCall);
     }
 
     /**

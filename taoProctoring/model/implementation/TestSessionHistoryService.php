@@ -19,14 +19,15 @@
 
 namespace oat\taoProctoring\model\implementation;
 
+use DateTime;
 use Exception;
+use oat\oatbox\service\ConfigurableService;
 use oat\taoDelivery\model\execution\ServiceProxy;
 use oat\taoProctoring\model\TestSessionHistoryService as TestSessionHistoryServiceInterface;
-use \oat\oatbox\service\ConfigurableService;
-use DateTime;
-use tao_helpers_Date as DateHelper;
 use oat\taoProctoring\model\deliveryLog\DeliveryLog;
 use oat\tao\helpers\UserHelper;
+use oat\tao\model\UserService;
+use tao_helpers_Date as DateHelper;
 
 /**
  * Service is used to retrieve test session history
@@ -327,7 +328,7 @@ class TestSessionHistoryService extends ConfigurableService implements TestSessi
      */
     private function getUserRole(\core_kernel_classes_Resource $user)
     {
-        $userService = \tao_models_classes_UserService::singleton();
+        $userService = UserService::singleton();
         if (!isset($this->authorRoles[$user->getUri()])) {
             $userRole = '';
             $allUserRoles = $userService->getUserRoles($user);

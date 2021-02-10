@@ -23,12 +23,13 @@
 namespace oat\taoLti\models\classes\user;
 
 use oat\oatbox\user\User;
+use oat\tao\model\UserService as TaoUserService;
 
 /**
  * Class UserService
  * @package oat\taoLti\models\classes\user
  */
-class UserService extends \tao_models_classes_UserService
+class UserService extends TaoUserService
 {
     /**
      * @param $userId

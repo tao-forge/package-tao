@@ -25,7 +25,7 @@ use core_kernel_classes_Class;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoResultServer\models\Formatter\ItemResponseCollectionNormalizer;
 use oat\taoResultServer\models\Formatter\ItemResponseVariableSplitter;
-use tao_models_classes_CrudService;
+use oat\tao\model\CrudService;
 use taoResultServer_models_classes_ReadableResultStorage;
 use taoResultServer_models_classes_ResponseVariable;
 
@@ -33,7 +33,7 @@ use taoResultServer_models_classes_ResponseVariable;
  * Crud services implements basic CRUD services, originally intended for REST controllers/ HTTP exception handlers
  * Consequently the signatures and behaviors is closer to REST and throwing HTTP like exceptions
  */
-class CrudResultsService extends tao_models_classes_CrudService
+class CrudResultsService extends CrudService
 {
 
     public const GROUP_BY_DELIVERY = 0;
@@ -181,7 +181,7 @@ class CrudResultsService extends tao_models_classes_CrudService
     /**
      *
      * @author Patrick Plichart, patrick@taotesting.com
-     * return tao_models_classes_ClassService
+     * return oat\tao\model\ClassService
      */
     protected function getClassService()
     {

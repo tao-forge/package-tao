@@ -22,35 +22,35 @@ declare(strict_types=1);
 
 namespace oat\taoMediaManager\model;
 
+use Exception;
 use common_exception_Error;
 use common_exception_UserReadableException;
+use common_report_Report as Report;
 use core_kernel_classes_Class;
 use core_kernel_classes_Resource;
-use Exception;
 use helpers_File;
 use oat\oatbox\filesystem\File;
-use common_report_Report as Report;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\log\TaoLoggerAwareInterface;
 use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\service\ServiceManager;
 use oat\taoMediaManager\model\sharedStimulus\parser\SharedStimulusMediaExtractor;
-use tao_helpers_File;
-use tao_helpers_form_Form as Form;
+use oat\tao\model\import\ImportHandler;
 use oat\tao\model\import\ImportHandlerHelperTrait;
 use oat\tao\model\import\TaskParameterProviderInterface;
 use qtism\data\QtiComponent;
 use qtism\data\storage\xml\XmlDocument;
 use qtism\data\storage\xml\XmlStorageException;
+use tao_helpers_File;
 use tao_helpers_Uri;
-use tao_models_classes_import_ImportHandler;
+use tao_helpers_form_Form as Form;
 
 /**
  * @access  public
  * @package taoMediaManager
  */
 class SharedStimulusImporter extends ConfigurableService implements
-    tao_models_classes_import_ImportHandler,
+    ImportHandler,
     TaskParameterProviderInterface,
     TaoLoggerAwareInterface
 {

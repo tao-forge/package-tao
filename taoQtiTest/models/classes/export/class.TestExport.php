@@ -21,12 +21,13 @@
  */
 
 use common_report_Report as Report;
-use oat\oatbox\event\EventManagerAwareTrait;
 use oat\oatbox\PhpSerializable;
 use oat\oatbox\PhpSerializeStateless;
+use oat\oatbox\event\EventManagerAwareTrait;
 use oat\oatbox\service\ServiceManager;
-use oat\tao\model\resources\SecureResourceServiceInterface;
 use oat\taoQtiTest\models\event\QtiTestExportEvent;
+use oat\tao\model\export\ExportHandler;
+use oat\tao\model\resources\SecureResourceServiceInterface;
 
 /**
  * Export Handler for QTI tests.
@@ -35,7 +36,7 @@ use oat\taoQtiTest\models\event\QtiTestExportEvent;
  * @author  Joel Bout, <joel@taotesting.com>
  * @package taoQtiTest
  */
-class taoQtiTest_models_classes_export_TestExport implements tao_models_classes_export_ExportHandler, PhpSerializable
+class taoQtiTest_models_classes_export_TestExport implements ExportHandler, PhpSerializable
 {
     use PhpSerializeStateless;
     use EventManagerAwareTrait;

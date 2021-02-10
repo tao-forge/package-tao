@@ -16,17 +16,17 @@
  */
 namespace oat\taoOutcomeUi\model\table;
 
-use \common_Logger;
-use \common_cache_FileCache;
-use \core_kernel_classes_Resource;
+use common_Logger;
+use common_cache_FileCache;
+use core_kernel_classes_Resource;
 use oat\oatbox\service\ServiceManager;
-use oat\taoOutcomeUi\helper\Datatypes;
-use qtism\common\datatypes\QtiDuration;
-use \tao_helpers_Date;
-use \tao_models_classes_table_Column;
-use \tao_models_classes_table_DataProvider;
-use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoDelivery\model\execution\DeliveryExecution;
+use oat\taoOutcomeUi\helper\Datatypes;
+use oat\taoOutcomeUi\model\ResultsService;
+use oat\tao\model\table\Column;
+use oat\tao\model\table\DataProvider;
+use qtism\common\datatypes\QtiDuration;
+use tao_helpers_Date;
 
 /**
  * Short description of class
@@ -35,7 +35,7 @@ use oat\taoDelivery\model\execution\DeliveryExecution;
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package taoOutcomeUi
  */
-class VariableDataProvider implements tao_models_classes_table_DataProvider
+class VariableDataProvider implements DataProvider
 {
 
     /**
@@ -149,9 +149,9 @@ class VariableDataProvider implements tao_models_classes_table_DataProvider
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_table_DataProvider::getValue()
+     * @see oat\tao\model\table\DataProvider::getValue()
      */
-    public function getValue(core_kernel_classes_Resource $resource, tao_models_classes_table_Column $column)
+    public function getValue(core_kernel_classes_Resource $resource, Column $column)
     {
         $returnValue = [];
 

@@ -24,6 +24,7 @@ namespace oat\taoCe\actions;
 
 use oat\tao\controller\Main as Main_2;
 use oat\tao\helpers\TaoCe;
+use oat\tao\model\UserService;
 use oat\tao\model\mvc\DefaultUrlService;
 
 /**
@@ -48,7 +49,7 @@ class Main extends Main_2
         if ($this->hasRequestParameter('ext') || $this->hasRequestParameter('structure')) {
             //but before update the first time property
 
-            $user = $this->getServiceLocator()->get(\tao_models_classes_UserService::SERVICE_ID)->getCurrentUser();
+            $user = $this->getServiceLocator()->get(UserService::SERVICE_ID)->getCurrentUser();
             if ($this->hasRequestParameter('nosplash')) {
                 TaoCe::becomeVeteran();
             }

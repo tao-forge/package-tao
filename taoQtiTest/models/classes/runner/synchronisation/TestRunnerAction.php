@@ -20,6 +20,8 @@
 
 namespace oat\taoQtiTest\models\runner\synchronisation;
 
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use oat\oatbox\event\EventManager;
 use oat\taoQtiTest\models\cat\CatEngineNotFoundException;
 use oat\taoQtiTest\models\event\ItemOfflineEvent;
@@ -28,8 +30,7 @@ use oat\taoQtiTest\models\runner\QtiRunnerMessageService;
 use oat\taoQtiTest\models\runner\QtiRunnerPausedException;
 use oat\taoQtiTest\models\runner\RunnerParamParserTrait;
 use oat\taoQtiTest\models\runner\RunnerToolStates;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use oat\tao\model\FileNotFoundException;
 
 /**
  * Class TestRunnerAction
@@ -243,7 +244,7 @@ abstract class TestRunnerAction implements ServiceLocatorAwareInterface
                     $response['type'] = 'TestState';
                     break;
 
-                case $e instanceof \tao_models_classes_FileNotFoundException:
+                case $e instanceof FileNotFoundException:
                     $response['type'] = 'FileNotFound';
                     $response['message'] = __('File not found');
                     break;

@@ -123,7 +123,7 @@ class TriplesManagerService extends ConfigurableService
      *
      * @return string
      * @throws \common_Exception
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     protected function cloneFile($fileUri, $targetFileSystemId = null)
     {

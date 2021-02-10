@@ -25,6 +25,7 @@ namespace oat\taoDeliveryRdf\model\import;
 use common_report_Report;
 use oat\taoDeliveryRdf\view\form\import\ImportForm;
 use oat\taoItems\model\ItemsService;
+use oat\tao\model\import\ImportHandler;
 
 /**
  * Delivery Assembly importer
@@ -33,12 +34,12 @@ use oat\taoItems\model\ItemsService;
  * @author Joel Bout, <joel@taotesting.com>
  * @package taoDelivery
  */
-class AssemblyImportHandler implements \tao_models_classes_import_ImportHandler
+class AssemblyImportHandler implements ImportHandler
 {
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_ImportHandler::getLabel()
+     * @see oat\tao\model\import\ImportHandler::getLabel()
      */
     public function getLabel()
     {
@@ -47,7 +48,7 @@ class AssemblyImportHandler implements \tao_models_classes_import_ImportHandler
     
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_ImportHandler::getForm()
+     * @see oat\tao\model\import\ImportHandler::getForm()
      */
     public function getForm()
     {
@@ -57,7 +58,7 @@ class AssemblyImportHandler implements \tao_models_classes_import_ImportHandler
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_ImportHandler::import()
+     * @see oat\tao\model\import\ImportHandler::import()
      */
     public function import($class, $form, $userId = null)
     {

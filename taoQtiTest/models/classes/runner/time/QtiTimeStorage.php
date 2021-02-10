@@ -20,9 +20,10 @@
 
 namespace oat\taoQtiTest\models\runner\time;
 
-use oat\tao\model\state\StateStorage;
 use oat\taoQtiTest\models\runner\StorageManager;
 use oat\taoTests\models\runner\time\TimeStorage;
+use oat\tao\model\service\StateStorage as StateStorage_2;
+use oat\tao\model\state\StateStorage;
 
 /**
  * Class QtiTimeStorage
@@ -110,7 +111,7 @@ class QtiTimeStorage implements TimeStorage, QtiTimeStorageFormatAware
     public function getStorageService()
     {
         if (!$this->storageService) {
-            $this->storageService = \tao_models_classes_service_StateStorage::singleton();
+            $this->storageService = StateStorage_2::singleton();
         }
         return $this->storageService;
     }

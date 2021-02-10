@@ -23,8 +23,8 @@
 namespace oat\taoItems\model\pack\encoders;
 
 use oat\tao\helpers\Base64;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\media\MediaAsset;
-use tao_models_classes_FileNotFoundException;
 use oat\tao\model\media\sourceStrategy\HttpSource;
 
 /**
@@ -45,7 +45,7 @@ class NoneEncoder implements Encoding
     /**
      * @param mixed $data
      *
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      *
      * @return mixed|string
      */

@@ -22,28 +22,28 @@ declare(strict_types=1);
 
 namespace oat\taoMediaManager\model;
 
+use Exception;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use SplFileInfo;
 use common_Exception;
 use common_exception_Error;
 use common_exception_UserReadableException;
 use common_report_Report as Report;
 use core_kernel_classes_Class;
 use core_kernel_classes_Resource as Resource;
-use Exception;
 use helpers_File;
 use helpers_TimeOutHelper;
 use oat\oatbox\filesystem\File;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\import\InvalidSourcePathException;
 use qtism\data\content\xhtml\Img;
 use qtism\data\content\xhtml\QtiObject;
 use qtism\data\storage\xml\XmlDocument;
 use qtism\data\storage\xml\XmlStorageException;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
-use SplFileInfo;
 use tao_helpers_File;
-use tao_helpers_form_Form as Form;
 use tao_helpers_Uri;
-use tao_models_classes_FileNotFoundException;
+use tao_helpers_form_Form as Form;
 
 /**
  * Service methods to manage the Media
@@ -135,7 +135,7 @@ class SharedStimulusPackageImporter extends ZipImporter
      * @throws InvalidSourcePathException
      * @throws common_exception_Error
      * @throws XmlStorageException
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public static function embedAssets($originalXml)
     {
@@ -305,7 +305,7 @@ class SharedStimulusPackageImporter extends ZipImporter
     /**
      * Verify paths and encode the file
      *
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      * @throws common_exception_Error
      */
     protected static function secureEncode(string $basedir, string $source): string
@@ -319,7 +319,7 @@ class SharedStimulusPackageImporter extends ZipImporter
                         . 'base64,' . base64_encode(file_get_contents($basedir . $source));
                 }
 
-                throw new tao_models_classes_FileNotFoundException($source);
+                throw new FileNotFoundException($source);
             }
 
             throw new common_exception_Error('Invalid source path "' . $source . '"');

@@ -20,13 +20,13 @@ declare(strict_types=1);
 
 namespace oat\taoQtiItem\model\Listener;
 
+use League\Flysystem\FileExistsException;
 use common_Exception;
 use core_kernel_persistence_Exception;
-use League\Flysystem\FileExistsException;
 use oat\oatbox\service\ServiceManager;
 use oat\taoItems\model\event\ItemContentClonedEvent;
 use oat\taoQtiItem\model\qti\copyist\QtiXmlDataManager;
-use tao_models_classes_FileNotFoundException;
+use oat\tao\model\FileNotFoundException;
 
 /**
  * After the clone or copy operation it is possible that items identifier in the qti.xml is different from current
@@ -40,7 +40,7 @@ class ReplaceCopiedQtiXmlIdentifierListener
      * @throws FileExistsException
      * @throws common_Exception
      * @throws core_kernel_persistence_Exception
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public static function catchItemCreatedFromSource(ItemContentClonedEvent $itemContentClonedEvent): void
     {

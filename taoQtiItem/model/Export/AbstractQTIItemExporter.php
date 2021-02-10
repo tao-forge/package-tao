@@ -43,6 +43,7 @@ use oat\taoQtiItem\model\qti\exception\ExportException;
 use oat\taoQtiItem\model\qti\metadata\MetadataService;
 use oat\taoQtiItem\model\qti\metadata\exporter\MetadataExporter;
 use oat\tao\helpers\Base64;
+use oat\tao\model\FileNotFoundException as FileNotFoundException_2;
 use oat\tao\model\media\ProcessedFileStreamAware;
 use oat\tao\model\media\sourceStrategy\HttpSource;
 
@@ -118,7 +119,7 @@ abstract class AbstractQTIItemExporter extends ItemExporter
             $portableElementsToExport[$element->getTypeIdentifier()] = $portableElementExporter;
             try {
                 $portableAssets = array_merge($portableAssets, $portableElementExporter->copyAssetFiles($replacementList));
-            } catch (\tao_models_classes_FileNotFoundException $e) {
+            } catch (FileNotFoundException_2 $e) {
                 \common_Logger::i($e->getMessage());
                 $report->setMessage('Missing portable element asset for "' . $object->getTypeIdentifier() . '"": ' .  $e->getMessage());
                 $report->setType(\common_report_Report::TYPE_ERROR);
@@ -145,7 +146,7 @@ abstract class AbstractQTIItemExporter extends ItemExporter
                     $replacement = $this->copyAssetFile($stream, $basePath, $baseName, $replacementList);
                     $replacementList[$assetUrl] = $replacement;
                 }
-            } catch (\tao_models_classes_FileNotFoundException $e) {
+            } catch (FileNotFoundException_2 $e) {
                 $replacementList[$assetUrl] = '';
                 $report->setMessage('Missing resource for ' . $assetUrl);
                 $report->setType(\common_report_Report::TYPE_ERROR);

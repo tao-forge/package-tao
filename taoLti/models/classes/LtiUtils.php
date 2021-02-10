@@ -22,11 +22,11 @@
 namespace oat\taoLti\models\classes;
 
 use common_Exception;
-use common_exception_Error;
 use common_Logger;
+use common_exception_Error;
 use core_kernel_classes_Class;
 use core_kernel_classes_Resource;
-use tao_models_classes_LanguageService;
+use oat\tao\model\LanguageService;
 
 /**
  *
@@ -112,8 +112,8 @@ class LtiUtils
     public static function mapCode2InterfaceLanguage($code)
     {
         if (!empty($code)) {
-            $languageService = tao_models_classes_LanguageService::singleton();
-            $usage = new core_kernel_classes_Resource(tao_models_classes_LanguageService::INSTANCE_LANGUAGE_USAGE_GUI);
+            $languageService = LanguageService::singleton();
+            $usage = new core_kernel_classes_Resource(LanguageService::INSTANCE_LANGUAGE_USAGE_GUI);
             if ($languageService->isLanguageAvailable($code, $usage)) {
                 return $code;
             }

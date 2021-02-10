@@ -21,7 +21,7 @@
 
 namespace oat\tao\controller;
 
-use \tao_models_classes_UserService;
+use oat\tao\model\UserService;
 use oat\tao\model\notification\Notification as NotificationObject;
 use oat\tao\model\notification\NotificationServiceInterface;
 use oat\tao\model\notification\exception\NotListedNotification;
@@ -108,10 +108,10 @@ class Notification extends CommonModule
     }
 
     /**
-     * @return tao_models_classes_UserService
+     * @return oat\tao\model\UserService
      */
     protected function getUserService()
     {
-        return $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+        return $this->getServiceLocator()->get(UserService::SERVICE_ID);
     }
 }

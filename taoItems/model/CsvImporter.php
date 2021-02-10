@@ -23,6 +23,7 @@
 namespace oat\taoItems\model;
 
 use oat\taoItems\model\ItemsService;
+use oat\tao\model\import\CsvImporter as CsvImporter_2;
 
 /**
  * A custom item CSV importer
@@ -30,11 +31,11 @@ use oat\taoItems\model\ItemsService;
  * @access public
  * @author Antoine Robin, <antoine@taotesting.com>
  */
-class CsvImporter extends \tao_models_classes_import_CsvImporter
+class CsvImporter extends CsvImporter_2
 {
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_CsvImporter::getExludedProperties()
+     * @see oat\tao\model\import\CsvImporter::getExludedProperties()
      */
     protected function getExludedProperties()
     {

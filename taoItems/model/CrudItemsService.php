@@ -20,13 +20,13 @@
 
 namespace oat\taoItems\model;
 
-use \core_kernel_classes_Class;
-use \core_kernel_classes_Resource;
-use \tao_models_classes_CrudService;
+use core_kernel_classes_Class;
+use core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdf;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\event\EventManagerAwareTrait;
 use oat\taoItems\model\event\ItemCreatedEvent;
+use oat\tao\model\CrudService;
 use oat\tao\model\TaoOntology;
 
 /**
@@ -36,7 +36,7 @@ use oat\tao\model\TaoOntology;
  *
  *
  */
-class CrudItemsService extends tao_models_classes_CrudService
+class CrudItemsService extends CrudService
 {
     use EventManagerAwareTrait;
 

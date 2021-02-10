@@ -19,20 +19,21 @@
  *
  */
 
-use oat\tao\model\state\StateStorage;
-use qtism\common\storage\IStream;
-use qtism\runtime\tests\AbstractSessionManager;
-use qtism\common\storage\MemoryStream;
-use qtism\runtime\storage\binary\BinaryAssessmentTestSeeker;
-use qtism\runtime\storage\binary\AbstractQtiBinaryStorage;
-use qtism\runtime\storage\common\StorageException;
-use qtism\data\AssessmentTest;
-use qtism\runtime\tests\AssessmentTestSession;
-use qtism\runtime\storage\binary\QtiBinaryStreamAccess;
-use oat\taoQtiTest\models\files\QtiFlysystemFileManager;
 use oat\oatbox\service\ServiceManager;
 use oat\oatbox\service\ServiceManagerAwareInterface;
 use oat\oatbox\service\ServiceManagerAwareTrait;
+use oat\taoQtiTest\models\files\QtiFlysystemFileManager;
+use oat\tao\model\service\StateStorage as StateStorage_2;
+use oat\tao\model\state\StateStorage;
+use qtism\common\storage\IStream;
+use qtism\common\storage\MemoryStream;
+use qtism\data\AssessmentTest;
+use qtism\runtime\storage\binary\AbstractQtiBinaryStorage;
+use qtism\runtime\storage\binary\BinaryAssessmentTestSeeker;
+use qtism\runtime\storage\binary\QtiBinaryStreamAccess;
+use qtism\runtime\storage\common\StorageException;
+use qtism\runtime\tests\AbstractSessionManager;
+use qtism\runtime\tests\AssessmentTestSession;
 
 /**
  * A QtiSm AssessmentTestSession Storage Service implementation for TAO.
@@ -220,7 +221,7 @@ class taoQtiTest_helpers_TestSessionStorage extends AbstractQtiBinaryStorage imp
     protected function getRetrievalStream($sessionId)
     {
     
-        $storageService = $this->getServiceLocator()->get(tao_models_classes_service_StateStorage::SERVICE_ID);
+        $storageService = $this->getServiceLocator()->get(StateStorage_2::SERVICE_ID);
         $userUri = $this->getUserUri();
        
         if (is_null($userUri) === true) {
@@ -245,8 +246,8 @@ class taoQtiTest_helpers_TestSessionStorage extends AbstractQtiBinaryStorage imp
    
     protected function persistStream(AssessmentTestSession $assessmentTestSession, MemoryStream $stream)
     {
-        /** @var tao_models_classes_service_StateStorage $storageService */
-        $storageService = $this->getServiceLocator()->get(tao_models_classes_service_StateStorage::SERVICE_ID);;
+        /** @var oat\tao\model\service\StateStorage $storageService */
+        $storageService = $this->getServiceLocator()->get(StateStorage_2::SERVICE_ID);;
         $userUri = $this->getUserUri();
        
         if (is_null($userUri) === true) {
@@ -262,7 +263,7 @@ class taoQtiTest_helpers_TestSessionStorage extends AbstractQtiBinaryStorage imp
    
     public function exists($sessionId)
     {
-        $storageService = $this->getServiceLocator()->get(tao_models_classes_service_StateStorage::SERVICE_ID);
+        $storageService = $this->getServiceLocator()->get(StateStorage_2::SERVICE_ID);
         $userUri = $this->getUserUri();
        
         if (is_null($userUri) === true) {

@@ -2,9 +2,10 @@
 
 namespace oat\tao\test\integration;
 
+use Zend\ServiceManager\ServiceLocatorInterface;
 use oat\generis\test\GenerisPhpUnitTestRunner;
 use oat\oatbox\filesystem\FileSystemService;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use oat\tao\model\service\FileStorage;
 
 abstract class FileStorageTestCase extends GenerisPhpUnitTestRunner
 {
@@ -59,12 +60,12 @@ abstract class FileStorageTestCase extends GenerisPhpUnitTestRunner
      * Set service locator to have fileSystem with test adapters
      * Set publicFs & privateFs to match with adapters
      *
-     * @return \tao_models_classes_service_FileStorage
+     * @return \oat\tao\model\service\FileStorage
      */
     public function getFileStorage()
     {
-        $fileStorage = new \tao_models_classes_service_FileStorage([
-            \tao_models_classes_service_FileStorage::OPTION_PRIVATE_FS => $this->adapterFixture
+        $fileStorage = new FileStorage([
+            FileStorage::OPTION_PRIVATE_FS => $this->adapterFixture
         ]);
         $fileStorage->setServiceLocator($this->getServiceLocatorWithFileSystem());
 

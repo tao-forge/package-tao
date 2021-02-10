@@ -214,7 +214,7 @@ class taoQtiTest_actions_TestRunner extends ServiceModule
     /**
      * Get the path to the directory where the test is compiled.
      *
-     * @return tao_models_classes_service_StorageDirectory
+     * @return oat\tao\model\service\StorageDirectory
      */
     protected function getCompilationDirectory()
     {
@@ -929,7 +929,7 @@ class taoQtiTest_actions_TestRunner extends ServiceModule
     protected function retrieveTestMeta()
     {
         $directories = $this->getCompilationDirectory();
-        /** @var tao_models_classes_service_StorageDirectory $privateDirectory */
+        /** @var oat\tao\model\service\StorageDirectory $privateDirectory */
         $privateDirectory = $directories['private'];
 
         /** @var CompilationDataService $compilationDataService */
@@ -945,7 +945,7 @@ class taoQtiTest_actions_TestRunner extends ServiceModule
         $this->setItemIndex(new QtiTestCompilerIndex());
         try {
             $directories = $this->getCompilationDirectory();
-            /** @var tao_models_classes_service_StorageDirectory $privateDirectory */
+            /** @var oat\tao\model\service\StorageDirectory $privateDirectory */
             $privateDirectory = $directories['private'];
             $data = $privateDirectory->read(taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_INDEX);
             if ($data) {

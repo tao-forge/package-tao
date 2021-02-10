@@ -25,9 +25,9 @@ use oat\generis\test\TestCase;
 use oat\oatbox\user\User;
 use oat\oatbox\user\UserLanguageService;
 use oat\taoQtiTestPreviewer\models\PreviewLanguageService;
-use oat\taoResultServer\models\classes\implementation\ResultServerService;
 use oat\taoResultServer\models\classes\ResultStorageInterface;
-use tao_models_classes_UserService;
+use oat\taoResultServer\models\classes\implementation\ResultServerService;
+use oat\tao\model\UserService;
 
 class PreviewLanguageServiceTest extends TestCase
 {
@@ -37,7 +37,7 @@ class PreviewLanguageServiceTest extends TestCase
     /** @var ResultServerService|MockObject */
     private $resultServerServiceMock;
 
-    /** @var tao_models_classes_UserService|MockObject */
+    /** @var oat\tao\model\UserService|MockObject */
     private $userServiceMock;
 
     /** @var PreviewLanguageService */
@@ -47,7 +47,7 @@ class PreviewLanguageServiceTest extends TestCase
     {
         $this->userLanguageServiceMock = $this->createMock(UserLanguageService::class);
         $this->resultServerServiceMock = $this->createMock(ResultServerService::class);
-        $this->userServiceMock = $this->createMock(tao_models_classes_UserService::class);
+        $this->userServiceMock = $this->createMock(UserService::class);
 
         $this->subject = new PreviewLanguageService();
         $this->subject->setServiceLocator($this->getServiceLocator());
@@ -92,7 +92,7 @@ class PreviewLanguageServiceTest extends TestCase
         return $this->getServiceLocatorMock([
             UserLanguageService::class => $this->userLanguageServiceMock,
             ResultServerService::SERVICE_ID => $this->resultServerServiceMock,
-            tao_models_classes_UserService::SERVICE_ID => $this->userServiceMock
+            UserService::SERVICE_ID => $this->userServiceMock
         ]);
     }
 }

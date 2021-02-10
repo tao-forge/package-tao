@@ -19,7 +19,9 @@
  *               2009-2012 (update and modification) Public Research Centre Henri Tudor (under the project TAO-SUSTAIN & TAO-DEV);
  *
  */
+
 use oat\generis\test\TestCase;
+use oat\tao\model\service\FileStorage;
 
 //TODO simpletest testcase that need to be migrate to phpunit
 
@@ -28,7 +30,7 @@ class ServiceFileStorageTestCase extends TestCase
 
     public function testFileStorage()
     {
-        $storage = tao_models_classes_service_FileStorage::singleton();
+        $storage = FileStorage::singleton();
         
         $publicFolder1 = $storage->spawnDirectory(true);
         $publicFolder2 = $storage->spawnDirectory(true);

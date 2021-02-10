@@ -24,10 +24,10 @@
 namespace oat\taoItems\controller;
 
 use oat\taoItems\model\CsvImporter;
-use oat\taoItems\model\ItemsService;
 use oat\taoItems\model\ItemModel;
+use oat\taoItems\model\ItemsService;
 use oat\tao\controller\Import;
-use tao_models_classes_import_CsvImporter;
+use oat\tao\model\import\CsvImporter as CsvImporter_2;
 
 /**
  * This controller provide the actions to import items
@@ -55,7 +55,7 @@ class ItemImport extends Import
         $returnValue = parent::getAvailableImportHandlers();
 
         foreach (array_keys($returnValue) as $key) {
-            if ($returnValue[$key] instanceof \tao_models_classes_import_CsvImporter) {
+            if ($returnValue[$key] instanceof CsvImporter_2) {
                 $importer = new CsvImporter();
                 $returnValue[$key] = $importer;
             }
@@ -64,7 +64,7 @@ class ItemImport extends Import
         $itemModelClass = $this->getClass(ItemModel::CLASS_URI_MODELS);
         foreach ($itemModelClass->getInstances() as $model) {
             $impl = ItemsService::singleton()->getItemModelImplementation($model);
-            if (in_array('tao_models_classes_import_ImportProvider', class_implements($impl))) {
+            if (in_array('oat\\tao\\model\\import\\ImportProvider', class_implements($impl))) {
                 foreach ($impl->getImportHandlers() as $handler) {
                     array_unshift($returnValue, $handler);
                 }

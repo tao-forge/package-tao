@@ -22,11 +22,11 @@
 
 namespace oat\taoQtiItem\helpers;
 
+use oat\tao\model\service\StorageDirectory;
 use qtism\common\enums\BaseType;
 use qtism\common\enums\Cardinality;
 use qtism\runtime\common\Variable;
 use qtism\runtime\tests\AssessmentItemSession;
-use \tao_models_classes_service_StorageDirectory;
 
 /**
  * Qti Item Runner helper
@@ -74,10 +74,10 @@ class QtiRunner
     /**
      * Get the flysystem path to the compilation folder described by $directory.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory The root directory resource where the item is stored.
+     * @param oat\tao\model\service\StorageDirectory $directory The root directory resource where the item is stored.
      * @return string The flysystem path to the private folder with a trailing directory separator.
      */
-    public static function getPrivatePathByLanguage(tao_models_classes_service_StorageDirectory $directory)
+    public static function getPrivatePathByLanguage(StorageDirectory $directory)
     {
         $lang = \common_session_SessionManager::getSession()->getDataLanguage();
 
@@ -92,10 +92,10 @@ class QtiRunner
      * Get the JSON QTI Model representing the elements (A.K.A. components) that vary over time for
      * the item stored in $directory.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      * @return array A JSON decoded array.
      */
-    public static function getContentVariableElements(tao_models_classes_service_StorageDirectory $directory)
+    public static function getContentVariableElements(StorageDirectory $directory)
     {
         $jsonFile = self::getPrivatePathByLanguage($directory) . 'variableElements.json';
         $data = $directory->read($jsonFile);
@@ -105,11 +105,11 @@ class QtiRunner
     /**
      * Get rubric block visible by the given "view"
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      * @param type $view
      * @return array
      */
-    public static function getRubricBlocks(tao_models_classes_service_StorageDirectory $directory, $view)
+    public static function getRubricBlocks(StorageDirectory $directory, $view)
     {
         
         $returnValue = [];
@@ -130,11 +130,11 @@ class QtiRunner
     /**
      * Get the feedback to be displayed on an AssessmentItemSession
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      * @param \qtism\runtime\tests\AssessmentItemSession $itemSession
      * @return array
      */
-    public static function getFeedbacks(tao_models_classes_service_StorageDirectory $directory, AssessmentItemSession $itemSession)
+    public static function getFeedbacks(StorageDirectory $directory, AssessmentItemSession $itemSession)
     {
         
         $returnValue = [];

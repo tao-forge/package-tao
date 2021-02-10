@@ -55,7 +55,7 @@ class ItemExport extends Export
         $itemModels = $itemModelClass->getInstances();
         foreach ($itemModels as $model) {
             $impl = ItemsService::singleton()->getItemModelImplementation($model);
-            if (in_array('tao_models_classes_export_ExportProvider', class_implements($impl))) {
+            if (in_array('oat\\tao\\model\\export\\ExportProvider', class_implements($impl))) {
                 foreach ($impl->getExportHandlers() as $handler) {
                     array_unshift($returnValue, $handler);
                 }

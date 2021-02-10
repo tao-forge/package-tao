@@ -28,26 +28,27 @@ use oat\libCat\CatSession;
 use oat\libCat\Exception\CatEngineException;
 use oat\libCat\result\AbstractResult;
 use oat\libCat\result\ItemResult;
+use oat\libCat\result\ResultVariable;
+use oat\oatbox\event\EventManager;
 use oat\taoDelivery\model\execution\DeliveryServerService;
 use oat\taoQtiTest\helpers\TestSessionMemento;
 use oat\taoQtiTest\models\CompilationDataService;
-use oat\taoQtiTest\models\event\QtiTestChangeEvent;
+use oat\taoQtiTest\models\ExtendedStateService;
 use oat\taoQtiTest\models\QtiTestCompilerIndex;
-use oat\taoQtiTest\models\runner\session\TestSession;
+use oat\taoQtiTest\models\SectionPauseService;
 use oat\taoQtiTest\models\SessionStateService;
 use oat\taoQtiTest\models\cat\CatService;
-use oat\taoQtiTest\models\ExtendedStateService;
-use oat\taoQtiTest\models\SectionPauseService;
+use oat\taoQtiTest\models\event\QtiTestChangeEvent;
+use oat\taoQtiTest\models\event\SelectAdaptiveNextItemEvent;
+use oat\taoQtiTest\models\runner\session\TestSession;
 use oat\tao\helpers\UserHelper;
-use qtism\data\AssessmentTest;
+use oat\tao\model\service\FileStorage;
 use qtism\data\AssessmentItemRef;
+use qtism\data\AssessmentTest;
 use qtism\data\NavigationMode;
 use qtism\runtime\storage\binary\AbstractQtiBinaryStorage;
 use qtism\runtime\storage\binary\BinaryAssessmentTestSeeker;
 use qtism\runtime\tests\RouteItem;
-use oat\oatbox\event\EventManager;
-use oat\taoQtiTest\models\event\SelectAdaptiveNextItemEvent;
-use oat\libCat\result\ResultVariable;
 use taoQtiTest_models_classes_QtiTestService;
 
 /**
@@ -79,7 +80,7 @@ class QtiRunnerServiceContext extends RunnerServiceContext
     /**
      * The path of the compilation directory.
      *
-     * @var \tao_models_classes_service_StorageDirectory[]
+     * @var \oat\tao\model\service\StorageDirectory[]
      */
     protected $compilationDirectory;
 
@@ -153,7 +154,7 @@ class QtiRunnerServiceContext extends RunnerServiceContext
      */
     protected function initCompilationDirectory()
     {
-        $fileStorage = \tao_models_classes_service_FileStorage::singleton();
+        $fileStorage = FileStorage::singleton();
         $directoryIds = explode('|', $this->getTestCompilationUri());
         $directories = [
             'private' => $fileStorage->getDirectoryById($directoryIds[0]),
@@ -310,7 +311,7 @@ class QtiRunnerServiceContext extends RunnerServiceContext
 
     /**
      * Gets the path of the compilation directory
-     * @return \tao_models_classes_service_StorageDirectory[]
+     * @return \oat\tao\model\service\StorageDirectory[]
      */
     public function getCompilationDirectory()
     {

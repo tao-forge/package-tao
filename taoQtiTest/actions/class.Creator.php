@@ -18,12 +18,13 @@
 * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
 */
 
-use function GuzzleHttp\Psr7\stream_for;
+use GuzzleHttp\Psr7\stream_for;
 use oat\generis\model\data\event\ResourceUpdated;
 use oat\oatbox\event\EventManager;
 use oat\taoQtiTest\models\TestCategoryPresetProvider;
 use oat\taoQtiTest\models\TestModelService;
 use oat\tao\controller\CommonModule;
+use oat\tao\model\MissingRequestParameterException;
 
 /**
  *  QTI test Creator Controller.
@@ -160,13 +161,13 @@ class taoQtiTest_actions_Creator extends CommonModule
     /**
      * Returns the test that is being authored
      *
-     * @throws tao_models_classes_MissingRequestParameterException
+     * @throws oat\tao\model\MissingRequestParameterException
      * @return core_kernel_classes_Resource
      */
     protected function getCurrentTest()
     {
         if (!$this->hasRequestParameter('uri')) {
-            throw new tao_models_classes_MissingRequestParameterException('uri');
+            throw new MissingRequestParameterException('uri');
         }
         return new core_kernel_classes_Resource(tao_helpers_Uri::decode($this->getRequestParameter('uri')));
     }

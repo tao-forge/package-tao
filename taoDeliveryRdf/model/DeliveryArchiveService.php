@@ -29,12 +29,12 @@ use oat\oatbox\filesystem\FileSystem;
 use oat\oatbox\filesystem\FileSystemService;
 use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\service\ServiceNotFoundException;
+use oat\taoDeliveryRdf\model\Delete\DeliveryDelete;
 use oat\taoDeliveryRdf\model\Delete\DeliveryDeleteRequest;
 use oat\taoDeliveryRdf\model\event\DeliveryCreatedEvent;
 use oat\taoDeliveryRdf\model\event\DeliveryRemovedEvent;
-use tao_models_classes_service_FileStorage;
-use tao_models_classes_service_StorageDirectory;
-use oat\taoDeliveryRdf\model\Delete\DeliveryDelete;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\StorageDirectory;
 
 class DeliveryArchiveService extends ConfigurableService implements DeliveryArchiveServiceInterface, DeliveryDelete
 {
@@ -100,8 +100,8 @@ class DeliveryArchiveService extends ConfigurableService implements DeliveryArch
             $this->getProperty(DeliveryAssemblyService::PROPERTY_DELIVERY_DIRECTORY)
         );
         foreach ($directories as $directoryId) {
-            /** @var tao_models_classes_service_StorageDirectory $directory */
-            $directory = $this->getServiceLocator()->get(tao_models_classes_service_FileStorage::SERVICE_ID)->getDirectoryById($directoryId);
+            /** @var oat\tao\model\service\StorageDirectory $directory */
+            $directory = $this->getServiceLocator()->get(FileStorage::SERVICE_ID)->getDirectoryById($directoryId);
             $directories = $directory->getFlyIterator(Directory::ITERATOR_FILE | Directory::ITERATOR_RECURSIVE);
             /** @var File $item */
             foreach ($directories as $item) {

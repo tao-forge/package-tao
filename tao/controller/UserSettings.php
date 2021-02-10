@@ -24,18 +24,18 @@
 
 namespace oat\tao\controller;
 
-use \common_ext_ExtensionsManager;
-use \tao_helpers_I18n;
-use \tao_helpers_form_FormContainer;
-use \tao_models_classes_LanguageService;
-use \tao_models_classes_UserService;
-use \tao_models_classes_dataBinding_GenerisFormDataBinder;
+use common_ext_ExtensionsManager;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\user\UserLanguageServiceInterface;
+use oat\tao\model\LanguageService;
+use oat\tao\model\UserService;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\form\UserPasswordForm;
 use oat\tao\model\form\UserSettingsForm;
 use oat\tao\model\service\ApplicationService;
+use tao_helpers_I18n;
+use tao_helpers_form_FormContainer;
 use tao_helpers_form_FormContainer as FormContainer;
 
 /**
@@ -63,7 +63,7 @@ class UserSettings extends CommonModule
             $myForm = $myFormContainer->getForm();
             if ($myForm->isSubmited() && $myForm->isValid()) {
                 $user = $this->getUserService()->getCurrentUser();
-                $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID)
+                $this->getServiceLocator()->get(UserService::SERVICE_ID)
                     ->setPassword($user, $myForm->getValue('newpassword'));
                 $this->setData('message', __('Password changed'));
             }
@@ -98,11 +98,11 @@ class UserSettings extends CommonModule
                 $userSettings[GenerisRdf::PROPERTY_USER_DEFLG] = $dataLang->getUri();
             }
 
-            $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($currentUser);
+            $binder = new GenerisFormDataBinder($currentUser);
 
             if ($binder->bind($userSettings)) {
                 $this->getSession()->refresh();
-                $uiLangCode     = tao_models_classes_LanguageService::singleton()->getCode($uiLang);
+                $uiLangCode     = LanguageService::singleton()->getCode($uiLang);
                 $extension      = $this->getServiceLocator()->get(common_ext_ExtensionsManager::SERVICE_ID)->getExtensionById('tao');
                 tao_helpers_I18n::init($extension, $uiLangCode);
 
@@ -155,10 +155,10 @@ class UserSettings extends CommonModule
     }
 
     /**
-     * @return tao_models_classes_UserService
+     * @return oat\tao\model\UserService
      */
     protected function getUserService()
     {
-        return $this->getServiceLocator()->get(tao_models_classes_UserService::SERVICE_ID);
+        return $this->getServiceLocator()->get(UserService::SERVICE_ID);
     }
 }

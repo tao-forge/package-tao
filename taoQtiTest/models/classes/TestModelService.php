@@ -22,9 +22,11 @@
 
 namespace oat\taoQtiTest\models;
 
-use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\filesystem\Directory;
+use oat\oatbox\service\ConfigurableService;
 use oat\taoTests\models\TestModel;
+use oat\tao\model\export\ExportProvider;
+use oat\tao\model\import\ImportProvider;
 use oat\tao\model\service\ServiceFileStorage;
 
 /**
@@ -34,7 +36,7 @@ use oat\tao\model\service\ServiceFileStorage;
  * @author Joel Bout, <joel.bout@tudor.lu>
  * @package taoQtiTest
  */
-class TestModelService extends ConfigurableService implements TestModel, \tao_models_classes_import_ImportProvider, \tao_models_classes_export_ExportProvider
+class TestModelService extends ConfigurableService implements TestModel, ImportProvider, ExportProvider
 {
 
     const SERVICE_ID = 'taoQtiTest/TestModel';

@@ -23,16 +23,17 @@ namespace oat\taoDeliveryRdf\model;
 use common_exception_Error;
 use common_ext_ExtensionsManager as ExtensionsManager;
 use core_kernel_classes_Resource;
+use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\service\ServiceManager;
 use oat\taoDelivery\model\AssignmentService;
 use oat\taoDelivery\model\DeliveryContainerService as DeliveryContainerServiceInterface;
 use oat\taoDelivery\model\execution\DeliveryExecution;
+use oat\taoTests\models\runner\features\TestRunnerFeatureService;
 use oat\taoTests\models\runner\plugins\TestPlugin;
 use oat\taoTests\models\runner\plugins\TestPluginService;
-use oat\taoTests\models\runner\features\TestRunnerFeatureService;
 use oat\taoTests\models\runner\providers\TestProviderService;
-use oat\generis\model\OntologyAwareTrait;
+use oat\tao\model\service\ServiceCallHelper;
 
 /**
  * RDF implementation for the Delivery container service.
@@ -142,7 +143,7 @@ class DeliveryContainerService extends ConfigurableService implements DeliveryCo
         //FIXME this shouldn't be a service call anymore, a delivery property instead
         $delivery = $deliveryExecution->getDelivery();
         $runtime = ServiceManager::getServiceManager()->get(AssignmentService::SERVICE_ID)->getRuntime($delivery);
-        $inputParameters = \tao_models_classes_service_ServiceCallHelper::getInputValues($runtime, []);
+        $inputParameters = ServiceCallHelper::getInputValues($runtime, []);
 
         return $inputParameters['QtiTestDefinition'];
     }
@@ -158,7 +159,7 @@ class DeliveryContainerService extends ConfigurableService implements DeliveryCo
         //FIXME this shouldn't be a service call anymore, a delivery property instead
         $delivery = $deliveryExecution->getDelivery();
         $runtime = ServiceManager::getServiceManager()->get(AssignmentService::SERVICE_ID)->getRuntime($delivery);
-        $inputParameters = \tao_models_classes_service_ServiceCallHelper::getInputValues($runtime, []);
+        $inputParameters = ServiceCallHelper::getInputValues($runtime, []);
 
         return $inputParameters['QtiTestCompilation'];
     }

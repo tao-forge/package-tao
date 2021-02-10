@@ -39,11 +39,12 @@ use oat\taoTestTaker\actions\form\TestTaker as TestTakerForm;
 use oat\taoTestTaker\models\TestTakerService;
 use oat\taoTestTaker\models\events\TestTakerUpdatedEvent;
 use oat\tao\controller\SaSModule;
+use oat\tao\model\UserService;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use oat\tao\model\resources\ResourceWatcher;
 use oat\tao\model\routing\AnnotationReader\security;
 use tao_helpers_Uri;
 use tao_helpers_form_FormContainer as FormContainer;
-use tao_models_classes_UserService;
 
 /**
  * Subjects Controller provide actions performed from url resolution
@@ -122,8 +123,8 @@ class TestTaker extends SaSModule
      * @throws \core_kernel_persistence_Exception
      * @throws \oat\generis\model\user\PasswordConstraintsException
      * @throws \oat\tao\model\security\SecurityException
-     * @throws \tao_models_classes_MissingRequestParameterException
-     * @throws \tao_models_classes_dataBinding_GenerisFormDataBindingException
+     * @throws \oat\tao\model\MissingRequestParameterException
+     * @throws \oat\tao\model\dataBinding\GenerisFormDataBindingException
      */
     public function editSubject()
     {
@@ -173,7 +174,7 @@ class TestTaker extends SaSModule
                 unset($values['password2'], $values['password3']);
             }
 
-            $binder = new \tao_models_classes_dataBinding_GenerisFormDataBinder($subject);
+            $binder = new GenerisFormDataBinder($subject);
             $subject = $binder->bind($values);
 
             $data = [];
@@ -191,7 +192,7 @@ class TestTaker extends SaSModule
             }
 
             // force the data language to be the same as the gui language
-            $userService = tao_models_classes_UserService::singleton();
+            $userService = UserService::singleton();
             $lang = new core_kernel_classes_Resource($values[GenerisRdf::PROPERTY_USER_UILG]);
             $userService->bindProperties($subject, [
                 GenerisRdf::PROPERTY_USER_DEFLG => $lang->getUri()

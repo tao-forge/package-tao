@@ -21,24 +21,24 @@
 
 namespace oat\taoLti\controller;
 
+use InterruptedActionException;
+use ResolverException;
 use common_Exception;
+use common_Logger;
 use common_exception_Error;
 use common_exception_IsAjaxAction;
 use common_http_Request;
-use oat\tao\model\oauth\OauthService;
-use tao_helpers_Request;
-use common_Logger;
 use common_user_auth_AuthFailedException;
-use InterruptedActionException;
 use oat\taoLti\models\classes\CookieVerifyService;
 use oat\taoLti\models\classes\LaunchData\Validator\LtiValidatorService;
 use oat\taoLti\models\classes\LtiException;
 use oat\taoLti\models\classes\LtiLaunchData;
 use oat\taoLti\models\classes\LtiMessages\LtiErrorMessage;
 use oat\taoLti\models\classes\LtiService;
-use ResolverException;
-use tao_models_classes_accessControl_AclProxy;
-use tao_models_classes_oauth_Exception;
+use oat\tao\model\accessControl\AclService;
+use oat\tao\model\oauth\Exception;
+use oat\tao\model\oauth\OauthService;
+use tao_helpers_Request;
 
 /**
  * An abstract tool controller to be extended by the concrete tools
@@ -72,7 +72,7 @@ abstract class ToolModule extends LtiModule
             /** @var CookieVerifyService $cookieService */
             $cookieService = $this->getServiceManager()->get(CookieVerifyService::SERVICE_ID);
             if ($cookieService->isVerifyCookieRequired()) {
-                if (tao_models_classes_accessControl_AclProxy::hasAccess('verifyCookie', 'CookieUtils', 'taoLti')) {
+                if ($this->getAclService()->hasAccess('verifyCookie', 'CookieUtils', 'taoLti')) {
                     $cookieRedirect = _url(
                         'verifyCookie',
                         'CookieUtils',
@@ -108,7 +108,7 @@ abstract class ToolModule extends LtiModule
                 throw new common_exception_IsAjaxAction(__CLASS__ . '::' . __FUNCTION__);
             }
             throw $e;
-        } catch (tao_models_classes_oauth_Exception $e) {
+        } catch (Exception $e) {
             common_Logger::i($e->getMessage());
             throw new LtiException(
                 __('The LTI connection could not be established'),
@@ -135,5 +135,10 @@ abstract class ToolModule extends LtiModule
             }
         }
         $this->logInfo('LTI_LAUNCH_PARAMS:' . json_encode($variables));
+    }
+
+    protected function getAclService(): AclService
+    {
+        return $this->getServiceLocator()->get(AclService::class);
     }
 }

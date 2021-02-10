@@ -22,6 +22,7 @@
 include_once dirname(__FILE__) . '/../../includes/raw_start.php';
 
 use oat\generis\test\TestCase;
+use oat\tao\model\service\StateStorage;
 
 class ServiceStorageTestCase extends TestCase
 {
@@ -40,7 +41,7 @@ class ServiceStorageTestCase extends TestCase
 
     public function testServiceStorage()
     {
-        $service = tao_models_classes_service_StateStorage::singleton();
+        $service = StateStorage::singleton();
         $userUri = LOCAL_NAMESPACE . '#inexistentTestUser';
 
         // is not set

@@ -22,15 +22,15 @@
 
 namespace oat\taoBackOffice\model\tree;
 
-use tao_helpers_Uri;
-use tao_models_classes_ClassService;
 use core_kernel_classes_Class;
 use core_kernel_classes_Property;
+use oat\tao\model\ClassService;
+use tao_helpers_Uri;
 
 /**
  * Class TreeService
  */
-class TreeService extends tao_models_classes_ClassService
+class TreeService extends ClassService
 {
 
     const CLASS_URI = 'http://www.tao.lu/Ontologies/TAO.rdf#Tree';

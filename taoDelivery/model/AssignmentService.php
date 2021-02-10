@@ -69,7 +69,7 @@ interface AssignmentService
      *
      * @deprecated Please use RuntimeService::getRuntime() as it is "less" deprecated
      * @param string $deliveryId
-     * @return \tao_models_classes_service_ServiceCall
+     * @return \oat\tao\model\service\ServiceCall
      */
     public function getRuntime($deliveryId);
     

@@ -21,9 +21,9 @@
 
 namespace oat\tao\controller;
 
-use \common_exception_Error;
-use \common_exception_MissingParameter;
-use \tao_models_classes_service_FileStorage;
+use common_exception_Error;
+use common_exception_MissingParameter;
+use oat\tao\model\service\FileStorage;
 use oat\tao\model\state\StateStorage;
 
 /**
@@ -104,10 +104,10 @@ class ServiceModule extends CommonModule
      * Returns a directory from the service file storage
      *
      * @param string $id
-     * @return tao_models_classes_service_StorageDirectory
+     * @return oat\tao\model\service\StorageDirectory
      */
     protected function getDirectory($id)
     {
-        return $this->getServiceLocator()->get(tao_models_classes_service_FileStorage::SERVICE_ID)->getDirectoryById($id);
+        return $this->getServiceLocator()->get(FileStorage::SERVICE_ID)->getDirectoryById($id);
     }
 }

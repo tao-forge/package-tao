@@ -314,7 +314,7 @@ class taoTests_models_classes_TestsService extends OntologyClassService
      * Returns a compiler instance for a given test
      * @param core_kernel_classes_Resource $test
      * @param ServiceFileStorage $storage
-     * @return tao_models_classes_Compiler
+     * @return oat\tao\model\Compiler
      */
     public function getCompiler(core_kernel_classes_Resource $test, ServiceFileStorage $storage)
     {

@@ -21,18 +21,19 @@
  *               2013-2017 (update and modification) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  */
 
-use oat\tao\helpers\InstallHelper;
-use oat\oatbox\install\Installer;
-use oat\oatbox\service\ServiceManager;
-use oat\tao\model\OperatedByService;
+use oat\generis\model\GenerisRdf;
+use oat\generis\model\data\Ontology;
+use oat\generis\persistence\PersistenceManager;
 use oat\generis\persistence\sql\DbCreator;
 use oat\generis\persistence\sql\SetupDb;
-use oat\generis\persistence\PersistenceManager;
-use oat\generis\model\data\Ontology;
-use oat\tao\model\TaoOntology;
-use oat\generis\model\GenerisRdf;
-use oat\tao\model\user\TaoRoles;
+use oat\oatbox\install\Installer;
+use oat\oatbox\service\ServiceManager;
 use oat\oatbox\service\ServiceNotFoundException;
+use oat\tao\helpers\InstallHelper;
+use oat\tao\model\LanguageService;
+use oat\tao\model\OperatedByService;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\user\TaoRoles;
 
 /**
  *
@@ -267,7 +268,7 @@ class tao_install_Installator
              */
             $this->log('d', 'Adding languages..');
             $ontology = $this->getServiceManager()->get(Ontology::SERVICE_ID);
-            $langModel = \tao_models_classes_LanguageService::singleton()->getLanguageDefinition();
+            $langModel = LanguageService::singleton()->getLanguageDefinition();
             $rdfModel = $ontology->getRdfInterface();
             foreach ($langModel as $triple) {
                 $rdfModel->add($triple);
@@ -285,7 +286,7 @@ class tao_install_Installator
              */
             $this->log('i', 'Generates client side translation bundles');
             
-            tao_models_classes_LanguageService::singleton()->generateAll();
+            LanguageService::singleton()->generateAll();
 
             /*
              *  9 - Insert Super User

@@ -21,13 +21,13 @@
 
 namespace oat\taoQtiTest\test\integration;
 
+use common_report_Report;
+use core_kernel_classes_Property;
+use core_kernel_classes_Resource;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\tao\model\service\FileStorage;
 use taoQtiTest_models_classes_ManifestParser;
 use taoQtiTest_models_classes_QtiTestCompiler;
-use core_kernel_classes_Resource;
-use core_kernel_classes_Property;
-use tao_models_classes_service_FileStorage;
-use common_report_Report;
 
 /**
  * This test case focuses on testing the ManifestParser model.
@@ -103,10 +103,10 @@ class QtiTestParserTest extends GenerisPhpUnitTestRunner
     {
         $content = new core_kernel_classes_Resource($this->dataDir() . 'qtitest.xml');
 
-        $storage = tao_models_classes_service_FileStorage::singleton();
+        $storage = FileStorage::singleton();
 
         $this->assertIsA($content, core_kernel_classes_Resource::class);
-        $this->assertIsA($storage, tao_models_classes_service_FileStorage::class);
+        $this->assertIsA($storage, FileStorage::class);
 
         $compiler = new taoQtiTest_models_classes_QtiTestCompiler($content, $storage);
         $this->assertIsA($compiler, taoQtiTest_models_classes_QtiTestCompiler::class);

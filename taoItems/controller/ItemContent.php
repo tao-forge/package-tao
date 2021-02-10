@@ -21,18 +21,18 @@
 
 namespace oat\taoItems\controller;
 
-use \common_Exception;
-use \common_exception_Error;
-use \common_exception_MissingParameter;
-use \tao_helpers_File;
-use \tao_helpers_Http;
-use \tao_helpers_Uri;
-use \tao_models_classes_FileNotFoundException;
+use common_Exception;
+use common_exception_Error;
+use common_exception_MissingParameter;
 use oat\generis\model\OntologyAwareTrait;
 use oat\taoItems\model\media\ItemMediaResolver;
 use oat\tao\controller\CommonModule;
 use oat\tao\helpers\FileUploadException;
+use oat\tao\model\FileNotFoundException;
 use oat\tao\model\accessControl\data\PermissionException;
+use tao_helpers_File;
+use tao_helpers_Http;
+use tao_helpers_Uri;
 
 /**
  * Items Content Controller provide access to the files of an item
@@ -118,7 +118,7 @@ class ItemContent extends CommonModule
             $asset = $resolver->resolve($this->getRequestParameter('path'));
             $asset->getMediaSource()->getFileInfo($asset->getMediaIdentifier());
             $found = true;
-        } catch (tao_models_classes_FileNotFoundException $exception) {
+        } catch (FileNotFoundException $exception) {
             $found = false;
         }
         return $this->returnJson([
@@ -216,7 +216,7 @@ class ItemContent extends CommonModule
      * Download a file to the item directory*
      * @throws common_exception_MissingParameter
      * @throws common_exception_Error
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     public function download()
     {

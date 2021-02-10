@@ -48,7 +48,7 @@ interface RuntimeService
      * delivery data from the runtime (breaking abstraction layers)
      *
      * @param string $deliveryId
-     * @return \tao_models_classes_service_ServiceCall
+     * @return \oat\tao\model\service\ServiceCall
      * @deprecated
      */
     public function getRuntime($deliveryId);

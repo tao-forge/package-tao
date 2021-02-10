@@ -20,15 +20,15 @@
 
 namespace oat\taoMediaManager\model;
 
+use Throwable;
 use oat\generis\model\data\Ontology;
 use oat\oatbox\service\ConfigurableService;
-use tao_models_classes_import_ImportHandler;
-use Throwable;
+use oat\tao\model\import\ImportHandler;
 
 class ImportHandlerFactory extends ConfigurableService
 {
     /**
-     * @return tao_models_classes_import_ImportHandler[]
+     * @return oat\tao\model\import\ImportHandler[]
      */
     public function createAvailable(): array
     {
@@ -38,7 +38,7 @@ class ImportHandlerFactory extends ConfigurableService
         ];
     }
 
-    public function createByMediaId(string $id): tao_models_classes_import_ImportHandler
+    public function createByMediaId(string $id): ImportHandler
     {
         return $this->isQtiMedia($id)
             ? $this->getSharedStimulusImporter()->setInstanceUri($id)

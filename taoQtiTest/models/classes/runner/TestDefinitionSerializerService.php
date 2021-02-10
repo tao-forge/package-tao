@@ -25,7 +25,7 @@
 namespace oat\taoQtiTest\models\runner;
 
 use oat\oatbox\service\ConfigurableService;
-use tao_models_classes_service_FileStorage;
+use oat\tao\model\service\FileStorage;
 use taoQtiTest_models_classes_QtiTestService;
 
 class TestDefinitionSerializerService extends ConfigurableService
@@ -100,10 +100,10 @@ class TestDefinitionSerializerService extends ConfigurableService
     }
 
     /**
-     * @return tao_models_classes_service_FileStorage
+     * @return oat\tao\model\service\FileStorage
      */
     private function getFileStorageService()
     {
-        return $this->getServiceLocator()->get(\tao_models_classes_service_FileStorage::SERVICE_ID);
+        return $this->getServiceLocator()->get(FileStorage::SERVICE_ID);
     }
 }

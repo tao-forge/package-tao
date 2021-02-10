@@ -23,27 +23,27 @@
 
 namespace oat\tao\test\integration;
 
+use DOMXPath;
+use ReflectionClass;
 use oat\generis\test\GenerisPhpUnitTestRunner;
-use tao_helpers_translation_TranslationUnit;
-use tao_helpers_translation_TranslationFile;
-use tao_helpers_translation_Utils;
-use tao_helpers_translation_POUtils;
+use oat\tao\model\LanguageService;
+use tao_helpers_translation_JSFileWriter;
+use tao_helpers_translation_PHPFileWriter;
 use tao_helpers_translation_POFileReader;
 use tao_helpers_translation_POFileWriter;
 use tao_helpers_translation_POTranslationUnit;
-use tao_helpers_translation_JSFileWriter;
-use tao_helpers_translation_PHPFileWriter;
-use tao_helpers_translation_StructureExtractor;
-use tao_helpers_translation_SourceCodeExtractor;
+use tao_helpers_translation_POUtils;
 use tao_helpers_translation_RDFExtractor;
 use tao_helpers_translation_RDFFileReader;
 use tao_helpers_translation_RDFFileWriter;
 use tao_helpers_translation_RDFTranslationFile;
 use tao_helpers_translation_RDFTranslationUnit;
 use tao_helpers_translation_RDFUtils;
-use tao_models_classes_LanguageService;
-use DOMXPath;
-use ReflectionClass;
+use tao_helpers_translation_SourceCodeExtractor;
+use tao_helpers_translation_StructureExtractor;
+use tao_helpers_translation_TranslationFile;
+use tao_helpers_translation_TranslationUnit;
+use tao_helpers_translation_Utils;
 
 /**
  * This test case aims at testing the Translation classes of TAO, the reading and
@@ -491,7 +491,7 @@ class TranslationTest extends GenerisPhpUnitTestRunner
         $this->assertTrue($result->length == 1);
 
         // Check for the Language rdf:type.
-        $result = $xPath->query("//rdf:Description/rdf:type[@rdf:resource='" . tao_models_classes_LanguageService::CLASS_URI_LANGUAGES . "']");
+        $result = $xPath->query("//rdf:Description/rdf:type[@rdf:resource='" . LanguageService::CLASS_URI_LANGUAGES . "']");
         $this->assertTrue($result->length == 1);
 
         // Check for the Language rdfs:label.

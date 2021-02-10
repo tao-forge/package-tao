@@ -30,6 +30,8 @@ use oat\taoLti\models\classes\LtiOutcome\LtiOutcomeXmlFactory;
 use oat\taoLti\models\classes\LtiService;
 use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoResultServer\models\classes\ResultAliasServiceInterface;
+use oat\tao\model\oauth\Credentials;
+use oat\tao\model\oauth\Service;
 use taoResultServer_models_classes_OutcomeVariable;
 
 class SendLtiOutcomeTask extends AbstractAction
@@ -94,11 +96,11 @@ class SendLtiOutcomeTask extends AbstractAction
         $message = $this->getLtiOutcomeXmlFactory()->build($deliveryResultIdentifier, $grade, uniqid('', true));
 
         $credentialResource = LtiService::singleton()->getCredential($consumerKey);
-        $credentials = new \tao_models_classes_oauth_Credentials($credentialResource);
+        $credentials = new Credentials($credentialResource);
         //Building POX raw http message
         $unSignedOutComeRequest = new \common_http_Request($serviceUrl, 'POST', []);
         $unSignedOutComeRequest->setBody($message);
-        $signingService = new \tao_models_classes_oauth_Service();
+        $signingService = new Service();
         $signedRequest = $signingService->sign($unSignedOutComeRequest, $credentials, true);
         //Hack for moodle compatibility, the header is ignored for the signature computation
         $signedRequest->setHeader("Content-Type", "application/xml");

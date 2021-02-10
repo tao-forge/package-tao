@@ -28,9 +28,9 @@ use DOMElement;
 use DOMXPath;
 use InvalidArgumentException;
 use oat\oatbox\config\ConfigurationService;
-use oat\tao\model\media\MediaAsset;
 use oat\taoQtiItem\model\pack\QtiAssetPacker\PackedAsset;
-use tao_models_classes_FileNotFoundException;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\media\MediaAsset;
 
 class XIncludeXmlInjector extends ConfigurationService
 {
@@ -61,7 +61,7 @@ class XIncludeXmlInjector extends ConfigurationService
      * @param DOMElement $xincludeNode
      * @param PackedAsset[] $packedAssets
      * @return DOMElement
-     * @throws tao_models_classes_FileNotFoundException
+     * @throws oat\tao\model\FileNotFoundException
      */
     private function createSharedStimulusContent(DOMElement $xincludeNode, array $packedAssets): DOMElement
     {

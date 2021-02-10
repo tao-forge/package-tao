@@ -21,12 +21,13 @@
 namespace oat\taoItems\test\integration\pack;
 
 use common_Exception;
-use \core_kernel_classes_Resource;
+use core_kernel_classes_Resource;
 use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\Directory;
+use oat\taoItems\model\pack\ItemPack;
 use oat\taoItems\model\pack\ItemPacker;
 use oat\taoItems\model\pack\Packer;
-use oat\taoItems\model\pack\ItemPack;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * Test the class {@link ItemPack}
@@ -69,7 +70,7 @@ class PackerTest extends TestCase
                         ->getMock();
 
         $directoryMock = $this
-            ->getMockBuilder(\tao_models_classes_service_StorageDirectory::class)
+            ->getMockBuilder(StorageDirectory::class)
             ->disableOriginalConstructor()
             ->getMock();
 

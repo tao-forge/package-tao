@@ -24,6 +24,9 @@ namespace oat\taoTestTaker\models;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdf;
 use oat\generis\model\OntologyRdfs;
+use oat\tao\model\CrudService as CrudService_2;
+use oat\tao\model\LanguageService;
+use oat\tao\model\UserService;
 
 /**
  *
@@ -35,12 +38,12 @@ use oat\generis\model\OntologyRdfs;
  * @author Patrick Plichart, patrick@taotesting.com
  *
  */
-class CrudService extends \tao_models_classes_CrudService
+class CrudService extends CrudService_2
 {
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_CrudService::getClassService()
+     * @see oat\tao\model\CrudService::getClassService()
      */
     protected function getClassService()
     {
@@ -49,7 +52,7 @@ class CrudService extends \tao_models_classes_CrudService
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_CrudService::delete()
+     * @see oat\tao\model\CrudService::delete()
      */
     public function delete($resource)
     {
@@ -95,7 +98,7 @@ class CrudService extends \tao_models_classes_CrudService
             $propertiesValues[OntologyRdfs::RDFS_LABEL] = "";
         }
         // check if login already exists
-        $userService = \tao_models_classes_UserService::singleton();
+        $userService = UserService::singleton();
         if ($userService->loginExists($propertiesValues[GenerisRdf::PROPERTY_USER_LOGIN])) {
             throw new \common_exception_PreConditionFailure("login already exists");
         }
@@ -115,7 +118,7 @@ class CrudService extends \tao_models_classes_CrudService
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_CrudService::update()
+     * @see oat\tao\model\CrudService::update()
      */
     public function update($uri = null, $propertiesValues = [])
     {
@@ -145,7 +148,7 @@ class CrudService extends \tao_models_classes_CrudService
             return \tao_helpers_I18n::getLangResourceByCode(DEFAULT_LANG)->getUri();
         }
 
-        $existingUri = \tao_models_classes_LanguageService::getExistingLanguageUri($properties[$propKey]);
+        $existingUri = LanguageService::getExistingLanguageUri($properties[$propKey]);
         if ($existingUri === null) {
             throw new \common_exception_ValidationFailed($propKey);
         }

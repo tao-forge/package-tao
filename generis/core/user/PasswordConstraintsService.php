@@ -23,12 +23,13 @@ namespace oat\generis\model\user;
 
 use common_ext_ExtensionException;
 use common_ext_ExtensionsManager;
+use oat\tao\model\Service;
 
 /**
  * Class PasswordConstraintsService used to verify password strength
  * @package generis
  */
-class PasswordConstraintsService extends \tao_models_classes_Service
+class PasswordConstraintsService extends Service
 {
     /**
      * @var array

@@ -25,9 +25,10 @@ use common_http_Request;
 use core_kernel_classes_Resource;
 use oat\taoLti\models\classes\LtiMessages\LtiErrorMessage;
 use tao_helpers_Request;
-use tao_models_classes_oauth_DataStore;
 use oat\oatbox\log\LoggerAwareTrait;
 use Psr\Http\Message\ServerRequestInterface;
+use oat\oatbox\service\ServiceManager;
+use oat\tao\model\oauth\OauthService;
 
 class LtiLaunchData implements \JsonSerializable
 {
@@ -73,10 +74,7 @@ class LtiLaunchData implements \JsonSerializable
      */
     private $customParams;
 
-    /**
-     * @var core_kernel_classes_Resource
-     */
-    private $ltiConsumer;
+    private ?String $ltiConsumer = null;
 
     /**
      * Spawns an LtiSession
@@ -348,7 +346,8 @@ class LtiLaunchData implements \JsonSerializable
     public function getLtiConsumer()
     {
         if (is_null($this->ltiConsumer)) {
-            $dataStore = new tao_models_classes_oauth_DataStore();
+            $oauthService = ServiceManager::getServiceManager()->get(OauthService::SERVICE_ID);
+            $dataStore = $oauthService->getDataStore();
             $this->ltiConsumer = $dataStore->findOauthConsumerResource($this->getOauthKey())->getUri();
         }
 

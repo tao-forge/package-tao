@@ -22,17 +22,17 @@
 
 namespace oat\tao\test\integration;
 
+use ReflectionClass;
+use core_kernel_classes_Class;
+use core_kernel_classes_Literal;
+use core_kernel_classes_Property;
+use core_kernel_classes_Resource;
+use core_kernel_users_Service;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\user\PasswordConstraintsService;
 use oat\generis\test\TestCase;
 use oat\tao\model\TaoOntology;
-use tao_models_classes_UserService;
-use core_kernel_classes_Resource;
-use core_kernel_users_Service;
-use core_kernel_classes_Class;
-use core_kernel_classes_Property;
-use core_kernel_classes_Literal;
-use ReflectionClass;
+use oat\tao\model\UserService;
 
 /**
  * Test the user management
@@ -44,7 +44,7 @@ class UserTest extends TestCase
 {
 
     /**
-     * @var tao_models_classes_UserService
+     * @var oat\tao\model\UserService
      */
     protected $userService;
 
@@ -89,23 +89,23 @@ class UserTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->userService = tao_models_classes_UserService::singleton();
+        $this->userService = UserService::singleton();
         $this->testUserData[GenerisRdf::PROPERTY_USER_PASSWORD] = core_kernel_users_Service::getPasswordHash()->encrypt($this->testUserData[GenerisRdf::PROPERTY_USER_PASSWORD]);
         $this->testUserUtf8Data[GenerisRdf::PROPERTY_USER_PASSWORD] = core_kernel_users_Service::getPasswordHash()->encrypt($this->testUserUtf8Data[GenerisRdf::PROPERTY_USER_PASSWORD]);
     }
 
     /**
      * Test the user service implementation
-     * @see tao_models_classes_ServiceFactory::get
+     * @see oat\tao\model\ServiceFactory::get
      */
     public function testService()
     {
-        $this->assertInstanceOf(tao_models_classes_UserService::class, $this->userService);
+        $this->assertInstanceOf(UserService::class, $this->userService);
     }
 
     /**
      * Test user insertion
-     * @see tao_models_classes_UserService::saveUser
+     * @see oat\tao\model\UserService::saveUser
      */
     public function testAddUser()
     {
@@ -176,7 +176,7 @@ class UserTest extends TestCase
 
     /**
      * Test user removing
-     * @see tao_models_classes_UserService::removeUser
+     * @see oat\tao\model\UserService::removeUser
      *
      */
     public function testDelete()

@@ -24,10 +24,11 @@ namespace oat\taoTestTaker\models;
 
 use core_kernel_classes_Resource;
 use oat\generis\Helper\UserHashForEncryption;
-use oat\oatbox\service\ServiceManager;
-use oat\tao\model\TaoOntology;
 use oat\generis\model\GenerisRdf;
+use oat\oatbox\service\ServiceManager;
 use oat\taoTestTaker\models\events\dispatcher\TestTakerImportEventDispatcher;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\import\CsvImporter as CsvImporter_2;
 
 /**
  * A custom subject CSV importer
@@ -37,7 +38,7 @@ use oat\taoTestTaker\models\events\dispatcher\TestTakerImportEventDispatcher;
  * @package taoSubjects
 
  */
-class CsvImporter extends \tao_models_classes_import_CsvImporter
+class CsvImporter extends CsvImporter_2
 {
     public function import($class, $form, $userId = null)
     {
@@ -92,7 +93,7 @@ class CsvImporter extends \tao_models_classes_import_CsvImporter
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_CsvImporter::getExludedProperties()
+     * @see oat\tao\model\import\CsvImporter::getExludedProperties()
      */
     protected function getExludedProperties()
     {
@@ -107,7 +108,7 @@ class CsvImporter extends \tao_models_classes_import_CsvImporter
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_CsvImporter::getStaticData()
+     * @see oat\tao\model\import\CsvImporter::getStaticData()
      */
     protected function getStaticData()
     {
@@ -122,7 +123,7 @@ class CsvImporter extends \tao_models_classes_import_CsvImporter
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_import_CsvImporter::getAdditionAdapterOptions()
+     * @see oat\tao\model\import\CsvImporter::getAdditionAdapterOptions()
      * @throws \common_ext_ExtensionException
      */
     protected function getAdditionAdapterOptions()

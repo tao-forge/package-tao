@@ -20,7 +20,7 @@
 
 namespace oat\taoItems\model;
 
-use \tao_models_classes_CompilationFailedException;
+use oat\tao\model\CompilationFailedException as CompilationFailedException_2;
 
 /**
  *
@@ -30,7 +30,7 @@ use \tao_models_classes_CompilationFailedException;
  * @package taoItems
 
  */
-class CompilationFailedException extends tao_models_classes_CompilationFailedException
+class CompilationFailedException extends CompilationFailedException_2
 {
     
 }

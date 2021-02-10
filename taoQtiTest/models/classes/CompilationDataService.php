@@ -3,6 +3,7 @@
 namespace oat\taoQtiTest\models;
 
 use oat\oatbox\service\ConfigurableService;
+use oat\tao\model\service\StorageDirectory;
 use qtism\data\AssessmentTest;
 use qtism\data\QtiComponent;
 
@@ -36,11 +37,11 @@ abstract class CompilationDataService extends ConfigurableService
      *
      * Write a QtiComponent $object into a given $compilationDirectory at a given $path.
      *
-     * @param \tao_models_classes_service_StorageDirectory $compilationDirectory
+     * @param \oat\tao\model\service\StorageDirectory $compilationDirectory
      * @param string $path
      * @param \qtism\data\QtiComponent $object
      */
-    abstract public function writeCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, QtiComponent $object);
+    abstract public function writeCompilationData(StorageDirectory $compilationDirectory, $path, QtiComponent $object);
     
     
     /**
@@ -48,22 +49,22 @@ abstract class CompilationDataService extends ConfigurableService
      *
      * Read a QtiComponent object from a given $compilationDirectory at a given $path.
      *
-     * @param \tao_models_classes_service_StorageDirectory $compilationDirectory
+     * @param \oat\tao\model\service\StorageDirectory $compilationDirectory
      * @param string $path
      * @param string $cacheInfo (optional) A context string possibly used by implementations for caching purpose.
      * @return \qtism\data\QtiComponent
      * @throws \common_Exception In case of error.
      */
-    abstract public function readCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, $cacheInfo = '');
+    abstract public function readCompilationData(StorageDirectory $compilationDirectory, $path, $cacheInfo = '');
 
     /**
      * Write Compilation Metadata
      *
-     * @param \tao_models_classes_service_StorageDirectory $compilationDirectory
+     * @param \oat\tao\model\service\StorageDirectory $compilationDirectory
      * @param AssessmentTest $test
      * @throws \common_Exception
      */
-    public function writeCompilationMetadata(\tao_models_classes_service_StorageDirectory $compilationDirectory, AssessmentTest $test)
+    public function writeCompilationMetadata(StorageDirectory $compilationDirectory, AssessmentTest $test)
     {
         try {
             $filename = \taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_META_FILENAME . '.json';
@@ -77,11 +78,11 @@ abstract class CompilationDataService extends ConfigurableService
     /**
      * Read Compilation Metadata
      *
-     * @param \tao_models_classes_service_StorageDirectory $compilationDirectory
+     * @param \oat\tao\model\service\StorageDirectory $compilationDirectory
      * @return mixed
      * @throws \common_Exception
      */
-    public function readCompilationMetadata(\tao_models_classes_service_StorageDirectory $compilationDirectory)
+    public function readCompilationMetadata(StorageDirectory $compilationDirectory)
     {
         try {
             $data = $compilationDirectory->read(\taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_META_FILENAME . '.json');

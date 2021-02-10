@@ -27,6 +27,8 @@ use oat\taoQtiTest\models\runner\RunnerService;
 use oat\taoQtiTest\models\runner\RunnerServiceContext;
 use oat\taoQtiTest\models\runner\rubric\QtiRunnerRubric;
 use oat\taoQtiTest\models\runner\time\TimerLabelFormatterService;
+use oat\tao\model\service\ConstantParameter;
+use oat\tao\model\service\ServiceCall;
 use qtism\common\datatypes\QtiString;
 use qtism\data\NavigationMode;
 use qtism\data\SubmissionMode;
@@ -73,7 +75,7 @@ class taoQtiTest_helpers_TestRunnerUtils
      * @param AssessmentTestSession $session An AssessmentTestSession Object.
      * @param string $testDefinition URI The URI of the knowledge base resource representing the folder where the QTI Test Definition is stored.
      * @param string $testCompilation URI The URI of the knowledge base resource representing the folder where the QTI Test Compilation is stored.
-     * @return tao_models_classes_service_ServiceCall A ServiceCall object.
+     * @return oat\tao\model\service\ServiceCall A ServiceCall object.
      */
     public static function buildItemServiceCall(AssessmentTestSession $session, $testDefinitionUri, $testCompilationUri)
     {
@@ -84,30 +86,30 @@ class taoQtiTest_helpers_TestRunnerUtils
         $parts = explode('|', $href);
 
         $definition =  new core_kernel_classes_Resource(RunnerService::INSTANCE_TEST_ITEM_RUNNER_SERVICE);
-        $serviceCall = new tao_models_classes_service_ServiceCall($definition);
+        $serviceCall = new ServiceCall($definition);
 
         $uriResource = new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_URI);
-        $uriParam = new tao_models_classes_service_ConstantParameter($uriResource, $parts[0]);
+        $uriParam = new ConstantParameter($uriResource, $parts[0]);
         $serviceCall->addInParameter($uriParam);
 
         $pathResource = new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_PATH);
-        $pathParam = new tao_models_classes_service_ConstantParameter($pathResource, $parts[1]);
+        $pathParam = new ConstantParameter($pathResource, $parts[1]);
         $serviceCall->addInParameter($pathParam);
 
         $dataPathResource = new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_DATA_PATH);
-        $dataPathParam = new tao_models_classes_service_ConstantParameter($dataPathResource, $parts[2]);
+        $dataPathParam = new ConstantParameter($dataPathResource, $parts[2]);
         $serviceCall->addInParameter($dataPathParam);
 
         $parentServiceCallIdResource = new core_kernel_classes_Resource(RunnerService::INSTANCE_FORMAL_PARAM_TEST_ITEM_RUNNER_PARENT_CALL_ID);
-        $parentServiceCallIdParam = new tao_models_classes_service_ConstantParameter($parentServiceCallIdResource, $session->getSessionId());
+        $parentServiceCallIdParam = new ConstantParameter($parentServiceCallIdResource, $session->getSessionId());
         $serviceCall->addInParameter($parentServiceCallIdParam);
 
         $testDefinitionResource = new core_kernel_classes_Resource(taoQtiTest_models_classes_QtiTestService::INSTANCE_FORMAL_PARAM_TEST_DEFINITION);
-        $testDefinitionParam = new tao_models_classes_service_ConstantParameter($testDefinitionResource, $testDefinitionUri);
+        $testDefinitionParam = new ConstantParameter($testDefinitionResource, $testDefinitionUri);
         $serviceCall->addInParameter($testDefinitionParam);
 
         $testCompilationResource = new core_kernel_classes_Resource(taoQtiTest_models_classes_QtiTestService::INSTANCE_FORMAL_PARAM_TEST_COMPILATION);
-        $testCompilationParam = new tao_models_classes_service_ConstantParameter($testCompilationResource, $testCompilationUri);
+        $testCompilationParam = new ConstantParameter($testCompilationResource, $testCompilationUri);
         $serviceCall->addInParameter($testCompilationParam);
 
         return $serviceCall;

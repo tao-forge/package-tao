@@ -36,9 +36,10 @@ use oat\taoQtiItem\model\qti\Parser;
 use oat\taoQtiItem\model\qti\Service;
 use oat\taoQtiItem\model\qti\XIncludeLoader;
 use oat\taoQtiItem\model\qti\exception\XIncludeException;
-use tao_models_classes_service_ConstantParameter;
-use tao_models_classes_service_ServiceCall;
-use tao_models_classes_service_StorageDirectory;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\service\ConstantParameter;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * The QTI Item Compiler
@@ -57,7 +58,7 @@ class QtiItemCompiler extends ItemCompiler
 
     /**
      * {@inheritDoc}
-     * @see \tao_models_classes_Compiler::compile()
+     * @see \oat\tao\model\Compiler::compile()
      */
     public function compile()
     {
@@ -105,29 +106,29 @@ class QtiItemCompiler extends ItemCompiler
      * Create a servicecall that runs the prepared qti item
      *
      * @param core_kernel_classes_Resource $item
-     * @param tao_models_classes_service_StorageDirectory $publicDirectory
-     * @param tao_models_classes_service_StorageDirectory $privateDirectory
-     * @return tao_models_classes_service_ServiceCall
+     * @param oat\tao\model\service\StorageDirectory $publicDirectory
+     * @param oat\tao\model\service\StorageDirectory $privateDirectory
+     * @return oat\tao\model\service\ServiceCall
      */
     protected function createQtiService(
         core_kernel_classes_Resource $item,
-        tao_models_classes_service_StorageDirectory $publicDirectory,
-        tao_models_classes_service_StorageDirectory $privateDirectory
+        StorageDirectory $publicDirectory,
+        StorageDirectory $privateDirectory
     ) {
 
-        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(self::INSTANCE_ITEMRUNNER));
-        $service->addInParameter(new tao_models_classes_service_ConstantParameter(
+        $service = new ServiceCall(new core_kernel_classes_Resource(self::INSTANCE_ITEMRUNNER));
+        $service->addInParameter(new ConstantParameter(
             new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_PATH),
             $publicDirectory->getId()
         ));
         $service->addInParameter(
-            new tao_models_classes_service_ConstantParameter(
+            new ConstantParameter(
                 new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_DATA_PATH),
                 $privateDirectory->getId()
             )
         );
         $service->addInParameter(
-            new tao_models_classes_service_ConstantParameter(
+            new ConstantParameter(
                 new core_kernel_classes_Resource(ItemsService::INSTANCE_FORMAL_PARAM_ITEM_URI),
                 $item
             )
@@ -141,15 +142,15 @@ class QtiItemCompiler extends ItemCompiler
      *
      * @param core_kernel_classes_Resource $item
      * @param string $language
-     * @param tao_models_classes_service_StorageDirectory $publicDirectory
-     * @param tao_models_classes_service_StorageDirectory $privateDirectory
+     * @param oat\tao\model\service\StorageDirectory $publicDirectory
+     * @param oat\tao\model\service\StorageDirectory $privateDirectory
      * @return common_report_Report
      */
     protected function deployQtiItem(
         core_kernel_classes_Resource $item,
         $language,
-        tao_models_classes_service_StorageDirectory $publicDirectory,
-        tao_models_classes_service_StorageDirectory $privateDirectory
+        StorageDirectory $publicDirectory,
+        StorageDirectory $privateDirectory
     ) {
         $itemService = ItemsService::singleton();
         $qtiService = Service::singleton();
@@ -203,7 +204,7 @@ class QtiItemCompiler extends ItemCompiler
                 common_report_Report::TYPE_SUCCESS,
                 __('Successfully compiled "%s"', $language)
             );
-        } catch (\tao_models_classes_FileNotFoundException $e) {
+        } catch (FileNotFoundException $e) {
             return new common_report_Report(
                 common_report_Report::TYPE_ERROR,
                 __('Unable to retrieve asset "%s"', $e->getFilePath())

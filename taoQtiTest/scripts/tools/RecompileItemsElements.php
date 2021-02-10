@@ -27,6 +27,9 @@ use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDelivery\model\AssignmentAggregator\UnionAssignmentService;
 use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\QtiJsonItemCompiler;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceCallHelper;
+use oat\tao\model\service\StorageDirectory;
 use qtism\data\AssessmentItemRef;
 
 /**
@@ -150,7 +153,7 @@ class RecompileItemsElements extends ScriptAction
         $unionAssignmentService = $this->getServiceLocator()->get(UnionAssignmentService::SERVICE_ID);
         $runtime = $unionAssignmentService->getRuntime($compiledDelivery);
 
-        $inputParameters = \tao_models_classes_service_ServiceCallHelper::getInputValues($runtime, []);
+        $inputParameters = ServiceCallHelper::getInputValues($runtime, []);
         $testDefinition = \taoQtiTest_helpers_Utils::getTestDefinition($inputParameters['QtiTestCompilation']);
 
         $assessmentItemRefs = $testDefinition->getComponentsByClassName('assessmentItemRef');
@@ -174,7 +177,7 @@ class RecompileItemsElements extends ScriptAction
             }
 
             if ($properties) {
-                $directory = \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryIds[2]);
+                $directory = FileStorage::singleton()->getDirectoryById($directoryIds[2]);
                 $languages = $item->getUsedLanguages(
                     $this->getProperty(ItemsService::PROPERTY_ITEM_CONTENT)
                 );
@@ -192,7 +195,7 @@ class RecompileItemsElements extends ScriptAction
 
     /**
      * @param \core_kernel_classes_Resource $item
-     * @param \tao_models_classes_service_StorageDirectory $directory
+     * @param \oat\tao\model\service\StorageDirectory $directory
      * @param $path
      * @param $properties
      * @throws \common_Exception
@@ -200,7 +203,7 @@ class RecompileItemsElements extends ScriptAction
      */
     protected function writeMetadata(
         \core_kernel_classes_Resource $item,
-        \tao_models_classes_service_StorageDirectory $directory,
+        StorageDirectory $directory,
         $path,
         $properties
     ) {

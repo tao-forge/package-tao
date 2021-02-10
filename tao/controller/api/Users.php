@@ -34,9 +34,9 @@ use oat\generis\Helper\UserHashForEncryption;
 use oat\generis\model\user\UserRdf;
 use oat\oatbox\service\ServiceManager;
 use oat\tao\controller\CommonRestModule;
-use tao_models_classes_LanguageService;
-use tao_models_classes_RoleService;
-use tao_models_classes_UserService;
+use oat\tao\model\LanguageService;
+use oat\tao\model\RoleService;
+use oat\tao\model\UserService;
 
 /**
  * @OA\Post(
@@ -194,10 +194,10 @@ class Users extends CommonRestModule
      */
     public function post()
     {
-        /** @var tao_models_classes_UserService $userService */
-        $userService = ServiceManager::getServiceManager()->get(tao_models_classes_UserService::SERVICE_ID);
+        /** @var oat\tao\model\UserService $userService */
+        $userService = ServiceManager::getServiceManager()->get(UserService::SERVICE_ID);
 
-        if (!$userService->getOption(tao_models_classes_UserService::OPTION_ALLOW_API)) {
+        if (!$userService->getOption(UserService::OPTION_ALLOW_API)) {
             $this->returnFailure(new common_exception_RestApi((new common_exception_MethodNotAllowed())->getMessage()));
             return;
         }
@@ -279,7 +279,7 @@ class Users extends CommonRestModule
             throw new common_exception_MissingParameter('roles');
         }
 
-        $roleService = tao_models_classes_RoleService::singleton();
+        $roleService = RoleService::singleton();
 
         foreach ($roles as $role) {
             if (!common_Utils::isUri($role)) {
@@ -311,7 +311,7 @@ class Users extends CommonRestModule
                 throw new common_exception_ValidationFailed(null, __("Validation for field '%s' has failed. Valid URI expected", array_search($key, $uriProperties, true)));
             }
 
-            if (!tao_models_classes_LanguageService::getExistingLanguageUri($value)) {
+            if (!LanguageService::getExistingLanguageUri($value)) {
                 throw new common_exception_ValidationFailed(null, __("Validation for field '%s' has failed. Language does not exist in the system", array_search($key, $uriProperties, true)));
             }
         }

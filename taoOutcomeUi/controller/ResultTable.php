@@ -33,6 +33,7 @@ use oat\taoOutcomeUi\model\export\DeliverySqlResultsExporterFactory;
 use oat\taoOutcomeUi\model\export\ResultsExporter;
 use oat\taoOutcomeUi\model\table\ResultsPayload;
 use oat\tao\controller\CommonModule;
+use oat\tao\model\MissingRequestParameterException;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
 use tao_helpers_Uri;
 
@@ -58,7 +59,7 @@ class ResultTable extends CommonModule
     /**
      * Return the Result Table entry page displaying the datatable and the filters to be applied.
      *
-     * @throws \tao_models_classes_MissingRequestParameterException
+     * @throws \oat\tao\model\MissingRequestParameterException
      */
     public function index()
     {
@@ -67,7 +68,7 @@ class ResultTable extends CommonModule
             $filter = $this->getRequestParameter('filter');
             $uri = $this->getRequestParameter('uri');
             if (!\common_Utils::isUri(tao_helpers_Uri::decode($uri))) {
-                throw new \tao_models_classes_MissingRequestParameterException('uri');
+                throw new MissingRequestParameterException('uri');
             }
             $this->setData('filter', $filter);
             $this->setData('uri', $uri);

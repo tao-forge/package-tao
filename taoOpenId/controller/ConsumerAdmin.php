@@ -26,8 +26,8 @@ use oat\taoOpenId\controller\form\AddConsumer;
 use oat\taoOpenId\controller\form\EditConsumer;
 use oat\taoOpenId\model\ConsumerService;
 use oat\tao\controller\SaSModule;
+use oat\tao\model\dataBinding\GenerisFormDataBinder;
 use tao_helpers_Request;
-use tao_models_classes_dataBinding_GenerisFormDataBinder;
 
 class ConsumerAdmin extends SaSModule
 {
@@ -54,7 +54,7 @@ class ConsumerAdmin extends SaSModule
 
                 $values = $myForm->getValues();
                 // save properties
-                $binder = new tao_models_classes_dataBinding_GenerisFormDataBinder($instance);
+                $binder = new GenerisFormDataBinder($instance);
                 $instance = $binder->bind($values);
                 $message = __('Instance saved');
 

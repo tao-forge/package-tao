@@ -33,6 +33,7 @@ use oat\taoItems\model\ItemsService;
 use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoResultServer\models\classes\ResultManagement;
 use oat\taoResultServer\models\classes\ResultServerService;
+use oat\tao\model\UserService;
 use oat\tao\test\TaoPhpUnitTestRunner;
 use taoResultServer_models_classes_OutcomeVariable;
 use taoResultServer_models_classes_ResponseVariable;
@@ -1132,10 +1133,10 @@ class ResultsServiceTest extends GenerisPhpUnitTestRunner
         $resultServerServiceMock = $this->prophesize(ResultServerService::class);
         $resultServerServiceMock->getResultStorage($delivery)->willReturn($imp);
 
-        $userService = $this->prophesize(\tao_models_classes_UserService::class);
+        $userService = $this->prophesize(UserService::class);
         $userService->getUserById('#testTaker')->willReturn($user->reveal());
 
-        $serviceManager = $this->getServiceLocatorMock([ResultServerService::SERVICE_ID => $resultServerServiceMock->reveal(), \tao_models_classes_UserService::SERVICE_ID => $userService->reveal()]);
+        $serviceManager = $this->getServiceLocatorMock([ResultServerService::SERVICE_ID => $resultServerServiceMock->reveal(), UserService::SERVICE_ID => $userService->reveal()]);
         $this->service->setServiceLocator($serviceManager);
 
 

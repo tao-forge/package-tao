@@ -25,42 +25,46 @@
 
 namespace oat\taoOutcomeUi\model;
 
-use common_Exception;
-use common_exception_Error;
-use common_Logger;
-use core_kernel_classes_Resource;
 use League\Flysystem\FileNotFoundException;
+use common_Exception;
+use common_Logger;
+use common_exception_Error;
+use core_kernel_classes_Resource;
 use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyRdfs;
 use oat\oatbox\service\ServiceManager;
 use oat\oatbox\user\User;
-use oat\tao\helpers\metadata\ResourceCompiledMetadataHelper;
-use oat\tao\model\metadata\compiler\ResourceJsonMetadataCompiler;
-use oat\tao\model\metadata\compiler\ResourceMetadataCompilerInterface;
-use oat\tao\model\OntologyClassService;
+use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoDelivery\model\RuntimeService;
 use oat\taoDelivery\model\execution\DeliveryExecution;
 use oat\taoDelivery\model\execution\ServiceProxy;
-use oat\taoDelivery\model\RuntimeService;
-use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoItems\model\ItemCompilerIndex;
 use oat\taoOutcomeUi\helper\Datatypes;
+use oat\taoOutcomeUi\model\Wrapper\ResultServiceWrapper;
 use oat\taoOutcomeUi\model\table\ContextTypePropertyColumn;
 use oat\taoOutcomeUi\model\table\GradeColumn;
 use oat\taoOutcomeUi\model\table\ResponseColumn;
 use oat\taoOutcomeUi\model\table\VariableColumn;
-use oat\taoOutcomeUi\model\Wrapper\ResultServiceWrapper;
 use oat\taoQtiTest\models\QtiTestCompilerIndex;
+use oat\taoResultServer\models\Formatter\ItemResponseVariableSplitter;
 use oat\taoResultServer\models\classes\NoResultStorage;
 use oat\taoResultServer\models\classes\NoResultStorageException;
 use oat\taoResultServer\models\classes\ResultManagement;
 use oat\taoResultServer\models\classes\ResultServerService;
 use oat\taoResultServer\models\classes\ResultService;
-use oat\taoResultServer\models\Formatter\ItemResponseVariableSplitter;
-use tao_helpers_Date;
-use tao_models_classes_service_StorageDirectory;
+use oat\tao\helpers\metadata\ResourceCompiledMetadataHelper;
+use oat\tao\model\OntologyClassService;
+use oat\tao\model\UserService;
+use oat\tao\model\metadata\compiler\ResourceJsonMetadataCompiler;
+use oat\tao\model\metadata\compiler\ResourceMetadataCompilerInterface;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceCallHelper;
+use oat\tao\model\service\StorageDirectory;
+use oat\tao\model\table\Column;
 use taoQtiTest_models_classes_QtiTestService;
 use taoResultServer_models_classes_ReadableResultStorage;
 use taoResultServer_models_classes_Variable as Variable;
+use tao_helpers_Date;
 
 class ResultsService extends OntologyClassService
 {
@@ -200,7 +204,7 @@ class ResultsService extends OntologyClassService
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_ClassService::getRootClass()
+     * @see oat\tao\model\ClassService::getRootClass()
      */
     public function getRootClass()
     {
@@ -926,8 +930,8 @@ class ResultsService extends OntologyClassService
     public function getTestTaker($resultIdentifier)
     {
         $testTaker = $this->getImplementation()->getTestTaker($resultIdentifier);
-        /** @var \tao_models_classes_UserService $userService */
-        $userService = $this->getServiceLocator()->get(\tao_models_classes_UserService::SERVICE_ID);
+        /** @var \oat\tao\model\UserService $userService */
+        $userService = $this->getServiceLocator()->get(UserService::SERVICE_ID);
         $user = $userService->getUserById($testTaker);
 
         return $user;
@@ -1050,13 +1054,13 @@ class ResultsService extends OntologyClassService
     /**
      * Get the array of column names indexed by their unique column id.
      *
-     * @param \tao_models_classes_table_Column[] $columns
+     * @param \oat\tao\model\table\Column[] $columns
      *
      * @return array
      */
     public function getColumnNames(array $columns)
     {
-        return array_reduce($columns, function ($carry, \tao_models_classes_table_Column $column) {
+        return array_reduce($columns, function ($carry, Column $column) {
             /** @var ContextTypePropertyColumn|VariableColumn $column */
             $carry[$this->getColumnId($column)] = $column->getLabel();
 
@@ -1065,11 +1069,11 @@ class ResultsService extends OntologyClassService
     }
 
     /**
-     * @param \tao_models_classes_table_Column|ContextTypePropertyColumn|VariableColumn $column
+     * @param \oat\tao\model\table\Column|ContextTypePropertyColumn|VariableColumn $column
      *
      * @return string
      */
-    private function getColumnId(\tao_models_classes_table_Column $column)
+    private function getColumnId(Column $column)
     {
         if ($column instanceof ContextTypePropertyColumn) {
             $id = $column->getProperty()->getUri() . '_' . $column->getContextType();
@@ -1529,14 +1533,14 @@ class ResultsService extends OntologyClassService
     /**
      * Load test metadata from file. For deliveries without compiled file try  to compile test metadata.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      * @param string $testUri
      *
      * @return false|string
      * @throws \FileNotFoundException
      * @throws common_Exception
      */
-    private function loadTestMetadata(tao_models_classes_service_StorageDirectory $directory, $testUri)
+    private function loadTestMetadata(StorageDirectory $directory, $testUri)
     {
         try {
             $testMetadata = $this->loadTestMetadataFromFile($directory);
@@ -1553,11 +1557,11 @@ class ResultsService extends OntologyClassService
     /**
      * Get teast metadata from file.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      *
      * @return false|string
      */
-    private function loadTestMetadataFromFile(tao_models_classes_service_StorageDirectory $directory)
+    private function loadTestMetadataFromFile(StorageDirectory $directory)
     {
         return $directory->read(taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_METADATA_FILENAME);
     }
@@ -1566,13 +1570,13 @@ class ResultsService extends OntologyClassService
      * Compile test metadata and store into file.
      * Added for backward compatibility for deliveries without compiled test metadata.
      *
-     * @param tao_models_classes_service_StorageDirectory $directory
+     * @param oat\tao\model\service\StorageDirectory $directory
      * @param $testUri
      *
      * @throws \FileNotFoundException
      * @throws common_Exception
      */
-    private function compileTestMetadata(tao_models_classes_service_StorageDirectory $directory, $testUri)
+    private function compileTestMetadata(StorageDirectory $directory, $testUri)
     {
         $resource = $this->getResource($testUri);
 
@@ -1588,7 +1592,7 @@ class ResultsService extends OntologyClassService
      *
      * @return QtiTestCompilerIndex
      */
-    private function getDecompiledIndexer(tao_models_classes_service_StorageDirectory $directory)
+    private function getDecompiledIndexer(StorageDirectory $directory)
     {
         $itemIndex = new QtiTestCompilerIndex();
         try {
@@ -1641,7 +1645,7 @@ class ResultsService extends OntologyClassService
     private function getDirectoryIds($delivery)
     {
         $runtime = $this->getServiceLocator()->get(RuntimeService::SERVICE_ID)->getRuntime($delivery);
-        $inputParameters = \tao_models_classes_service_ServiceCallHelper::getInputValues($runtime, []);
+        $inputParameters = ServiceCallHelper::getInputValues($runtime, []);
         $directoryIds = explode('|', $inputParameters['QtiTestCompilation']);
 
         return $directoryIds;
@@ -1650,13 +1654,13 @@ class ResultsService extends OntologyClassService
     /**
      * @param $delivery
      *
-     * @return tao_models_classes_service_StorageDirectory
+     * @return oat\tao\model\service\StorageDirectory
      * @throws common_exception_Error
      */
     private function getPrivateDirectory($delivery)
     {
         $directoryIds = $this->getDirectoryIds($delivery);
-        $fileStorage = \tao_models_classes_service_FileStorage::singleton();
+        $fileStorage = FileStorage::singleton();
 
         return $fileStorage->getDirectoryById($directoryIds[0]);
     }

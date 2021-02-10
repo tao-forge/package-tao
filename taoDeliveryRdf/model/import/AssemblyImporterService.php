@@ -21,18 +21,20 @@
 
 namespace oat\taoDeliveryRdf\model\import;
 
-use common_Utils;
-use oat\generis\model\OntologyAwareTrait;
 use ZipArchive;
+use common_Utils;
 use common_report_Report;
-use core_kernel_classes_Resource;
 use core_kernel_classes_Class;
-use oat\generis\model\kernel\persistence\file\FileIterator;
+use core_kernel_classes_Resource;
+use oat\generis\model\OntologyAwareTrait;
+use oat\generis\model\OntologyRdf;
 use oat\generis\model\OntologyRdfs;
+use oat\generis\model\kernel\persistence\file\FileIterator;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ConfigurableService;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
-use oat\generis\model\OntologyRdf;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceCall;
 
 /**
  * AssemblyImporterService Class.
@@ -156,7 +158,7 @@ class AssemblyImporterService extends ConfigurableService
         $manifest       = $this->getDeliveryManifest($tmpImportFolder);
         $label          = $manifest['label'];
         $dirs           = $manifest['dir'];
-        $serviceCall    = \tao_models_classes_service_ServiceCall::fromString(base64_decode($manifest['runtime']));
+        $serviceCall    = ServiceCall::fromString(base64_decode($manifest['runtime']));
 
         $properties = $this->getAdditionalProperties($this->getRdfResourceIterator($tmpImportFolder));
         $properties = array_merge($properties, [
@@ -214,7 +216,7 @@ class AssemblyImporterService extends ConfigurableService
         $manifest = $this->getDeliveryManifest($tmpImportFolder);
         $dirs     = $manifest['dir'];
         foreach ($dirs as $id => $relPath) {
-            \tao_models_classes_service_FileStorage::singleton()->import($id, $tmpImportFolder . $relPath);
+            FileStorage::singleton()->import($id, $tmpImportFolder . $relPath);
         }
     }
 }

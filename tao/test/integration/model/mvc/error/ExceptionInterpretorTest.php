@@ -22,13 +22,13 @@ namespace oat\tao\test\integration\model\mvc\error;
 
 use ActionEnforcingException;
 use Exception;
+use ResolverException;
 use oat\oatbox\user\LoginFailedException;
+use oat\tao\model\AccessDeniedException;
+use oat\tao\model\FileNotFoundException;
+use oat\tao\model\UserException;
 use oat\tao\model\mvc\error\ExceptionInterpretor;
 use oat\tao\test\TaoPhpUnitTestRunner;
-use ResolverException;
-use tao_models_classes_AccessDeniedException;
-use tao_models_classes_FileNotFoundException;
-use tao_models_classes_UserException;
 
 /**
  * test for ExceptionInterpretor

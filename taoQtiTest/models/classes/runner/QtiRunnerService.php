@@ -24,25 +24,26 @@
 
 namespace oat\taoQtiTest\models\runner;
 
+use League\Flysystem\FileNotFoundException;
 use common_exception_InvalidArgumentType as InvalidArgumentTypeException;
 use common_persistence_AdvKeyValuePersistence;
 use common_persistence_KeyValuePersistence;
-use League\Flysystem\FileNotFoundException;
 use oat\libCat\result\ItemResult;
 use oat\libCat\result\ResultVariable;
 use oat\oatbox\event\EventManager;
 use oat\oatbox\service\ConfigurableService;
-use oat\tao\model\theme\ThemeService;
+use oat\taoDelivery\model\RuntimeService;
 use oat\taoDelivery\model\execution\Delete\DeliveryExecutionDeleteRequest;
 use oat\taoDelivery\model\execution\DeliveryExecution;
 use oat\taoDelivery\model\execution\DeliveryServerService;
 use oat\taoDelivery\model\execution\ServiceProxy;
-use oat\taoDelivery\model\RuntimeService;
 use oat\taoItems\model\render\ItemAssetsReplacement;
+use oat\taoQtiItem\model\QtiJsonItemCompiler;
+use oat\taoQtiItem\model\portableElement\PortableElementService;
 use oat\taoQtiItem\model\portableElement\exception\PortableElementNotFoundException;
 use oat\taoQtiItem\model\portableElement\exception\PortableModelMissing;
-use oat\taoQtiItem\model\portableElement\PortableElementService;
-use oat\taoQtiItem\model\QtiJsonItemCompiler;
+use oat\taoQtiTest\models\ExtendedStateService;
+use oat\taoQtiTest\models\TestSessionService;
 use oat\taoQtiTest\models\cat\CatService;
 use oat\taoQtiTest\models\cat\GetDeliveryExecutionsItems;
 use oat\taoQtiTest\models\event\AfterAssessmentTestSessionClosedEvent;
@@ -50,7 +51,6 @@ use oat\taoQtiTest\models\event\QtiContinueInteractionEvent;
 use oat\taoQtiTest\models\event\TestExitEvent;
 use oat\taoQtiTest\models\event\TestInitEvent;
 use oat\taoQtiTest\models\event\TestTimeoutEvent;
-use oat\taoQtiTest\models\ExtendedStateService;
 use oat\taoQtiTest\models\files\QtiFlysystemFileManager;
 use oat\taoQtiTest\models\runner\config\QtiRunnerConfig;
 use oat\taoQtiTest\models\runner\config\RunnerConfig;
@@ -59,7 +59,10 @@ use oat\taoQtiTest\models\runner\navigation\QtiRunnerNavigation;
 use oat\taoQtiTest\models\runner\rubric\QtiRunnerRubric;
 use oat\taoQtiTest\models\runner\session\TestSession;
 use oat\taoQtiTest\models\runner\toolsStates\ToolsStateStorage;
-use oat\taoQtiTest\models\TestSessionService;
+use oat\tao\model\FileNotFoundException as FileNotFoundException_2;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\StateStorage;
+use oat\tao\model\theme\ThemeService;
 use qtism\common\datatypes\QtiString as QtismString;
 use qtism\common\enums\BaseType;
 use qtism\common\enums\Cardinality;
@@ -76,7 +79,6 @@ use qtism\runtime\tests\AssessmentTestSessionException;
 use qtism\runtime\tests\AssessmentTestSessionState;
 use qtism\runtime\tests\RouteItem;
 use qtism\runtime\tests\SessionManager;
-use tao_models_classes_service_StateStorage;
 use taoQtiTest_helpers_TestRunnerUtils as TestRunnerUtils;
 
 /**
@@ -145,7 +147,7 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
 
         $itemUri = $directoryIds[0];
         $userDataLang = \common_session_SessionManager::getSession()->getDataLanguage();
-        $directory = \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryIds[2]);
+        $directory = FileStorage::singleton()->getDirectoryById($directoryIds[2]);
 
         if ($directory->has($userDataLang)) {
             $lang = $userDataLang;
@@ -177,7 +179,7 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
             $this->dataCache[$cacheKey] = $jsonContent;
             return $this->dataCache[$cacheKey];
         } catch (FileNotFoundException $e) {
-            throw new \tao_models_classes_FileNotFoundException(
+            throw new FileNotFoundException_2(
                 $path . ' for item reference ' . $itemRef
             );
         }
@@ -1023,7 +1025,7 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
      * @throws \common_Exception
      * @throws \common_exception_InconsistentData
      * @throws \common_exception_InvalidArgumentType
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function hasFeedbacks(RunnerServiceContext $context, $itemRef)
     {
@@ -1420,7 +1422,7 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
 
         $userDataLang = \common_session_SessionManager::getSession()->getDataLanguage();
 
-        $directory = \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryIds[1]);
+        $directory = FileStorage::singleton()->getDirectoryById($directoryIds[1]);
         // do fallback in case userlanguage is not default language
         if ($userDataLang != DEFAULT_LANG && !$directory->has($userDataLang) && $directory->has(DEFAULT_LANG)) {
             $userDataLang = DEFAULT_LANG;
@@ -1994,7 +1996,7 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
                     }
                 }
             }
-        } catch (\tao_models_classes_FileNotFoundException $e) {
+        } catch (FileNotFoundException_2 $e) {
             \common_Logger::i('old delivery that does not contain the compiled portable element data in the item ' . $itemRef);
         }
         return $portableElements;
@@ -2010,7 +2012,7 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
         $metadataElements = [];
         try {
             $metadataElements = $this->loadItemData($itemRef, QtiJsonItemCompiler::METADATA_FILE_NAME);
-        } catch (\tao_models_classes_FileNotFoundException $e) {
+        } catch (FileNotFoundException_2 $e) {
             \common_Logger::i('Old delivery that does not contain the compiled portable element data in the item ' . $itemRef . '. Original message: ' . $e->getMessage());
         } catch (\Exception $e) {
             \common_Logger::w('An exception caught during fetching item metadata elements. Original message: ' . $e->getMessage());
@@ -2028,12 +2030,12 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
     {
         $stateStorage = $storage->getStorage();
         $persistence  = common_persistence_KeyValuePersistence::getPersistence(
-            $stateStorage->getOption(tao_models_classes_service_StateStorage::OPTION_PERSISTENCE)
+            $stateStorage->getOption(StateStorage::OPTION_PERSISTENCE)
         );
 
         $driver = $persistence->getDriver();
         if ($driver instanceof common_persistence_AdvKeyValuePersistence) {
-            $keys = $driver->keys(tao_models_classes_service_StateStorage::KEY_NAMESPACE . '*' . $deUri . '*');
+            $keys = $driver->keys(StateStorage::KEY_NAMESPACE . '*' . $deUri . '*');
             foreach ($keys as $key) {
                 $driver->del($key);
             }
@@ -2079,7 +2081,7 @@ class QtiRunnerService extends ConfigurableService implements RunnerService
             $itemsRefs = (new GetDeliveryExecutionsItems(
                 $this->getServiceLocator()->get(RuntimeService::SERVICE_ID),
                 $this->getServiceLocator()->get(CatService::SERVICE_ID),
-                \tao_models_classes_service_FileStorage::singleton(),
+                FileStorage::singleton(),
                 $request->getDeliveryExecution(),
                 $session
             ))->getItemsRefs();

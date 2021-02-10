@@ -2,8 +2,9 @@
 
 namespace oat\taoQtiTest\models;
 
-use qtism\data\QtiComponent;
+use oat\tao\model\service\StorageDirectory;
 use qtism\data\AssessmentItemRef;
+use qtism\data\QtiComponent;
 
 /**
  * PHP Serialization Compilation Data Service.
@@ -24,7 +25,7 @@ class PhpSerializationCompilationDataService extends CompilationDataService
         return self::OUTPUT_FILE_TYPE;
     }
 
-    public function writeCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, QtiComponent $object)
+    public function writeCompilationData(StorageDirectory $compilationDirectory, $path, QtiComponent $object)
     {
         $path .= '.' . self::OUTPUT_FILE_TYPE;
 
@@ -39,7 +40,7 @@ class PhpSerializationCompilationDataService extends CompilationDataService
         );
     }
     
-    public function readCompilationData(\tao_models_classes_service_StorageDirectory $compilationDirectory, $path, $cacheInfo = '')
+    public function readCompilationData(StorageDirectory $compilationDirectory, $path, $cacheInfo = '')
     {
 
         $path .= '.' . self::OUTPUT_FILE_TYPE;

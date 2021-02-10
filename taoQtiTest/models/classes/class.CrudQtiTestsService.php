@@ -19,6 +19,7 @@
  *
  */
 
+use oat\tao\model\CrudService;
 use oat\tao\model\TaoOntology;
 
 /**
@@ -30,11 +31,11 @@ use oat\tao\model\TaoOntology;
  * @author Absar Gilani, absar.gilani@gmail.com
  *
  */
-class taoQtiTest_models_classes_CrudQtiTestsService extends tao_models_classes_CrudService
+class taoQtiTest_models_classes_CrudQtiTestsService extends CrudService
 {
 
     /** (non-PHPdoc)
-     * @see tao_models_classes_CrudSservice::getClassService()
+     * @see CrudSservice::getClassService()
      */
     protected function getClassService()
     {
@@ -43,7 +44,7 @@ class taoQtiTest_models_classes_CrudQtiTestsService extends tao_models_classes_C
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_CrudService::delete()
+     * @see oat\tao\model\CrudService::delete()
      */
     public function delete($uri)
     {

@@ -28,6 +28,7 @@ use oat\oatbox\filesystem\FileSystemService;
 use oat\oatbox\service\ConfigurableService;
 use oat\taoItems\model\TemplateRenderer;
 use oat\taoQtiItem\model\qti\Resource;
+use oat\tao\model\service\FileStorage;
 use qtism\data\AssessmentTest;
 use qtism\data\storage\xml\XmlDocument;
 
@@ -225,7 +226,7 @@ class QtiTestUtils extends ConfigurableService
     {
         try {
             $directoryIds = explode('|', $qtiTestCompilation);
-            $directory = \tao_models_classes_service_FileStorage::singleton()->getDirectoryById($directoryIds[0]);
+            $directory = FileStorage::singleton()->getDirectoryById($directoryIds[0]);
             $compilationDataService = $this->getServiceLocator()->get(CompilationDataService::SERVICE_ID);
             return $compilationDataService->readCompilationData(
                 $directory,

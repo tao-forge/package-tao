@@ -28,8 +28,8 @@ namespace oat\taoTestTaker\actions;
 use oat\taoTestTaker\models\CsvImporter;
 use oat\taoTestTaker\models\RdfImporter;
 use oat\tao\controller\Import as Import_2;
-use tao_models_classes_import_CsvImporter;
-use tao_models_classes_import_RdfImporter;
+use oat\tao\model\import\CsvImporter as CsvImporter_2;
+use oat\tao\model\import\RdfImporter as RdfImporter_2;
 
 /**
  * Extends the common Import class to exchange the generic
@@ -48,13 +48,13 @@ class Import extends Import_2
 
         foreach (array_keys($returnValue) as $key) {
             switch (get_class($returnValue[$key])) {
-                case tao_models_classes_import_CsvImporter::class:
+                case CsvImporter_2::class:
                     $importer = new CsvImporter();
                     $importer->setValidators($this->getValidators());
                     $returnValue[$key] = $importer;
 
                     break;
-                case tao_models_classes_import_RdfImporter::class:
+                case RdfImporter_2::class:
                     $importer = new RdfImporter();
                     $returnValue[$key] = $importer;
 

@@ -20,7 +20,6 @@
 
 namespace oat\taoDeliveryRdf\test\unit\model\assembly;
 
-use tao_models_classes_service_StorageDirectory;
 use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\File;
@@ -28,6 +27,7 @@ use oat\taoDeliveryRdf\model\assembly\CompiledTestConverterService;
 use oat\taoQtiTest\models\CompilationDataService;
 use oat\taoQtiTest\models\PhpCodeCompilationDataService;
 use oat\taoQtiTest\models\XmlCompilationDataService;
+use oat\tao\model\service\StorageDirectory;
 use qtism\data\QtiComponent;
 
 class CompiledTestConverterServiceTest extends TestCase
@@ -46,7 +46,7 @@ class CompiledTestConverterServiceTest extends TestCase
          */
     private $compilationDataWriterMock;
     /**
-         * @var \tao_models_classes_service_StorageDirectory|MockObject
+         * @var \oat\tao\model\service\StorageDirectory|MockObject
          */
     private $directoryMock;
     /**
@@ -62,7 +62,7 @@ class CompiledTestConverterServiceTest extends TestCase
         $this->compilationDataWriterMock = $this->createMock(CompilationDataService::class);
         $this->compilationDataWriterMock->method('readCompilationData')
             ->willReturn($this->createMock(QtiComponent::class));
-        $this->directoryMock = $this->createMock(tao_models_classes_service_StorageDirectory::class);
+        $this->directoryMock = $this->createMock(StorageDirectory::class);
         $this->fileMock = $this->createMock(File::class);
         $this->fileMock->method('getBasename')
             ->willReturn(self::FILE_BASE_NAME);

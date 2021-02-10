@@ -59,7 +59,7 @@ class TestTakerTest extends TaoPhpUnitTestRunner
 
     /**
      * Test the user service implementation
-     * @see tao_models_classes_ServiceFactory::get
+     * @see oat\tao\model\ServiceFactory::get
      * @see TestTakerService::__construct
      * @return void
      */

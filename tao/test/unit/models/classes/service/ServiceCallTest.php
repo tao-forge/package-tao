@@ -21,25 +21,25 @@
 namespace oat\tao\test\unit\models\classes\service;
 
 use InvalidArgumentException;
-use tao_models_classes_service_Parameter;
-use tao_models_classes_service_ServiceCall;
-use tao_models_classes_service_VariableParameter;
 use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
+use oat\tao\model\service\Parameter;
+use oat\tao\model\service\ServiceCall;
+use oat\tao\model\service\VariableParameter;
 
 class ServiceCallTest extends TestCase
 {
     const SERVICE_DEFINITION = 'SERVICE_DEFINITION_URI';
     /**
-         * @var tao_models_classes_service_ServiceCall;
+         * @var oat\tao\model\service\ServiceCall;
          */
     private $object;
     /**
-         * @var tao_models_classes_service_Parameter|MockObject
+         * @var oat\tao\model\service\Parameter|MockObject
          */
     private $inputParam;
     /**
-         * @var tao_models_classes_service_VariableParameter|MockObject
+         * @var oat\tao\model\service\VariableParameter|MockObject
          */
     private $outputParam;
     protected function setUp(): void
@@ -47,13 +47,13 @@ class ServiceCallTest extends TestCase
         parent::setUp();
         $serializedInput = ['inKey' => 'inValue'];
         $serializedOutput = ['outKey' => 'outValue'];
-        $this->inputParam = $this->createMock(tao_models_classes_service_Parameter::class);
+        $this->inputParam = $this->createMock(Parameter::class);
         $this->inputParam->method('jsonSerialize')
             ->willReturn($serializedInput);
-        $this->outputParam = $this->createMock(tao_models_classes_service_VariableParameter::class);
+        $this->outputParam = $this->createMock(VariableParameter::class);
         $this->outputParam->method('jsonSerialize')
             ->willReturn($serializedOutput);
-        $this->object = new tao_models_classes_service_ServiceCall(self::SERVICE_DEFINITION);
+        $this->object = new ServiceCall(self::SERVICE_DEFINITION);
         $this->object->addInParameter($this->inputParam);
         $this->object->setOutParameter($this->outputParam);
     }
@@ -86,22 +86,22 @@ class ServiceCallTest extends TestCase
                 "def" => "defValue"
             ],
         ];
-        $result = tao_models_classes_service_ServiceCall::fromJson($serviceCallData);
-        $this->assertInstanceOf(tao_models_classes_service_ServiceCall::class, $result, 'ServiceCall object created from array must be an instance of tao_models_classes_service_ServiceCall class.');
+        $result = ServiceCall::fromJson($serviceCallData);
+        $this->assertInstanceOf(ServiceCall::class, $result, 'ServiceCall object created from array must be an instance of ServiceCall class.');
     }
 
     public function testFromStringInvalidJsonThrowsException()
     {
         $serviceCallJson = 'INVALID JSON STRING';
         $this->expectException(InvalidArgumentException::class);
-        tao_models_classes_service_ServiceCall::fromString($serviceCallJson);
+        ServiceCall::fromString($serviceCallJson);
     }
 
     public function testFromString()
     {
         $serviceCallJson = '{"service":"SERVICE_DEFINITION_URI","in":[{"const":"constValue","def":"defValue"},{"proc":"procValue","def":"defValue"}],"out":{"proc":"procValue","def":"defValue"}}';
-        $result = tao_models_classes_service_ServiceCall::fromString($serviceCallJson);
-        $this->assertInstanceOf(tao_models_classes_service_ServiceCall::class, $result, 'ServiceCall object created from JSON string must be an instance of tao_models_classes_service_ServiceCall class.');
+        $result = ServiceCall::fromString($serviceCallJson);
+        $this->assertInstanceOf(ServiceCall::class, $result, 'ServiceCall object created from JSON string must be an instance of ServiceCall class.');
     }
 
     public function testJsonSerialize()

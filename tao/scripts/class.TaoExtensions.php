@@ -20,6 +20,7 @@
  *
  */
 
+use oat\tao\model\UserService;
 
 /**
  * This Script class aims at providing tools to manage TAO extensions.
@@ -414,7 +415,7 @@ class tao_scripts_TaoExtensions extends tao_scripts_Runner
         $returnValue = (bool) false;
 
        
-        $userService = tao_models_classes_UserService::singleton();
+        $userService = UserService::singleton();
         $returnValue = $userService->loginUser($user, $password);
         $this->setConnected($returnValue);
        
@@ -434,7 +435,7 @@ class tao_scripts_TaoExtensions extends tao_scripts_Runner
        
         if ($this->isConnected()) {
             $this->outVerbose("Disconnecting user...");
-            $userService = tao_models_classes_UserService::singleton();
+            $userService = UserService::singleton();
             if ($userService->logout() == true) {
                 $this->outVerbose("User gracefully disconnected from TAO API.");
                 $this->setConnected(false);

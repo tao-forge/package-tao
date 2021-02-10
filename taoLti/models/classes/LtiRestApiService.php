@@ -21,12 +21,15 @@
 
 namespace oat\taoLti\models\classes;
 
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use oat\generis\model\OntologyRdfs;
 use oat\taoLti\models\classes\user\LtiUserService;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use oat\tao\model\CrudService;
+use oat\tao\model\oauth\Exception;
+use oat\tao\model\oauth\OauthService;
 
-class LtiRestApiService extends \tao_models_classes_CrudService implements ServiceLocatorAwareInterface
+class LtiRestApiService extends CrudService implements ServiceLocatorAwareInterface
 {
     use ServiceLocatorAwareTrait;
 
@@ -42,15 +45,15 @@ class LtiRestApiService extends \tao_models_classes_CrudService implements Servi
      * @param $key string Oauth LTI consumer key
      * @return array|null
      * @throws \common_Exception
-     * @throws \tao_models_classes_oauth_Exception
+     * @throws \oat\tao\model\oauth\Exception
      */
     public function getUserId($id, $key)
     {
-        $dataStore = new \tao_models_classes_oauth_DataStore();
+        $dataStore = $this->getServiceLocator()->get(OauthService::SERVICE_ID)->getDataStore();
         try {
             /** @var \core_kernel_classes_Resource $consumerResource */
             $consumerResource = $dataStore->findOauthConsumerResource($key);
-        } catch (\tao_models_classes_oauth_Exception $e) {
+        } catch (Exception $e) {
             throw new \common_exception_NotFound($e->getMessage());
         }
 

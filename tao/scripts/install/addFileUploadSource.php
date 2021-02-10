@@ -23,6 +23,7 @@
 
 use oat\oatbox\filesystem\FileSystemService;
 use oat\oatbox\service\ServiceManager;
+use oat\tao\model\TaoService;
 
 /*
  * This post-installation script creates a new local file source for file uploaded
@@ -39,7 +40,7 @@ $fsService = $serviceManager->get(FileSystemService::SERVICE_ID);
 $source = $fsService->createFileSystem('fileUploadDirectory', 'tao/upload');
 $serviceManager->register(FileSystemService::SERVICE_ID, $fsService);
 
-tao_models_classes_TaoService::singleton()->setUploadFileSourceId('fileUploadDirectory');
+TaoService::singleton()->setUploadFileSourceId('fileUploadDirectory');
 
 // add .htaccess to prevent php code execution
 if (file_exists($dataPath) && is_dir($dataPath)) {

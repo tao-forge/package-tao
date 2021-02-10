@@ -290,7 +290,7 @@ class PortableElementService implements ServiceLocatorAwareInterface
      * @param PortableElementObject $object
      * @param $file
      * @return bool|false|resource
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function getFileStream(PortableElementObject $object, $file)
     {

@@ -21,10 +21,11 @@
 
 namespace oat\taoDeliveryRdf\model\export;
 
-use core_kernel_classes_Resource;
 use core_kernel_classes_Class;
+use core_kernel_classes_Resource;
 use oat\oatbox\service\ServiceManager;
 use oat\taoDeliveryRdf\view\form\export\ExportForm;
+use oat\tao\model\export\ExportHandler;
 
 /**
  * tao delivery assembly exporter
@@ -34,12 +35,12 @@ use oat\taoDeliveryRdf\view\form\export\ExportForm;
  * @package taoDelivery
 
  */
-class AssemblyExporter implements \tao_models_classes_export_ExportHandler
+class AssemblyExporter implements ExportHandler
 {
 
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_export_ExportHandler::getLabel()
+     * @see oat\tao\model\export\ExportHandler::getLabel()
      */
     public function getLabel()
     {
@@ -48,7 +49,7 @@ class AssemblyExporter implements \tao_models_classes_export_ExportHandler
     
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_export_ExportHandler::getExportForm()
+     * @see oat\tao\model\export\ExportHandler::getExportForm()
      */
     public function getExportForm(core_kernel_classes_Resource $resource)
     {
@@ -63,7 +64,7 @@ class AssemblyExporter implements \tao_models_classes_export_ExportHandler
     
     /**
      * (non-PHPdoc)
-     * @see tao_models_classes_export_ExportHandler::export()
+     * @see oat\tao\model\export\ExportHandler::export()
      */
     public function export($formValues, $destination)
     {

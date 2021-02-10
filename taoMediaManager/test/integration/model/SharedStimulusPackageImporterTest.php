@@ -140,7 +140,7 @@ class SharedStimulusPackageImporterTest extends TestCase
      * @throws InvalidSourcePathException
      * @throws \common_exception_Error
      * @throws \qtism\data\storage\xml\XmlStorageException
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function testEmbedAssets($directory, $converted)
     {
@@ -172,7 +172,7 @@ class SharedStimulusPackageImporterTest extends TestCase
      * @throws InvalidSourcePathException
      * @throws \common_exception_Error
      * @throws \qtism\data\storage\xml\XmlStorageException
-     * @throws \tao_models_classes_FileNotFoundException
+     * @throws \oat\tao\model\FileNotFoundException
      */
     public function testEmbedAssetsExceptions($directory)
     {

@@ -21,10 +21,10 @@
 
 namespace oat\taoDeliveryRdf\model;
 
-use tao_models_classes_service_FileStorage;
-use oat\tao\model\service\ServiceFileStorage;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use oat\tao\model\service\FileStorage;
+use oat\tao\model\service\ServiceFileStorage;
 
             /**
  * A wrapper of the filestorage that tracks added directories
@@ -44,7 +44,7 @@ class TrackedStorage implements ServiceFileStorage, ServiceLocatorAwareInterface
     
     /**
      * @param boolean $public
-     * @return \tao_models_classes_service_StorageDirectory
+     * @return \oat\tao\model\service\StorageDirectory
      */
     public function spawnDirectory($public = false)
     {
@@ -64,7 +64,7 @@ class TrackedStorage implements ServiceFileStorage, ServiceLocatorAwareInterface
 
     /**
      * {@inheritDoc}
-     * @see tao_models_classes_service_FileStorage::import()
+     * @see oat\tao\model\service\FileStorage::import()
      */
     public function import($id, $directoryPath)
     {
@@ -74,7 +74,7 @@ class TrackedStorage implements ServiceFileStorage, ServiceLocatorAwareInterface
 
     /**
      * {@inheritDoc}
-     * @see tao_models_classes_service_FileStorage::getDirectoryById()
+     * @see oat\tao\model\service\FileStorage::getDirectoryById()
      */
     public function getDirectoryById($id)
     {

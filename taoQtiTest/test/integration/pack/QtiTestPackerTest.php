@@ -20,9 +20,10 @@
 
 namespace oat\taoQtiTest\test\integration\pack;
 
-use \core_kernel_classes_Resource;
+use core_kernel_classes_Resource;
 use oat\generis\test\GenerisPhpUnitTestRunner;
 use oat\taoQtiTest\models\pack\QtiTestPacker;
+use oat\tao\model\service\StorageDirectory;
 
 /**
  * Test the class {@link TestPack}
@@ -56,7 +57,7 @@ class QtiTestPackerTest extends GenerisPhpUnitTestRunner
         $this->expectException(\common_Exception::class);
 
         $testPacker = new QtiTestPacker();
-        $directory = $this->createMock(\tao_models_classes_service_StorageDirectory::class);
+        $directory = $this->createMock(StorageDirectory::class);
 
         $testPacker->packTest(new core_kernel_classes_Resource('foo'), $directory);
     }

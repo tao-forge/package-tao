@@ -22,14 +22,14 @@
 
 namespace oat\taoQtiItem\model\qti;
 
+use DOMDocument;
+use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ServiceManager;
+use oat\taoQtiItem\model\ValidationService;
 use oat\taoQtiItem\model\qti\ParserFactory;
 use oat\taoQtiItem\model\qti\exception\UnsupportedQtiElement;
-use oat\taoQtiItem\model\ValidationService;
-use \tao_models_classes_Parser;
-use \DOMDocument;
-use \tao_helpers_Request;
-use oat\oatbox\log\LoggerAwareTrait;
+use oat\tao\model\Parser as Parser_2;
+use tao_helpers_Request;
 
 /**
  * The QTI Parser enables you to parse QTI item xml files and build the
@@ -41,7 +41,7 @@ use oat\oatbox\log\LoggerAwareTrait;
  * @see http://www.imsglobal.org/question/qti_v2p0/imsqti_infov2p0.html#element10010
 
  */
-class Parser extends tao_models_classes_Parser
+class Parser extends Parser_2
 {
     use LoggerAwareTrait;
 

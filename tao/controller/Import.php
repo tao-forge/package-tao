@@ -23,18 +23,18 @@
 
 namespace oat\tao\controller;
 
-use \Context;
-use \common_session_SessionManager;
-use \tao_helpers_Uri;
-use \tao_models_classes_import_CsvImporter;
-use \tao_models_classes_import_RdfImporter;
+use Context;
+use common_session_SessionManager;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\event\EventManager;
 use oat\tao\model\form\ImportForm;
+use oat\tao\model\import\CsvImporter;
+use oat\tao\model\import\RdfImporter;
 use oat\tao\model\import\TaskParameterProviderInterface;
 use oat\tao\model\taskQueue\QueueDispatcher;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
 use oat\tao\model\task\ImportByHandler;
+use tao_helpers_Uri;
 
 /**
  * This controller provide the actions to import resources
@@ -47,7 +47,7 @@ use oat\tao\model\task\ImportByHandler;
 class Import extends CommonModule
 {
     /**
-     * @var tao_models_classes_import_ImportHandler[]
+     * @var oat\tao\model\import\ImportHandler[]
      */
     private $availableHandlers = [];
 
@@ -112,7 +112,7 @@ class Import extends CommonModule
      * Returns the currently selected import handler
      * or the import handler to use by default
      *
-     * @return tao_models_classes_import_ImportHandler
+     * @return oat\tao\model\import\ImportHandler
      */
     protected function getCurrentImporter()
     {
@@ -136,14 +136,14 @@ class Import extends CommonModule
      * Gets the available import handlers for this module
      * Should be overwritten by extensions that want to provide additional ImportHandlers
      *
-     * @return tao_models_classes_import_ImportHandler[]
+     * @return oat\tao\model\import\ImportHandler[]
      */
     protected function getAvailableImportHandlers()
     {
         if (empty($this->availableHandlers)) {
             $this->availableHandlers = [
-                new tao_models_classes_import_RdfImporter(),
-                new tao_models_classes_import_CsvImporter()
+                new RdfImporter(),
+                new CsvImporter()
             ];
         }
 

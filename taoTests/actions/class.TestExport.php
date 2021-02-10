@@ -61,7 +61,7 @@ class taoTests_actions_TestExport extends Export
         }
         foreach ($testModels as $model) {
             $impl = taoTests_models_classes_TestsService::singleton()->getTestModelImplementation($model);
-            if (in_array('tao_models_classes_export_ExportProvider', class_implements($impl))) {
+            if (in_array('oat\\tao\\model\\export\\ExportProvider', class_implements($impl))) {
                 foreach ($impl->getExportHandlers() as $handler) {
                     array_unshift($returnValue, $handler);
                 }
