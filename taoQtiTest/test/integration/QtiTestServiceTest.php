@@ -21,12 +21,12 @@
 
 namespace oat\taoQtiTest\test\integration;
 
+use common_ext_ExtensionsManager;
+use common_report_Report;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoTests\models\TestsService;
 use oat\tao\model\TaoOntology;
-use \taoTests_models_classes_TestsService;
-use \taoQtiTest_models_classes_QtiTestService;
-use \common_ext_ExtensionsManager;
-use \common_report_Report;
+use taoQtiTest_models_classes_QtiTestService;
 
 /**
  * This test case focuses on testing the ManifestParser model.
@@ -157,7 +157,7 @@ class QtiTestServiceTest extends GenerisPhpUnitTestRunner
         $report = $this->testService->importMultipleTests($rootclass, $datadir . 'unitqtitest.zip');
         $this->assertInstanceOf('common_report_Report', $report);
         $this->assertEquals($report->getType(), common_report_Report::TYPE_SUCCESS);
-        $testService = taoTests_models_classes_TestsService::singleton();
+        $testService = TestsService::singleton();
         foreach ($report as $rep) {
             $result = $rep->getData();
 

@@ -21,12 +21,12 @@
 
 namespace oat\taoTests\models\pack;
 
-use \core_kernel_classes_Resource;
-use \taoTests_models_classes_TestsService;
-use \common_exception_NoImplementation;
-use \ReflectionClass;
-use \common_Exception;
-use \Exception;
+use Exception;
+use ReflectionClass;
+use common_Exception;
+use common_exception_NoImplementation;
+use core_kernel_classes_Resource;
+use oat\taoTests\models\TestsService;
 
 /**
  * The Test Packer calls the packable class for the given test
@@ -46,7 +46,7 @@ class Packer
 
     /**
      * The test service
-     * @var \taoTests_models_classes_TestsService
+     * @var \oat\taoTests\models\TestsService
      */
     private $testService;
 
@@ -57,7 +57,7 @@ class Packer
     public function __construct(core_kernel_classes_Resource $test)
     {
         $this->test = $test;
-        $this->testService = taoTests_models_classes_TestsService::singleton();
+        $this->testService = TestsService::singleton();
     }
 
     /**

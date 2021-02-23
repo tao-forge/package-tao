@@ -24,6 +24,7 @@ namespace oat\taoQtiTest\test\integration;
 use oat\generis\test\GenerisPhpUnitTestRunner;
 use oat\oatbox\service\ServiceManager;
 use oat\taoQtiTest\models\export\metadata\TestExporter;
+use oat\taoTests\models\TestsService;
 
 /**
  * This test case focuses on testing the TestCompilerUtils helper.
@@ -51,7 +52,7 @@ class TestExporterTest extends GenerisPhpUnitTestRunner
      */
     public function testExport($testFile, $expectedMeta)
     {
-        $class = \taoTests_models_classes_TestsService::singleton()->getRootclass()->createSubClass(uniqid('functional'));
+        $class = TestsService::singleton()->getRootclass()->createSubClass(uniqid('functional'));
         \helpers_TimeOutHelper::setTimeOutLimit(\helpers_TimeOutHelper::LONG);
         $report = \taoQtiTest_models_classes_QtiTestService::singleton()
             ->importMultipleTests($class, $testFile);
@@ -64,7 +65,7 @@ class TestExporterTest extends GenerisPhpUnitTestRunner
         $testExporter->setServiceLocator(ServiceManager::getServiceManager());
         $file = $testExporter->export($this->testCreatedUri);
 
-        \taoTests_models_classes_TestsService::singleton()->deleteClass($class);
+        TestsService::singleton()->deleteClass($class);
 
         $this->assertEquals(
             $this->normalizeLineEndings(file_get_contents($expectedMeta)),

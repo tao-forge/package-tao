@@ -20,7 +20,7 @@
 
 namespace oat\taoMediaManager\model;
 
-use GuzzleHttp\Psr7\stream_for;
+use function GuzzleHttp\Psr7\stream_for;
 use Psr\Http\Message\StreamInterface;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\Configurable;

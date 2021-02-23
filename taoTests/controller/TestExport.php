@@ -21,7 +21,10 @@
  *
  */
 
+namespace oat\taoTests\controller;
+
 use oat\taoTests\models\MissingTestmodelException;
+use oat\taoTests\models\TestsService;
 use oat\tao\controller\Export;
 
 /**
@@ -32,7 +35,7 @@ use oat\tao\controller\Export;
  * @package taoTests
  *
  */
-class taoTests_actions_TestExport extends Export
+class TestExport extends Export
 {
     /**
      * overwrite the parent index to add the requiresRight for Tests
@@ -45,6 +48,11 @@ class taoTests_actions_TestExport extends Export
         parent::index();
     }
     
+    protected function getTestService(): TestsService
+    {
+        return $this->getServiceLocator()->get(TestsService::class);
+    }
+    
     protected function getAvailableExportHandlers()
     {
         $returnValue = parent::getAvailableExportHandlers();
@@ -53,14 +61,14 @@ class taoTests_actions_TestExport extends Export
         $testModels = [];
         foreach ($resources as $resource) {
             try {
-                $model = taoTests_models_classes_TestsService::singleton()->getTestModel($resource);
+                $model = $this->getTestService()->getTestModel($resource);
                 $testModels[$model->getUri()] = $model;
             } catch (MissingTestmodelException $e) {
                 // no model found, skip exporter retrieval
             }
         }
         foreach ($testModels as $model) {
-            $impl = taoTests_models_classes_TestsService::singleton()->getTestModelImplementation($model);
+            $impl = $this->getTestService()->getTestModelImplementation($model);
             if (in_array('oat\\tao\\model\\export\\ExportProvider', class_implements($impl))) {
                 foreach ($impl->getExportHandlers() as $handler) {
                     array_unshift($returnValue, $handler);

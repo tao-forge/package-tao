@@ -30,7 +30,7 @@ use oat\taoQtiItem\model\qti\metadata\MetadataExtractor;
 use oat\taoQtiItem\model\qti\metadata\imsManifest\classificationMetadata\ClassificationEntryMetadataValue;
 use oat\taoQtiItem\model\qti\metadata\imsManifest\classificationMetadata\ClassificationMetadataValue;
 use oat\taoQtiItem\model\qti\metadata\imsManifest\classificationMetadata\ClassificationSourceMetadataValue;
-use taoTests_models_classes_TestsService;
+use oat\taoTests\models\TestsService;
 
 class GenericLomOntologyClassificationExtractor implements MetadataExtractor
 {
@@ -40,8 +40,8 @@ class GenericLomOntologyClassificationExtractor implements MetadataExtractor
         OntologyRdf::RDF_TYPE,
         ItemsService::PROPERTY_ITEM_CONTENT,
         ItemsService::PROPERTY_ITEM_MODEL,
-        taoTests_models_classes_TestsService::PROPERTY_TEST_TESTMODEL,
-        taoTests_models_classes_TestsService::PROPERTY_TEST_CONTENT,
+        TestsService::PROPERTY_TEST_TESTMODEL,
+        TestsService::PROPERTY_TEST_CONTENT,
     ];
 
     /**

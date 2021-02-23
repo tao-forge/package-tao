@@ -18,7 +18,7 @@
 * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
 */
 
-use GuzzleHttp\Psr7\stream_for;
+use function GuzzleHttp\Psr7\stream_for;
 use oat\generis\model\data\event\ResourceUpdated;
 use oat\oatbox\event\EventManager;
 use oat\taoQtiTest\models\TestCategoryPresetProvider;

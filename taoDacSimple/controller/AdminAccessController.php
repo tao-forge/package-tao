@@ -21,7 +21,7 @@
 namespace oat\taoDacSimple\controller;
 
 use Exception;
-use GuzzleHttp\Psr7\stream_for;
+use function GuzzleHttp\Psr7\stream_for;
 use common_exception_Error;
 use common_exception_Unauthorized;
 use core_kernel_classes_Class;

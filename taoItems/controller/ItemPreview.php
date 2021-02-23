@@ -23,7 +23,7 @@
 
 namespace oat\taoItems\controller;
 
-use GuzzleHttp\Psr7\stream_for;
+use function GuzzleHttp\Psr7\stream_for;
 use common_Exception;
 use common_Utils;
 use common_exception_BadRequest;

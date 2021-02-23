@@ -21,19 +21,20 @@
 
 namespace oat\taoQtiTest\test\integration;
 
+use ZipArchive;
+use common_report_Report;
+use core_kernel_classes_Resource;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoTests\models\TestsService;
 use oat\tao\model\TaoOntology;
+use taoQtiTest_helpers_Utils;
 use taoQtiTest_models_classes_QtiTestService;
+use taoQtiTest_models_classes_export_QtiTestExporter;
 use taoQtiTest_models_classes_export_TestExport;
 use tao_helpers_Uri;
 use tao_helpers_form_Form;
 use tao_helpers_form_FormElement;
 use tao_helpers_form_xhtml_Form;
-use ZipArchive;
-use taoQtiTest_models_classes_export_QtiTestExporter;
-use taoQtiTest_helpers_Utils;
-use core_kernel_classes_Resource;
-use common_report_Report;
 
 /**
  * This test case focuses on testing the export_TestExport and export_QtiTestExporter models.
@@ -260,7 +261,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
     {
         // import
         $testFile = __DIR__ . '/samples/archives/QTI 2.2/exportWithoutLongPaths/test_with_long_path_and_shared_stimulus.zip';
-        $class = \taoTests_models_classes_TestsService::singleton()->getRootclass()->createSubClass(uniqid('test-exporter'));
+        $class = TestsService::singleton()->getRootclass()->createSubClass(uniqid('test-exporter'));
         $report = \taoQtiTest_models_classes_QtiTestService::singleton()
             ->importMultipleTests($class, $testFile);
 
@@ -328,7 +329,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
         // import
         $label = 'this label should be persisted';
         $testFile = __DIR__ . '/samples/archives/QTI 2.2/test_label_is_persisted.zip'; // contains label 'QTI Example Te2211111st (LABEL)'
-        $class = \taoTests_models_classes_TestsService::singleton()->getRootclass()->createSubClass(uniqid('test-exporter'));
+        $class = TestsService::singleton()->getRootclass()->createSubClass(uniqid('test-exporter'));
         $report = \taoQtiTest_models_classes_QtiTestService::singleton()
             ->importMultipleTests($class, $testFile);
 

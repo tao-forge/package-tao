@@ -21,22 +21,22 @@
 namespace oat\taoQtiTest\test\integration;
 
 use Exception;
-use oat\generis\model\data\ModelManager;
-use oat\generis\model\data\Ontology;
-use oat\oatbox\service\ServiceManager;
-use oat\tao\test\integration\RestTestRunner;
-use oat\taoQtiTest\helpers\QtiPackageExporter;
 use Slim\Http\Headers;
 use Slim\Http\Request;
 use Slim\Http\RequestBody;
 use Slim\Http\Uri;
-use tao_helpers_File;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use ZipArchive;
+use common_report_Report as Report;
+use oat\generis\model\data\ModelManager;
+use oat\generis\model\data\Ontology;
+use oat\oatbox\service\ServiceManager;
+use oat\taoQtiTest\helpers\QtiPackageExporter;
+use oat\taoTests\models\TestsService;
+use oat\tao\test\integration\RestTestRunner;
 use taoQtiTest_actions_RestQtiTests;
 use taoQtiTest_models_classes_QtiTestService as QtiTestService;
-use taoTests_models_classes_TestsService as TestsService;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use common_report_Report as Report;
-use ZipArchive;
+use tao_helpers_File;
 
 class QtiPackageExportTest extends RestTestRunner
 {

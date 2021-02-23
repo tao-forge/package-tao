@@ -21,12 +21,12 @@
 namespace oat\taoTests\test\integration\pack;
 
 use common_Exception;
-use taoTests_models_classes_TestsService;
-use taoTests_models_classes_TestModel;
 use core_kernel_classes_Resource;
 use oat\generis\test\GenerisPhpUnitTestRunner;
-use oat\taoTests\models\pack\Packer;
+use oat\taoTests\models\TestModel;
+use oat\taoTests\models\TestsService;
 use oat\taoTests\models\pack\Packable;
+use oat\taoTests\models\pack\Packer;
 use oat\taoTests\models\pack\TestPack;
 
 /**
@@ -62,12 +62,12 @@ class PackerTest extends GenerisPhpUnitTestRunner
         $model = new core_kernel_classes_Resource('fooModel');
 
         $serviceMock = $this
-                        ->getMockBuilder(taoTests_models_classes_TestsService::class)
+                        ->getMockBuilder(TestsService::class)
                         ->disableOriginalConstructor()
                         ->getMock();
 
         $modelMock = $this
-                        ->getMockBuilder(taoTests_models_classes_TestModel::class)
+                        ->getMockBuilder(TestModel::class)
                         ->getMock();
 
 
@@ -113,7 +113,7 @@ class PackerTest extends GenerisPhpUnitTestRunner
         $test = new core_kernel_classes_Resource('foo');
 
         $serviceMock = $this
-                        ->getMockBuilder(taoTests_models_classes_TestsService::class)
+                        ->getMockBuilder(TestsService::class)
                         ->disableOriginalConstructor()
                         ->getMock();
 
@@ -146,7 +146,7 @@ class PackerTest extends GenerisPhpUnitTestRunner
         $model = new core_kernel_classes_Resource('fooModel');
 
         $serviceMock = $this
-                        ->getMockBuilder(taoTests_models_classes_TestsService::class)
+                        ->getMockBuilder(TestsService::class)
                         ->disableOriginalConstructor()
                         ->getMock();
 
@@ -183,7 +183,7 @@ class PackerTest extends GenerisPhpUnitTestRunner
         $test = new core_kernel_classes_Resource('foo');
 
         $serviceMock = $this
-                        ->getMockBuilder(taoTests_models_classes_TestsService::class)
+                        ->getMockBuilder(TestsService::class)
                         ->disableOriginalConstructor()
                         ->getMock();
 
@@ -229,7 +229,7 @@ class PackerTest extends GenerisPhpUnitTestRunner
         $test = new core_kernel_classes_Resource('foo');
 
         $serviceMock = $this
-                        ->getMockBuilder(taoTests_models_classes_TestsService::class)
+                        ->getMockBuilder(TestsService::class)
                         ->disableOriginalConstructor()
                         ->getMock();
 

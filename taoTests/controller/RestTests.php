@@ -17,6 +17,9 @@
  *
  */
 
+namespace oat\taoTests\controller;
+
+use oat\taoTests\models\CrudTestsService;
 use oat\tao\controller\CommonRestModule;
 use oat\tao\model\routing\AnnotationReader\security;
 
@@ -24,18 +27,18 @@ use oat\tao\model\routing\AnnotationReader\security;
  *
  * @author plichart
  */
-class taoTests_actions_RestTests extends CommonRestModule
+class RestTests extends CommonRestModule
 {
 
     /**
-     * taoTests_actions_RestTests constructor.
+     * oat\taoTests\controller\RestTests constructor.
      * @security("hide")
      */
     public function __construct()
     {
         parent::__construct();
         //The service that implements or inherits get/getAll/getRootClass ... for that particular type of resources
-        $this->service = taoTests_models_classes_CrudTestsService::singleton();
+        $this->service = CrudTestsService::singleton();
     }
 
     /**

@@ -37,6 +37,7 @@ use oat\taoDeliveryRdf\view\form\WizardForm;
 use oat\taoDelivery\model\AssignmentService;
 use oat\taoDelivery\model\execution\Monitoring;
 use oat\taoDelivery\model\execution\ServiceProxy;
+use oat\taoTests\models\TestsService;
 use oat\tao\controller\SaSModule;
 use oat\tao\helpers\Template;
 use oat\tao\model\TaoOntology;
@@ -251,7 +252,7 @@ class DeliveryMgmt extends SaSModule
         $q = $this->getRequestParameter('q');
         $tests = [];
 
-        $testService = \taoTests_models_classes_TestsService::singleton();
+        $testService = $this->getServiceLocator()->get(TestsService::class);
         /** @var ComplexSearchService $search */
         $search = $this->getServiceLocator()->get(ComplexSearchService::SERVICE_ID);
 

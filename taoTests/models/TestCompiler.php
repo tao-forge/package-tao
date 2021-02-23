@@ -18,6 +18,9 @@
  *
  */
 
+namespace oat\taoTests\models;
+
+use \core_kernel_classes_Resource;
 use oat\taoItems\model\ItemsService;
 use oat\tao\model\Compiler;
 
@@ -29,7 +32,7 @@ use oat\tao\model\Compiler;
  * @package taoTests
 
  */
-abstract class taoTests_models_classes_TestCompiler extends Compiler
+abstract class TestCompiler extends Compiler
 {
     protected function getSubCompilerClass(core_kernel_classes_Resource $resource)
     {

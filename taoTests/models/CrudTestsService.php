@@ -19,6 +19,9 @@
  *
  */
 
+namespace oat\taoTests\models;
+
+use \core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdf;
 use oat\generis\model\OntologyRdfs;
 use oat\tao\model\CrudService;
@@ -32,7 +35,7 @@ use oat\tao\model\CrudService;
  * @author Patrick Plichart, patrick@taotesting.com
  *
  */
-class taoTests_models_classes_CrudTestsService extends CrudService
+class CrudTestsService extends CrudService
 {
 
     /** (non-PHPdoc)
@@ -40,7 +43,7 @@ class taoTests_models_classes_CrudTestsService extends CrudService
      */
     protected function getClassService()
     {
-        return taoTests_models_classes_TestsService::singleton();
+        return $this->getServiceLocator()->get(TestsService::class);
     }
 
     /**

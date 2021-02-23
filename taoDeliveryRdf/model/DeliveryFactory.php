@@ -30,6 +30,7 @@ use oat\oatbox\log\LoggerService;
 use oat\oatbox\service\ConfigurableService;
 use oat\taoDeliveryRdf\model\event\DeliveryCreatedEvent;
 use oat\taoDelivery\model\container\delivery\ContainerProvider;
+use oat\taoTests\models\TestsService;
 use oat\tao\helpers\form\ValidationRuleRegistry;
 use oat\tao\model\service\ServiceCall;
 
@@ -109,7 +110,7 @@ class DeliveryFactory extends ConfigurableService
 
         $storage = new TrackedStorage();
         $this->propagate($storage);
-        $compiler = $this->getServiceLocator()->get(\taoTests_models_classes_TestsService::class)->getCompiler($test, $storage);
+        $compiler = $this->getServiceLocator()->get(TestsService::class)->getCompiler($test, $storage);
 
         $report = $compiler->compile();
         if ($report->getType() == \common_report_Report::TYPE_SUCCESS) {

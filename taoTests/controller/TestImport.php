@@ -20,8 +20,12 @@
  *
  */
 
+namespace oat\taoTests\controller;
+
+use \core_kernel_classes_Class;
+use oat\taoTests\models\TestsService;
+use oat\taoTests\models\TestsService as TestService;
 use oat\tao\controller\Import;
-use taoTests_models_classes_TestsService as TestService;
 
 /**
  * This controller provide the actions to import items
@@ -31,7 +35,7 @@ use taoTests_models_classes_TestsService as TestService;
  * @package taoItems
  *
  */
-class taoTests_actions_TestImport extends Import
+class TestImport extends Import
 {
     /**
      * overwrite the parent index to add the requiresRight for Tests
@@ -44,13 +48,18 @@ class taoTests_actions_TestImport extends Import
         parent::index();
     }
 
+    protected function getTestService(): TestsService
+    {
+        return $this->getServiceLocator()->get(TestsService::class);
+    }
+
     protected function getAvailableImportHandlers()
     {
         $returnValue = parent::getAvailableImportHandlers();
 
         $testModelClass = new core_kernel_classes_Class(TestService::CLASS_TEST_MODEL);
         foreach ($testModelClass->getInstances() as $model) {
-            $impl = taoTests_models_classes_TestsService::singleton()->getTestModelImplementation($model);
+            $impl = $this->getTestService()->getTestModelImplementation($model);
             if (in_array('oat\\tao\\model\\import\\ImportProvider', class_implements($impl))) {
                 foreach ($impl->getImportHandlers() as $handler) {
                     array_unshift($returnValue, $handler);

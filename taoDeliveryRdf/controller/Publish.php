@@ -29,9 +29,9 @@ use oat\oatbox\event\EventManager;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDeliveryRdf\model\DeliveryFactory;
 use oat\taoDeliveryRdf\model\tasks\CompileDelivery;
+use oat\taoTests\models\TestsService;
 use oat\tao\controller\SaSModule;
 use oat\tao\model\taskQueue\TaskLogActionTrait;
-use taoTests_models_classes_TestsService as TestsService;
 use tao_helpers_Uri;
 
 /**

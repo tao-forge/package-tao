@@ -20,6 +20,7 @@
  */
 
 use oat\taoTests\models\MissingTestmodelException;
+use oat\taoTests\models\TestsService;
 
 /**
  * Export form for QTI packages
@@ -148,9 +149,9 @@ abstract class taoQtiTest_models_classes_export_ExportForm extends tao_helpers_f
         return $options;
     }
 
-    private function getTestService(): taoTests_models_classes_TestsService
+    private function getTestService(): TestsService
     {
-        return taoTests_models_classes_TestsService::singleton();
+        return TestsService::singleton();
     }
 
     private function getTestModel(): core_kernel_classes_Resource

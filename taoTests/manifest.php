@@ -41,7 +41,7 @@ return [
     ],
     'install' => [
         'rdf' => [
-            __DIR__ . '/models/ontology/taotest.rdf'
+            __DIR__ . '/scripts/install/taotest.rdf'
         ],
             'php' => [
                 'oat\\taoTests\\scripts\\install\\RegisterTestPluginService',
@@ -53,6 +53,12 @@ return [
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestsManagerRole', ['ext' => 'taoTests']],
         ['grant', \oat\tao\model\user\TaoRoles::REST_PUBLISHER, ['ext' => 'taoTests', 'mod' => 'RestTests']],
+    ],
+    'routes' => [
+        '/taoTests' => 'oat\\taoTests\\controller'
+    ],
+    'extra' => [
+        'structures' => $extpath . 'controller' . DIRECTORY_SEPARATOR . 'structures.xml',
     ],
     'constants' => [
         # actions directory

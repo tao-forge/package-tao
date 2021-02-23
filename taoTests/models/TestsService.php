@@ -20,16 +20,25 @@
  *               2009-2012 (update and modification) Public Research Centre Henri Tudor (under the project TAO-SUSTAIN & TAO-DEV);
  *
  */
+namespace oat\taoTests\models;
+
+use \common_Logger;
+use \common_exception_Error;
+use \common_exception_NoImplementation;
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Property;
+use \core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdf;
-use oat\tao\model\TaoOntology;
+use oat\generis\model\fileReference\FileReferenceSerializer;
+use oat\taoTests\models\MissingTestmodelException;
+use oat\taoTests\models\TestModel;
 use oat\taoTests\models\event\TestCreatedEvent;
 use oat\taoTests\models\event\TestDuplicatedEvent;
 use oat\taoTests\models\event\TestRemovedEvent;
-use oat\generis\model\fileReference\FileReferenceSerializer;
-use oat\tao\model\service\ServiceFileStorage;
-use oat\taoTests\models\TestModel;
-use oat\taoTests\models\MissingTestmodelException;
 use oat\tao\model\OntologyClassService;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\service\ServiceFileStorage;
+
     
 /**
  * Service methods to manage the Tests business models using the RDF API.
@@ -39,7 +48,7 @@ use oat\tao\model\OntologyClassService;
  * @package taoTests
 
  */
-class taoTests_models_classes_TestsService extends OntologyClassService
+class TestsService extends OntologyClassService
 {
 
     const CLASS_TEST_MODEL = 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestModel';
@@ -47,9 +56,6 @@ class taoTests_models_classes_TestsService extends OntologyClassService
     const PROPERTY_TEST_MODEL_IMPLEMENTATION = 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestModelImplementation';
 
     const PROPERTY_TEST_TESTMODEL = 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestTestModel';
-
-    /** @deprecated  */
-    const TEST_TESTCONTENT_PROP = 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestContent';
 
     const PROPERTY_TEST_CONTENT = 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestContent';
 
@@ -363,7 +369,7 @@ class taoTests_models_classes_TestsService extends OntologyClassService
      * Returns the implementation of an items test model
      *
      * @param core_kernel_classes_Resource $test
-     * @return taoTests_models_classes_TestModel
+     * @return TestModel
      */
     public function getTestModelImplementation(core_kernel_classes_Resource $testModel)
     {
@@ -384,7 +390,7 @@ class taoTests_models_classes_TestsService extends OntologyClassService
             $testModelService = new $serviceId();
         }
 
-        if (!$testModelService instanceof \taoTests_models_classes_TestModel) {
+        if (!$testModelService instanceof TestModel) {
             throw new common_exception_Error('Test model service ' . get_class($testModelService) . ' not compatible for test model ' . $testModel->getUri());
         }
 

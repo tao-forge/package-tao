@@ -23,6 +23,7 @@
 namespace oat\taoQtiTest\models;
 
 use oat\oatbox\filesystem\Directory;
+use oat\oatbox\filesystem\File;
 use oat\oatbox\service\ConfigurableService;
 use oat\taoTests\models\TestModel;
 use oat\tao\model\export\ExportProvider;
@@ -45,7 +46,7 @@ class TestModelService extends ConfigurableService implements TestModel, ImportP
 
     /**
      * {@inheritDoc}
-     * @see \taoTests_models_classes_TestModel::prepareContent()
+     * @see TestModel::prepareContent()
      */
     public function prepareContent(\core_kernel_classes_Resource $test, $items = [])
     {
@@ -55,7 +56,7 @@ class TestModelService extends ConfigurableService implements TestModel, ImportP
 
     /**
      * {@inheritDoc}
-     * @see \taoTests_models_classes_TestModel::deleteContent()
+     * @see TestModel::deleteContent()
      */
     public function deleteContent(\core_kernel_classes_Resource $test)
     {
@@ -65,7 +66,7 @@ class TestModelService extends ConfigurableService implements TestModel, ImportP
 
     /**
      * {@inheritDoc}
-     * @see \taoTests_models_classes_TestModel::getItems()
+     * @see TestModel::getItems()
      */
     public function getItems(\core_kernel_classes_Resource $test)
     {
@@ -75,7 +76,7 @@ class TestModelService extends ConfigurableService implements TestModel, ImportP
 
     /**
      * {@inheritDoc}
-     * @see \taoTests_models_classes_TestModel::onChangeTestLabel()
+     * @see TestModel::onChangeTestLabel()
      */
     public function onChangeTestLabel(\core_kernel_classes_Resource $test)
     {
@@ -84,7 +85,7 @@ class TestModelService extends ConfigurableService implements TestModel, ImportP
 
     /**
      * {@inheritDoc}
-     * @see \taoTests_models_classes_TestModel::getAuthoringUrl()
+     * @see TestModel::getAuthoringUrl()
      */
     public function getAuthoringUrl(\core_kernel_classes_Resource $test)
     {

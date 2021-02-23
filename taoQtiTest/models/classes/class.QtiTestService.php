@@ -36,6 +36,8 @@ use oat\taoQtiTest\models\cat\CatService;
 use oat\taoQtiTest\models\metadata\MetadataTestContextAware;
 use oat\taoQtiTest\models\render\QtiPackageImportPreprocessing;
 use oat\taoQtiTest\models\test\AssessmentTestXmlFactory;
+use oat\taoTests\models\TestsService as TestService;
+use oat\taoTests\models\TestsService;
 use oat\taoTests\models\event\TestUpdatedEvent;
 use oat\tao\model\TaoOntology;
 use oat\tao\model\resources\ResourceAccessDeniedException;
@@ -48,7 +50,6 @@ use qtism\data\storage\StorageException;
 use qtism\data\storage\xml\XmlDocument;
 use qtism\data\storage\xml\XmlStorageException;
 use qtism\data\storage\xml\marshalling\UnmarshallingException;
-use taoTests_models_classes_TestsService as TestService;
 
 /**
  * the QTI TestModel service.

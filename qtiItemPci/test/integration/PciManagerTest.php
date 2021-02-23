@@ -16,6 +16,7 @@ use oat\taoQtiItem\model\portableElement\exception\PortableElementException;
 use oat\taoQtiItem\model\portableElement\model\PortableElementModel;
 use oat\taoQtiItem\model\portableElement\storage\PortableElementRegistry;
 use oat\taoQtiItem\model\qti\ImportService;
+use oat\taoTests\models\TestsService;
 
 class PciManagerTest extends GenerisTestCase
 {
@@ -37,7 +38,7 @@ class PciManagerTest extends GenerisTestCase
     private $portableElementService;
 
     /**
-     * @var \taoTests_models_classes_TestsService
+     * @var \oat\taoTests\models\TestsService
      */
     private $testService;
 
@@ -56,7 +57,7 @@ class PciManagerTest extends GenerisTestCase
         $this->itemsService = ItemsService::singleton();
         $this->itemsService->setModel($this->ontologyMock);
         $this->portableElementService = new PortableElementService();
-        $this->testService = \taoTests_models_classes_TestsService::singleton();
+        $this->testService = new TestsService();
         $this->importService = ImportService::singleton();
         \common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiItem');
     }

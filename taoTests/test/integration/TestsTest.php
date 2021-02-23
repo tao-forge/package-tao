@@ -29,12 +29,14 @@ use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
 use oat\generis\model\OntologyRdfs;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoTests\models\TestCompiler;
+use oat\taoTests\models\TestModel;
+use oat\taoTests\models\TestsService as TestService;
+use oat\taoTests\models\TestsService;
 use oat\tao\model\OntologyClassService;
 use oat\tao\model\Service;
 use oat\tao\model\TaoOntology;
-use taoTests_models_classes_TestCompiler;
-use taoTests_models_classes_TestsService;
-use taoTests_models_classes_TestsService as TestService;
+use oat\tao\model\service\ServiceFileStorage;
 
 /**
  *
@@ -47,7 +49,7 @@ class TestsTest extends GenerisPhpUnitTestRunner
 
     /**
      *
-     * @var taoTests_models_classes_TestsService
+     * @var oat\taoTests\models\TestsService
      */
     protected $testsService = null;
 
@@ -57,19 +59,19 @@ class TestsTest extends GenerisPhpUnitTestRunner
     public function setUp(): void
     {
         parent::setUp();
-        $this->testsService = new taoTests_models_classes_TestsService();
+        $this->testsService = new TestsService();
     }
 
     /**
      * Test the user service implementation
      * @see \oat\tao\model\ServiceFactory::get
-     * @see \taoTests_models_classes_TestsService::__construct
+     * @see \oat\taoTests\models\TestsService::__construct
      */
     public function testService()
     {
 
         $this->assertIsA($this->testsService, OntologyClassService::class);
-        $this->assertIsA($this->testsService, taoTests_models_classes_TestsService::class);
+        $this->assertIsA($this->testsService, TestsService::class);
     }
 
     /**
@@ -149,7 +151,7 @@ class TestsTest extends GenerisPhpUnitTestRunner
             'testModelServiceId' => new TestModelUnit()
         ]);
 
-        $testServiceMock = $this->getMockBuilder(taoTests_models_classes_TestsService::class)
+        $testServiceMock = $this->getMockBuilder(TestsService::class)
             ->disableOriginalConstructor()
             ->setMethods(['getServiceManager'])
             ->getMock();
@@ -178,7 +180,7 @@ class TestsTest extends GenerisPhpUnitTestRunner
             $this->testsService->setTestModel($test, $model);
             $compilerName = $this->testsService->getCompilerClass($test);
             $compilerClass = new \ReflectionClass($compilerName);
-            $this->assertTrue($compilerClass->isSubclassOf(taoTests_models_classes_TestCompiler::class));
+            $this->assertTrue($compilerClass->isSubclassOf(TestCompiler::class));
         }
     }
 
@@ -354,7 +356,7 @@ class TestsTest extends GenerisPhpUnitTestRunner
 }
 
 
-class TestModelUnit implements \taoTests_models_classes_TestModel
+class TestModelUnit implements TestModel
 {
     /**
      * @inheritDoc
@@ -411,4 +413,10 @@ class TestModelUnit implements \taoTests_models_classes_TestModel
     {
         // TODO: Implement getPackerClass() method.
     }
+
+    public function getCompiler(core_kernel_classes_Resource $test, ServiceFileStorage $storage)
+    {
+        // TODO: Implement getCompiler() method.
+    }
+
 }

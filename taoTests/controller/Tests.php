@@ -21,8 +21,21 @@
  *
  */
 
+namespace oat\taoTests\controller;
+
+use \common_Logger;
+use \common_exception_BadRequest;
+use \common_exception_NoImplementation;
+use \common_exception_Unauthorized;
+use \common_session_SessionManager;
+use \core_kernel_classes_Resource;
+use \tao_helpers_Request;
+use \tao_helpers_Uri;
+use \tao_helpers_form_FormContainer;
 use oat\oatbox\event\EventManager;
+use oat\taoTests\models\TestsService;
 use oat\taoTests\models\event\TestUpdatedEvent;
+use oat\tao\controller\RdfController;
 use oat\tao\controller\SaSModule;
 use oat\tao\model\controller\SignedFormInstance;
 use oat\tao\model\dataBinding\GenerisFormDataBinder;
@@ -40,7 +53,7 @@ use tao_helpers_form_FormContainer as FormContainer;
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  *
  */
-class taoTests_actions_Tests extends SaSModule
+class Tests extends RdfController
 {
 
     /**
@@ -53,7 +66,7 @@ class taoTests_actions_Tests extends SaSModule
 
     protected function getClassService()
     {
-        return taoTests_models_classes_TestsService::singleton();
+        return $this->getServiceLocator()->get(TestsService::class);
     }
 
     /**
@@ -63,9 +76,6 @@ class taoTests_actions_Tests extends SaSModule
     public function __construct()
     {
         parent::__construct();
-
-        //the service is initialized by default
-        $this->service = taoTests_models_classes_TestsService::singleton();
         $this->defaultData();
     }
 
@@ -82,7 +92,7 @@ class taoTests_actions_Tests extends SaSModule
     {
         $test = new core_kernel_classes_Resource($this->getRequestParameter('id'));
 
-        $this->setData('isPreviewEnabled', $this->service->hasItems($test));
+        $this->setData('isPreviewEnabled', $this->getClassService()->hasItems($test));
 
         if (!$this->isLocked($test)) {
             // my lock
@@ -103,12 +113,12 @@ class taoTests_actions_Tests extends SaSModule
                 $propertyValues = $myForm->getValues();
 
                 // don't hande the testmodel via bindProperties
-                if (array_key_exists(taoTests_models_classes_TestsService::PROPERTY_TEST_TESTMODEL, $propertyValues)) {
-                    $modelUri = $propertyValues[taoTests_models_classes_TestsService::PROPERTY_TEST_TESTMODEL];
-                    unset($propertyValues[taoTests_models_classes_TestsService::PROPERTY_TEST_TESTMODEL]);
+                if (array_key_exists(TestsService::PROPERTY_TEST_TESTMODEL, $propertyValues)) {
+                    $modelUri = $propertyValues[TestsService::PROPERTY_TEST_TESTMODEL];
+                    unset($propertyValues[TestsService::PROPERTY_TEST_TESTMODEL]);
                     if (!empty($modelUri)) {
                         $testModel = new core_kernel_classes_Resource($modelUri);
-                        $this->service->setTestModel($test, $testModel);
+                        $this->getClassService()->setTestModel($test, $testModel);
                     }
                 } else {
                     common_Logger::w('No testmodel on test form', 'taoTests');
@@ -125,7 +135,7 @@ class taoTests_actions_Tests extends SaSModule
             }
 
             $myForm->removeElement(tao_helpers_Uri::encode(
-                taoTests_models_classes_TestsService::PROPERTY_TEST_CONTENT
+                TestsService::PROPERTY_TEST_CONTENT
             ));
             $updatedAt = $this->getServiceLocator()->get(ResourceWatcher::SERVICE_ID)->getUpdatedAt($test);
             $this->setData('updatedAt', $updatedAt);
@@ -169,7 +179,7 @@ class taoTests_actions_Tests extends SaSModule
             $lockManager->releaseLock($instance, $userId);
         }
 
-        if ($this->service->deleteTest($instance)) {
+        if ($this->getClassService()->deleteTest($instance)) {
             $success = true;
             $message = __('Test was successfully deleted.');
         } else {
@@ -192,8 +202,8 @@ class taoTests_actions_Tests extends SaSModule
     {
         $test = new core_kernel_classes_Resource($this->getRequestParameter('id'));
         if (!$this->isLocked($test)) {
-            $testModel = $this->service->getTestModel($test);
-            $testModelImpl = $this->service->getTestModelImplementation($testModel);
+            $testModel = $this->getClassService()->getTestModel($test);
+            $testModelImpl = $this->getClassService()->getTestModelImplementation($testModel);
             $authoringUrl = $testModelImpl->getAuthoringUrl($test);
             if (!empty($authoringUrl)) {
                 $userId = common_session_SessionManager::getSession()->getUser()->getIdentifier();

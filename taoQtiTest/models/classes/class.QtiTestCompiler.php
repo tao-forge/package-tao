@@ -31,6 +31,7 @@ use oat\taoQtiTest\models\QtiTestCompilerIndex;
 use oat\taoQtiTest\models\TestCategoryRulesService;
 use oat\taoQtiTest\models\cat\CatService;
 use oat\taoQtiTest\models\runner\RunnerService;
+use oat\taoTests\models\TestCompiler;
 use oat\tao\model\metadata\compiler\ResourceJsonMetadataCompiler;
 use oat\tao\model\service\ConstantParameter;
 use oat\tao\model\service\ServiceCall;
@@ -58,7 +59,7 @@ use qtism\runtime\rendering\markup\xhtml\XhtmlRenderingEngine;
  * @package taoQtiTest
 
  */
-class taoQtiTest_models_classes_QtiTestCompiler extends taoTests_models_classes_TestCompiler implements ContainerProvider
+class taoQtiTest_models_classes_QtiTestCompiler extends TestCompiler implements ContainerProvider
 {
     const ADAPTIVE_SECTION_MAP_FILENAME = 'adaptive-section-map.json';
 
