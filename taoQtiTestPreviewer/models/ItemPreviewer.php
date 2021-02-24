@@ -36,6 +36,8 @@ use oat\taoItems\model\pack\Packer;
 use oat\taoQtiItem\helpers\QtiFile;
 use oat\taoQtiItem\model\QtiJsonItemCompiler;
 use oat\taoQtiItem\model\qti\Service;
+use oat\taoQtiTest\models\QtiTestCompiler;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\taoQtiTest\models\container\QtiTestDeliveryContainer;
 use oat\tao\model\service\FileStorage;
 use oat\tao\model\service\StorageDirectory;
@@ -43,8 +45,6 @@ use qtism\common\datatypes\files\FileManagerException;
 use qtism\data\storage\StorageException;
 use qtism\data\storage\xml\XmlDocument;
 use taoQtiCommon_helpers_PciVariableFiller as PciVariableFiller;
-use taoQtiTest_models_classes_QtiTestCompiler as QtiTestCompiler;
-use taoQtiTest_models_classes_QtiTestService as QtiTestService;
 
 class ItemPreviewer extends ConfigurableService
 {

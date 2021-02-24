@@ -23,6 +23,7 @@ namespace oat\taoQtiTest\test\integration;
 
 use oat\generis\test\GenerisPhpUnitTestRunner;
 use oat\oatbox\service\ServiceManager;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\taoQtiTest\models\export\metadata\TestExporter;
 use oat\taoTests\models\TestsService;
 
@@ -54,7 +55,7 @@ class TestExporterTest extends GenerisPhpUnitTestRunner
     {
         $class = TestsService::singleton()->getRootclass()->createSubClass(uniqid('functional'));
         \helpers_TimeOutHelper::setTimeOutLimit(\helpers_TimeOutHelper::LONG);
-        $report = \taoQtiTest_models_classes_QtiTestService::singleton()
+        $report = QtiTestService::singleton()
             ->importMultipleTests($class, $testFile);
         \helpers_TimeOutHelper::reset();
         $resources = $class->getInstances();

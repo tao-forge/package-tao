@@ -26,10 +26,10 @@ use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\service\ConfigurableService;
 use oat\taoQtiItem\model\qti\Service;
 use oat\taoQtiTestPreviewer\models\test\TestPreviewRequest;
+use oat\taoQtiTest\helpers\ItemResolver;
+use oat\taoQtiTest\models\QtiTestService;
 use qtism\data\AssessmentTest;
 use qtism\data\storage\xml\XmlCompactDocument;
-use taoQtiTest_helpers_ItemResolver;
-use taoQtiTest_models_classes_QtiTestService;
 
 class TestPreviewerAssessmentTestGenerator extends ConfigurableService implements TestPreviewerAssessmentTestGeneratorInterface
 {
@@ -49,15 +49,15 @@ class TestPreviewerAssessmentTestGenerator extends ConfigurableService implement
         return $compiledDoc->getDocumentComponent();
     }
 
-    private function getQtiTestService(): taoQtiTest_models_classes_QtiTestService
+    private function getQtiTestService(): QtiTestService
     {
-        return $this->getServiceLocator()->get(taoQtiTest_models_classes_QtiTestService::class);
+        return $this->getServiceLocator()->get(QtiTestService::class);
     }
 
-    private function getItemResolver(): taoQtiTest_helpers_ItemResolver
+    private function getItemResolver(): ItemResolver
     {
         $service = $this->getServiceLocator()->get(Service::class);
 
-        return new taoQtiTest_helpers_ItemResolver($service);
+        return new ItemResolver($service);
     }
 }

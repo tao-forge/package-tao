@@ -25,8 +25,8 @@ use Generator;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
 use oat\oatbox\service\ConfigurableService;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\tao\model\service\StorageDirectory;
-use taoQtiTest_models_classes_QtiTestService;
 
 
 class AssemblyFilesReader extends ConfigurableService implements AssemblyFilesReaderInterface
@@ -71,6 +71,6 @@ class AssemblyFilesReader extends ConfigurableService implements AssemblyFilesRe
      */
     private function isCompiledTestFile(File $file)
     {
-        return strpos($file->getBasename(), taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_FILENAME) !== false;
+        return strpos($file->getBasename(), QtiTestService::TEST_COMPILED_FILENAME) !== false;
     }
 }

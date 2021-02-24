@@ -26,7 +26,7 @@ use Exception;
 use ZipArchive;
 use common_exception_Error;
 use oat\oatbox\filesystem\File;
-use oat\tao\model\Parser as Parser_2;
+use oat\tao\model\Parser as BaseParser;
 use tao_helpers_File;
 
 /**
@@ -40,7 +40,7 @@ use tao_helpers_File;
  * @see http://www.imsglobal.org/question/qti_v2p0/imsqti_intgv2p0.html#section10003
 
  */
-class PackageParser extends Parser_2
+class PackageParser extends BaseParser
 {
     protected $extracted;
 

@@ -25,9 +25,9 @@ use common_report_Report;
 use core_kernel_classes_Property;
 use core_kernel_classes_Resource;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoQtiTest\models\ManifestParser;
+use oat\taoQtiTest\models\QtiTestCompiler;
 use oat\tao\model\service\FileStorage;
-use taoQtiTest_models_classes_ManifestParser;
-use taoQtiTest_models_classes_QtiTestCompiler;
 
 /**
  * This test case focuses on testing the ManifestParser model.
@@ -59,7 +59,7 @@ class QtiTestParserTest extends GenerisPhpUnitTestRunner
      */
     public function testManifestParserObject()
     {
-        $objParser = new taoQtiTest_models_classes_ManifestParser($this->dataDir() . 'imsmanifest_mapping_1.xml');
+        $objParser = new ManifestParser($this->dataDir() . 'imsmanifest_mapping_1.xml');
         $this->assertNotNull($objParser);
 
         return $objParser;
@@ -84,10 +84,10 @@ class QtiTestParserTest extends GenerisPhpUnitTestRunner
      */
     public function testManifestParserGetResources($objParser)
     {
-        $idResources = $objParser->getResources(null, taoQtiTest_models_classes_ManifestParser::FILTER_RESOURCE_IDENTIFIER);
+        $idResources = $objParser->getResources(null, ManifestParser::FILTER_RESOURCE_IDENTIFIER);
         $this->assertEquals(4, count($idResources));
 
-        $typeResources = $objParser->getResources('imsqti_test_xmlv2p1', taoQtiTest_models_classes_ManifestParser::FILTER_RESOURCE_TYPE);
+        $typeResources = $objParser->getResources('imsqti_test_xmlv2p1', ManifestParser::FILTER_RESOURCE_TYPE);
         $this->assertEquals(1, count($typeResources));
 
         $typeResourcesDefault = $objParser->getResources('imsqti_test_xmlv2p1');
@@ -97,7 +97,7 @@ class QtiTestParserTest extends GenerisPhpUnitTestRunner
     /**
      * Initialize the compiler
      *
-     * @return \taoQtiTest_models_classes_QtiTestCompiler
+     * @return \oat\taoQtiTest\models\QtiTestCompiler
      */
     public function testQtiTestCreateCompiler()
     {
@@ -108,8 +108,8 @@ class QtiTestParserTest extends GenerisPhpUnitTestRunner
         $this->assertIsA($content, core_kernel_classes_Resource::class);
         $this->assertIsA($storage, FileStorage::class);
 
-        $compiler = new taoQtiTest_models_classes_QtiTestCompiler($content, $storage);
-        $this->assertIsA($compiler, taoQtiTest_models_classes_QtiTestCompiler::class);
+        $compiler = new QtiTestCompiler($content, $storage);
+        $this->assertIsA($compiler, QtiTestCompiler::class);
 
         return $compiler;
     }
@@ -119,7 +119,7 @@ class QtiTestParserTest extends GenerisPhpUnitTestRunner
     /**
      * @depends testQtiTestCreateCompiler
      *
-     * @param \taoQtiTest_models_classes_QtiTestCompiler $compiler
+     * @param \oat\taoQtiTest\models\QtiTestCompiler $compiler
      * @return void
      */
     public function testQtiTextCompilerCompile($compiler)

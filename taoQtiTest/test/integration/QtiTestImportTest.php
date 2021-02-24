@@ -21,15 +21,15 @@
 
 namespace oat\taoQtiTest\test\integration;
 
-use oat\generis\test\GenerisPhpUnitTestRunner;
-use oat\tao\model\TaoOntology;
-use oat\tao\model\upload\UploadService;
-use taoQtiTest_models_classes_import_TestImport;
 use common_report_Report;
 use core_kernel_classes_Class;
+use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoQtiTest\models\import\TestImport;
+use oat\tao\model\TaoOntology;
+use oat\tao\model\upload\UploadService;
 use tao_helpers_form_Form;
-use tao_helpers_form_xhtml_Form;
 use tao_helpers_form_FormElement;
+use tao_helpers_form_xhtml_Form;
 
 /**
  * This test case focuses on testing the import_TestImport model.
@@ -55,12 +55,12 @@ class QtiTestImportTest extends GenerisPhpUnitTestRunner
     /**
      * verify main class
      *
-     * @return \taoQtiTest_models_classes_import_TestImport
+     * @return \oat\taoQtiTest\models\import\TestImport
      */
     public function testInitImport()
     {
-        $testImport = new taoQtiTest_models_classes_import_TestImport();
-        $this->assertInstanceOf(taoQtiTest_models_classes_import_TestImport::class, $testImport);
+        $testImport = new TestImport();
+        $this->assertInstanceOf(TestImport::class, $testImport);
 
         return $testImport;
     }
@@ -69,7 +69,7 @@ class QtiTestImportTest extends GenerisPhpUnitTestRunner
      * test import form create
      *
      * @depends testInitImport
-     * @param  \taoQtiTest_models_classes_import_TestImport $testImport
+     * @param  \oat\taoQtiTest\models\import\TestImport $testImport
      * @return \tao_helpers_form_Form
      */
     public function testImportFormCreate($testImport)
@@ -147,7 +147,7 @@ class QtiTestImportTest extends GenerisPhpUnitTestRunner
      *
      * @depends testInitImport
      * @depends testImportFormCreate
-     * @param  \taoQtiTest_models_classes_import_TestImport $testImport
+     * @param  \oat\taoQtiTest\models\import\TestImport $testImport
      * @param  \tao_helpers_form_Form                       $form
      * @return void
      */

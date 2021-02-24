@@ -24,9 +24,9 @@ namespace oat\taoQtiTest\test\integration;
 use common_ext_ExtensionsManager;
 use common_report_Report;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\taoTests\models\TestsService;
 use oat\tao\model\TaoOntology;
-use taoQtiTest_models_classes_QtiTestService;
 
 /**
  * This test case focuses on testing the ManifestParser model.
@@ -39,7 +39,7 @@ class QtiTestServiceTest extends GenerisPhpUnitTestRunner
 
     /**
      *
-     * @var taoQtiTest_models_classes_QtiTestService
+     * @var oat\taoQtiTest\models\QtiTestService
      */
     protected $testService = null;
 
@@ -47,7 +47,7 @@ class QtiTestServiceTest extends GenerisPhpUnitTestRunner
     {
         common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiTest');
 
-        $this->testService = taoQtiTest_models_classes_QtiTestService::singleton();
+        $this->testService = QtiTestService::singleton();
     }
 
     /**
@@ -57,7 +57,7 @@ class QtiTestServiceTest extends GenerisPhpUnitTestRunner
      */
     public function testService()
     {
-        $this->assertIsA($this->testService, taoQtiTest_models_classes_QtiTestService::class);
+        $this->assertIsA($this->testService, QtiTestService::class);
     }
 
     /**

@@ -27,13 +27,13 @@ use oat\taoOutcomeUi\helper\ResponseVariableFormatter;
 use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoOutcomeUi\model\Wrapper\ResultServiceWrapper;
 use oat\taoProctoring\model\execution\DeliveryExecutionManagerService;
+use oat\taoQtiTest\helpers\Utils;
 use oat\taoQtiTest\models\runner\QtiRunnerService;
 use oat\taoQtiTest\models\runner\QtiRunnerServiceContext;
 use oat\taoResultServer\models\classes\ResultServerService;
 use qtism\data\AssessmentSection;
 use qtism\data\AssessmentSectionRef;
 use qtism\data\TestPart;
-use taoQtiTest_helpers_Utils;
 use taoResultServer_models_classes_OutcomeVariable;
 use taoResultServer_models_classes_ResponseVariable;
 
@@ -154,7 +154,7 @@ class QtiRunnerInitDataBuilder
 
     protected function getTestMap(QtiRunnerServiceContext $context, array $itemsStates)
     {
-        $testDefinition = taoQtiTest_helpers_Utils::getTestDefinition($context->getTestCompilationUri());
+        $testDefinition = Utils::getTestDefinition($context->getTestCompilationUri());
 
         $map = [
             'scope' => 'test',

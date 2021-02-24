@@ -25,7 +25,7 @@ namespace oat\taoQtiItem\model\qti;
 use oat\oatbox\log\LoggerAwareTrait;
 use oat\oatbox\service\ServiceManager;
 use oat\taoQtiItem\model\ValidationService;
-use oat\tao\model\Parser as Parser_2;
+use oat\tao\model\Parser as BaseParser;
 use tao_helpers_Request;
 
 /**
@@ -40,7 +40,7 @@ use tao_helpers_Request;
  * @see http://www.imsglobal.org/question/qti_v2p0/imsqti_intgv2p0.html#section10003
 
  */
-class ManifestParser extends Parser_2
+class ManifestParser extends BaseParser
 {
     use LoggerAwareTrait;
 

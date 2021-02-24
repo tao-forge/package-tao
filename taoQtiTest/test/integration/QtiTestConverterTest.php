@@ -21,14 +21,14 @@
 
 namespace oat\taoQtiTest\test\integration;
 
+use ReflectionClass;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoQtiTest\models\QtiTestConverter;
 use qtism\data\storage\StorageException;
 use qtism\data\storage\xml\XmlDocument;
-use ReflectionClass;
-use \taoQtiTest_models_classes_QtiTestConverter;
 
 /**
- * Integration test of the {@link taoQtiTest_models_classes_QtiTestConverter} class.
+ * Integration test of the {@link oat\taoQtiTest\models\QtiTestConverter} class.
  *
  * @author Bertrand Chevrier <bertrand@taotesting.com>
  * @package taoQtiTest
@@ -59,7 +59,7 @@ class QtiTestConverterTest extends GenerisPhpUnitTestRunner
     }
 
     /**
-     * Test {@link taoQtiTest_models_classes_QtiTestConverter::toJson}
+     * Test {@link oat\taoQtiTest\models\QtiTestConverter::toJson}
      * @dataProvider dataProvider
      *
      * @param string $testPath
@@ -76,14 +76,14 @@ class QtiTestConverterTest extends GenerisPhpUnitTestRunner
             $this->fail($e->getMessage());
         }
         
-        $converter = new taoQtiTest_models_classes_QtiTestConverter($doc);
+        $converter = new QtiTestConverter($doc);
         $result = $converter->toJson();
 
         $this->assertEquals($expected, $result);
     }
 
     /**
-     * Test {@link taoQtiTest_models_classes_QtiTestConverter::fromJson}
+     * Test {@link oat\taoQtiTest\models\QtiTestConverter::fromJson}
      * @dataProvider dataProvider
      *
      * @param string $testPath
@@ -92,7 +92,7 @@ class QtiTestConverterTest extends GenerisPhpUnitTestRunner
     public function testFromJson($testPath, $json)
     {
         $doc = new XmlDocument('2.1');
-        $converter = new taoQtiTest_models_classes_QtiTestConverter($doc);
+        $converter = new QtiTestConverter($doc);
         $converter->fromJson($json);
         
         $result = preg_replace([
@@ -119,12 +119,12 @@ class QtiTestConverterTest extends GenerisPhpUnitTestRunner
 
     public function testLookupClass()
     {
-        $class = new ReflectionClass(taoQtiTest_models_classes_QtiTestConverter::class);
+        $class = new ReflectionClass(QtiTestConverter::class);
         $lookupClassMethod = $class->getMethod('lookupClass');
         $lookupClassMethod->setAccessible(true);
 
         $doc = new XmlDocument('2.1');
-        $converter = new taoQtiTest_models_classes_QtiTestConverter($doc);
+        $converter = new QtiTestConverter($doc);
 
         $result = $lookupClassMethod->invoke($converter, 'or');
         $this->assertEquals($result, 'qtism\data\expressions\operators\OrOperator');

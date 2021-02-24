@@ -2,16 +2,16 @@
 
 namespace oat\taoQtiTest\test\unit\models\classes\xml;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use core_kernel_classes_Resource;
 use oat\generis\test\TestCase;
+use oat\taoQtiTest\models\QtiTestConverterException;
+use oat\taoQtiTest\models\QtiTestService;
+use oat\taoQtiTest\models\QtiTestServiceException;
 use oat\taoQtiTest\models\xmlEditor\XmlEditor;
-use PHPUnit\Framework\MockObject\MockObject;
 use qtism\data\storage\xml\XmlDocument;
 use qtism\data\storage\xml\XmlStorageException;
-use taoQtiTest_models_classes_QtiTestConverterException;
-use \taoQtiTest_models_classes_QtiTestService;
-use taoQtiTest_models_classes_QtiTestServiceException;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 class XmlEditorTest extends TestCase
 {
@@ -28,7 +28,7 @@ class XmlEditorTest extends TestCase
      */
     private $serviceLocatorMock;
     /**
-     * @var MockObject|taoQtiTest_models_classes_QtiTestService
+     * @var MockObject|oat\taoQtiTest\models\QtiTestService
      */
     private $qtiTestServiceMock;
 
@@ -38,10 +38,10 @@ class XmlEditorTest extends TestCase
         $doc->load(__DIR__ . '/../../../../samples/xml/test.xml');
         $this->xmlDoc = $doc;
         $this->testResourceMock = $this->createMock(core_kernel_classes_Resource::class);
-        $this->qtiTestServiceMock = $this->createMock(taoQtiTest_models_classes_QtiTestService::class);
+        $this->qtiTestServiceMock = $this->createMock(QtiTestService::class);
         $this->qtiTestServiceMock->method('getDoc')->with($this->testResourceMock)->willReturn($this->xmlDoc);
         $this->serviceLocatorMock = $this->getServiceLocatorMock([
-            taoQtiTest_models_classes_QtiTestService::class => $this->qtiTestServiceMock
+            QtiTestService::class => $this->qtiTestServiceMock
         ]);
     }
 
@@ -55,8 +55,8 @@ class XmlEditorTest extends TestCase
 
     /**
      * @throws XmlStorageException
-     * @throws taoQtiTest_models_classes_QtiTestConverterException
-     * @throws taoQtiTest_models_classes_QtiTestServiceException
+     * @throws oat\taoQtiTest\models\QtiTestConverterException
+     * @throws oat\taoQtiTest\models\QtiTestServiceException
      */
     public function testSaveStringTest()
     {

@@ -46,6 +46,7 @@ use oat\taoOutcomeUi\model\table\GradeColumn;
 use oat\taoOutcomeUi\model\table\ResponseColumn;
 use oat\taoOutcomeUi\model\table\VariableColumn;
 use oat\taoQtiTest\models\QtiTestCompilerIndex;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\taoResultServer\models\Formatter\ItemResponseVariableSplitter;
 use oat\taoResultServer\models\classes\NoResultStorage;
 use oat\taoResultServer\models\classes\NoResultStorageException;
@@ -61,7 +62,6 @@ use oat\tao\model\service\FileStorage;
 use oat\tao\model\service\ServiceCallHelper;
 use oat\tao\model\service\StorageDirectory;
 use oat\tao\model\table\Column;
-use taoQtiTest_models_classes_QtiTestService;
 use taoResultServer_models_classes_ReadableResultStorage;
 use taoResultServer_models_classes_Variable as Variable;
 use tao_helpers_Date;
@@ -1563,7 +1563,7 @@ class ResultsService extends OntologyClassService
      */
     private function loadTestMetadataFromFile(StorageDirectory $directory)
     {
-        return $directory->read(taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_METADATA_FILENAME);
+        return $directory->read(QtiTestService::TEST_COMPILED_METADATA_FILENAME);
     }
 
     /**
@@ -1584,7 +1584,7 @@ class ResultsService extends OntologyClassService
         $resourceMetadataCompiler = $this->getServiceLocator()->get(ResourceJsonMetadataCompiler::SERVICE_ID);
         $metadata = $resourceMetadataCompiler->compile($resource);
 
-        $directory->write(taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_METADATA_FILENAME, json_encode($metadata));
+        $directory->write(QtiTestService::TEST_COMPILED_METADATA_FILENAME, json_encode($metadata));
     }
 
     /**
@@ -1596,7 +1596,7 @@ class ResultsService extends OntologyClassService
     {
         $itemIndex = new QtiTestCompilerIndex();
         try {
-            $data = $directory->read(taoQtiTest_models_classes_QtiTestService::TEST_COMPILED_INDEX);
+            $data = $directory->read(QtiTestService::TEST_COMPILED_INDEX);
             if ($data) {
                 $itemIndex->unserialize($data);
             }

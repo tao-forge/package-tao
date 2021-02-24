@@ -20,7 +20,9 @@
  *
  */
 
-$registry = oat\taoQtiTest\models\TestRunnerClientConfigRegistry::getRegistry();
+use oat\taoQtiTest\models\TestRunnerClientConfigRegistry;
+
+$registry = TestRunnerClientConfigRegistry::getRegistry();
 
 $registry->registerQtiTools('markForReview', [
     'hook' => 'taoQtiTest/testRunner/actionBar/markForReview',

@@ -48,7 +48,7 @@ class CloseTestSession extends AbstractAction
         /** @var \qtism\runtime\tests\AssessmentTestSession $session */
         $session = $this->getServiceManager()->get(TestSessionService::SERVICE_ID)->getTestSession($de);
         $initialState = $session->getState();
-        /** @var \taoQtiTest_helpers_TestSessionStorage $testSessionStorage */
+        /** @var \oat\taoQtiTest\helpers\TestSessionStorage $testSessionStorage */
         $testSessionStorage = $this->getServiceManager()->get(TestSessionService::SERVICE_ID)->getTestSessionStorage($de);
         $session->endTestSession();
         $testSessionStorage->persist($session);

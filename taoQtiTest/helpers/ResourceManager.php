@@ -1,0 +1,100 @@
+<?php
+/**
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; under version 2
+ * of the License (non-upgradable).
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * Copyright (c) 2014 (original work) Open Assessment Technologies SA;
+ *
+ *
+ */
+
+namespace oat\taoQtiTest\helpers;
+
+use \common_Exception;
+use \common_Logger;
+use \core_kernel_classes_Resource;
+use \tao_helpers_File;
+use oat\taoQtiTest\models\QtiTestService;
+
+ 
+/**
+ * This helper class aims at formating the item content folder description
+ *
+ */
+class ResourceManager
+{
+   
+    public static function getBaseDir(core_kernel_classes_Resource $test)
+    {
+        $testFile = QtiTestService::singleton()->getTestFile($test);
+        if (is_null($testFile)) {
+            throw new common_Exception('No test folder found for ' . $test->getUri());
+            ;
+        }
+        $baseDir = $testFile->getAbsolutePath() . '/';
+        return $baseDir;
+    }
+ 
+    public static function buildDirectory(core_kernel_classes_Resource $test, $lang, $relPath = '/', $depth = 1, $filters = [])
+    {
+        $baseDir = self::getBaseDir($test);
+        $path = $baseDir . ltrim($relPath, '/');
+        
+        $data = [
+            'path' => $relPath
+        ];
+        if ($depth > 0) {
+            $children = [];
+            if (is_dir($path)) {
+                foreach (new DirectoryIterator($path) as $fileinfo) {
+                    if (!$fileinfo->isDot()) {
+                        $subPath = rtrim($relPath, '/') . '/' . $fileinfo->getFilename();
+                        if ($fileinfo->isDir()) {
+                            $children[] = self::buildDirectory($test, $lang, $subPath, $depth - 1, $filters);
+                        } else {
+                            $file = self::buildFile($test, $lang, $subPath, $filters);
+                            if (!is_null($file)) {
+                                $children[] = $file;
+                            }
+                        }
+                    }
+                }
+            } else {
+                common_Logger::w('"' . $path . '" is not a directory');
+            }
+            $data['children'] = $children;
+        } else {
+            $data['url'] = _url('files', 'TestContent', 'taoQtiTest', ['uri' => $test->getUri(),'lang' => $lang, 'path' => $relPath]);
+        }
+        return $data;
+    }
+    
+    public static function buildFile(core_kernel_classes_Resource $test, $lang, $relPath, $filters = [])
+    {
+        $file = null;
+        $baseDir = self::getBaseDir($test);
+        $path = $baseDir . ltrim($relPath, '/');
+        $mime = tao_helpers_File::getMimeType($path);
+
+        if (count($filters) == 0 || in_array($mime, $filters)) {
+            $file = [
+                'name' => basename($path),
+                'mime' => $mime,
+                'size' => filesize($path),
+                'url' => _url('download', 'TestContent', 'taoQtiTest', ['uri' => $test->getUri(),'lang' => $lang, 'path' => $relPath])
+            ];
+        }
+        return $file;
+    }
+}

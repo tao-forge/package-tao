@@ -22,11 +22,11 @@ declare(strict_types=1);
 namespace oat\taoQtiTest\scripts\install;
 
 use common_report_Report;
-use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\helpers\FileHelperService;
-use oat\taoQtiTest\helpers\QtiPackageExporter;
-use taoQtiTest_models_classes_export_TestExport22;
 use oat\oatbox\extension\InstallAction;
+use oat\oatbox\filesystem\FileSystemService;
+use oat\taoQtiTest\helpers\QtiPackageExporter;
+use oat\taoQtiTest\models\export\TestExport22;
+use oat\tao\helpers\FileHelperService;
 
 class RegisterQtiPackageExporter extends InstallAction
 {
@@ -34,7 +34,7 @@ class RegisterQtiPackageExporter extends InstallAction
     {
         $serviceManager = $this->getServiceManager();
         $qtiPackageExporter = new QtiPackageExporter(
-            new taoQtiTest_models_classes_export_TestExport22(),
+            new TestExport22(),
             $serviceManager->get(FileSystemService::SERVICE_ID),
             $serviceManager->get(FileHelperService::class)
         );

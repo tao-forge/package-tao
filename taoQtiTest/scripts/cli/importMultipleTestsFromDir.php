@@ -2,15 +2,16 @@
 
 namespace oat\taoQtiTest\scripts\cli;
 
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\action\Action;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\model\TaoOntology;
 use oat\taoQtiItem\model\qti\exception\ExtractException;
 use oat\taoQtiItem\model\qti\exception\ParsingException;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use oat\taoQtiTest\models\QtiTestService;
+use oat\tao\model\TaoOntology;
 
 class importMultipleTestsFromDir implements Action, ServiceLocatorAwareInterface
 {
@@ -92,7 +93,7 @@ class importMultipleTestsFromDir implements Action, ServiceLocatorAwareInterface
     {
         // Call service to import package
         \helpers_TimeOutHelper::setTimeOutLimit(\helpers_TimeOutHelper::LONG);
-        $report = \taoQtiTest_models_classes_QtiTestService::singleton()
+        $report = QtiTestService::singleton()
             ->importMultipleTests($this->getDestinationClass(), $package);
 
         if ($report->getType() !== \common_report_Report::TYPE_SUCCESS) {

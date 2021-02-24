@@ -22,8 +22,10 @@
 namespace oat\taoQtiTest\test\integration;
 
 use oat\generis\test\GenerisPhpUnitTestRunner;
-use oat\taoQtiTest\models\TestModelService;
 use oat\generis\test\MockObject;
+use oat\taoQtiTest\models\TestModelService;
+use oat\taoQtiTest\models\export\TestExport;
+use oat\taoQtiTest\models\import\TestImport;
 
 class TestModelTest extends GenerisPhpUnitTestRunner
 {
@@ -68,12 +70,12 @@ class TestModelTest extends GenerisPhpUnitTestRunner
     public function testTestModelImportHandlers()
     {
         $model = new TestModelService(['importHandlers' => [
-            new \taoQtiTest_models_classes_import_TestImport()
+            new TestImport()
         ]]);
         $handlers = $model->getImportHandlers();
         $this->assertCount(1, $handlers);
         $handler = reset($handlers);
-        $this->assertInstanceOf('taoQtiTest_models_classes_import_TestImport', $handler);
+        $this->assertInstanceOf('oat\\taoQtiTest\\models\\import\\TestImport', $handler);
     }
     
     /**
@@ -82,11 +84,11 @@ class TestModelTest extends GenerisPhpUnitTestRunner
     public function testTestModelExportHandlers()
     {
         $model = new TestModelService(['exportHandlers' => [
-            new \taoQtiTest_models_classes_export_TestExport()
+            new TestExport()
         ]]);
         $handlers = $model->getExportHandlers();
         $this->assertCount(1, $handlers);
         $handler = reset($handlers);
-        $this->assertInstanceOf('taoQtiTest_models_classes_export_TestExport', $handler);
+        $this->assertInstanceOf('oat\\taoQtiTest\\models\\export\\TestExport', $handler);
     }
 }

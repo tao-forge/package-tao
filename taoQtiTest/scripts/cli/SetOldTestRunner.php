@@ -23,6 +23,7 @@ namespace oat\taoQtiTest\scripts\cli;
 use oat\oatbox\extension\AbstractAction;
 use oat\taoQtiTest\models\TestModelService;
 use oat\taoQtiTest\models\compilation\CompilationService;
+use oat\taoQtiTest\helpers\TestSession;
 
 /**
  * Class SetOldTestRunner
@@ -43,7 +44,7 @@ class SetOldTestRunner extends AbstractAction
 
         $testQtiExt = \common_ext_ExtensionsManager::singleton()->getExtensionById('taoQtiTest');
         $testRunnerConfig = $testQtiExt->getConfig('testRunner');
-        $testRunnerConfig['test-session'] = '\\taoQtiTest_helpers_TestSession';
+        $testRunnerConfig['test-session'] = TestSession::class;
         $testQtiExt->setConfig('testRunner', $testRunnerConfig);
 
         return new \common_report_Report(\common_report_Report::TYPE_SUCCESS, 'Old test runner activated');

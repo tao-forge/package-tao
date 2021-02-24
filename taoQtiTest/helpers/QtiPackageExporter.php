@@ -25,9 +25,10 @@ use common_exception_Error;
 use common_report_Report;
 use oat\oatbox\filesystem\File;
 use oat\oatbox\filesystem\FileSystemService;
+use oat\taoQtiTest\models\export\TestExport22 as TestExporter;
+use oat\taoQtiTest\models\export\TestExport22;
 use oat\tao\helpers\FileHelperService;
 use oat\tao\model\service\InjectionAwareService;
-use taoQtiTest_models_classes_export_TestExport22 as TestExporter;
 
 class QtiPackageExporter extends InjectionAwareService
 {

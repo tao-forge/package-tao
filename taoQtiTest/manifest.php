@@ -41,6 +41,7 @@ use oat\taoQtiTest\scripts\install\SetSynchronisationService;
 use oat\taoQtiTest\scripts\install\SetupEventListeners;
 use oat\taoQtiTest\scripts\install\SetUpQueueTasks;
 use oat\taoQtiTest\scripts\install\SyncChannelInstaller;
+use oat\taoQtiTest\scripts\install\CreateQtiTestFileDirectory;
 
 $extpath = __DIR__ . DIRECTORY_SEPARATOR;
 $taopath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'tao' . DIRECTORY_SEPARATOR;
@@ -67,7 +68,7 @@ return [
             __DIR__ . '/models/ontology/qtiCat.rdf',
         ],
         'php'   => [
-            __DIR__ . '/scripts/install/addQtiTestFolder.php',
+            CreateQtiTestFileDirectory::class,
             __DIR__ . '/scripts/install/addQtiTestAcceptableLatency.php',
             __DIR__ . '/scripts/install/addExtraTestRunnerButtons.php',
             RegisterTestRunnerProviders::class,
@@ -98,6 +99,9 @@ return [
         ]
     ],
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOTest.rdf#TaoQtiManagerRole',
+    'routes' => [
+        '/taoQtiTest' => 'oat\\taoQtiTest\\controller'
+    ],
     'acl' => [
         ['grant', 'http://www.tao.lu/Ontologies/TAOTest.rdf#TaoQtiManagerRole', ['ext' => 'taoQtiTest']],
         ['grant', 'http://www.tao.lu/Ontologies/TAO.rdf#DeliveryRole', ['ext' => 'taoQtiTest', 'mod' => 'ItemRunner']],

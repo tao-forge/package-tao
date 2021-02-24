@@ -22,8 +22,9 @@ declare(strict_types=1);
  */
 
 use oat\oatbox\service\ServiceManager;
+use oat\taoQtiTest\models\QtiTestService;
 
-$testService = ServiceManager::getServiceManager()->get(taoQtiTest_models_classes_QtiTestService::class);
+$testService = ServiceManager::getServiceManager()->get(QtiTestService::class);
 $testClass = $testService->getRootClass();
 $samplesDirectory = new DirectoryIterator(__DIR__);
 

@@ -28,7 +28,7 @@ use oat\oatbox\service\ServiceManager;
 use oat\taoQtiItem\model\ValidationService;
 use oat\taoQtiItem\model\qti\ParserFactory;
 use oat\taoQtiItem\model\qti\exception\UnsupportedQtiElement;
-use oat\tao\model\Parser as Parser_2;
+use oat\tao\model\Parser as BaseParser;
 use tao_helpers_Request;
 
 /**
@@ -41,7 +41,7 @@ use tao_helpers_Request;
  * @see http://www.imsglobal.org/question/qti_v2p0/imsqti_infov2p0.html#element10010
 
  */
-class Parser extends Parser_2
+class Parser extends BaseParser
 {
     use LoggerAwareTrait;
 

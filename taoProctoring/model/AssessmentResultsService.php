@@ -29,9 +29,10 @@ use oat\taoDelivery\model\execution\DeliveryExecution as DeliveryExecutionInterf
 use oat\taoOutcomeUi\model\ResultsService;
 use oat\taoOutcomeUi\model\Wrapper\ResultServiceWrapper;
 use oat\taoProctoring\model\implementation\TestSessionService;
+use oat\taoQtiTest\helpers\Utils;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\tao\model\service\FileStorage;
 use qtism\data\View;
-use taoQtiTest_models_classes_QtiTestService;
 
 /**
  * Class AssessmentResultsService
@@ -146,7 +147,7 @@ class AssessmentResultsService extends ConfigurableService
         $session = $testSessionService->getTestSession($deliveryExecution);
 
         $inputParameters = $testSessionService->getRuntimeInputParameters($deliveryExecution);
-        $testDefinition = \taoQtiTest_helpers_Utils::getTestDefinition($inputParameters['QtiTestCompilation']);
+        $testDefinition = Utils::getTestDefinition($inputParameters['QtiTestCompilation']);
         $sections = $testDefinition->getComponentsByClassName('assessmentSection');
 
         $tag = $this->getOption(self::OPTION_PRINTABLE_RUBRIC_TAG);
@@ -161,15 +162,15 @@ class AssessmentResultsService extends ConfigurableService
 
         // -- variables used in the included rubric block templates.
         // base path (base URI to be used for resource inclusion).
-        $basePathVarName = taoQtiTest_models_classes_QtiTestService::TEST_BASE_PATH_NAME;
+        $basePathVarName = QtiTestService::TEST_BASE_PATH_NAME;
         $$basePathVarName = $compilationDirs['public']->getPublicAccessUrl();
 
         // state name (the variable to access to get the state of the assessmentTestSession).
-        $stateName = taoQtiTest_models_classes_QtiTestService::TEST_RENDERING_STATE_NAME;
+        $stateName = QtiTestService::TEST_RENDERING_STATE_NAME;
         $$stateName = $session;
 
         // views name (the variable to be accessed for the visibility of rubric blocks).
-        $viewsName = taoQtiTest_models_classes_QtiTestService::TEST_VIEWS_NAME;
+        $viewsName = QtiTestService::TEST_VIEWS_NAME;
         $$viewsName = array(View::CANDIDATE);
 
         foreach ($sections as $section) {

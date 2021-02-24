@@ -1,0 +1,174 @@
+<?php
+
+/**
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; under version 2
+ * of the License (non-upgradable).
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ *
+ *
+ */
+
+namespace oat\taoQtiTest\models\export;
+
+use \DOMDocument;
+use \ZipArchive;
+use \common_Exception;
+use \common_report_Report;
+use \core_kernel_classes_Class;
+use \core_kernel_classes_Resource;
+use \tao_helpers_File;
+use common_report_Report as Report;
+use oat\oatbox\PhpSerializable;
+use oat\oatbox\PhpSerializeStateless;
+use oat\oatbox\event\EventManagerAwareTrait;
+use oat\oatbox\service\ServiceManager;
+use oat\taoQtiTest\helpers\Utils;
+use oat\taoQtiTest\models\event\QtiTestExportEvent;
+use oat\tao\model\export\ExportHandler;
+use oat\tao\model\resources\SecureResourceServiceInterface;
+
+/**
+ * Export Handler for QTI tests.
+ *
+ * @access  public
+ * @author  Joel Bout, <joel@taotesting.com>
+ * @package taoQtiTest
+ */
+class TestExport implements ExportHandler, PhpSerializable
+{
+    use PhpSerializeStateless;
+    use EventManagerAwareTrait;
+
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return __('QTI Test Package 2.1');
+    }
+
+    /**
+     * @param core_kernel_classes_Resource $resource
+     *
+     * @return tao_helpers_form_Form
+     */
+    public function getExportForm(core_kernel_classes_Resource $resource)
+    {
+        $formData = $this->getFormData($resource);
+
+        return (new QtiTest21ExportForm($formData))->getForm();
+    }
+
+    /**
+     * @param array $formValues
+     * @param string $destination
+     * @return Report
+     * @throws common_Exception
+     * @throws common_exception_Error
+     */
+    public function export($formValues, $destination)
+    {
+        if (!isset($formValues['filename'])) {
+            return Report::createFailure('Missing filename for QTI Test export using ' . __CLASS__);
+        }
+
+        $instances = is_string($formValues['instances']) ? [$formValues['instances']] : $formValues['instances'];
+
+        if (!count($instances)) {
+            return Report::createFailure("No instance in form to export");
+        }
+
+        $report = Report::createSuccess();
+
+        $fileName = $formValues['filename'] . '_' . time() . '.zip';
+        $path = tao_helpers_File::concat([$destination, $fileName]);
+
+        if (tao_helpers_File::securityCheck($path, true) === false) {
+            throw new common_Exception('Unauthorized file name for QTI Test ZIP archive.');
+        }
+        // Create a new ZIP archive to store data related to the QTI Test.
+        $zip = new ZipArchive();
+        if ($zip->open($path, ZipArchive::CREATE) !== true) {
+            throw new common_Exception("Unable to create ZIP archive for QTI Test at location '" . $path . "'.");
+        }
+        // Create an empty IMS Manifest as a basis.
+        $manifest = $this->createManifest();
+
+        foreach ($instances as $instance) {
+            $testResource = new core_kernel_classes_Resource($instance);
+            $testExporter = $this->createExporter($testResource, $zip, $manifest);
+            $subReport = $testExporter->export();
+            if (
+                $report->getType() !== Report::TYPE_ERROR &&
+                ($subReport->containsError() || $subReport->getType() === Report::TYPE_ERROR)
+            ) {
+                $report->setType(Report::TYPE_ERROR);
+                $report->setMessage(__('Not all test could be exported'));
+            }
+            $report->add($subReport);
+        }
+
+        $zip->close();
+
+        if (!isset($formValues['uri']) && !isset($formValues['classUri'])) {
+            $report->add(Report::createFailure('Export failed. Key uri nor classUri in formValues are not defined'));
+        } else {
+            $subjectUri = $formValues['uri'] ?? $formValues['classUri'];
+        }
+
+        if (isset($subjectUri) && !$report->containsError()) {
+            $this->getEventManager()->trigger(new QtiTestExportEvent(new core_kernel_classes_Resource($subjectUri)));
+            $report->setMessage(__('Resource(s) successfully exported.'));
+        }
+
+        $report->setData(['path' => $path]);
+
+        return $report;
+    }
+
+    protected function getFormData(core_kernel_classes_Resource $resource): array
+    {
+        $formData = [];
+
+        if ($resource instanceof core_kernel_classes_Class) {
+            $formData['items'] = $this->getResourceService()->getAllChildren($resource);
+            $formData['file_name'] = $resource->getLabel();
+        } else {
+            $formData['instance'] = $resource;
+        }
+
+        return $formData;
+    }
+
+    protected function createExporter(core_kernel_classes_Resource $testResource, ZipArchive $zip, DOMDocument $manifest)
+    {
+        return new QtiTestExporter($testResource, $zip, $manifest);
+    }
+
+    protected function createManifest()
+    {
+        return Utils::emptyImsManifest('2.1');
+    }
+
+    protected function getResourceService(): SecureResourceServiceInterface
+    {
+        return $this->getServiceManager()->get(SecureResourceServiceInterface::SERVICE_ID);
+    }
+
+    protected function getServiceManager()
+    {
+        return ServiceManager::getServiceManager();
+    }
+}

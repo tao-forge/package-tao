@@ -27,6 +27,7 @@ use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoDelivery\model\AssignmentAggregator\UnionAssignmentService;
 use oat\taoItems\model\ItemsService;
 use oat\taoQtiItem\model\QtiJsonItemCompiler;
+use oat\taoQtiTest\helpers\Utils;
 use oat\tao\model\service\FileStorage;
 use oat\tao\model\service\ServiceCallHelper;
 use oat\tao\model\service\StorageDirectory;
@@ -154,7 +155,7 @@ class RecompileItemsElements extends ScriptAction
         $runtime = $unionAssignmentService->getRuntime($compiledDelivery);
 
         $inputParameters = ServiceCallHelper::getInputValues($runtime, []);
-        $testDefinition = \taoQtiTest_helpers_Utils::getTestDefinition($inputParameters['QtiTestCompilation']);
+        $testDefinition = Utils::getTestDefinition($inputParameters['QtiTestCompilation']);
 
         $assessmentItemRefs = $testDefinition->getComponentsByClassName('assessmentItemRef');
 

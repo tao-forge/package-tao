@@ -1,7 +1,5 @@
 <?php
 
-use oat\taoQtiTest\models\runner\session\TestSession;
-
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,6 +17,9 @@ use oat\taoQtiTest\models\runner\session\TestSession;
  *
  * Copyright (c) 2015 (original work) Open Assessment Technologies SA;
  */
+
+use oat\taoQtiTest\models\runner\session\TestSession;
+use oat\taoQtiTest\helpers\TestSessionStorage;
 
 /**
  * Default test runner config
@@ -422,7 +423,7 @@ return [
      * The FQCN of the TestSessionStorage class
      * @type string
      */
-    'test-session-storage' => '\taoQtiTest_helpers_TestSessionStorage',
+    'test-session-storage' => TestSessionStorage::class,
 
     /**
      * A config set that will be provided though the bootstrap

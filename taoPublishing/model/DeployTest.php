@@ -20,14 +20,15 @@
  */
 namespace oat\taoPublishing\model;
 
-use oat\oatbox\service\ConfigurableService;
-use oat\oatbox\action\Action;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use oat\generis\model\OntologyAwareTrait;
+use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Stream;
-use GuzzleHttp\Psr7\MultipartStream;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use oat\generis\model\OntologyAwareTrait;
+use oat\oatbox\action\Action;
+use oat\oatbox\service\ConfigurableService;
+use oat\taoQtiTest\models\export\TestExport;
 
 /**
  * Deploys a test 
@@ -71,7 +72,7 @@ class DeployTest implements Action,ServiceLocatorAwareInterface
     
     protected function sendTest($envId, $test) {
         $exportFile = \tao_helpers_File::createTempDir().'export.zip';
-        $exporter = new \taoQtiTest_models_classes_export_TestExport();
+        $exporter = new TestExport();
         \common_Logger::d('Exporting Test '.$test->getUri().' for deployment');
         $exporter->exportTests(array($test), $exportFile);
         

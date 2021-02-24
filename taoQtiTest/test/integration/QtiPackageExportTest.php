@@ -31,11 +31,11 @@ use common_report_Report as Report;
 use oat\generis\model\data\ModelManager;
 use oat\generis\model\data\Ontology;
 use oat\oatbox\service\ServiceManager;
+use oat\taoQtiTest\controller\RestQtiTests;
 use oat\taoQtiTest\helpers\QtiPackageExporter;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\taoTests\models\TestsService;
 use oat\tao\test\integration\RestTestRunner;
-use taoQtiTest_actions_RestQtiTests;
-use taoQtiTest_models_classes_QtiTestService as QtiTestService;
 use tao_helpers_File;
 
 class QtiPackageExportTest extends RestTestRunner
@@ -238,7 +238,7 @@ class QtiPackageExportTest extends RestTestRunner
     }
 }
 
-class TestableRestQtiTests extends taoQtiTest_actions_RestQtiTests
+class TestableRestQtiTests extends RestQtiTests
 {
     public function __construct()
     {

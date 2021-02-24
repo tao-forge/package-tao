@@ -23,9 +23,10 @@
 namespace oat\taoQtiTest\scripts\cli;
 
 use oat\oatbox\action\Action;
-use qtism\data\storage\xml\marshalling\MarshallerFactory;
+use oat\taoQtiTest\models\QtiTestService;
 use qtism\data\rules\BranchRule;
 use qtism\data\rules\BranchRuleCollection;
+use qtism\data\storage\xml\marshalling\MarshallerFactory;
 
 /**
  * An BranchRule injection script.
@@ -69,7 +70,7 @@ class InjectBranchRule implements Action
             );
         }
         
-        $qtiService = \taoQtiTest_models_classes_QtiTestService::singleton();
+        $qtiService = QtiTestService::singleton();
         $testDoc = $qtiService->getDoc($testResource);
         $test = $testDoc->getDocumentComponent();
         

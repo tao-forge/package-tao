@@ -6,6 +6,7 @@ use oat\generis\model\GenerisRdf;
 use oat\generis\model\OntologyAwareTrait;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 use oat\taoItems\model\ItemsService;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\tao\test\integration\RestTestRunner;
 
 class RestDeliveryTest extends RestTestRunner
@@ -14,7 +15,7 @@ class RestDeliveryTest extends RestTestRunner
 
     /** @var DeliveryAssemblyService */
     protected $deliveryService;
-    /** @var \taoQtiTest_models_classes_QtiTestService */
+    /** @var \oat\taoQtiTest\models\QtiTestService */
     protected $testService;
     /** @var \oat\taoItems\model\ItemsService */
     protected $itemService;
@@ -32,7 +33,7 @@ class RestDeliveryTest extends RestTestRunner
         }
 
         $this->deliveryService = DeliveryAssemblyService::singleton();
-        $this->testService     = \taoQtiTest_models_classes_QtiTestService::singleton();
+        $this->testService     = QtiTestService::singleton();
         $this->itemService     = ItemsService::singleton();
     }
 
@@ -42,7 +43,7 @@ class RestDeliveryTest extends RestTestRunner
      */
     protected function initDeliveryGeneration()
     {
-        $qtiModel     = new \core_kernel_classes_Class(\taoQtiTest_models_classes_QtiTestService::INSTANCE_TEST_MODEL_QTI);
+        $qtiModel     = new \core_kernel_classes_Class(QtiTestService::INSTANCE_TEST_MODEL_QTI);
         $packagePath  = __DIR__ . '/../samples/package/package-basic.zip';
 
         $uri = '';

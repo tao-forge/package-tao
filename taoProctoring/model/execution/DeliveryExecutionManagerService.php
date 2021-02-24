@@ -22,13 +22,13 @@ declare(strict_types=1);
 
 namespace oat\taoProctoring\model\execution;
 
+use Exception;
 use common_Exception;
 use common_exception_Error;
 use common_exception_MissingParameter;
 use common_exception_NotFound;
 use common_ext_ExtensionException;
 use common_session_Session;
-use Exception;
 use oat\oatbox\event\EventManager;
 use oat\oatbox\service\ConfigurableService;
 use oat\oatbox\service\exception\InvalidServiceManagerException;
@@ -40,15 +40,16 @@ use oat\taoProctoring\model\event\DeliveryExecutionTimerAdjusted;
 use oat\taoProctoring\model\implementation\TestSessionService;
 use oat\taoProctoring\model\monitorCache\DeliveryMonitoringData;
 use oat\taoProctoring\model\monitorCache\DeliveryMonitoringService;
+use oat\taoQtiTest\helpers\Utils;
 use oat\taoQtiTest\models\QtiTestExtractionFailedException;
-use oat\taoQtiTest\models\runner\session\TestSession;
 use oat\taoQtiTest\models\runner\StorageManager;
+use oat\taoQtiTest\models\runner\session\TestSession;
 use oat\taoQtiTest\models\runner\time\QtiTimeConstraint;
 use oat\taoQtiTest\models\runner\time\QtiTimer;
 use oat\taoQtiTest\models\runner\time\QtiTimerFactory;
 use oat\taoQtiTest\models\runner\time\TimerAdjustmentService;
-use oat\taoTests\models\runner\time\TimePoint;
 use oat\taoQtiTest\models\runner\time\TimerAdjustmentServiceInterface;
+use oat\taoTests\models\runner\time\TimePoint;
 use oat\taoTests\models\runner\time\TimerStrategyInterface;
 use qtism\common\datatypes\QtiDuration;
 use qtism\data\AssessmentTest;
@@ -265,7 +266,7 @@ class DeliveryExecutionManagerService extends ConfigurableService
 
         $inputParameters = $this->getTestSessionService()->getRuntimeInputParameters($deliveryExecution);
         /** @var AssessmentTest $testDefinition */
-        $testDefinition = \taoQtiTest_helpers_Utils::getTestDefinition($inputParameters['QtiTestCompilation']);
+        $testDefinition = Utils::getTestDefinition($inputParameters['QtiTestCompilation']);
         $components = $testDefinition->getComponentsByClassName(['testPart', 'assessmentSection', 'assessmentItemRef']);
         $components->attach($testDefinition);
 

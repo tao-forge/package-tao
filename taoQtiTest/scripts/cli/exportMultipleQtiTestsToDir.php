@@ -22,13 +22,15 @@
 
 namespace oat\taoQtiTest\scripts\cli;
 
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use ZipArchive;
 use common_report_Report;
 use oat\generis\model\OntologyAwareTrait;
 use oat\oatbox\extension\script\ScriptAction;
 use oat\oatbox\filesystem\FileSystem;
 use oat\oatbox\filesystem\FileSystemService;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
-use ZipArchive;
+use oat\taoQtiTest\helpers\Utils;
+use oat\taoQtiTest\models\export\QtiTestExporter22;
 
 /**
  * php index.php "\oat\taoQtiTest\scripts\cli\exportMultipleQtiTestsToDir" https://nccersso.taocloud.org/nccer_sso.rdf#i15325945796246250 https://nccersso.taocloud.org/nccer_sso.rdf#i15325921352024194 1234
@@ -155,12 +157,12 @@ class exportMultipleQtiTestsToDir extends ScriptAction
     {
         // Create a new ZIP archive to store data related to the QTI Test.
         $zip = new ZipArchive();
-        $manifest = \taoQtiTest_helpers_Utils::emptyImsManifest('2.1');
+        $manifest = Utils::emptyImsManifest('2.1');
         $resource = $this->getResource($testUri);
         if ($resource->exists()) {
             $file = tempnam(sys_get_temp_dir(), 'testExport_');
             $zip->open($file, ZipArchive::CREATE);
-            $exporter = new \taoQtiTest_models_classes_export_QtiTestExporter22($resource, $zip, $manifest);
+            $exporter = new QtiTestExporter22($resource, $zip, $manifest);
             $expReport = $exporter->export();
             $zip->close();
             $zipArchiveHandler = fopen($file, 'r');

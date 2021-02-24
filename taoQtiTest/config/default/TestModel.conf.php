@@ -19,15 +19,18 @@
  */
 
 use oat\taoQtiTest\models\compilation\CompilationService;
+use oat\taoQtiTest\models\export\TestExport;
+use oat\taoQtiTest\models\export\TestExport22;
+use oat\taoQtiTest\models\import\TestImport;
 
 return new \oat\taoQtiTest\models\TestModelService([
     'exportHandlers' => [
         new \oat\taoQtiTest\models\export\metadata\TestMetadataByClassExportHandler(),
-        new taoQtiTest_models_classes_export_TestExport(),
-        new taoQtiTest_models_classes_export_TestExport22()
+        new TestExport(),
+        new TestExport22()
     ],
     'importHandlers' => [
-        new taoQtiTest_models_classes_import_TestImport()
+        new TestImport()
     ],
     'CompilationService' => new CompilationService([
         // Whether nor not scoping rubricBlock stylesheet rules with IDs.

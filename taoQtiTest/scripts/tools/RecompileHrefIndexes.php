@@ -23,6 +23,7 @@ namespace oat\taoQtiTest\scripts\tools;
 use common_report_Report as Report;
 use oat\oatbox\extension\AbstractAction;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
+use oat\taoQtiTest\models\QtiTestCompiler;
 use oat\tao\model\service\FileStorage;
 use qtism\data\storage\php\PhpDocument;
 
@@ -66,7 +67,7 @@ class RecompileHrefIndexes extends AbstractAction
                                 
                                 foreach ($phpDocument->getDocumentComponent()->getComponentsByClassName('assessmentItemRef', true) as $assessmentItemRef) {
                                     $assessmentItemRefIdentifier = $assessmentItemRef->getIdentifier();
-                                    $indexPath = \taoQtiTest_models_classes_QtiTestCompiler::buildHrefIndexPath($assessmentItemRefIdentifier);
+                                    $indexPath = QtiTestCompiler::buildHrefIndexPath($assessmentItemRefIdentifier);
                                     $newFile = $directory->getFile($indexPath);
                                     $newFile->put($assessmentItemRef->getHref());
                                     

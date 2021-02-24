@@ -25,12 +25,12 @@ use ZipArchive;
 use common_report_Report;
 use core_kernel_classes_Resource;
 use oat\generis\test\GenerisPhpUnitTestRunner;
+use oat\taoQtiTest\helpers\Utils;
+use oat\taoQtiTest\models\QtiTestService;
+use oat\taoQtiTest\models\export\QtiTestExporter;
+use oat\taoQtiTest\models\export\TestExport;
 use oat\taoTests\models\TestsService;
 use oat\tao\model\TaoOntology;
-use taoQtiTest_helpers_Utils;
-use taoQtiTest_models_classes_QtiTestService;
-use taoQtiTest_models_classes_export_QtiTestExporter;
-use taoQtiTest_models_classes_export_TestExport;
 use tao_helpers_Uri;
 use tao_helpers_form_Form;
 use tao_helpers_form_FormElement;
@@ -52,7 +52,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
     public function setUp(): void
     {
         parent::initTest();
-        $this->testService = taoQtiTest_models_classes_QtiTestService::singleton();
+        $this->testService = QtiTestService::singleton();
         $this->dataDir = dirname(__FILE__) . '/data/';
         $this->outputDir = sys_get_temp_dir() . '/' ;
     }
@@ -64,7 +64,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
      */
     public function testService()
     {
-        $this->assertInstanceOf(taoQtiTest_models_classes_QtiTestService::class, $this->testService);
+        $this->assertInstanceOf(QtiTestService::class, $this->testService);
     }
 
     /**
@@ -86,12 +86,12 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
     /**
      * verify main class
      *
-     * @return \taoQtiTest_models_classes_export_TestExport
+     * @return \oat\taoQtiTest\models\export\TestExport
      */
     public function testInitExport()
     {
-        $testExport = new taoQtiTest_models_classes_export_TestExport();
-        $this->assertInstanceOf(taoQtiTest_models_classes_export_TestExport::class, $testExport);
+        $testExport = new TestExport();
+        $this->assertInstanceOf(TestExport::class, $testExport);
 
         return $testExport;
     }
@@ -101,7 +101,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
      *
      * @depends testInitExport
      * @depends testCreateInstance
-     * @param  \taoQtiTest_models_classes_export_TestExport $testExport
+     * @param  \oat\taoQtiTest\models\export\TestExport $testExport
      * @param  \core_kernel_classes_Resource                $qtiTest
      * @return \tao_helpers_form_Form
      */
@@ -179,7 +179,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
      * @depends testExportFormCreate
      * @depends testCreateInstance
      *
-     * @param taoQtiTest_models_classes_export_TestExport $testExport
+     * @param oat\taoQtiTest\models\export\TestExport $testExport
      * @param tao_helpers_form_Form $form
      *
      * @throws \common_Exception
@@ -200,7 +200,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
      * @depends testInitExport
      * @depends testExportFormCreate
      * @depends testCreateInstance
-     * @param \taoQtiTest_models_classes_export_TestExport $testExport
+     * @param \oat\taoQtiTest\models\export\TestExport $testExport
      * @param \tao_helpers_form_Form                       $form
      * @param  \core_kernel_classes_Resource $qtiTest
      * @return void
@@ -236,10 +236,10 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
         $zip = new ZipArchive();
         $this->assertTrue($zip->open($file, ZipArchive::CREATE));
 
-        $qtiTestExporter = new taoQtiTest_models_classes_export_QtiTestExporter(
+        $qtiTestExporter = new QtiTestExporter(
             $qtiTest,
             $zip,
-            taoQtiTest_helpers_Utils::emptyImsManifest()
+            Utils::emptyImsManifest()
         );
         $qtiTestExporter->export();
         $zip->close();
@@ -262,7 +262,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
         // import
         $testFile = __DIR__ . '/samples/archives/QTI 2.2/exportWithoutLongPaths/test_with_long_path_and_shared_stimulus.zip';
         $class = TestsService::singleton()->getRootclass()->createSubClass(uniqid('test-exporter'));
-        $report = \taoQtiTest_models_classes_QtiTestService::singleton()
+        $report = QtiTestService::singleton()
             ->importMultipleTests($class, $testFile);
 
         $this->assertEquals($report->getType(), \common_report_Report::TYPE_SUCCESS);
@@ -281,10 +281,10 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
         $zip = new ZipArchive();
         $this->assertTrue($zip->open($file, ZipArchive::CREATE));
 
-        $qtiTestExporter = new taoQtiTest_models_classes_export_QtiTestExporter(
+        $qtiTestExporter = new QtiTestExporter(
             new \core_kernel_classes_Resource($uri),
             $zip,
-            taoQtiTest_helpers_Utils::emptyImsManifest()
+            Utils::emptyImsManifest()
         );
         $qtiTestExporter->export();
         $zip->close();
@@ -330,7 +330,7 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
         $label = 'this label should be persisted';
         $testFile = __DIR__ . '/samples/archives/QTI 2.2/test_label_is_persisted.zip'; // contains label 'QTI Example Te2211111st (LABEL)'
         $class = TestsService::singleton()->getRootclass()->createSubClass(uniqid('test-exporter'));
-        $report = \taoQtiTest_models_classes_QtiTestService::singleton()
+        $report = QtiTestService::singleton()
             ->importMultipleTests($class, $testFile);
 
         $this->assertEquals($report->getType(), \common_report_Report::TYPE_SUCCESS);
@@ -349,10 +349,10 @@ class QtiTestExporterTest extends GenerisPhpUnitTestRunner
         $zip = new ZipArchive();
         $this->assertTrue($zip->open($file, ZipArchive::CREATE));
 
-        $qtiTestExporter = new taoQtiTest_models_classes_export_QtiTestExporter(
+        $qtiTestExporter = new QtiTestExporter(
             new \core_kernel_classes_Resource($resource->getUri()),
             $zip,
-            taoQtiTest_helpers_Utils::emptyImsManifest()
+            Utils::emptyImsManifest()
         );
         $qtiTestExporter->export();
         $zip->close();

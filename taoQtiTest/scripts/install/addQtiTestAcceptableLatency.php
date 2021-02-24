@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,8 +20,10 @@
  * @author Jérôme Bogaerts <jerome@taotesting.com>
  */
 
+use oat\taoQtiTest\models\QtiTestService;
+
 /*
  * This post-installation script configures the acceptable latency time when qti:timeLimits->maxTime
  * and/or qti:timeLimits->minTime are in force.
 */
-taoQtiTest_models_classes_QtiTestService::singleton()->setQtiTestAcceptableLatency('PT5S');
+QtiTestService::singleton()->setQtiTestAcceptableLatency('PT5S');

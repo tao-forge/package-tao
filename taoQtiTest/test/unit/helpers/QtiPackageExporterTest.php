@@ -22,21 +22,21 @@ namespace oat\taoQtiTest\test\unit\helpers;
 
 use common_Exception;
 use common_report_Report;
+use oat\generis\test\MockObject;
+use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
 use oat\oatbox\filesystem\FileSystemService;
-use oat\tao\helpers\FileHelperService;
-use taoQtiTest_models_classes_export_TestExport22;
-use oat\generis\test\MockObject;
-use oat\generis\test\TestCase;
 use oat\taoQtiTest\helpers\QtiPackageExporter;
+use oat\taoQtiTest\models\export\TestExport22;
+use oat\tao\helpers\FileHelperService;
 
 class QtiPackageExporterTest extends TestCase
 {
     /** @var QtiPackageExporter */
     private $subject;
 
-    /** @var taoQtiTest_models_classes_export_TestExport22|MockObject */
+    /** @var oat\taoQtiTest\models\export\TestExport22|MockObject */
     private $exporterMock;
 
     /** @var FileSystemService|MockObject */
@@ -48,7 +48,7 @@ class QtiPackageExporterTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->exporterMock = $this->createMock(taoQtiTest_models_classes_export_TestExport22::class);
+        $this->exporterMock = $this->createMock(TestExport22::class);
         $this->fileSystemServiceMock = $this->createMock(FileSystemService::class);
         $this->fileHelperServiceMock = $this->createMock(FileHelperService::class);
         $this->fileHelperServiceMock->method('createTempDir')->willReturn('FAKE_TMP_DIR');

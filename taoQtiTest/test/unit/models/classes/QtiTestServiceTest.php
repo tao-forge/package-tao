@@ -2,21 +2,21 @@
 
 namespace oat\taoQtiTest\test\unit\models\classes;
 
+use DOMDocument;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use common_exception_InconsistentData;
 use core_kernel_classes_Property as KernelProperty;
 use core_kernel_classes_Resource as KernelResource;
-use DOMDocument;
 use oat\generis\model\data\Ontology;
 use oat\generis\model\fileReference\FileReferenceSerializer;
 use oat\generis\test\MockObject;
 use oat\generis\test\TestCase;
 use oat\oatbox\filesystem\Directory;
 use oat\oatbox\filesystem\File;
-use oat\tao\model\service\ApplicationService;
+use oat\taoQtiTest\models\QtiTestService;
 use oat\taoQtiTest\models\test\AssessmentTestXmlFactory;
+use oat\tao\model\service\ApplicationService;
 use qtism\common\utils\Format;
-use taoQtiTest_models_classes_QtiTestService as QtiTestService;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 class QtiTestServiceTest extends TestCase
 {
